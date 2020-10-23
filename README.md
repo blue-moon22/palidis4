@@ -27,7 +27,7 @@ git clone https://github.com/blue-moon22/PaliDIS.git
 
 ### USAGE
 ```
-nextflow run palidis.nf --reads '<sample>_{1,2}.fastq.gz
+nextflow run palidis.nf --reads '<sample>_{1,2}.fastq.gz'
 ```
 
 As an example/to test PaliDIS, within the directory run:
@@ -39,7 +39,7 @@ You should get two empty files ERR589346_head_contig_is_sites.fasta and ERR58934
 
 If you want to run all samples in the directory:
 ```
-nextflow run palidis.nf --reads '*_{1,2}.fastq.gz
+nextflow run palidis.nf --reads '*_{1,2}.fastq.gz'
 ```
 
 If you are running this on large files (above 2 GB), it is recommended to use a cluster or HPC. If you use a particular batch software on your cluster, you can specify the type (e.g. SGE/SLURM), number of cpus and other parameters in the nextflow.config file. This [page](https://www.nextflow.io/docs/latest/config.html) gives you an overview of the configuration file and this [page](https://www.nextflow.io/docs/latest/executor.html?highlight=sge) specifies what to include for particular batch software.
