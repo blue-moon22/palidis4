@@ -6,233 +6,360 @@
  *
  */
 
+nextflow.enable.dsl=2
 
 /*
- * Define parameters
- */
-params.reads=""
-
-params.outpath="$baseDir"
-contig_result_path = file(params.outpath)
-
-params.hmm = "$baseDir/db/Pfam-A_transposase.hmm"
-hmm_name = file(params.hmm).name
-hmm_dir = file(params.hmm).parent
-
-/*
- * Create the 'read_pairs_ch' channel that emits tuples containing three elements:
- * the pair ID, the first read-pair file and the second read-pair file
- */
-Channel
-	.fromFilePairs( params.reads )
-	.ifEmpty { error "Cannot find any reads matching: ${params.reads}" }
-	.set { read_pairs_ch }
-
-/*
- * Preprocess: Decompress fastq file, convert files, replace spaces in names with underscores, add f1/f2 and Seq number
+ * Convert FASTQ.GZ to FASTA, replace spaces in names with underscores, add f1/f2 and Seq number
  */
 process convertToFasta {
+
 	input:
-  tuple val(pair_id), file(reads) from read_pairs_ch
+    tuple val(sample_id), path(read1), path(read2)
 
 	output:
-	tuple val(pair_id), file("${pair_id}_1.fastq"), file("${pair_id}_2.fastq"), file("${pair_id}_1.fasta"), file("${pair_id}_2.fasta") into fasta_ch
+	tuple val(sample_id), path("${sample_id}_1.fasta"), path("${sample_id}_2.fasta")
+
+    script:
+    fastq1 = "${sample_id}_1.fastq"
+    fastq2 = "${sample_id}_2.fastq"
 
 	"""
-	gunzip -c ${reads[0]} > ${pair_id}_1.fastq
-	gunzip -c ${reads[1]} > ${pair_id}_2.fastq
-  convertfastq2fasta.sh ${pair_id}_1.fastq ${pair_id}_2.fastq ${pair_id}
-  """
+    for file in ${read1}
+    do
+        gunzip -c \$file >> ${fastq1}
+    done
+
+    for file in ${read2}
+    do
+        gunzip -c \$file >> ${fastq2}
+    done
+
+    convert_fastq_to_fasta.py -f ${fastq1} -r 1
+    convert_fastq_to_fasta.py -f ${fastq2} -r 2
+
+    rm ${fastq1} ${fastq2}
+    """
 }
 
 /*
- * Step 1: Assemble reads
- */
-process assembly {
-	label 'spades'
-
-	input:
-	tuple val(pair_id), file(fastq1), file(fastq2), file(fasta1), file(fasta2) from fasta_ch
-
-	output:
-	tuple val(pair_id), file(fasta1), file(fasta2), file("${pair_id}_contigs.fasta") into assembly_ch
-
-  """
-  spades.py -1 ${fastq1} -2 ${fastq2} -t $task.cpus -k 21,33,55 --only-assembler --meta -o ${pair_id}
-  mv ${pair_id}/contigs.fasta ${pair_id}_contigs.fasta
-  """
-}
-
-/*
- * Step 2: Run MMSeq2 lincluster
- */
-process mmseqs2 {
-	label 'mmseqs2'
-
-	input:
-	tuple val(pair_id), file(fasta1), file(fasta2), file(contigs) from assembly_ch
-
-	output:
-	tuple val(pair_id), file(fasta1), file(fasta2), file("${pair_id}_DB_rep.fasta"), file("${pair_id}_DB_clu_seq.fasta"), file(contigs) into mmseq_ch
-
-	"""
-  echo 'Building database...'
-	mmseqs createdb ${fasta1} ${fasta2} ${pair_id}_DB
-
-	echo 'Running linclust...'
-	mmseqs linclust ${pair_id}_DB ${pair_id}_DB_clu tmp --cov-mode 2 -c 0.5 --threads ${task.cpus}
-
-	echo 'Convert sequences to fasta...'
-	mmseqs createsubdb ${pair_id}_DB_clu ${pair_id}_DB ${pair_id}_DB_rep
-	mmseqs convert2fasta ${pair_id}_DB_rep ${pair_id}_DB_rep.fasta
-
-	echo 'Generate TSV output...'
-	mmseqs createtsv ${pair_id}_DB ${pair_id}_DB ${pair_id}_DB_clu ${pair_id}_DB_clu.tsv
-
-	echo 'Get sequence information...'
-	mmseqs createseqfiledb ${pair_id}_DB ${pair_id}_DB_clu ${pair_id}_DB_clu_seq
-	mmseqs result2flat ${pair_id}_DB ${pair_id}_DB ${pair_id}_DB_clu_seq ${pair_id}_DB_clu_seq.fasta
-	"""
-}
-
-/*
- * Step 3: Run pal-MEM
+ * Run pal-MEM
  */
 process palmem {
-	label 'pal_mem'
 
-	input:
-	tuple val(pair_id), file(fasta1), file(fasta2),	file(rep_fasta), file(clu_fasta), file(contigs) from mmseq_ch
+    input:
+	tuple val(sample_id), path(fasta1), path(fasta2)
 
 	output:
-	tuple val(pair_id), file(fasta1), file(fasta2), file("${pair_id}_palmem_ITR.fasta"), file(contigs) into palmem_ch
+    tuple val(sample_id), path("${sample_id}_IR_1.fasta"), path("${sample_id}_paired_to_IR_2.fasta"), emit: ir_1_ch
+    tuple val(sample_id), path("${sample_id}_paired_to_IR_1.fasta"), path("${sample_id}_IR_2.fasta"), emit: ir_2_ch
 
+    script:
+    min_itr_length = params.min_itr_length
+    kmer_length = params.kmer_length
+    split = params.split
 	"""
-	pal-mem -fu ${rep_fasta} -t ${task.cpus} -l ${params.mem_length} -k ${params.kmer_length} -o ${pair_id}_palmem
+	pal-mem -f1 ${fasta1} -f2 ${fasta2} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o ${sample_id} -d ${split}
 	"""
 }
 
 /*
- * Step 4: Get discordant reads
+ * Build bowtie2 database
  */
-process getDiscordantReads {
-  label 'discord_reads'
+process buildDB {
+
+    input:
+    tuple val(sample_id), path(contigs_path)
+
+    output:
+    tuple val(sample_id), path(contigs_path), path("contigs_db.tar"), emit: contig_db1_ch
+    tuple val(sample_id), path("contigs_db.tar"), emit: contig_db2_ch
+
+    """
+    bowtie2-build ${contigs_path} ${sample_id}_contigs
+    tar -cf contigs_db.tar ${sample_id}_contigs*
+    """
+}
+
+process mapReads1 {
 
 	input:
-	tuple val(pair_id), file(fasta1), file(fasta2), file(itr_fasta), file(contigs) from palmem_ch
+	tuple val(sample_id), path(fasta1), path(fasta2), path(contigs_path), path(db_path)
 
 	output:
-	tuple val(pair_id), file("${pair_id}_discord_1.fasta"), file("${pair_id}_discord_2.fasta"), file(contigs) into discord_reads_ch
+	tuple val(sample_id), path(contigs_path), path(fasta1), path("${prefix}.sam.mapped.sorted")
 
+    script:
+    prefix = "${sample_id}_itr_in_1"
 	"""
-  get_discordant_reads.py ${fasta1} ${fasta2} ${itr_fasta} ${pair_id}
+    tar -xf ${db_path}
+	bowtie2 --very-sensitive-local -x ${sample_id}_contigs -1 ${fasta1} -2 ${fasta2} -S ${prefix}.sam -p ${task.cpus} -f
+	samtools view -S -b ${prefix}.sam -@ ${task.cpus} > ${prefix}.bam
+	rm ${prefix}.sam
+	samtools view -b -F 4 ${prefix}.bam -@ ${task.cpus} > ${prefix}.bam.mapped
+	rm ${prefix}.bam
+	samtools sort ${prefix}.bam.mapped -o ${prefix}.bam.mapped.sorted -@ ${task.cpus}
+	rm ${prefix}.bam.mapped
+	samtools index ${prefix}.bam.mapped.sorted
+	samtools view ${prefix}.bam.mapped.sorted > ${prefix}.sam.mapped.sorted
+	rm ${prefix}.bam.mapped.sorted*
+    rm ${sample_id}_contigs*
+	"""
+}
 
-	rm ${fasta1}
-	rm ${fasta2}
+process mapReads2 {
+
+	input:
+	tuple val(sample_id), path(fasta1), path(fasta2), path(db_path)
+
+	output:
+	tuple val(sample_id), path(fasta2), path("${prefix}.sam.mapped.sorted")
+
+    script:
+    prefix = "${sample_id}_itr_in_2"
 	"""
+    tar -xf ${db_path}
+	bowtie2 --very-sensitive-local -x ${sample_id}_contigs -1 ${fasta1} -2 ${fasta2} -S ${prefix}.sam -p ${task.cpus} -f
+	samtools view -S -b ${prefix}.sam -@ ${task.cpus} > ${prefix}.bam
+	rm ${prefix}.sam
+	samtools view -b -F 4 ${prefix}.bam -@ ${task.cpus} > ${prefix}.bam.mapped
+	rm ${prefix}.bam
+	samtools sort ${prefix}.bam.mapped -o ${prefix}.bam.mapped.sorted -@ ${task.cpus}
+	rm ${prefix}.bam.mapped
+	samtools index ${prefix}.bam.mapped.sorted
+	samtools view ${prefix}.bam.mapped.sorted > ${prefix}.sam.mapped.sorted
+	rm ${prefix}.bam.mapped.sorted*
+    rm ${sample_id}_contigs*
+	"""
+}
+
+process getCandidateITRs {
+
+    input:
+    tuple val(sample_id), path(contig_file), path(fasta_ir1), path(sam_file1), path(fasta_ir2), path(sam_file2)
+
+    output:
+    path("${sample_id}_contigs_reads_ir_position_info.tab"), emit: tab_ch
+    tuple path("${sample_id}_reads_with_candidate_itrs_1.fasta"), path("${sample_id}_reads_with_candidate_itrs_2.fasta"), emit: reads_itrs_ch
+
+    """
+    cat ${sam_file1} ${sam_file2} > combined.sam
+    get_insert_size.py combined.sam > sam.stats
+    insert_size=\$(grep 'Read span' sam.stats | cut -f4 -d' ' | sed 's/,//')
+    read_length=\$(grep 'Read length' sam.stats | cut -f4 -d' ' | sed 's/,//')
+
+    get_candidate_ITR_reads_and_IS_contigs.py \
+        --contig_fasta ${contig_file} \
+        --sam_file1 ${sam_file1} \
+        --sam_file2 ${sam_file2} \
+        --fasta1 ${fasta_ir1} \
+        --fasta2 ${fasta_ir2} \
+        --insert_size \${insert_size} \
+        --read_length \${read_length} \
+        --output_prefix ${sample_id}
+    """
 }
 
 /*
- * Step 5: Map discordant reads to assembly
+ * Cluster reads
  */
-process mapReads {
-  label 'map_reads'
+process clusterReads {
 
-	input:
-	tuple val(pair_id), file(discord1), file(discord2), file(contigs) from discord_reads_ch
+    input:
+    file(read_files)
 
-	output:
-	tuple val(pair_id), file(contigs), file("${pair_id}.sam") into samfile_ch
+    output:
+    path("${prefix}_irs.fasta"), emit: clipped_read_ch
+    tuple path("${prefix}.fa"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
 
-	"""
-  mkdir -p bowtie2_db
-	bowtie2-build ${contigs} bowtie2_db/${pair_id}_contigs
-	bowtie2 --very-sensitive-local -x bowtie2_db/${pair_id}_contigs -U ${discord1},${discord2} -S ${pair_id}.sam -p ${task.cpus} -f
-  rm ${discord1}
-  rm ${discord2}
-  rm bowtie2_db/${pair_id}_contigs*
-  """
-}
+    script:
+    G=params.cd_hit_G
+    aL=params.cd_hit_aL
+    aS=params.cd_hit_aS
+    A=params.cd_hit_A
+    prefix="all"
+    output_prefix="${prefix}_nonred_G${G}_aL${aL}_aS${aS}_A${A}"
 
-process filterMappedReads {
-  label 'filter_mapped_reads'
-
-  input:
-  tuple val(pair_id), file(contigs), file(sam_file) from samfile_ch
-
-  output:
-  tuple val(pair_id), file(contigs), file("${pair_id}.sam.mapped.sorted") into mapped_ch
-
-  """
-	samtools view -S -b ${sam_file} -@ ${task.cpus} > ${pair_id}.bam
-	rm ${sam_file}
-	samtools view -b -F 4 ${pair_id}.bam -@ ${task.cpus} > ${pair_id}.bam.mapped
-	rm ${pair_id}.bam
-	samtools sort ${pair_id}.bam.mapped -o ${pair_id}.bam.mapped.sorted -@ ${task.cpus}
-	rm ${pair_id}.bam.mapped
-	samtools index ${pair_id}.bam.mapped.sorted
-	samtools view ${pair_id}.bam.mapped.sorted > ${pair_id}.sam.mapped.sorted
-	rm ${pair_id}.bam.mapped.sorted*
-	"""
+    """
+    cat ${read_files} ${params.include_IR_db} > ${prefix}.fa
+    clip_reads.py --read_fasta ${prefix}.fa --output_prefix ${prefix}
+    cd-hit-est -i ${prefix}_irs.fasta -o ${output_prefix}.fasta -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    """
 }
 
 /*
- * Step 6: Get contigs with insertion sites
+ * Get ITR information
  */
-process getContigsWithIRs {
-  label 'contig_ir'
+process getITRs {
+    input:
+    tuple path(combined_fasta), path(read_clstr_file)
+    path(info_tab_file)
 
-	input:
-	tuple val(pair_id), file(contigs), file(sam_file) from mapped_ch
+    output:
+    path("all_contigs_reads_itr_position_info.tab")
 
-	output:
-	tuple val(pair_id), file(sam_file), file("${pair_id}_contig_sites.fasta") into contig_ir_ch
-
-	"""
-	get_contigs_with_sites.py ${contigs} ${sam_file} ${pair_id}_contig_sites.fasta
-  """
-}
-
-process getProteins {
-  label 'proteins'
-
-  input:
-  tuple val(pair_id), file(sam_file), file(contig_ir) from contig_ir_ch
-  path db from hmm_dir
-
-  output:
-  tuple val(pair_id), file(sam_file), file(contig_ir), file("${pair_id}_transposase.out") into proteins_ch
-
-  """
-  prodigal -i ${contig_ir} -f gff -o ${pair_id}_contigs_prodigal.gff -a ${pair_id}_translations.faa -d ${pair_id}_genes.fna -p meta
-  hmmsearch --tblout ${pair_id}_transposase.out -E 1e-5 --cpu ${task.cpus} $db/$hmm_name ${pair_id}_translations.faa > /dev/null
-  """
-}
-
-process getISs {
-  label 'get_is'
-
-  input:
-  tuple val(pair_id), file(sam_file), file(contig_ir), file(hmm_out) from proteins_ch
-
-  output:
-  file("${pair_id}_contig_is_sites.fasta") into contig_results
-  file("${pair_id}_contig_is_sites.tab") into tab_results
-
-  """
-  get_transposase.py ${hmm_out} ${sam_file} ${contig_ir} ${pair_id}
-  """
+    """
+    assign_ITRs.py --combined_itr_fasta ${combined_fasta} --cdhit_cluster_file ${read_clstr_file} --combined_info_tab_file ${info_tab_file} --output_prefix 'all'
+    """
 }
 
 /*
- * Get result
+ * Collect IS annotations
  */
-contig_results.subscribe { it ->
-    log.info "Copying results: ${contig_result_path}/${it.name}"
-    it.copyTo(contig_result_path)
+ process collectAnnotations {
+    input:
+    path(itr_pos_info)
+
+    output:
+    path("${output_file}")
+
+    script:
+    output_file = "insertion_sequence_annotations.tab"
+    collect_annotations_script = file(params.collect_annotations_script)
+
+    """
+    Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${output_file}
+    """
+ }
+
+workflow get_candidate_ITRs {
+    take:
+    read_pair_ch
+    contig_file_ch
+
+    main:
+    convertToFasta(read_pair_ch)
+    fasta_ch = convertToFasta.out
+
+    palmem(fasta_ch)
+
+    buildDB(contig_file_ch)
+
+    /*
+     * Map discordant reads to assembly
+     */
+    palmem.out.ir_1_ch
+    .join(buildDB.out.contig_db1_ch)
+    .set { contigs_reads1_ch }
+
+    mapReads1(contigs_reads1_ch)
+    mapping1_ch = mapReads1.out
+
+    palmem.out.ir_2_ch
+    .join(buildDB.out.contig_db2_ch)
+    .set { contigs_reads2_ch }
+
+    mapReads2(contigs_reads2_ch)
+    mapping2_ch = mapReads2.out
+
+    /*
+     * Get contigs and reads with candidate ITRs
+     */
+     mapping1_ch
+     .join(mapping2_ch)
+     .set { mapping_contigs_ch }
+
+    getCandidateITRs(mapping_contigs_ch)
+
+    reads_itrs_ch = getCandidateITRs.out.reads_itrs_ch
+    tab_ch = getCandidateITRs.out.tab_ch
+
+    emit:
+    reads_itrs_ch
+    tab_ch
+}
+
+workflow get_IS_annotations {
+    take:
+    all_reads_itr_ch
+    combined_tab_ch
+
+    main:
+    clusterReads(all_reads_itr_ch)
+    clipped_read_ch = clusterReads.out.clipped_read_ch
+    nonred_read_ch = clusterReads.out.nonred_read_ch
+
+    getITRs(nonred_read_ch, combined_tab_ch)
+    itr_tab_ch = getITRs.out
+
+    collectAnnotations(itr_tab_ch)
+    is_annot_ch = collectAnnotations.out
+
+    emit:
+    clipped_read_ch
+    is_annot_ch
+}
+
+
+workflow {
+    // Define parameters
+    batch_path = "./${params.batch_name}"
+
+    if (params.get_candidate_itrs) {
+        /*
+         * Parameters
+         */
+        Channel
+        .fromPath(params.manifest)
+        .splitCsv(header:true, sep:"\t")
+        .map { row -> tuple(row.sample_id, file(row.read1), file(row.read2)) }
+        .groupTuple()
+        .set { read_pair_ch }
+
+        Channel
+        .fromPath(params.manifest)
+        .splitCsv(header:true, sep:"\t")
+        .map { row -> tuple(row.sample_id, file(row.assembly_path)) }
+        .set { contig_file_ch }
+
+        get_candidate_ITRs(read_pair_ch, contig_file_ch)
+
+        // Publish batch of candidate ITRs
+        batch_path = file(params.batch_path)
+        batch_path.mkdir()
+        get_candidate_ITRs.out.reads_itrs_ch
+        .flatten()
+        .subscribe { it ->
+            it.copyTo("${batch_path}")
+        }
+
+        // Publish tab file for batch
+        get_candidate_ITRs.out.tab_ch
+        .subscribe { it ->
+            it.copyTo("${batch_path}")
+        }
     }
 
-tab_results.subscribe { it ->
-    log.info "Copying results: ${contig_result_path}/${it.name}"
-    it.copyTo(contig_result_path)
+    if (params.get_IS_annotations) {
+
+        itr_fasta_files = "$batch_path/*.fasta"
+        itr_tab_files = "$batch_path/*.tab"
+
+        Channel
+        .fromPath(itr_fasta_files, checkIfExists:true)
+        .collect()
+        .set { all_reads_itr_ch }
+
+        Channel
+        .fromPath(itr_tab_files, checkIfExists:true)
+        .collectFile(name: file('contigs_reads_ir_position_info.tab'), newLine: false, keepHeader: true)
+        .set { combined_tab_ch }
+
+        get_IS_annotations(all_reads_itr_ch, combined_tab_ch)
+
+        /*
+         * Publish clipped reads
+         */
+        get_IS_annotations.out.clipped_read_ch
+        .subscribe { it ->
+            it.copyTo(file("${params.output_prefix}_clipped_reads_db.fasta"))
+        }
+
+        /*
+         * Publish results
+         */
+        get_IS_annotations.out.is_annot_ch
+        .subscribe { it ->
+            it.copyTo(file("${params.output_prefix}_insertion_sequence_annotations.tab"))
+        }
     }
+}
