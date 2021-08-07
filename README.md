@@ -1,48 +1,71 @@
-# PaliDIS v1.0.0 - Palindromic Detection of Insertion Sequences
-Identifies insertion sequences from paired-end short-read metagenomic reads using Nextflow.
+# **PaliDIS** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
-## DESCRIPTION
-PaliDIS is a Nextflow pipeline consisting of five steps:
-1. Assembling metagenomic reads to make contigs using [SPAdes](https://github.com/ablab/spades)
-2. Clustering reads to make representative sequences using [MMSeq2](https://github.com/soedinglab/MMseqs2)
-3. Using [pal-MEM](https://github.com/blue-moon22/pal-MEM) to identify reads with inverted repeats
-4. Identifying contigs associated with inverted repeats mapping reads from 3) using Bowtie2
-5. Identifying inverted terminal repeats of insertion sequences by transposase annotation using HMMER3
+PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
-NOTE: Reads need to be quality controlled and filtered (i.e. removing human DNA) before using PaliDIS
+The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) of insertion sequences using an efficient maximal exact matching algorithm between reads of large metagenomic datasets, which are then resolved on metagenomic assemblies.
 
-### INSTALLATION INSTRUCTIONS
-PaliDIS relies on Nextflow and Docker images of pipeline software.
-Download:
-1. [Nextflow](https://www.nextflow.io/).
-2. [Docker](https://www.docker.com/).
-3. Docker images:
-```
-docker pull staphb/spades:3.14.0 && docker pull soedinglab/mmseqs2:latest && docker pull bluemoon222/pal-mem:latest && docker pull python && docker pull comics/bowtie2:2.3.4.1 && docker pull pegi3s/samtools_bcftools:1.9 && docker pull ubuntu:xenial
-```
-4. PaliDIS:
-```
-git clone https://github.com/blue-moon22/PaliDIS.git
+<img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
+
+## Installation
+- Install [Nextflow](https://www.nextflow.io/)
+- Install [Docker](https://www.docker.com/) ([Singularity](https://sylabs.io/singularity/) if using a HPC)
+- Git clone this repo
+```bash
+git clone https://github.com/blue-moon22/Palidis.git
+cd Palidis
 ```
 
-### USAGE
+## Usage
+
+The pipeline is divided into two workflows: **1) Get Candidate ITRs** and **2) Get IS Annotations**.
+
+If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`). It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to folk this repo and make a pull request to include your new profile for others to use.
+
+### 1. Get Candidate ITRs
+#### Usage
+This workflow generates candidate ITRs for each sample.
+```bash
+nextflow palidis.nf --get_candidate_itrs --manifest <manifest_file> --batch_name <batch_name> -resume
 ```
-nextflow run palidis.nf --reads '<sample>_{1,2}.fastq.gz'
+The output is stored in a directory in the current run directory specified with `--batch_name`.
+
+A tab-delimited manifest must be specified for `--manifest` containing the absolute paths with headers `lane_id`, `read1`, `read2`, `sample_id` and `assembly_path`, e.g. this manifest contains three samples (the first having two lanes and the other two having one lane):
+
+lane_id | read1 | read2 | sample_id | assembly_path
+:---: | :---: | :---: | :---: | :---:
+lane1 | /path/to/file/lane1_1.fq.gz | /path/to/file/lane1_2.fq.gz | my_sample | /path/to/file/contigs.fasta
+lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 | /path/to/file/my_sample1_contigs.fasta
+lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
+lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
+
+#### Output
+This workflow generates FASTA files with clipped reads representing candidate ITRs and tab-delimited files containing the ITR-containing (non-clipped) reads' positional information for each sample within the `batch_name` directory, e.g.:
+
+sample_id | contig | read | position
+:---: | :---: | :---: | :---:
+my_sample1 | contig_name1 | read_name_with_itr1 | 14
+my_sample1 | contig_name2 | read_name_with_itr2 | 15
+my_sample1 | contig_name3 | read_name_with_itr3 | 88
+my_sample1 | contig_name4 | read_name_with_itr5 | 24
+
+
+### 2. Get IS Annotations
+#### Usage
+Once you are satisfied all samples have been processed through the first workflow, you can run the second. This workflow pools, clusters and filters the candidate ITRs to create a non-redundant catalogue of ITRs. The output file prefix must be specified by `--output_prefix`, alongside the `--batch_name` directory.
+
+```bash
+nextflow palidis.nf --get_IS_annotations --batch_name <batch_name> --output_prefix <output_file_prefix> -resume
 ```
 
-As an example/to test PaliDIS, within the directory run:
-```
-nextflow run palidis.nf --reads 'data/ERR589346_head_{1,2}.fastq.gz'
-```
-This should take approx. 5 minutes. (Make sure to include the quotes '')
-You should get two empty files ERR589346_head_contig_is_sites.fasta and ERR589346_head_contig_is_sites.tab
+You can include another ITR catalogue into this workflow by specifying `--include_IR_db /path/to/other_clipped_reads_db.fasta`. This will create a more comprehensive ITR catalogue, which will generate a better representation of rarer ITR clusters.
 
-If you want to run all samples in the directory:
-```
-nextflow run palidis.nf --reads '*_{1,2}.fastq.gz'
-```
+#### Output
+A non-redundant catalogue of ITRs called `<output_file_prefix>_clipped_reads_db.fasta` and a final tab-delimited file of insertion sequence annotations called `<output_file_prefix>_insertion_sequence_annotations.tab` combining all samples are generated. The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to, e.g.:
 
-If you are running this on large files (above 2 GB), it is recommended to use a cluster or HPC. If you use a particular batch software on your cluster, you can specify the type (e.g. SGE/SLURM), number of cpus and other parameters in the nextflow.config file. This [page](https://www.nextflow.io/docs/latest/config.html) gives you an overview of the configuration file and this [page](https://www.nextflow.io/docs/latest/executor.html?highlight=sge) specifies what to include for particular batch software.
+sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
+sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817
+sample_id2 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079
+sample_id3 | contig_name3 | 29 | 43 | NA | NA | 1217817
 
-### OPTIONS
-PaliDIS comes with two more options: --kmer_length and --mem_length, which represent the options -k and -l in [pal-MEM](https://github.com/blue-moon22/pal-MEM). These select the k-mer lengths to be queried and the minimum maximal exact match (MEM) length of an inverted terminal repeat.
+Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
