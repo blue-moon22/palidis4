@@ -235,7 +235,7 @@ workflow get_candidate_ITRs {
     buildDB(contig_file_ch)
 
     /*
-     * Map discordant reads to assembly
+     * Map reads to contigs
      */
     palmem.out.ir_1_ch
     .join(buildDB.out.contig_db1_ch)
@@ -308,7 +308,7 @@ workflow {
         Channel
         .fromPath(params.manifest)
         .splitCsv(header:true, sep:"\t")
-        .map { row -> tuple(row.sample_id, file(row.assembly_path)) }
+        .map { row -> tuple(row.sample_id, file(row.contigs_path)) }
         .set { contig_file_ch }
 
         get_candidate_ITRs(read_pair_ch, contig_file_ch)

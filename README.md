@@ -2,7 +2,7 @@
 
 PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
-The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) of insertion sequences using an efficient maximal exact matching algorithm between reads of large metagenomic datasets, which are then resolved on metagenomic assemblies.
+The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) of insertion sequences using an efficient maximal exact matching algorithm between reads of large metagenomic datasets, which are then resolved on metagenomic contigs.
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
@@ -22,6 +22,12 @@ The pipeline is divided into two workflows: **1) Get Candidate ITRs** and **2) G
 If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`). It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to folk this repo and make a pull request to include your new profile for others to use.
 
 ### 1. Get Candidate ITRs
+#### Pipeline summary
+1. Index and label FASTQ.GZ reads
+2. Efficient maximal exact matching to get inverted repeats using [pal-MEM](https://github.com/blue-moon22/pal-MEM)
+3. Map reads against contigs using Bowtie2
+4. Get candidate ITRs by paired read concordance
+
 #### Usage
 This workflow generates candidate ITRs for each sample.
 ```bash
@@ -29,9 +35,9 @@ nextflow palidis.nf --get_candidate_itrs --manifest <manifest_file> --batch_name
 ```
 The output is stored in a directory in the current run directory specified with `--batch_name`.
 
-A tab-delimited manifest must be specified for `--manifest` containing the absolute paths with headers `lane_id`, `read1`, `read2`, `sample_id` and `assembly_path`, e.g. this manifest contains three samples (the first having two lanes and the other two having one lane):
+A tab-delimited manifest must be specified for `--manifest` containing the absolute paths with headers `lane_id`, `read1`, `read2`, `sample_id` and `contigs_path`, e.g. this manifest contains three samples (the first having two lanes and the other two having one lane):
 
-lane_id | read1 | read2 | sample_id | assembly_path
+lane_id | read1 | read2 | sample_id | contigs_path
 :---: | :---: | :---: | :---: | :---:
 lane1 | /path/to/file/lane1_1.fq.gz | /path/to/file/lane1_2.fq.gz | my_sample | /path/to/file/contigs.fasta
 lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 | /path/to/file/my_sample1_contigs.fasta
@@ -50,6 +56,10 @@ my_sample1 | contig_name4 | read_name_with_itr5 | 24
 
 
 ### 2. Get IS Annotations
+#### Pipeline summary
+1. Cluster all candidate ITRs (and other catalogues) using CD-HIT-EST
+2. Collect Insertion Sequence annotations on contigs
+
 #### Usage
 Once you are satisfied all samples have been processed through the first workflow, you can run the second. This workflow pools, clusters and filters the candidate ITRs to create a non-redundant catalogue of ITRs. The output file prefix must be specified by `--output_prefix`, alongside the `--batch_name` directory.
 
@@ -69,3 +79,14 @@ sample_id2 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079
 sample_id3 | contig_name3 | 29 | 43 | NA | NA | 1217817
 
 Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
+
+#### Options
+```
+  min_itr_length      Minimum length of ITR. (Default: 14)
+  kmer_length         k-mer length for maximal exact matching. (Default: 10)
+  split               Split reference in pal-MEM by this number. (Default: 20)
+  cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
+  cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
+  cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
+  cd_hit_A            -A option for CD-HIT-EST. (Default: 14 [set to kmer_length])
+```
