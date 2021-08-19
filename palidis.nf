@@ -292,7 +292,8 @@ workflow get_IS_annotations {
 
 workflow {
     // Define parameters
-    batch_path = "./${params.batch_name}"
+    batch_path = file("./${params.batch_name}")
+    batch_path.mkdir()
 
     if (params.get_candidate_itrs) {
         /*
@@ -314,8 +315,6 @@ workflow {
         get_candidate_ITRs(read_pair_ch, contig_file_ch)
 
         // Publish batch of candidate ITRs
-        batch_path = file(params.batch_path)
-        batch_path.mkdir()
         get_candidate_ITRs.out.reads_itrs_ch
         .flatten()
         .subscribe { it ->
