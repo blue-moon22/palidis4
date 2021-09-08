@@ -23,8 +23,7 @@ if (is.null(opt$output)){
 }
 
 ### Read Palidis data
-itrs <- read.delim("/Users/vc11/repos/Palidis/tests/data/input/ERR1474567_contigs_reads_itr_position_info.tab")
-#itrs <- read.delim(opt$input)
+itrs <- read.delim(opt$input)
 swap <- itrs$position1 - itrs$position2 > 0
 position1 <- itrs$position1[swap]
 read1 <- itrs$read1[swap]
