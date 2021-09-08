@@ -23,7 +23,8 @@ if (is.null(opt$output)){
 }
 
 ### Read Palidis data
-itrs <- read.delim(opt$input)
+itrs <- read.delim("/Users/vc11/repos/Palidis/tests/data/input/ERR1474567_contigs_reads_itr_position_info.tab")
+#itrs <- read.delim(opt$input)
 swap <- itrs$position1 - itrs$position2 > 0
 position1 <- itrs$position1[swap]
 read1 <- itrs$read1[swap]
@@ -44,8 +45,12 @@ itrs$itr1_length <- sapply(strsplit(gsub(".*_LCoord_", "", itrs$read1), "_RCoord
 itrs$itr2_length <- sapply(strsplit(gsub(".*_LCoord_", "", itrs$read2), "_RCoord_"), function(.x) as.numeric(.x[2]) + 1 - as.numeric(.x[1]))
 
 ### Filter lengths of ITRs above 50
-itrs <- itrs[-which(itrs$itr1_length > 50),]
-itrs <- itrs[-which(itrs$itr2_length > 50),]
+if (length(which(itrs$itr1_length > 50)) > 0) {
+  itrs <- itrs[-which(itrs$itr1_length > 50),]
+}
+if (length(which(itrs$itr2_length > 50)) > 0) {
+  itrs <- itrs[-which(itrs$itr2_length > 50),]
+}
 
 ### Function to group ITRs into sub clusters based on their position
 get_sub_clusters <- function(df) {
