@@ -194,7 +194,7 @@ process getITRs {
     tuple val(sample_id), path(fasta), path(read_clstr_file), path(info_tab_file)
 
     output:
-    path("all_contigs_reads_itr_position_info.tab")
+    tuple val(sample_id), path("${sample_id}_contigs_reads_itr_position_info.tab")
 
     """
     assign_ITRs.py --combined_itr_fasta ${fasta} --cdhit_cluster_file ${read_clstr_file} --combined_info_tab_file ${info_tab_file} --output_prefix ${sample_id}
