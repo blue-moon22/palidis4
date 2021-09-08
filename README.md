@@ -17,16 +17,15 @@ cd Palidis
 
 ## Usage
 
-The pipeline is divided into two workflows: **1) Get Candidate ITRs** and **2) Get IS Annotations**.
+If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`). It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
 
-If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`). It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to folk this repo and make a pull request to include your new profile for others to use.
-
-### 1. Get Candidate ITRs
 #### Pipeline summary
 1. Index and label FASTQ.GZ reads
 2. Efficient maximal exact matching to get inverted repeats using [pal-MEM](https://github.com/blue-moon22/pal-MEM)
 3. Map reads against contigs using Bowtie2
 4. Get candidate ITRs by paired read concordance
+5. Cluster candidate ITRs using CD-HIT-EST
+6. Collect Insertion Sequence annotations on contigs
 
 #### Usage
 This workflow generates candidate ITRs for each sample.
@@ -45,38 +44,13 @@ lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 |
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
 
 #### Output
-This workflow generates FASTA files with clipped reads representing candidate ITRs and tab-delimited files containing the ITR-containing (non-clipped) reads' positional information for each sample within the `batch_name` directory, e.g.:
+A non-redundant catalogue of ITRs called `<sample_id>_ITRs.fasta` and a final tab-delimited file of insertion sequence annotations called `<sample_id>_insertion_sequence_annotations.tab` are generated in a directory specified by `batch_name`. The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR, the cluster(s) they belong to (`itr_clusters`) and reads of first and second paired files that contain them (`read1` and `read2`), e.g.:
 
-sample_id | contig | read | position
-:---: | :---: | :---: | :---:
-my_sample1 | contig_name1 | read_name_with_itr1 | 14
-my_sample1 | contig_name2 | read_name_with_itr2 | 15
-my_sample1 | contig_name3 | read_name_with_itr3 | 88
-my_sample1 | contig_name4 | read_name_with_itr5 | 24
-
-
-### 2. Get IS Annotations
-#### Pipeline summary
-1. Cluster all candidate ITRs (and other catalogues) using CD-HIT-EST
-2. Collect Insertion Sequence annotations on contigs
-
-#### Usage
-Once you are satisfied all samples have been processed through the first workflow, you can run the second. This workflow pools, clusters and filters the candidate ITRs to create a non-redundant catalogue of ITRs. The output file prefix must be specified by `--output_prefix`, alongside the `--batch_name` directory.
-
-```bash
-nextflow palidis.nf --get_IS_annotations --batch_name <batch_name> --output_prefix <output_file_prefix> -resume
-```
-
-You can include another ITR catalogue into this workflow by specifying `--include_IR_db /path/to/other_clipped_reads_db.fasta`. This will create a more comprehensive ITR catalogue, which will generate a better representation of rarer ITR clusters.
-
-#### Output
-A non-redundant catalogue of ITRs called `<output_file_prefix>_clipped_reads_db.fasta` and a final tab-delimited file of insertion sequence annotations called `<output_file_prefix>_insertion_sequence_annotations.tab` combining all samples are generated. The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to, e.g.:
-
-sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters
-:---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817
-sample_id2 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079
-sample_id3 | contig_name3 | 29 | 43 | NA | NA | 1217817
+sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters | read1 | read2
+:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817 | seq1 | seq2;seq3
+sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079 | seq4;seq5;seq6 | seq7
+sample_id1 | contig_name3 | 29 | 43 | NA | NA | 1217817 | seq8 | seq9
 
 Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
 
@@ -88,5 +62,4 @@ Although two flanking ITRs may be found, it is possible that positions could not
   cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
   cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
   cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
-  cd_hit_A            -A option for CD-HIT-EST. (Default: 14 [set to kmer_length])
 ```
