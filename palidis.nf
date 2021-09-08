@@ -138,7 +138,7 @@ process getCandidateITRs {
     tuple val(sample_id), path(contig_file), path(fasta_ir1), path(sam_file1), path(fasta_ir2), path(sam_file2)
 
     output:
-    path("${sample_id}_contigs_reads_ir_position_info.tab"), emit: tab_ch
+    tuple val(sample_id), path("${sample_id}_contigs_reads_ir_position_info.tab"), emit: tab_ch
     tuple val(sample_id), path("${sample_id}_reads_with_candidate_itrs.fasta"), emit: reads_itrs_ch
 
     """
