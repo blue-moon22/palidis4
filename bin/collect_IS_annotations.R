@@ -127,6 +127,7 @@ itrs_summary <- itrs %>%
 
 # Get read names
 reads_with_itr_cluster <- itrs[itrs$itr_cluster %in% unlist(strsplit(itrs_summary$itr_clusters, ";")),] %>% select(itr_cluster, read1, read2)
+ir_read_names <- c(reads_with_itr_cluster$read1, reads_with_itr_cluster$read2)
 
 ### Write output
 write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
