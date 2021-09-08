@@ -177,7 +177,7 @@ process clusterReads {
     G=params.cd_hit_G
     aL=params.cd_hit_aL
     aS=params.cd_hit_aS
-    A=params.cd_hit_A
+    A=params.min_itr_length
     output_prefix="${sample_id}_nonred_G${G}_aL${aL}_aS${aS}_A${A}"
 
     """
