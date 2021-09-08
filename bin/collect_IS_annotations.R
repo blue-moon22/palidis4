@@ -6,7 +6,7 @@ option_list = list(
   make_option(c("-i", "--input"), type="character", default=NULL, 
               help="Tab-delimited file of ITR positions", metavar="character"),
   make_option(c("-o", "--output"), type="character", default=NULL, 
-              help="Output file name of IS annotations", metavar="character")
+              help="Output prefix of IS annotations", metavar="character")
 )
 
 opt_parser = OptionParser(option_list=option_list)
@@ -106,18 +106,26 @@ itrs_summary <- itrs %>%
   mutate(subcluster2 = subcluster) %>%
   filter(!is.na(subcluster2)) %>%
   ungroup() %>%
+  # Join read names
+  inner_join(itrs[, c("sample_id", "contig", "read1", "read2", "itr_cluster")]) %>%
   group_by(sample_id, contig, subcluster1, subcluster2, exact1, exact2) %>%
   summarise(itr1_start_position = min(itr1_start_position),
             itr1_end_position = max(itr1_end_position),
             itr2_start_position = min(itr2_start_position),
             itr2_end_position = max(itr2_end_position),
-            itr_clusters = paste(unique(itr_cluster), collapse = ';'), .groups = 'rowwise') %>%
+            itr_clusters = paste(unique(itr_cluster), collapse = ';'),
+            read1 = paste(unique(read1), collapse = ';'),
+            read2 = paste(unique(read2), collapse = ';'),.groups = 'rowwise') %>%
   ungroup() %>%
   # Clean output
   mutate(itr1_start_position = replace(itr1_start_position, is.na(itr1_end_position), NA),
          itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA)) %>%
-  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters)
+  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters, read1, read2)
+
+# Get read names
+read_names <- c(unlist(strsplit(itrs_summary$read1, ";")), unlist(strsplit(itrs_summary$read2, ";")))
+ir_read_names <- read_names[grepl("LCoord", read_names)]
 
 ### Write output
-write.table(itrs_summary, opt$output, row.names = FALSE, quote = FALSE, sep = "\t")
-
+write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(ir_read_names, paste0(opt$output, "_read_names.txt"), row.names = FALSE, quote = FALSE, sep = "\t", col.names = FALSE)
