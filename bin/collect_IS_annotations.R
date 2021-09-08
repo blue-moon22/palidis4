@@ -111,7 +111,6 @@ itrs_summary <- itrs %>%
   filter(!is.na(subcluster2)) %>%
   ungroup() %>%
   # Join read names
-  inner_join(itrs[, c("sample_id", "contig", "read1", "read2", "itr_cluster")]) %>%
   group_by(sample_id, contig, subcluster1, subcluster2, exact1, exact2) %>%
   summarise(itr1_start_position = min(itr1_start_position),
             itr1_end_position = max(itr1_end_position),
@@ -127,9 +126,9 @@ itrs_summary <- itrs %>%
   select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters, read1, read2)
 
 # Get read names
-read_names <- c(unlist(strsplit(itrs_summary$read1, ";")), unlist(strsplit(itrs_summary$read2, ";")))
-ir_read_names <- read_names[grepl("LCoord", read_names)]
+reads_with_itr_cluster <- itrs[itrs$itr_cluster %in% unlist(strsplit(itrs_summary$itr_clusters, ";")),] %>% select(itr_cluster, read1, read2)
 
 ### Write output
 write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
 write.table(ir_read_names, paste0(opt$output, "_read_names.txt"), row.names = FALSE, quote = FALSE, sep = "\t", col.names = FALSE)
+write.table(reads_with_itr_cluster, paste0(opt$output, "_reads_itr_clusters.txt"), row.names = FALSE, quote = FALSE, sep = "\t")

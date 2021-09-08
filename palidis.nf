@@ -210,6 +210,7 @@ process getITRs {
 
     output:
     path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
+    path("${sample_id}_sample_itr_clusters.txt"), emit: itr_clusters_ch
     path("${sample_id}_ITRs.fasta"), emit: itr_ch
 
     script:
@@ -280,10 +281,12 @@ workflow get_candidate_ITRs {
 
     collectAnnotations(into_collect_annotations_ch)
     itr_ch = collectAnnotations.out.itr_ch
+    itr_clusters_ch = collectAnnotations.out.itr_clusters_ch
     is_tab_ch = collectAnnotations.out.is_tab_ch
 
     emit:
     itr_ch
+    itr_clusters_ch
     is_tab_ch
 }
 
@@ -314,6 +317,12 @@ workflow {
         // Publish batch of candidate ITRs
         get_candidate_ITRs.out.itr_ch
         .flatten()
+        .subscribe { it ->
+            it.copyTo("${batch_path}")
+        }
+
+        // Publish itr clusters file for batch
+        get_candidate_ITRs.out.itr_clusters_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
