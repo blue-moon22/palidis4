@@ -170,8 +170,8 @@ process clusterReads {
     tuple val(sample_id), file(read_file)
 
     output:
-    tuple val(sample_id), path("${prefix}_irs.fasta"), emit: clipped_read_ch
-    tuple val(sample_id), path("${prefix}_irs.fasta"), path("${prefix}.fa"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
+    tuple val(sample_id), path("${sample_id}_irs.fasta"), emit: clipped_read_ch
+    tuple val(sample_id), path("${output_prefix}.fasta"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
 
     script:
     G=params.cd_hit_G
