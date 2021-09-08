@@ -139,7 +139,7 @@ process getCandidateITRs {
 
     output:
     path("${sample_id}_contigs_reads_ir_position_info.tab"), emit: tab_ch
-    tuple path("${sample_id}_reads_with_candidate_itrs_1.fasta"), path("${sample_id}_reads_with_candidate_itrs_2.fasta"), emit: reads_itrs_ch
+    tuple val(sample_id), path("${sample_id}_reads_with_candidate_itrs.fasta"), emit: reads_itrs_ch
 
     """
     cat ${sam_file1} ${sam_file2} > combined.sam
@@ -156,6 +156,8 @@ process getCandidateITRs {
         --insert_size \${insert_size} \
         --read_length \${read_length} \
         --output_prefix ${sample_id}
+    cat ${sample_id}_reads_with_candidate_itrs_1.fasta ${sample_id}_reads_with_candidate_itrs_2.fasta > ${sample_id}_reads_with_candidate_itrs.fasta
+    rm ${sample_id}_reads_with_candidate_itrs_1.fasta ${sample_id}_reads_with_candidate_itrs_2.fasta
     """
 }
 
@@ -165,24 +167,22 @@ process getCandidateITRs {
 process clusterReads {
 
     input:
-    file(read_files)
+    tuple val(sample_id), file(read_file)
 
     output:
-    path("${prefix}_irs.fasta"), emit: clipped_read_ch
-    tuple path("${prefix}.fa"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
+    tuple val(sample_id), path("${prefix}_irs.fasta"), emit: clipped_read_ch
+    tuple val(sample_id), path("${prefix}_irs.fasta"), path("${prefix}.fa"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
 
     script:
     G=params.cd_hit_G
     aL=params.cd_hit_aL
     aS=params.cd_hit_aS
     A=params.cd_hit_A
-    prefix="all"
-    output_prefix="${prefix}_nonred_G${G}_aL${aL}_aS${aS}_A${A}"
+    output_prefix="${sample_id}_nonred_G${G}_aL${aL}_aS${aS}_A${A}"
 
     """
-    cat ${read_files} ${params.include_IR_db} > ${prefix}.fa
-    clip_reads.py --read_fasta ${prefix}.fa --output_prefix ${prefix}
-    cd-hit-est -i ${prefix}_irs.fasta -o ${output_prefix}.fasta -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    clip_reads.py --read_fasta ${sample_id}.fa --output_prefix ${sample_id}
+    cd-hit-est -i ${sample_id}_irs.fasta -o ${output_prefix}.fasta -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
     """
 }
 
@@ -191,14 +191,13 @@ process clusterReads {
  */
 process getITRs {
     input:
-    tuple path(combined_fasta), path(read_clstr_file)
-    path(info_tab_file)
+    tuple val(sample_id), path(fasta), path(read_clstr_file), path(info_tab_file)
 
     output:
     path("all_contigs_reads_itr_position_info.tab")
 
     """
-    assign_ITRs.py --combined_itr_fasta ${combined_fasta} --cdhit_cluster_file ${read_clstr_file} --combined_info_tab_file ${info_tab_file} --output_prefix 'all'
+    assign_ITRs.py --combined_itr_fasta ${fasta} --cdhit_cluster_file ${read_clstr_file} --combined_info_tab_file ${info_tab_file} --output_prefix ${sample_id}
     """
 }
 
@@ -207,17 +206,18 @@ process getITRs {
  */
  process collectAnnotations {
     input:
-    path(itr_pos_info)
+    tuple val(sample_id), path(itr_pos_info), path(clipped_reads)
 
     output:
-    path("${output_file}")
+    path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
+    path("${sample_id}_ITRs.fasta"), emit: itr_ch
 
     script:
-    output_file = "insertion_sequence_annotations.tab"
     collect_annotations_script = file(params.collect_annotations_script)
 
     """
-    Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${output_file}
+    Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${sample_id}
+    get_seq_from_names.py --input_fasta ${clipped_reads} --read_names ${sample_id}_read_names.txt --output_fasta ${sample_id}_ITRs.fasta
     """
  }
 
@@ -263,32 +263,29 @@ workflow get_candidate_ITRs {
     reads_itrs_ch = getCandidateITRs.out.reads_itrs_ch
     tab_ch = getCandidateITRs.out.tab_ch
 
-    emit:
-    reads_itrs_ch
-    tab_ch
-}
-
-workflow get_IS_annotations {
-    take:
-    all_reads_itr_ch
-    combined_tab_ch
-
-    main:
-    clusterReads(all_reads_itr_ch)
+    clusterReads(reads_itrs_ch)
     clipped_read_ch = clusterReads.out.clipped_read_ch
     nonred_read_ch = clusterReads.out.nonred_read_ch
 
-    getITRs(nonred_read_ch, combined_tab_ch)
+    nonred_read_ch
+    .join(tab_ch)
+    .set { into_get_itr_ch }
+
+    getITRs(into_get_itr_ch)
     itr_tab_ch = getITRs.out
 
-    collectAnnotations(itr_tab_ch)
-    is_annot_ch = collectAnnotations.out
+    itr_tab_ch
+    .join(clipped_read_ch)
+    .set { into_collect_annotations_ch }
+
+    collectAnnotations(into_collect_annotations_ch)
+    itr_ch = collectAnnotations.out.itr_ch
+    is_tab_ch = collectAnnotations.out.is_tab_ch
 
     emit:
-    clipped_read_ch
-    is_annot_ch
+    itr_ch
+    is_tab_ch
 }
-
 
 workflow {
     // Define parameters
@@ -315,50 +312,16 @@ workflow {
         get_candidate_ITRs(read_pair_ch, contig_file_ch)
 
         // Publish batch of candidate ITRs
-        get_candidate_ITRs.out.reads_itrs_ch
+        get_candidate_ITRs.out.itr_ch
         .flatten()
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
 
         // Publish tab file for batch
-        get_candidate_ITRs.out.tab_ch
+        get_candidate_ITRs.out.is_tab_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
-        }
-    }
-
-    if (params.get_IS_annotations) {
-
-        itr_fasta_files = "$batch_path/*.fasta"
-        itr_tab_files = "$batch_path/*.tab"
-
-        Channel
-        .fromPath(itr_fasta_files, checkIfExists:true)
-        .collect()
-        .set { all_reads_itr_ch }
-
-        Channel
-        .fromPath(itr_tab_files, checkIfExists:true)
-        .collectFile(name: file('contigs_reads_ir_position_info.tab'), newLine: false, keepHeader: true)
-        .set { combined_tab_ch }
-
-        get_IS_annotations(all_reads_itr_ch, combined_tab_ch)
-
-        /*
-         * Publish clipped reads
-         */
-        get_IS_annotations.out.clipped_read_ch
-        .subscribe { it ->
-            it.copyTo(file("${params.output_prefix}_clipped_reads_db.fasta"))
-        }
-
-        /*
-         * Publish results
-         */
-        get_IS_annotations.out.is_annot_ch
-        .subscribe { it ->
-            it.copyTo(file("${params.output_prefix}_insertion_sequence_annotations.tab"))
         }
     }
 }
