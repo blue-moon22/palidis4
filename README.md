@@ -44,15 +44,22 @@ lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 |
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
 
 #### Output
-A non-redundant catalogue of ITRs called `<sample_id>_ITRs.fasta` and a final tab-delimited file of insertion sequence annotations called `<sample_id>_insertion_sequence_annotations.tab` are generated in a directory specified by `batch_name`. The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR, the cluster(s) they belong to (`itr_clusters`) and reads of first and second paired files that contain them (`read1` and `read2`), e.g.:
+Three files for each sample are generated in a directory specified by `batch_name`:
 
-sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters | read1 | read2
-:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817 | seq1 | seq2;seq3
-sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079 | seq4;seq5;seq6 | seq7
-sample_id1 | contig_name3 | 29 | 43 | NA | NA | 1217817 | seq8 | seq9
+**1. A non-redundant catalogue of ITRs called `<sample_id>_ITRs.fasta`**
+
+**2. A tab-delimited file of insertion sequence annotations called `<sample_id>_insertion_sequence_annotations.tab`.**
+The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to (`itr_clusters`), e.g.:
+
+sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
+sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817
+sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 1217817;656079
+sample_id1 | contig_name3 | 29 | 43 | NA | NA | 1217817
 
 Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
+
+**3. A tab-delimited file of ITR clusters and the names of the reads containing them called `<sample>_reads_itr_clusters.txt`**
 
 #### Options
 ```
