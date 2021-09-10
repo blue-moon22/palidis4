@@ -312,7 +312,7 @@ workflow {
         get_candidate_ITRs(read_pair_ch, contig_file_ch)
 
         // Publish batch of candidate ITRs
-        get_candidate_ITRs.out.itr_ch
+        get_candidate_ITRs.out.itr_fasta_ch
         .flatten()
         .subscribe { it ->
             it.copyTo("${batch_path}")
