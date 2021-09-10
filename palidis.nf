@@ -190,7 +190,7 @@ process clusterReads {
  */
 process getITRs {
     input:
-    tuple val(sample_id), path(fasta), path(clipped_fasta), path(read_clstr_file), path(info_tab_file)
+    tuple val(sample_id), path(fasta), path(read_clstr_file), path(clipped_fasta), path(info_tab_file)
 
     output:
     tuple val(sample_id), path("${sample_id}_contigs_reads_itr_position_info.tab"), emit: itr_tab_ch
