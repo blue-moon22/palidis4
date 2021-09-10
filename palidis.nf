@@ -170,8 +170,7 @@ process clusterReads {
     tuple val(sample_id), file(read_file)
 
     output:
-    tuple val(sample_id), path("${sample_id}_irs.fasta"), emit: clipped_read_ch
-    tuple val(sample_id), path("${output_prefix}.fasta"), path("${output_prefix}.fasta.clstr"), emit: nonred_read_ch
+    tuple val(sample_id), path("${output_prefix}.fasta"), path("${output_prefix}.fasta.clstr"), path("${sample_id}_irs.fasta"), emit: nonred_read_ch
 
     script:
     G=params.cd_hit_G
@@ -191,13 +190,14 @@ process clusterReads {
  */
 process getITRs {
     input:
-    tuple val(sample_id), path(fasta), path(read_clstr_file), path(info_tab_file)
+    tuple val(sample_id), path(fasta), path(clipped_fasta), path(read_clstr_file), path(info_tab_file)
 
     output:
-    tuple val(sample_id), path("${sample_id}_contigs_reads_itr_position_info.tab")
+    tuple val(sample_id), path("${sample_id}_contigs_reads_itr_position_info.tab"), emit: itr_tab_ch
+    path("${sample_id}_ITRs.fasta"), emit: itr_fasta_ch
 
     """
-    assign_ITRs.py --combined_itr_fasta ${fasta} --cdhit_cluster_file ${read_clstr_file} --combined_info_tab_file ${info_tab_file} --output_prefix ${sample_id}
+    assign_ITRs.py --candidate_itr_fasta ${fasta} --clipped_reads ${clipped_fasta} --cdhit_cluster_file ${read_clstr_file} --info_tab_file ${info_tab_file} --output_prefix ${sample_id}
     """
 }
 
@@ -218,7 +218,6 @@ process getITRs {
 
     """
     Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${sample_id}
-    get_seq_from_names.py --input_fasta ${clipped_reads} --read_names ${sample_id}_read_names.txt --output_fasta ${sample_id}_ITRs.fasta
     """
  }
 
@@ -265,7 +264,6 @@ workflow get_candidate_ITRs {
     tab_ch = getCandidateITRs.out.tab_ch
 
     clusterReads(reads_itrs_ch)
-    clipped_read_ch = clusterReads.out.clipped_read_ch
     nonred_read_ch = clusterReads.out.nonred_read_ch
 
     nonred_read_ch
@@ -273,19 +271,19 @@ workflow get_candidate_ITRs {
     .set { into_get_itr_ch }
 
     getITRs(into_get_itr_ch)
-    itr_tab_ch = getITRs.out
+    itr_tab_ch = getITRs.out.itr_tab_ch
+    itr_fasta_ch = getITRs.out.itr_fasta_ch
 
     itr_tab_ch
     .join(clipped_read_ch)
     .set { into_collect_annotations_ch }
 
     collectAnnotations(into_collect_annotations_ch)
-    itr_ch = collectAnnotations.out.itr_ch
     itr_clusters_ch = collectAnnotations.out.itr_clusters_ch
     is_tab_ch = collectAnnotations.out.is_tab_ch
 
     emit:
-    itr_ch
+    itr_fasta_ch
     itr_clusters_ch
     is_tab_ch
 }
