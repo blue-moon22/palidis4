@@ -206,7 +206,7 @@ process getITRs {
  */
  process collectAnnotations {
     input:
-    tuple val(sample_id), path(itr_pos_info), path(clipped_reads)
+    tuple val(sample_id), path(itr_pos_info)
 
     output:
     path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
@@ -273,11 +273,7 @@ workflow get_candidate_ITRs {
     itr_tab_ch = getITRs.out.itr_tab_ch
     itr_fasta_ch = getITRs.out.itr_fasta_ch
 
-    itr_tab_ch
-    .join(itr_fasta_ch)
-    .set { into_collect_annotations_ch }
-
-    collectAnnotations(into_collect_annotations_ch)
+    collectAnnotations(itr_tab_ch)
     itr_clusters_ch = collectAnnotations.out.itr_clusters_ch
     is_tab_ch = collectAnnotations.out.is_tab_ch
 
