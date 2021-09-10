@@ -15,10 +15,6 @@ git clone https://github.com/blue-moon22/Palidis.git
 cd Palidis
 ```
 
-## Usage
-
-If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`). It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
-
 #### Pipeline summary
 1. Index and label FASTQ.GZ reads
 2. Efficient maximal exact matching to get inverted repeats using [pal-MEM](https://github.com/blue-moon22/pal-MEM)
@@ -28,9 +24,9 @@ If you are running this on an HPC, you will need to specify `-profile <executor>
 6. Collect Insertion Sequence annotations on contigs
 
 #### Usage
-This workflow generates candidate ITRs for each sample.
+This workflow generates Insertion Sequence annotations for each sample.
 ```bash
-nextflow palidis.nf --get_candidate_itrs --manifest <manifest_file> --batch_name <batch_name> -resume
+nextflow palidis.nf --get_IS_annotations --manifest <manifest_file> --batch_name <batch_name> -resume -profile <executor>
 ```
 The output is stored in a directory in the current run directory specified with `--batch_name`.
 
@@ -43,13 +39,15 @@ lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 |
 lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
 
+If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`. It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
+
 #### Output
 Three files for each sample are generated in a directory specified by `batch_name`:
 
-**1. A non-redundant catalogue of ITRs called `<sample_id>_ITRs.fasta`**
+##### 1. A non-redundant catalogue of ITRs: `<sample_id>_ITRs.fasta`
 
-**2. A tab-delimited file of insertion sequence annotations called `<sample_id>_insertion_sequence_annotations.tab`.**
-The annotation file consists of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to (`itr_clusters`), e.g.:
+##### 2. Insertion sequence annotations: `<sample_id>_insertion_sequence_annotations.tab`
+The annotation file is in a tab-delimited format consisting of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to (`itr_clusters`), e.g.:
 
 sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_clusters
 :---: | :---: | :---: | :---: | :---: | :---: | :---:
@@ -59,7 +57,8 @@ sample_id1 | contig_name3 | 29 | 43 | NA | NA | 1217817
 
 Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
 
-**3. A tab-delimited file of ITR clusters and the names of the reads containing them called `<sample>_reads_itr_clusters.txt`**
+##### 3. ITR clusters and their reads of origin: `<sample>_reads_itr_clusters.txt`
+This file is in a tab-delimited format containing the names of the ITR clusters and the reads that the ITRs of those ITR clusters originate from.
 
 #### Options
 ```

@@ -220,7 +220,7 @@ process getITRs {
     """
  }
 
-workflow get_candidate_ITRs {
+workflow get_IS_annotations {
     take:
     read_pair_ch
     contig_file_ch
@@ -288,7 +288,7 @@ workflow {
     batch_path = file("./${params.batch_name}")
     batch_path.mkdir()
 
-    if (params.get_candidate_itrs) {
+    if (params.get_IS_annotations) {
         /*
          * Parameters
          */
@@ -305,23 +305,23 @@ workflow {
         .map { row -> tuple(row.sample_id, file(row.contigs_path)) }
         .set { contig_file_ch }
 
-        get_candidate_ITRs(read_pair_ch, contig_file_ch)
+        get_IS_annotations(read_pair_ch, contig_file_ch)
 
         // Publish batch of candidate ITRs
-        get_candidate_ITRs.out.itr_fasta_ch
+        get_IS_annotations.out.itr_fasta_ch
         .flatten()
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
 
         // Publish itr clusters file for batch
-        get_candidate_ITRs.out.itr_clusters_ch
+        get_IS_annotations.out.itr_clusters_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
 
         // Publish tab file for batch
-        get_candidate_ITRs.out.is_tab_ch
+        get_IS_annotations.out.is_tab_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
