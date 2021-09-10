@@ -275,7 +275,7 @@ workflow get_candidate_ITRs {
     itr_fasta_ch = getITRs.out.itr_fasta_ch
 
     itr_tab_ch
-    .join(clipped_read_ch)
+    .join(itr_fasta_ch)
     .set { into_collect_annotations_ch }
 
     collectAnnotations(into_collect_annotations_ch)
