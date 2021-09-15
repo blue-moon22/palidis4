@@ -6,12 +6,12 @@ max_is_length = 3000
 min_is_length = 700
 read_length = 100
 
-def create_cluster_dictionary(itr_fasta, itr_clusters):
+def create_cluster_dictionary(itr_clusters):
 
     seq_num = 0
-    with open(itr_fasta, "r") as fa:
+    with open(itr_clusters, "r") as fa:
         for line in fa:
-            if line[0] == ">":
+            if line[0] != ">":
                 curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
                 if curr_seq_num > seq_num:
                     seq_num = curr_seq_num
@@ -120,8 +120,6 @@ def write_fasta(fasta, itr_flags, output_prefix):
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Get the ITR clusters and information on contigs and reads with ITRs.')
-    parser.add_argument('--candidate_itr_fasta', '-i', dest='itr_fasta', required=True,
-                        help='Input candidate ITR FASTA.', type = str)
     parser.add_argument('--clipped_reads', '-r', dest='clipped_fasta', required=True,
                         help='Input clipped reads FASTA.', type = str)
     parser.add_argument('--cdhit_cluster_file', '-c', dest='cluster_file', required=True,
@@ -136,7 +134,7 @@ def get_arguments():
 def main(args):
 
     # Create dictionary of IR clusters
-    cl_dict = create_cluster_dictionary(args.itr_fasta, args.cluster_file)
+    cl_dict = create_cluster_dictionary(args.cluster_file)
 
     # Find clusters that belong to ITRs
     itr_flags = find_itr_clusters(cl_dict, args.tab_file, args.output_prefix)
