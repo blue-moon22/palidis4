@@ -37,8 +37,8 @@ def find_itr_clusters(cl_dict, tab_info_file, itr_clusters, output_prefix):
     first_contig = ''
     clusters_positions = {}
     itr_clusters = defaultdict(lambda: 0)
-    alloc1 = [0]*len(cl_dict[0])
-    alloc2 = [0]*len(cl_dict[0])
+    alloc1 = [0]*seq_num
+    alloc2 = [0]*seq_num
 
     with open(output_prefix + '_contigs_reads_itr_position_info.tab', 'w') as out:
         out.write("sample_id\tcontig\tread1\tread2\tposition1\tposition2\titr_cluster\n")
