@@ -14,6 +14,7 @@ def write_fasta(fastq_file, read):
         for record in SeqIO.parse(fastq_file, "fastq"):
             new_id = ">Seq" + str(index) + "_nstart_" + sample_name + "_nend_" + record.id.replace(" ", "_") + "_f" + str(read)
             out.write(new_id + "\n" + str(record.seq) + "\n")
+            index += 1
 
 
 def get_arguments():
