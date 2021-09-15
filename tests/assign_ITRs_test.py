@@ -27,7 +27,7 @@ class TestAssignITRs(unittest.TestCase):
 
     def test_find_itr_clusters(self):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
-        find_itr_clusters(cl_dict, self.TEST_INFO_TAB1, self.TEST_OUTPUT_PREFIX)
+        find_itr_clusters(cl_dict, self.TEST_INFO_TAB1, self.TEST_CLSTR1, self.TEST_OUTPUT_PREFIX)
         tab_name = self.TEST_OUTPUT_PREFIX + '_contigs_reads_itr_position_info.tab'
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
@@ -37,7 +37,7 @@ class TestAssignITRs(unittest.TestCase):
 
     def test_find_multi_itr_clusters(self):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR2)
-        find_itr_clusters(cl_dict, self.TEST_INFO_TAB2, self.TEST_OUTPUT_PREFIX + '_multi')
+        find_itr_clusters(cl_dict, self.TEST_INFO_TAB2, self.TEST_CLSTR2, self.TEST_OUTPUT_PREFIX + '_multi')
         tab_name = self.TEST_OUTPUT_PREFIX + '_multi_contigs_reads_itr_position_info.tab'
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
@@ -85,5 +85,5 @@ class TestAssignITRs(unittest.TestCase):
         main(args)
 
         self.assertEqual(mock_create_cluster_dictionary.call_args_list, [call('clstr_file')])
-        self.assertEqual(mock_find_itr_clusters.call_args_list, [call([{}], 'tab_file', 'output_prefix')])
+        self.assertEqual(mock_find_itr_clusters.call_args_list, [call([{}], 'tab_file', 'clstr_file', 'output_prefix')])
         self.assertEqual(mock_write_fasta.call_args_list, [call('clipped_fasta', {}, 'output_prefix')])

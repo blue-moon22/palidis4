@@ -24,7 +24,15 @@ def create_cluster_dictionary(itr_clusters):
     return((alloc1, alloc2))
 
 
-def find_itr_clusters(cl_dict, tab_info_file, output_prefix):
+def find_itr_clusters(cl_dict, tab_info_file, itr_clusters, output_prefix):
+
+    seq_num = 0
+    with open(itr_clusters, "r") as fa:
+        for line in fa:
+            if line[0] != ">":
+                curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
+                if curr_seq_num > seq_num:
+                    seq_num = curr_seq_num
 
     first_contig = ''
     clusters_positions = {}
@@ -118,7 +126,7 @@ def main(args):
     cl_dict = create_cluster_dictionary(args.cluster_file)
 
     # Find clusters that belong to ITRs
-    itr_flags = find_itr_clusters(cl_dict, args.tab_file, args.output_prefix)
+    itr_flags = find_itr_clusters(cl_dict, args.tab_file, args.cluster_file, args.output_prefix)
 
     # Write ITR reads
     write_fasta(args.clipped_fasta, itr_flags, args.output_prefix)
