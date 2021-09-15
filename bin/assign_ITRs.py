@@ -24,21 +24,10 @@ def create_cluster_dictionary(itr_clusters):
                 cluster = line.split(" ")[1].split("\n")[0]
             else:
                 seq_no = int(line.split(">Seq")[1].split("_")[0]) - 1
-                name = line.split("_nstart_")[1].split("_nend_")[0]
                 if '_f1' in line:
-                    if alloc1[seq_no]:
-                        tmp = alloc1[seq_no]
-                        tmp[name] = cluster
-                        alloc1[seq_no] = tmp
-                    else:
-                        alloc1[seq_no] = {name: cluster}
+                    alloc1[seq_no] = cluster
                 elif '_f2' in line:
-                    if alloc2[seq_no]:
-                        tmp = alloc2[seq_no]
-                        tmp[name] = cluster
-                        alloc2[seq_no] = tmp
-                    else:
-                        alloc2[seq_no] = {name: cluster}
+                    alloc2[seq_no] = cluster
     return((alloc1, alloc2))
 
 
@@ -58,12 +47,11 @@ def find_itr_clusters(cl_dict, tab_info_file, output_prefix):
                 seq = line.split('\t')[2]
                 current_pos = int(line.split('\t')[3])
                 seq_no = int(seq.replace('Seq', '').split('_')[0]) - 1
-                name = seq.split("_nstart_")[1].split("_nend_")[0]
                 current_contig = line.split('\t')[1]
                 if '_f1_LCoord' in seq or '_f2\t' in line:
-                    cluster = cl_dict[0][seq_no][name]
+                    cluster = cl_dict[0][seq_no]
                 elif '_f2_LCoord' in seq or '_f1\t' in line:
-                    cluster = cl_dict[1][seq_no][name]
+                    cluster = cl_dict[1][seq_no]
 
                 if first_contig == '':
                     clusters_positions[cluster] = [line]

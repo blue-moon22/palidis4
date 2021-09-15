@@ -14,16 +14,16 @@ class TestAssignITRs(unittest.TestCase):
 
     def test_create_cluster_dictionary(self):
         actual = create_cluster_dictionary(self.TEST_CLSTR1)
-        self.assertEqual(actual[1][95]['ERR589346'], '0')
-        self.assertEqual(actual[0][95]['ERR589347'], '1')
-        self.assertEqual(actual[0][157]['ERR589346'], '0')
+        self.assertEqual(actual[1][95], '0')
+        self.assertEqual(actual[0][95], '1')
+        self.assertEqual(actual[0][157], '0')
 
     def test_create_multi_cluster_dictionary(self):
         actual = create_cluster_dictionary(self.TEST_CLSTR2)
-        self.assertEqual(actual[1][95]['ERR589346'], '0')
-        self.assertEqual(actual[0][95]['ERR589347'], '1')
-        self.assertEqual(actual[0][157]['ERR589346'], '0')
-        self.assertEqual(actual[1][99]['ERR589347'], '1')
+        self.assertEqual(actual[1][95], '0')
+        self.assertEqual(actual[0][95], '1')
+        self.assertEqual(actual[0][157], '0')
+        self.assertEqual(actual[1][99], '1')
 
     def test_find_itr_clusters(self):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
