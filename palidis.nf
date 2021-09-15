@@ -170,7 +170,7 @@ process clusterReads {
     tuple val(sample_id), file(read_file)
 
     output:
-    tuple val(sample_id), path("${output_prefix}.fasta"), path("${output_prefix}.fasta.clstr"), path("${sample_id}_irs.fasta"), emit: nonred_read_ch
+    tuple val(sample_id), path("${output_prefix}.fasta.clstr"), path("${sample_id}_irs.fasta"), emit: nonred_read_ch
 
     script:
     G=params.cd_hit_G
@@ -190,14 +190,14 @@ process clusterReads {
  */
 process getITRs {
     input:
-    tuple val(sample_id), path(fasta), path(read_clstr_file), path(clipped_fasta), path(info_tab_file)
+    tuple val(sample_id), path(read_clstr_file), path(clipped_fasta), path(info_tab_file)
 
     output:
     tuple val(sample_id), path("${sample_id}_contigs_reads_itr_position_info.tab"), emit: itr_tab_ch
     path("${sample_id}_ITRs.fasta"), emit: itr_fasta_ch
 
     """
-    assign_ITRs.py --candidate_itr_fasta ${fasta} --clipped_reads ${clipped_fasta} --cdhit_cluster_file ${read_clstr_file} --info_tab_file ${info_tab_file} --output_prefix ${sample_id}
+    assign_ITRs.py --clipped_reads ${clipped_fasta} --cdhit_cluster_file ${read_clstr_file} --info_tab_file ${info_tab_file} --output_prefix ${sample_id}
     """
 }
 
