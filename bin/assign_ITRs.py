@@ -8,15 +8,8 @@ read_length = 100
 
 def create_cluster_dictionary(itr_clusters):
 
-    seq_num = 0
-    with open(itr_clusters, "r") as fa:
-        for line in fa:
-            if line[0] != ">":
-                curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
-                if curr_seq_num > seq_num:
-                    seq_num = curr_seq_num
-    alloc1 = [{}]*seq_num
-    alloc2 = [{}]*seq_num
+    alloc1 = {}
+    alloc2 = {}
 
     with open(itr_clusters, "r") as cl:
         for line in cl:
