@@ -57,7 +57,7 @@ def find_itr_clusters(cl_dict, tab_info_file, output_prefix):
                     clusters_positions[cluster] = [line]
                     first_contig = current_contig
                 elif first_contig == current_contig:
-                    if cluster in clusters_positions:
+                    if cluster in clusters_positions.keys():
                         for item in clusters_positions[cluster]:
                             item_fields = item.replace('\n', '').split('\t')
                             pos = int(item_fields[3])
