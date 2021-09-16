@@ -8,8 +8,15 @@ read_length = 100
 
 def create_cluster_dictionary(itr_clusters):
 
-    alloc1 = {}
-    alloc2 = {}
+    seq_num = 0
+    with open(itr_clusters, "r") as fa:
+        for line in fa:
+            if line[0] != ">":
+                curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
+                if curr_seq_num > seq_num:
+                    seq_num = curr_seq_num
+    alloc1 = [0]*seq_num
+    alloc2 = [0]*seq_num
 
     with open(itr_clusters, "r") as cl:
         for line in cl:
@@ -24,21 +31,13 @@ def create_cluster_dictionary(itr_clusters):
     return((alloc1, alloc2))
 
 
-def find_itr_clusters(cl_dict, tab_info_file, itr_clusters, output_prefix):
-
-    seq_num = 0
-    with open(itr_clusters, "r") as fa:
-        for line in fa:
-            if line[0] != ">":
-                curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
-                if curr_seq_num > seq_num:
-                    seq_num = curr_seq_num
+def find_itr_clusters(cl_dict, tab_info_file, output_prefix):
 
     first_contig = ''
     clusters_positions = {}
     itr_clusters = defaultdict(lambda: 0)
-    alloc1 = [0]*seq_num
-    alloc2 = [0]*seq_num
+    alloc1 = [0]*len(cl_dict[0])
+    alloc2 = [0]*len(cl_dict[0])
 
     with open(output_prefix + '_contigs_reads_itr_position_info.tab', 'w') as out:
         out.write("sample_id\tcontig\tread1\tread2\tposition1\tposition2\titr_cluster\n")
@@ -50,7 +49,7 @@ def find_itr_clusters(cl_dict, tab_info_file, itr_clusters, output_prefix):
                 seq_no = int(seq.replace('Seq', '').split('_')[0]) - 1
                 current_contig = line.split('\t')[1]
                 if '_f1_LCoord' in seq or '_f2\t' in line:
-                    cluster = cl_dict[0][seq_no]
+                    cluster = cl_dict[0][seq_no] # Key error here with seq_no
                 elif '_f2_LCoord' in seq or '_f1\t' in line:
                     cluster = cl_dict[1][seq_no]
 
@@ -126,7 +125,7 @@ def main(args):
     cl_dict = create_cluster_dictionary(args.cluster_file)
 
     # Find clusters that belong to ITRs
-    itr_flags = find_itr_clusters(cl_dict, args.tab_file, args.cluster_file, args.output_prefix)
+    itr_flags = find_itr_clusters(cl_dict, args.tab_file, args.output_prefix)
 
     # Write ITR reads
     write_fasta(args.clipped_fasta, itr_flags, args.output_prefix)
