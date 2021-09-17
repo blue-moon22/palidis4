@@ -15,8 +15,8 @@ def create_cluster_dictionary(itr_clusters):
                 curr_seq_num = int(line.split(">Seq")[1].split("_")[0])
                 if curr_seq_num > seq_num:
                     seq_num = curr_seq_num
-    alloc1 = [0]*seq_num
-    alloc2 = [0]*seq_num
+    alloc1 = ['']*seq_num
+    alloc2 = ['']*seq_num
 
     with open(itr_clusters, "r") as cl:
         for line in cl:
@@ -57,7 +57,7 @@ def find_itr_clusters(cl_dict, tab_info_file, output_prefix):
                     clusters_positions[cluster] = [line]
                     first_contig = current_contig
                 elif first_contig == current_contig:
-                    if cluster in clusters_positions.keys():
+                    if cluster in clusters_positions.keys() and cluster != '':
                         for item in clusters_positions[cluster]:
                             item_fields = item.replace('\n', '').split('\t')
                             pos = int(item_fields[3])
