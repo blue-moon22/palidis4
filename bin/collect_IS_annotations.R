@@ -6,7 +6,7 @@ option_list = list(
   make_option(c("-i", "--input"), type="character", default=NULL, 
               help="Tab-delimited file of ITR positions", metavar="character"),
   make_option(c("-o", "--output"), type="character", default=NULL, 
-              help="Output file name of IS annotations", metavar="character")
+              help="Output prefix of IS annotations", metavar="character")
 )
 
 opt_parser = OptionParser(option_list=option_list)
@@ -44,8 +44,12 @@ itrs$itr1_length <- sapply(strsplit(gsub(".*_LCoord_", "", itrs$read1), "_RCoord
 itrs$itr2_length <- sapply(strsplit(gsub(".*_LCoord_", "", itrs$read2), "_RCoord_"), function(.x) as.numeric(.x[2]) + 1 - as.numeric(.x[1]))
 
 ### Filter lengths of ITRs above 50
-itrs <- itrs[-which(itrs$itr1_length > 50),]
-itrs <- itrs[-which(itrs$itr2_length > 50),]
+if (length(which(itrs$itr1_length > 50)) > 0) {
+  itrs <- itrs[-which(itrs$itr1_length > 50),]
+}
+if (length(which(itrs$itr2_length > 50)) > 0) {
+  itrs <- itrs[-which(itrs$itr2_length > 50),]
+}
 
 ### Function to group ITRs into sub clusters based on their position
 get_sub_clusters <- function(df) {
@@ -106,18 +110,24 @@ itrs_summary <- itrs %>%
   mutate(subcluster2 = subcluster) %>%
   filter(!is.na(subcluster2)) %>%
   ungroup() %>%
+  # Join read names
   group_by(sample_id, contig, subcluster1, subcluster2, exact1, exact2) %>%
   summarise(itr1_start_position = min(itr1_start_position),
             itr1_end_position = max(itr1_end_position),
             itr2_start_position = min(itr2_start_position),
             itr2_end_position = max(itr2_end_position),
-            itr_clusters = paste(unique(itr_cluster), collapse = ';'), .groups = 'rowwise') %>%
+            itr_clusters = paste(unique(itr_cluster), collapse = ';'),
+            read1 = paste(unique(read1), collapse = ';'),
+            read2 = paste(unique(read2), collapse = ';'),.groups = 'rowwise') %>%
   ungroup() %>%
   # Clean output
   mutate(itr1_start_position = replace(itr1_start_position, is.na(itr1_end_position), NA),
          itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA)) %>%
-  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters)
+  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters, read1, read2)
+
+# Get read names
+reads_with_itr_cluster <- itrs[itrs$itr_cluster %in% unlist(strsplit(itrs_summary$itr_clusters, ";")),] %>% select(itr_cluster, read1, read2)
 
 ### Write output
-write.table(itrs_summary, opt$output, row.names = FALSE, quote = FALSE, sep = "\t")
-
+write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(reads_with_itr_cluster, paste0(opt$output, "_reads_itr_clusters.txt"), row.names = FALSE, quote = FALSE, sep = "\t")
