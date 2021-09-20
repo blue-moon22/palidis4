@@ -228,13 +228,12 @@ process createITRCatalog {
     path itr_fastas
 
     output:
-    path "all_ITRs.fasta", emit: all_itrs_ch
+    tuple path("all_ITRs.fasta"), path("all_ITRs_rev.fasta"), emit: all_itrs_ch
 
     script:
     """
     cat ${itr_fastas} > all_ITRs.fasta
     seqtk seq -r all_ITRs.fasta > all_ITRs_rev.fasta
-    cat all_ITRs_rev.fasta >> all_ITRs.fasta
     """
 }
 
@@ -244,7 +243,7 @@ process createITRCatalog {
 process palmemOnITRs {
 
     input:
-	path all_itrs
+	tuple path(all_itrs), path(all_itrs_rev)
 
 	output:
     path "all_IR.tab", emit: all_itrs_tab
@@ -254,7 +253,7 @@ process palmemOnITRs {
     kmer_length = params.kmer_length
     split = params.split
 	"""
-	pal-mem -fu ${all_itrs} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split}
+	pal-mem -f1 ${all_itrs} -f2 ${all_itrs_rev} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split}
 	"""
 }
 
