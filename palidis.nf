@@ -204,7 +204,7 @@ process getITRs {
 /*
  * Collect IS annotations
  */
- process collectAnnotations {
+process collectAnnotations {
     input:
     tuple val(sample_id), path(itr_pos_info)
 
@@ -218,7 +218,45 @@ process getITRs {
     """
     Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${sample_id}
     """
- }
+}
+
+/*
+ * Combine ITR sequences
+ */
+process createITRCatalog {
+    input:
+    path itr_fastas
+
+    output:
+    path "all_ITRs.fasta", emit: all_itrs_ch
+
+    script:
+    """
+    cat ${itr_fastas} > all_ITRs.fasta
+    seqtk seq -r all_ITRs.fasta > all_ITRs_rev.fasta
+    cat all_ITRs_rev.fasta >> all_ITRs.fasta
+    """
+}
+
+/*
+ * Run pal-MEM on ITRs
+ */
+process palmemOnITRs {
+
+    input:
+	path all_itrs
+
+	output:
+    path "all_IR.tab", emit: all_itrs_tab
+
+    script:
+    min_itr_length = params.min_itr_length
+    kmer_length = params.kmer_length
+    split = params.split
+	"""
+	pal-mem -fu ${all_itrs} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split}
+	"""
+}
 
 workflow get_IS_annotations {
     take:
@@ -283,6 +321,23 @@ workflow get_IS_annotations {
     is_tab_ch
 }
 
+workflow cluster_ITRs {
+    take:
+    itrs_fasta_ch
+    is_annot_ch
+
+    main:
+    createITRCatalog(itrs_fasta_ch)
+    all_itrs_ch = createITRCatalog.out
+
+    palmemOnITRs(all_itrs_ch)
+    all_itrs_tab_ch = palmemOnITRs.out
+
+    // Create cluster membership in R using https://stackoverflow.com/questions/45736832/simple-network-cluster-membership-from-two-column-data-frame and join to each dataframe
+    emit:
+    all_itrs_tab_ch
+}
+
 workflow {
     // Define parameters
     batch_path = file("./${params.batch_name}")
@@ -325,5 +380,18 @@ workflow {
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
+    }
+
+    if (params.cluster_ITRs) {
+
+        Channel
+        .fromPath("${batch_path}/*_ITRs.fasta")
+        .set { itrs_fasta_ch }
+
+        Channel
+        .fromPath("${batch_path}/*_insertion_sequence_annotations.tab")
+        .set { is_annot_ch }
+
+        cluster_ITRs(itrs_fasta_ch, is_annot_ch)
     }
 }
