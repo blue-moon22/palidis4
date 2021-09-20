@@ -385,11 +385,13 @@ workflow {
     if (params.cluster_ITRs) {
 
         Channel
-        .fromPath("${batch_path}/*_ITRs.fasta")
+        .fromPath("${batch_path}/*_ITRs.fasta", checkIfExists:true)
+        .collect()
         .set { itrs_fasta_ch }
 
         Channel
-        .fromPath("${batch_path}/*_insertion_sequence_annotations.tab")
+        .fromPath("${batch_path}/*_insertion_sequence_annotations.tab", checkIfExists:true)
+        .collect()
         .set { is_annot_ch }
 
         cluster_ITRs(itrs_fasta_ch, is_annot_ch)
