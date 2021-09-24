@@ -253,7 +253,7 @@ process palmemOnITRs {
     kmer_length = params.kmer_length
     split = params.split
 	"""
-	pal-mem -f1 ${all_itrs} -f2 ${all_itrs_rev} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split}
+	pal-mem -f1 ${all_itrs} -f2 ${all_itrs_rev} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split} -b 0
 	"""
 }
 
