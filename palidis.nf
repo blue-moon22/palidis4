@@ -228,33 +228,35 @@ process createITRCatalog {
     path itr_fastas
 
     output:
-    tuple path("all_ITRs.fasta"), path("all_ITRs_rev.fasta"), emit: all_itrs_ch
+    path "all_ITRs.fasta"
 
     script:
     """
     cat ${itr_fastas} > all_ITRs.fasta
-    seqtk seq -r all_ITRs.fasta > all_ITRs_rev.fasta
     """
 }
 
 /*
- * Run pal-MEM on ITRs
+ * Run CD-HIT on ITRs
  */
-process palmemOnITRs {
+process assignITRClusters {
 
     input:
-	tuple path(all_itrs), path(all_itrs_rev)
+	path all_itrs
 
 	output:
-    path "all_IR.tab", emit: all_itrs_tab
+    path "all.fasta.clstr"
 
     script:
-    min_itr_length = params.min_itr_length
-    kmer_length = params.kmer_length
-    split = params.split
-	"""
-	pal-mem -f1 ${all_itrs} -f2 ${all_itrs_rev} -t ${task.cpus} -l ${min_itr_length} -k ${kmer_length} -o all -d ${split} -b 0
-	"""
+    G=params.cd_hit_G
+    aL=params.cd_hit_aL
+    aS=params.cd_hit_aS
+    A=params.min_itr_length
+    output_prefix="all"
+
+    """
+    cd-hit-est -i ${all_itrs} -o ${output_prefix}.fasta -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 50
+    """
 }
 
 workflow get_IS_annotations {
@@ -329,10 +331,9 @@ workflow cluster_ITRs {
     createITRCatalog(itrs_fasta_ch)
     all_itrs_ch = createITRCatalog.out
 
-    palmemOnITRs(all_itrs_ch)
-    all_itrs_tab_ch = palmemOnITRs.out
+    assignITRClusters(all_itrs_ch)
+    all_itrs_tab_ch = assignITRClusters.out
 
-    // Create cluster membership in R using https://stackoverflow.com/questions/45736832/simple-network-cluster-membership-from-two-column-data-frame and join to each dataframe
     emit:
     all_itrs_tab_ch
 }

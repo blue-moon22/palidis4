@@ -122,11 +122,14 @@ itrs_summary <- itrs %>%
   ungroup() %>%
   # Clean output
   mutate(itr1_start_position = replace(itr1_start_position, is.na(itr1_end_position), NA),
-         itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA)) %>%
-  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters, read1, read2)
+         itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA))
 
 # Get read names
 reads_with_itr_cluster <- itrs[itrs$itr_cluster %in% unlist(strsplit(itrs_summary$itr_clusters, ";")),] %>% select(itr_cluster, read1, read2)
+
+# Remove read columns
+itrs_summary <- itrs_summary %>%
+  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters)
 
 ### Write output
 write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
