@@ -98,6 +98,7 @@ for (i in 1:length(tab_files)){
 
 # Add new itr clusters
 new_annots <- annot %>%
+  mutate(itr_cluster = as.character(itr_cluster)) %>%
   inner_join(new_itr_pairs, by = c("sample_id", "itr_cluster")) %>%
   select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_cluster_catalog) %>%
   unique()
