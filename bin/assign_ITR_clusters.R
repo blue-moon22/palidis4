@@ -98,10 +98,8 @@ for (i in 1:length(tab_files)){
 
 # Add new itr clusters
 new_annots <- annot %>%
-  separate_rows(itr_clusters, sep=";") %>%
-  inner_join(new_itr_pairs, by = c("sample_id", "itr_clusters"="itr_cluster")) %>%
-  select(-c(itr_clusters)) %>%
-  group_by(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position) %>%
-  summarise(itr_cluster_catalog = paste(unique(itr_cluster_catalog), collapse = ';')) 
+  inner_join(new_itr_pairs, by = c("sample_id", "itr_cluster")) %>%
+  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_cluster_catalog) %>%
+  unique()
 
 write.table(new_annots, paste0(opt$output, "_insertion_sequence_annotations_catalog.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
