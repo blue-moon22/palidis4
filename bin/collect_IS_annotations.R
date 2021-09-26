@@ -55,7 +55,7 @@ if (length(which(itrs$itr2_length > 50)) > 0) {
 reads_with_itr_cluster <- itrs %>% select(itr_cluster, read1, read2)
 
 # Get start and end positions and summary
-itr_summary <- itrs %>%
+itrs_summary <- itrs %>%
   select(sample_id, contig, position1, position2, exact1, exact2, itr1_length, itr2_length, itr_cluster) %>%
   unique() %>%
   mutate(itr1_start_position = position1, 
