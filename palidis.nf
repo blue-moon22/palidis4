@@ -181,7 +181,7 @@ process clusterReads {
 
     """
     clip_reads.py --read_fasta ${read_file} --output_prefix ${sample_id}
-    cd-hit-est -i ${sample_id}_irs.fasta -o ${output_prefix}.fasta -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    cd-hit-est -i ${sample_id}_irs.fasta -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
     """
 }
 
@@ -204,7 +204,7 @@ process getITRs {
 /*
  * Collect IS annotations
  */
- process collectAnnotations {
+process collectAnnotations {
     input:
     tuple val(sample_id), path(itr_pos_info)
 
@@ -218,7 +218,66 @@ process getITRs {
     """
     Rscript --vanilla ${collect_annotations_script} --input ${itr_pos_info} --output ${sample_id}
     """
- }
+}
+
+/*
+ * Combine ITR sequences
+ */
+process createITRCatalog {
+    input:
+    path itr_fastas
+
+    output:
+    path "all_ITRs.fasta"
+
+    script:
+    """
+    cat ${itr_fastas} > all_ITRs.fasta
+    """
+}
+
+/*
+ * Run CD-HIT on ITRs
+ */
+process assignITRClusters {
+    input:
+	path all_itrs
+
+	output:
+    path "all.fasta.clstr"
+
+    script:
+    G=params.cd_hit_G
+    aL=params.cd_hit_aL
+    aS=params.cd_hit_aS
+    A=params.min_itr_length
+    output_prefix="all"
+
+    """
+    cd-hit-est -i ${all_itrs} -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    """
+}
+
+/*
+ * Create IS catalog
+ */
+process createISCatalog {
+    input:
+    path clstr_file
+    path txt_files
+    path tab_files
+
+    output:
+    path "${output_prefix}_insertion_sequence_annotations_catalog.tab"
+
+    script:
+    output_prefix=params.batch_name
+
+    """
+    process_clstr_file.py -c ${clstr_file} -o all.clstr
+    assign_ITR_clusters.R -c all.clstr.tab -t _reads_itr_clusters.txt -a _insertion_sequence_annotations.tab -o ${output_prefix}
+    """
+}
 
 workflow get_IS_annotations {
     take:
@@ -283,6 +342,26 @@ workflow get_IS_annotations {
     is_tab_ch
 }
 
+workflow create_IS_catalog {
+    take:
+    itrs_fasta_ch
+    is_annot_ch
+    itr_clusters_ch
+
+    main:
+    createITRCatalog(itrs_fasta_ch)
+    all_itrs_ch = createITRCatalog.out
+
+    assignITRClusters(all_itrs_ch)
+    all_itrs_tab_ch = assignITRClusters.out
+
+    createISCatalog(all_itrs_tab_ch, itr_clusters_ch, is_annot_ch)
+    is_catalog_ch = createISCatalog.out
+
+    emit:
+    is_catalog_ch
+}
+
 workflow {
     // Define parameters
     batch_path = file("./${params.batch_name}")
@@ -324,6 +403,32 @@ workflow {
         get_IS_annotations.out.is_tab_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
+        }
+    }
+
+    if (params.create_catalog) {
+
+        Channel
+        .fromPath("${batch_path}/*_ITRs.fasta", checkIfExists:true)
+        .collect()
+        .set { itrs_fasta_ch }
+
+        Channel
+        .fromPath("${batch_path}/*_insertion_sequence_annotations.tab", checkIfExists:true)
+        .collect()
+        .set { is_annot_ch }
+
+        Channel
+        .fromPath("${batch_path}/*_reads_itr_clusters.txt", checkIfExists:true)
+        .collect()
+        .set { itr_clusters_ch }
+
+        create_IS_catalog(itrs_fasta_ch, is_annot_ch, itr_clusters_ch)
+
+        // Publish catalog
+        create_IS_catalog.out.is_catalog_ch
+        .subscribe { it ->
+            it.copyTo("./")
         }
     }
 }
