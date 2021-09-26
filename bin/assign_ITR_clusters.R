@@ -19,14 +19,24 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
 
-if (is.null(opt$input)){
+if (is.null(opt$clusters)){
   print_help(opt_parser)
-  stop("One argument must be supplied for -i/--input (input file).n", call.=FALSE)
+  stop("One argument must be supplied for -c/--clusters (input file).n", call.=FALSE)
+}
+
+if (is.null(opt$txt)){
+  print_help(opt_parser)
+  stop("One argument must be supplied for -t/--txt (pattern).n", call.=FALSE)
+}
+
+if (is.null(opt$annot)){
+  print_help(opt_parser)
+  stop("One argument must be supplied for -a/--annot (pattern).n", call.=FALSE)
 }
 
 if (is.null(opt$output)){
   print_help(opt_parser)
-  stop("One argument must be supplied for -o/--out (output file).n", call.=FALSE)
+  stop("One argument must be supplied for -o/--output (output prefix).n", call.=FALSE)
 }
 
 # Read tab file of cd-hit clusters
