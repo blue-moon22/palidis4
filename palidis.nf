@@ -274,7 +274,7 @@ process createISCatalog {
     output_prefix=params.batch_name
 
     """
-    process_cluster_file.py -c ${clstr_file} -o all.clstr
+    process_clstr_file.py -c ${clstr_file} -o all.clstr
     assign_ITR_clusters.R -c all.clstr.tab -t _reads_itr_clusters.txt -a _insertion_sequence_annotations.tab -o ${output_prefix}
     """
 }
