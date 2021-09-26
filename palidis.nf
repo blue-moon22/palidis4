@@ -240,7 +240,6 @@ process createITRCatalog {
  * Run CD-HIT on ITRs
  */
 process assignITRClusters {
-
     input:
 	path all_itrs
 
@@ -256,6 +255,27 @@ process assignITRClusters {
 
     """
     cd-hit-est -i ${all_itrs} -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    """
+}
+
+/*
+ * Create IS catalog
+ */
+process createISCatalog {
+    input:
+    path clstr_file
+    path txt_files
+    path tab_files
+
+    output:
+    path "${output_prefix}_insertion_sequence_annotations_catalog.tab"
+
+    script:
+    output_prefix=params.batch_name
+
+    """
+    process_cluster_file.py -c ${clstr_file} -o all.clstr
+    assign_ITR_clusters.R -c all.clstr.tab -t _reads_itr_clusters.txt -a _insertion_sequence_annotations.tab -o ${output_prefix}
     """
 }
 
@@ -322,10 +342,11 @@ workflow get_IS_annotations {
     is_tab_ch
 }
 
-workflow cluster_ITRs {
+workflow create_IS_catalog {
     take:
     itrs_fasta_ch
     is_annot_ch
+    itr_clusters_ch
 
     main:
     createITRCatalog(itrs_fasta_ch)
@@ -334,8 +355,11 @@ workflow cluster_ITRs {
     assignITRClusters(all_itrs_ch)
     all_itrs_tab_ch = assignITRClusters.out
 
+    createISCatalog(all_itrs_tab_ch, itr_clusters_ch, is_annot_ch)
+    is_catalog_ch = createISCatalog.out
+
     emit:
-    all_itrs_tab_ch
+    is_catalog_ch
 }
 
 workflow {
@@ -382,7 +406,7 @@ workflow {
         }
     }
 
-    if (params.cluster_ITRs) {
+    if (params.create_catalog) {
 
         Channel
         .fromPath("${batch_path}/*_ITRs.fasta", checkIfExists:true)
@@ -394,6 +418,17 @@ workflow {
         .collect()
         .set { is_annot_ch }
 
-        cluster_ITRs(itrs_fasta_ch, is_annot_ch)
+        Channel
+        .fromPath("${batch_path}/*_reads_itr_clusters.txt", checkIfExists:true)
+        .collect()
+        .set { itr_clusters_ch }
+
+        create_IS_catalog(itrs_fasta_ch, is_annot_ch, itr_clusters_ch)
+
+        // Publish catalog
+        create_IS_catalog.out.is_catalog_ch
+        .subscribe { it ->
+            it.copyTo("./")
+        }
     }
 }

@@ -33,7 +33,7 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
       && rm -rf /var/lib/apt/lists/*
 
 # Install pal-MEM
-ARG PALMEM_VERSION=2.2.1
+ARG PALMEM_VERSION=2.3.0
 RUN git clone --branch v${PALMEM_VERSION} https://github.com/blue-moon22/pal-MEM.git \
   && cd pal-MEM \
   && rm -rf .git \
@@ -68,7 +68,7 @@ RUN wget -q https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VE
   && make install
 
 # Install R packages
-RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr'))"
+RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr', 'igraph', 'stringr', 'tidyr'))"
 
 # Install seqtk
 ARG SEQTK_VERSION=1.3
