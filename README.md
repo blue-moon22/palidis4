@@ -1,4 +1,4 @@
-# **PaliDIS 2.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.5** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
@@ -6,6 +6,19 @@ The tool is based upon identifying inverted terminal repeats (ITRs) (figure belo
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
+## Contents
+- [ Installation ](#installation)
+- [ Pipeline summary ](#summary)
+- [ Workflow 1: Get IS annotations ](#workflow1)
+    - [ Usage ](#usage1)
+    - [ Output ](#output1)
+    - [ Options ](#options1)
+- [ Workflow 2: Create catalog ](#workflow2)
+    - [ Usage ](#usage2)
+    - [ Output ](#output2)
+    - [ Options ](#options2)
+
+<a name="installation"></a>
 ## Installation
 - Install [Nextflow](https://www.nextflow.io/)
 - Install [Docker](https://www.docker.com/) ([Singularity](https://sylabs.io/singularity/) if using a HPC)
@@ -15,6 +28,7 @@ git clone https://github.com/blue-moon22/Palidis.git
 cd Palidis
 ```
 
+<a name="summary"></a>
 ## Pipeline summary
 There are two workflows: **1) Get IS annotations** that gets the positional information of ITRs on metagenomic assemblies and **2) Create catalog** that creates a catalog of IS annotations from multiple samples and clusters ITRs into distinct ITR clusters.
 
@@ -31,8 +45,10 @@ There are two workflows: **1) Get IS annotations** that gets the positional info
 1. Clusters all ITRs from samples using CD-HIT-EST
 2. Creates a catalog of Insertion Sequence annotations for all samples with assigned ITR Clusters
 
-## Usage
-### Workflow 1: Get IS annotations
+<a name="workflow1"></a>
+## Workflow 1: Get IS annotations
+<a name="usage1"></a>
+### Usage
 
 Workflow `get_IS_annotations` generates Insertion Sequence annotations for each sample.
 ```bash
@@ -51,7 +67,8 @@ lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 |
 
 If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`. It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
 
-#### Output
+<a name="output1"></a>
+### Output
 Three files for each sample are generated in a directory specified by `batch_name`:
 
 **1. A non-redundant catalogue of ITRs**: `<sample_id>_ITRs.fasta`
@@ -69,14 +86,29 @@ Although two flanking ITRs may be found, it is possible that positions could not
 **3. ITR clusters and their reads of origin:** `<sample>_reads_itr_clusters.txt`
 This file is in a tab-delimited format containing the names of the ITR clusters and the reads that the ITRs of those ITR clusters originate from.
 
-### Workflow 2: Create catalog
+<a name="options1"></a>
+### Options
+```
+  min_itr_length      Minimum length of ITR. (Default: 14)
+  kmer_length         k-mer length for maximal exact matching. (Default: 10)
+  split               Split reference in pal-MEM by this number. (Default: 20)
+  cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
+  cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
+  cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
+```
+
+<a name="workflow2"></a>
+## Workflow 2: Create catalog
+<a name="usage2"></a>
+### Usage
 Workflow `create_catalog` generates a catalog of Insertion Sequence annotations for all samples.
 ```bash
 nextflow run palidis.nf --create_catalog --batch_name <batch_name> --min_itr_length <min_itr_length> -profile <executor>
 ```
 The `batch_name` is the directory that contains outputs from the previous workflow for all samples.
 
-#### Output
+<a name="output2"></a>
+### Output
 One tab-delimited catalog is created called `<batch_name>_insertion_sequence_annotations_catalog.tab` that contains the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the newly assigned cluster(s) they belong to in the catalog (`itr_cluster_catalog`), e.g.:
 
 sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster_catalog
@@ -85,11 +117,10 @@ sample_id1 | contig_name1 | 29 | 43 | NA | NA | 101
 sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 102
 sample_id2 | contig_name3 | 25 | 55 | 5738 | 5768 | 101
 
-#### Options
+<a name="options2"></a>
+### Options
 ```
   min_itr_length      Minimum length of ITR. (Default: 14)
-  kmer_length         k-mer length for maximal exact matching. (Default: 10)
-  split               Split reference in pal-MEM by this number. (Default: 20)
   cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
   cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
   cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
