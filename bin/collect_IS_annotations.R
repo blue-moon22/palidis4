@@ -51,85 +51,20 @@ if (length(which(itrs$itr2_length > 50)) > 0) {
   itrs <- itrs[-which(itrs$itr2_length > 50),]
 }
 
-### Function to group ITRs into sub clusters based on their position
-get_sub_clusters <- function(df) {
-  count <- 0
-  for (i in 1:length(df$subcluster)) {
-    if (df$range[i] > 50) {
-      count = count + 1
-    }
-    df$subcluster[i] <- count
-  }
-  return(df)
-}
-
-### Get ITR positions 
-itrs_summary <- itrs %>%
-  group_by(sample_id, contig, itr_cluster, exact1, exact2) %>%
-  arrange(position1) %>%
-  # Get difference in start positions of ISs
-  mutate(range = position1 - lag(position1, default = position1[1])) %>% 
-  mutate(subcluster = NA) %>%
-  group_by(sample_id, contig, itr_cluster, exact1, exact2) %>%
-  arrange(position1) %>%
-  # Get sub clusters based on start position range
-  group_modify(~get_sub_clusters(.x)) %>%
-  mutate(subcluster1 = subcluster) %>%
-  filter(!is.na(subcluster1)) %>%
-  arrange(position2) %>%
-  # Get difference in end positions of ISs
-  mutate(range =  position2 - lag(position2, default = position2[1])) %>%
-  mutate(subcluster = NA) %>%
-  arrange(position2) %>%
-  # Get sub clusters based on end position range
-  group_modify(~get_sub_clusters(.x)) %>%
-  rename(subcluster2 = subcluster) %>%
-  filter(!is.na(subcluster2)) %>%
-  ungroup() %>%
-  group_by(sample_id, contig, itr_cluster, subcluster1, subcluster2, exact1, exact2) %>%
-  # Get the end positions of ITR1 and ITR2
-  summarise(itr1_start_position = min(position1), 
-            itr1_end_position = min(position1) + itr1_length - 1, 
-            itr2_start_position = max(position2), 
-            itr2_end_position = max(position2) + itr2_length - 1) %>%
-  # Do the same as above but not ignore grouping by ITR cluster
-  group_by(sample_id, contig, exact1, exact2) %>%
-  arrange(itr1_start_position) %>%
-  mutate(range = itr1_start_position - lag(itr1_start_position, default = itr1_start_position[1])) %>%
-  mutate(subcluster = NA) %>%
-  group_by(sample_id, contig, exact1, exact2) %>%
-  arrange(itr1_start_position) %>%
-  group_modify(~get_sub_clusters(.x)) %>%
-  mutate(subcluster1 = subcluster) %>%
-  filter(!is.na(subcluster1)) %>%
-  arrange(itr2_end_position) %>%
-  mutate(range =  itr2_start_position - lag(itr2_start_position, default = itr2_start_position[1])) %>%
-  mutate(subcluster = NA) %>%
-  arrange(itr2_start_position) %>%
-  group_modify(~get_sub_clusters(.x)) %>%
-  mutate(subcluster2 = subcluster) %>%
-  filter(!is.na(subcluster2)) %>%
-  ungroup() %>%
-  # Join read names
-  group_by(sample_id, contig, subcluster1, subcluster2, exact1, exact2) %>%
-  summarise(itr1_start_position = min(itr1_start_position),
-            itr1_end_position = max(itr1_end_position),
-            itr2_start_position = min(itr2_start_position),
-            itr2_end_position = max(itr2_end_position),
-            itr_clusters = paste(unique(itr_cluster), collapse = ';'),
-            read1 = paste(unique(read1), collapse = ';'),
-            read2 = paste(unique(read2), collapse = ';'),.groups = 'rowwise') %>%
-  ungroup() %>%
-  # Clean output
-  mutate(itr1_start_position = replace(itr1_start_position, is.na(itr1_end_position), NA),
-         itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA))
-
 # Get read names
-reads_with_itr_cluster <- itrs[itrs$itr_cluster %in% unlist(strsplit(itrs_summary$itr_clusters, ";")),] %>% select(itr_cluster, read1, read2)
+reads_with_itr_cluster <- itrs %>% select(itr_cluster, read1, read2)
 
-# Remove read columns
-itrs_summary <- itrs_summary %>%
-  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_clusters)
+# Get start and end positions and summary
+itr_summary <- itrs %>%
+  select(sample_id, contig, position1, position2, exact1, exact2, itr1_length, itr2_length, itr_cluster) %>%
+  unique() %>%
+  mutate(itr1_start_position = position1, 
+         itr1_end_position = position1 + itr1_length - 1, 
+         itr2_start_position = position2, 
+         itr2_end_position = position2 + itr2_length - 1) %>%
+  mutate(itr1_start_position = replace(itr1_start_position, is.na(itr1_end_position), NA),
+         itr2_start_position = replace(itr2_start_position, is.na(itr2_end_position), NA)) %>%
+  select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_cluster) 
 
 ### Write output
 write.table(itrs_summary, paste0(opt$output, "_insertion_sequence_annotations.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
