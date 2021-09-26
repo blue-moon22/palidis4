@@ -33,7 +33,7 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
       && rm -rf /var/lib/apt/lists/*
 
 # Install pal-MEM
-ARG PALMEM_VERSION=2.2.1
+ARG PALMEM_VERSION=2.3.0
 RUN git clone --branch v${PALMEM_VERSION} https://github.com/blue-moon22/pal-MEM.git \
   && cd pal-MEM \
   && rm -rf .git \
@@ -68,7 +68,13 @@ RUN wget -q https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VE
   && make install
 
 # Install R packages
-RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr'))"
+RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr', 'igraph', 'stringr', 'tidyr'))"
+
+# Install seqtk
+ARG SEQTK_VERSION=1.3
+RUN git clone --branch v${SEQTK_VERSION} https://github.com/lh3/seqtk.git \
+  && cd seqtk \
+  && make
 
 # Add paths
 ENV PATH="/opt/seqtk:/opt/pal-MEM/build:/opt/cd-hit-v${CDHIT_VERSION}-2019-0228:/opt/bowtie2-${BOWTIE2_VERSION}-linux-x86_64:/opt/samtools-${SAMTOOLS_VERSION}:/opt/prodigal-${PRODIGAL_VERSION}:/opt/hmmer-${HMMER_VERSION}/bin:${PATH}"
