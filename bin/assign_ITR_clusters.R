@@ -54,22 +54,14 @@ for (i in 1:length(txt_files)) {
 # Assign new clusters
 new_itr_clusters <- left_join(itr_pairs, itr_clusters, by = c("read1"="seq")) %>%
   left_join(itr_clusters, by = c("read2"="seq")) %>%
-  filter(!(is.na(cd_hit_cluster.x) & is.na(cd_hit_cluster.y))) %>%
-  group_by(cd_hit_cluster.x, cd_hit_cluster.y) %>%
-  mutate(cd_hit_cluster = paste(unique(c(cd_hit_cluster.x, cd_hit_cluster.y)), collapse = ';')) %>%
-  mutate(cd_hit_cluster = gsub("NA;", "", cd_hit_cluster),
-         cd_hit_cluster = gsub(";NA", "", cd_hit_cluster)) %>%
-  ungroup()
-  
+  filter(!is.na(cd_hit_cluster.x)) %>%
+  filter(!is.na(cd_hit_cluster.y))
 
 # Re-assign multiple clusters
-new_itr_clusters2 <- data.frame()
-for(i in 1:length(new_itr_clusters$cd_hit_cluster)){
-  itr_clusters <- str_split(new_itr_clusters$cd_hit_cluster[i], ";")[[1]]
-  for(j in 1:length(itr_clusters)){
-    new_itr_clusters2 <- rbind(new_itr_clusters2, c(itr_clusters[1], itr_clusters[j]))
-  }
-}
+new_itr_clusters2 <- new_itr_clusters %>% 
+  select(cd_hit_cluster.x, cd_hit_cluster.y) %>%
+  distinct()
+
 clusters <- clusters(graph.data.frame(new_itr_clusters2))
 itr_clusters <- with(clusters, 
                       data.frame(
@@ -80,7 +72,7 @@ itr_clusters <- with(clusters,
 ) %>% arrange(group)
 
 new_itr_pairs <- new_itr_clusters %>%
-  separate_rows(cd_hit_cluster, sep = ";") %>%
+  mutate(cd_hit_cluster = as.character(cd_hit_cluster.x)) %>%
   left_join(itr_clusters, by = c("cd_hit_cluster"="id")) %>%
   mutate(itr_cluster = as.character(itr_cluster)) %>%
   select(sample_id, itr_cluster, group) %>%
@@ -101,6 +93,6 @@ new_annots <- annot %>%
   mutate(itr_cluster = as.character(itr_cluster)) %>%
   inner_join(new_itr_pairs, by = c("sample_id", "itr_cluster")) %>%
   select(sample_id, contig, itr1_start_position, itr1_end_position, itr2_start_position, itr2_end_position, itr_cluster_catalog) %>%
-  unique()
+  distinct()
 
 write.table(new_annots, paste0(opt$output, "_insertion_sequence_annotations_catalog.tab"), row.names = FALSE, quote = FALSE, sep = "\t")
