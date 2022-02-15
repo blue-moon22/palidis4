@@ -1,1 +1,13 @@
 *__pycache__*
+.DS_Store
+.nextflow
+trace.txt*
+tests/work
+tests/*.log*
+tests/data/output/test_*
+.nextflow.log*
+.coverage
+work
+one_sample
+one_sample_manifest.txt
+tests/data/*
