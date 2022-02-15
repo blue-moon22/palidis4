@@ -17,51 +17,46 @@ def get_array_size(fasta_file1, fasta_file2):
     size = max(get_largest_index(fasta_file1), get_largest_index(fasta_file2))
     return(size)
 
+def set_positions(positions, left, right):
+    if positions:
+        if left < positions[0]:
+            positions[0] = left
+        if right > positions[1]:
+            positions[1] = right
+    else:
+        positions = [left, right]
+    return positions
 
-def allocate_seqs(size):
+
+def get_ir_offset(tab_file, size):
     """
     Get the offset length of the IRs and assign to sequence ID
     """
     alloc1 = [0]*size
     alloc2 = [0]*size
+    with open(tab_file, "r") as tab:
+        for line in tab:
+            seq1 = line.split('\t')[0]
+            index = int(seq1.split("_")[0].replace("Seq", ""))
+            left = int(seq1.split('_RCoord')[0].split('LCoord_')[1])
+            right = int(seq1.split('_RCoord_')[1])
+            if '_f1_' in seq1:
+                alloc1[index-1] = set_positions(alloc1[index-1], left, right)
+            elif '_f2_' in seq1:
+                alloc2[index-1] = set_positions(alloc2[index-1], left, right)
+
+            seq2 = line.split('\t')[1].replace('\n', '')
+            left = int(seq2.split('_RCoord')[0].split('LCoord_')[1])
+            right = int(seq2.split('_RCoord_')[1])
+            index = int(seq2.split("_")[0].replace("Seq", ""))
+            if '_f1_' in seq2:
+                alloc1[index-1] = set_positions(alloc1[index-1], left, right)
+            elif '_f2_' in seq2:
+                alloc2[index-1] = set_positions(alloc2[index-1], left, right)
     return([alloc1, alloc2])
 
 
-def get_ir_offset(fasta_file1, fasta_file2, size):
-    """
-    Get the offset length of the IRs and assign to sequence ID
-    """
-    alloc1 = [0]*size
-    with open(fasta_file1, "r") as f1:
-        for line in f1:
-            if line[0] == ">":
-                index = int(line.split("_")[0].replace(">Seq", ""))
-                alloc1[index-1] = int(line.split("\t")[0].split('_RCoord')[0].split('LCoord_')[1])
-
-    alloc2 = [0]*size
-    with open(fasta_file2, "r") as f2:
-        for line in f2:
-            if line[0] == ">":
-                index = int(line.split("_")[0].replace(">Seq", ""))
-                alloc2[index-1] = int(line.split("\t")[0].split('_RCoord')[0].split('LCoord_')[1])
-    return([alloc1, alloc2])
-
-def write_tab_file(itr_info1, itr_info2, out_prefix):
-
-    # Write tab file
-    with open(out_prefix + '_contigs_reads_ir_position_info.tab', "w") as out_tab:
-        out_tab.write('sample_id\tcontig\tread\tposition\n')
-        sample_id = out_prefix.split('/')[len(out_prefix.split('/'))-1]
-        for contig in itr_info1:
-            for read in itr_info1[contig]:
-                out_tab.write(sample_id + '\t' + contig + '\t' + read + '\t' + str(itr_info1[contig][read]) + '\n')
-
-        for contig in itr_info2:
-            for read in itr_info2[contig]:
-                out_tab.write(sample_id + '\t' + contig + '\t' + read + '\t' + str(itr_info2[contig][read]) + '\n')
-
-
-def write_contig_file(contigs_fasta_file, itr_info1, itr_info2, out_prefix):
+def write_contig_file(contigs, contigs_fasta_file, out_prefix):
     # Write fasta file
     with open(out_prefix + '_contigs_with_candidate_itrs.fa', "w") as out_fasta:
         flag = 0
@@ -69,7 +64,7 @@ def write_contig_file(contigs_fasta_file, itr_info1, itr_info2, out_prefix):
             for line in f:
                 if line[0] == ">":
                     contig = line.split("\n")[0].split(" ")[0].replace(">", "")
-                    if contig in itr_info1 or contig in itr_info2:
+                    if contig in contigs:
                         out_fasta.write(line)
                         flag = 1
                     else:
@@ -79,11 +74,9 @@ def write_contig_file(contigs_fasta_file, itr_info1, itr_info2, out_prefix):
                         out_fasta.write(line)
 
 
-def write_fasta_files(read_fasta1, read_fasta2, alloc_arrays, out_prefix):
+def write_fasta_files(read_fasta1, read_fasta2, ir_arrays, position_arrays, out_prefix):
     # Get read names of IRs from first and second paired files
     # Write fasta file
-    alloc1 = alloc_arrays[0]
-    alloc2 = alloc_arrays[1]
     read_pairs_dict = {}
     with open(out_prefix + '_reads_with_candidate_itrs_1.fasta', "w") as out_fasta1:
         flag = 0
@@ -91,8 +84,11 @@ def write_fasta_files(read_fasta1, read_fasta2, alloc_arrays, out_prefix):
             for line in f1:
                 if line[0] == ">":
                     index = int(line.split("_")[0].replace(">Seq", ""))
-                    if alloc1[index-1]:
-                        out_fasta1.write(line)
+                    if ir_arrays[0][index-1]:
+                        if position_arrays[0][index-1]:
+                            out_fasta1.write(line.replace('\n', '') + '_LCoord_' + str(position_arrays[0][index-1][0]) + '_RCoord_' + str(position_arrays[0][index-1][1]) + '\n')
+                        else:
+                            out_fasta1.write(line)
                         flag = 1
                     else:
                         flag = 0
@@ -106,8 +102,11 @@ def write_fasta_files(read_fasta1, read_fasta2, alloc_arrays, out_prefix):
             for line in f2:
                 if line[0] == ">":
                     index = int(line.split("_")[0].replace(">Seq", ""))
-                    if alloc2[index-1]:
-                        out_fasta2.write(line)
+                    if ir_arrays[1][index-1]:
+                        if position_arrays[1][index-1]:
+                            out_fasta2.write(line.replace('\n', '') + '_LCoord_' + str(position_arrays[1][index-1][0]) + '_RCoord_' + str(position_arrays[1][index-1][1]) + '\n')
+                        else:
+                            out_fasta2.write(line)
                         flag = 1
                     else:
                         flag = 0
@@ -116,17 +115,24 @@ def write_fasta_files(read_fasta1, read_fasta2, alloc_arrays, out_prefix):
                         out_fasta2.write(line)
 
 
-def get_contigs_with_itrs(sam_file, alloc_array, offset_array, read_pair, insert_size, read_length):
+def split_match_flag(match_flag):
+    split_matches = [0,0,0]
+    for ind, m_split in enumerate(match_flag.split("M")):
+        s_split = m_split.split("S")
+        if ind == 0:
+            if len(s_split) == 1:
+                split_matches[1] = int(s_split[0])
+            elif len(s_split) == 2:
+                split_matches[0] = int(s_split[0])
+                split_matches[1] = int(s_split[1])
+        elif ind == 1:
+            if len(s_split) == 2:
+                split_matches[2] = int(s_split[0])
 
-    # Get contigs and ITR cluster positions
-    ir_positions = []
-    ir_paired_reads = []
-    itr_info = defaultdict(lambda: '')
+    return split_matches
 
-    read_order = ['_f1', '_f2']
-    if read_pair == 2:
-        read_order = ['_f2', '_f1']
 
+def process_sam_file(ir_positions_dict, sam_file, read_order, alloc_array):
     with open(sam_file, "r") as sam:
         first_contig = ''
 
@@ -134,61 +140,90 @@ def get_contigs_with_itrs(sam_file, alloc_array, offset_array, read_pair, insert
             current_contig = line.split("\t")[2]
             sam_flag = int(line.split('\t')[1])
             ir_paired_read = line.split("\t")[0]
-            read_pair_id = ir_paired_read.split('_LCoord')[0][-3:]
+            read_pair_id = ir_paired_read[-3:]
             ir_position = 0
             index = int(ir_paired_read.split("_")[0].replace("Seq", ""))
+            read_position = int(line.split("\t")[3])
+            match_flag = line.split("\t")[5]
+            split_matches = split_match_flag(match_flag)
+            ir_offset = alloc_array[index-1]
 
             if read_pair_id == read_order[0]:
-                if sam_flag in (99, 147, 83, 163, 81, 161, 97, 145, 65, 129, 113, 177):
-                    read_position = int(line.split("\t")[3])
-                    ir_offset = int(ir_paired_read.split('_RCoord')[0].split('LCoord_')[1])
-                    ir_position = read_position + ir_offset - 1
+                if sam_flag in (99, 163, 97, 161, 65, 129, 67, 131):
+                    start = read_position - split_matches[0] + ir_offset[0] - 1
+                    ir_position = [(start, start + (ir_offset[1] - ir_offset[0])), True]
+                elif sam_flag in (83, 147, 81, 145, 113, 177, 115, 179):
+                    start = read_position - split_matches[0] + len(line.split("\t")[9]) - ir_offset[1]
+                    ir_position = [(start, start + (ir_offset[1] - ir_offset[0])), True]
 
+            # If it's the paired read e.g. Seq4_f2 of Seq_f1 and it's pair is unmapped (e.g. Seq_f1)
             elif read_pair_id == read_order[1]:
-                if sam_flag not in (99, 147, 83, 163, 81, 161, 97, 145, 65, 129, 113, 177):
-                    read_position = int(line.split("\t")[3])
-                    ir_position = read_position
+                if sam_flag in (73, 133, 89, 121, 165, 181, 101, 117, 153, 185, 69, 137):
+                    ir_position = [(read_position, read_position + len(line.split("\t")[9]) - 1), False] # Take the read position - not exact
 
-            if first_contig == '' and ir_position:
-                ir_positions.append(ir_position)
-                ir_paired_reads.append(ir_paired_read)
-                first_contig = current_contig
+            if ir_position:
+                if current_contig in ir_positions_dict:
+                    ir_positions_dict[current_contig][ir_paired_read] = ir_position
+                else:
+                    ir_positions_dict[current_contig] = {
+                        ir_paired_read: ir_position
+                    }
 
-            elif first_contig == current_contig and ir_position:
-                for ind, pos in enumerate(ir_positions[::-1]):
-                    if abs(ir_position - pos) <= 2750:
-                        if abs(ir_position - pos) >= 500:
-                            index = int(ir_paired_reads[ind].split("_")[0].replace("Seq", ""))
-                            alloc_array[index-1] = 1
-                            if itr_info[current_contig] == '':
-                                itr_info[current_contig] = defaultdict(lambda: '')
-                                itr_info[current_contig][ir_paired_reads[ind]] = pos
-                            else:
-                                if itr_info[current_contig][ir_paired_reads[ind]] == '':
-                                    itr_info[current_contig][ir_paired_reads[ind]] = pos
-                            index = int(ir_paired_read.split("_")[0].replace("Seq", ""))
-                            alloc_array[index-1] = 1
-                            itr_info[current_contig][ir_paired_read] = ir_position
+    return ir_positions_dict
+
+
+def get_ir_positions(sam_files, alloc_arrays):
+
+    # Get contigs and ITR cluster positions
+    ir_positions_dict = {}
+    ir_positions_dict = process_sam_file(ir_positions_dict, sam_files[0], ['_f1', '_f2'], alloc_arrays[0])
+    ir_positions_dict = process_sam_file(ir_positions_dict, sam_files[1], ['_f2', '_f1'], alloc_arrays[1])
+
+    return ir_positions_dict
+
+
+def get_contigs_with_itrs(ir_positions_dict, position_arrays, size, MIN_IS_LEN, MAX_IS_LEN, out_prefix):
+
+    alloc1 = [0]*size
+    alloc2 = [0]*size
+    contigs_w_ir = []
+    sample_id = out_prefix.split('/')[len(out_prefix.split('/'))-1]
+    with open(out_prefix + '_contigs_reads_ir_position_info.tab', "w") as out_tab:
+        out_tab.write('sample_id\tcontig\tread\tIR\tstart_position\tend_position\n')
+
+        for contig, read_info in ir_positions_dict.items():
+            if len(read_info) > 1:
+                reads = []
+                start_positions = []
+                end_positions = []
+                ir = []
+                for read, positions in read_info.items():
+                    reads.append(read)
+                    start_positions.append(positions[0][0])
+                    end_positions.append(positions[0][1])
+                    ir.append(positions[1])
+                inds = [i for i in range(len(start_positions)) if any(abs(start_positions[i] - j) >= MIN_IS_LEN and abs(start_positions[i] - j) <= MAX_IS_LEN for j in start_positions)]
+                for ind in inds:
+                    index = int(reads[ind].split("_")[0].replace("Seq", ""))
+                    if ir[ind]:
+                        if '_f1' in reads[ind]:
+                            alloc1[index-1] = 1
+                            read_coord = '_LCoord_' + str(position_arrays[0][index-1][0]) + '_RCoord_' + str(position_arrays[0][index-1][1])
+                        elif '_f2' in reads[ind]:
+                            alloc2[index-1] = 1
+                            read_coord = '_LCoord_' + str(position_arrays[1][index-1][0]) + '_RCoord_' + str(position_arrays[1][index-1][1])
                     else:
-                        if ind:
-                            ir_positions_tmp = ir_positions[-ind:]
-                            ir_paired_reads_tmp = ir_paired_reads[-ind:]
-                            ir_positions = ir_positions_tmp
-                            ir_paired_reads = ir_paired_reads_tmp
-                        else:
-                            ir_positions = []
-                            ir_paired_reads = []
-                        break
+                        read_coord = ''
+                        if '_f1' in reads[ind]:
+                            alloc2[index-1] = 1
+                        elif '_f2' in reads[ind]:
+                            alloc1[index-1] = 1
+                    out_tab.write(sample_id + '\t' + contig + '\t' + reads[ind] + read_coord + '\t' + str(ir[ind]) + '\t' + str(start_positions[ind]) + '\t' + str(end_positions[ind]) + '\n')
 
-                ir_positions.append(ir_position)
-                ir_paired_reads.append(ir_paired_read)
+                    if contig not in contigs_w_ir:
+                        contigs_w_ir.append(contig)
 
-            elif ir_position:
-                ir_positions = [ir_position]
-                ir_paired_reads = [ir_paired_read]
-                first_contig = current_contig
-
-    return([itr_info, alloc_array])
+    return [alloc1, alloc2], contigs_w_ir
 
 
 def get_arguments():
@@ -200,44 +235,47 @@ def get_arguments():
     parser.add_argument('--sam_file2', '-s2', dest='sam_file2', required=True,
                         help='Input sam file from mapping of reads to contigs.', type = str)
     parser.add_argument('--fasta1', '-f1', dest='fasta_file1', required=True,
-                        help='Input first paied FASTA file.', type = str)
+                        help='Input first paired FASTA file.', type = str)
     parser.add_argument('--fasta2', '-f2', dest='fasta_file2', required=True,
-                        help='Input second paied FASTA file.', type = str)
-    parser.add_argument('--insert_size', '-i', dest='insert_size', required=True,
-                        help='Predicted insert size between paired reads.', type = float)
-    parser.add_argument('--read_length', '-l', dest='read_length', required=True,
-                        help='Length of reads.', type = float)
+                        help='Input second paired FASTA file.', type = str)
+    parser.add_argument('--tab_file', '-t', dest='tab_file', required=True,
+                        help='Input tab file of IR read pairs.', type = str)
+    parser.add_argument('--min_is_len', '-min', dest='min_is_len', required=True,
+                        help='Minimum length of insertion sequence', type = int, default = 500)
+    parser.add_argument('--max_is_len', '-max', dest='max_is_len', required=True,
+                        help='Maximum length of insertion sequence', type = int, default = 3000)
     parser.add_argument('--output_prefix', '-o', dest='output_prefix', required=True,
                         help='Prefix of output files.', type = str)
     return parser
 
 
 def main(args):
+
+    # Set min and max IS length
+    MAX_IS_LEN = args.max_is_len
+    MIN_IS_LEN = args.min_is_len
+
     # Allocate for fasta indexing
     size = get_array_size(args.fasta_file1, args.fasta_file2)
 
-    print("Allocating empty arrays...")
-    alloc_arrays = allocate_seqs(size)
-
     print("Allocating empty arrays with IR size offset...")
-    offset_arrays = get_ir_offset(args.fasta_file1, args.fasta_file1, size)
+    position_arrays = get_ir_offset(args.tab_file, size)
 
     # Get contigs, reads paired to reads with candidate ITRs and mapping positions
     print("Getting ITR positions...")
-    contigs_read_and_positions1 = get_contigs_with_itrs(args.sam_file1, alloc_arrays[0], offset_arrays[0], 1, args.insert_size, args.read_length)
-    contigs_read_and_positions2 = get_contigs_with_itrs(args.sam_file2, alloc_arrays[1], offset_arrays[1], 2, args.insert_size, args.read_length)
+    contigs_read_and_positions = get_ir_positions([args.sam_file1, args.sam_file2], position_arrays)
+
+    # Write tab file
+    print("Writing tab file...")
+    read_arrays, contigs_w_ir = get_contigs_with_itrs(contigs_read_and_positions, position_arrays, size, args.min_is_len, args.max_is_len, args.output_prefix)
 
     # Write contig FASTA file
-    print("Writing contig FASTA...")
-    write_contig_file(args.contig_fasta, contigs_read_and_positions1[0], contigs_read_and_positions2[0], args.output_prefix)
+    print("Writing contig FASTA with candidate ITRs...")
+    write_contig_file(contigs_w_ir, args.contig_fasta, args.output_prefix)
 
     # Write FASTA files and get reads containing candidate ITRs
-    print("Writing reads with ITRs FASTAs...")
-    write_fasta_files(args.fasta_file1, args.fasta_file2, (contigs_read_and_positions1[1], contigs_read_and_positions2[1]), args.output_prefix)
-
-    # Write tab file with contig and read names and mapping positions
-    print("Writing tab file...")
-    write_tab_file(contigs_read_and_positions1[0], contigs_read_and_positions2[0], args.output_prefix)
+    print("Writing reads FASTAs with candidate ITRs...")
+    write_fasta_files(args.fasta_file1, args.fasta_file2, read_arrays, position_arrays, args.output_prefix)
 
 
 if __name__ == "__main__":
