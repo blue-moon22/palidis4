@@ -74,26 +74,33 @@ def bin_positions(cl_dict, tab_info_file, assembly_bins_dict, output_prefix):
 
                     if cluster not in clusters_positions.keys():
                         clusters_positions[cluster] = {}
-                    if current_contig not in clusters_positions[cluster].keys():
-                        clusters_positions[cluster][current_contig] = [0]*len(assembly_bins_dict[current_contig])
+
+                    if current_contig in clusters_positions[cluster].keys():
+                        encode_contig = list(clusters_positions[cluster][current_contig])
+                    else:
+                        encode_contig = ['0']*len(assembly_bins_dict[current_contig])
+
                     # Update positions
                     contig_len = len(assembly_bins_dict[current_contig])
                     if start_pos < 1:
                         if end_pos > contig_len:
-                            clusters_positions[cluster][current_contig] = [1]*contig_len
+                            encode_contig = ['1']*contig_len
                         else:
-                            clusters_positions[cluster][current_contig][:end_pos] = [1]*end_pos
+                            encode_contig[:end_pos] = ['1']*end_pos
                     else:
                         if end_pos > contig_len:
-                            clusters_positions[cluster][current_contig][start_pos-1:contig_len] = [1]*(contig_len-start_pos+1)
+                            encode_contig[start_pos-1:contig_len] = ['1']*(contig_len-start_pos+1)
                         else:
-                            clusters_positions[cluster][current_contig][start_pos-1:end_pos] = [1]*(end_pos-start_pos+1)
+                            encode_contig[start_pos-1:end_pos] = ['1']*(end_pos-start_pos+1)
+
+                    clusters_positions[cluster][current_contig] = ''.join(encode_contig)
 
     return clusters_positions
 
 
-def count_bins(bin):
+def count_bins(sbin):
     count = 1
+    bin = list(sbin)
     bin.append('NA')
     val = bin[0]
     count_bin_out = []
@@ -126,7 +133,7 @@ def get_itrs_from_count_bins(count_bins, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MA
                 elif count_bins[ind-1][0] == 'N':
                     sum_0s += count_bin[1]
                     N_bin = (N_pos, sum_Ns)
-                    count_bins_mod.append((0,sum_0s))
+                    count_bins_mod.append(('0',sum_0s))
 
                 else:
                     count_bins_mod.append(count_bin)
@@ -140,7 +147,7 @@ def get_itrs_from_count_bins(count_bins, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MA
     count_bins = count_bins_mod
 
     for ind, count_bin in enumerate(count_bins):
-        if not count_bin[0]:
+        if count_bin[0] == '0':
             if count_bin[1] >= MIN_IS_LEN and count_bin[1] <= MAX_IS_LEN:
                 if ind != 0 and ind != len(count_bins) - 1:
                     is_gaps.append(ind)
@@ -218,7 +225,9 @@ def remove_clusters_positions(clusters_positions, query_contig, itr_positions):
         for contig, bin in contigs.items():
             if contig == query_contig:
                 for pos in itr_positions:
+                    bin = list(bin)
                     bin[pos[0]-1:pos[3]] = ['N']*(pos[3] - (pos[0]-1))
+                    bin = ''.join(bin)
                 clusters_positions_new[cluster] = {contig: bin}
 
     return clusters_positions_new
