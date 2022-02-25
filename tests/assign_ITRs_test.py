@@ -28,53 +28,45 @@ class TestAssignITRs(unittest.TestCase):
         assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         actual = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][0], 0)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][244], 0)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][245], 1)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][270], 1)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][271], 0)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][1240], 0)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][1241], 1)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][1265], 1)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][1266], 0)
+        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][0][0], '0')
 
     def test_count_bins(self):
-        actual = count_bins([0,1,1,1,1,1,0,0,1,1,1,1,0,0,0,1])
+        actual = count_bins('0111110011110001')
 
-        self.assertEqual(actual, [(0, 1), (1, 5), (0, 2), (1, 4), (0, 3), (1, 1)])
+        self.assertEqual(actual, [('0', 1), ('1', 5), ('0', 2), ('1', 4), ('0', 3), ('1', 1)])
 
     def test_count_bins_with_Ns(self):
-        actual = count_bins(['N',0,1,1,1,1,0,0,'N','N','N','N',0,0,0,1,1,1,0,'N'])
+        actual = count_bins('N0111100NNNN0001110N')
 
-        self.assertEqual(actual, [('N', 1), (0, 1), (1, 4), (0, 2), ('N', 4), (0, 3), (1, 3), (0, 1), ('N', 1)])
+        self.assertEqual(actual, [('N', 1), ('0', 1), ('1', 4), ('0', 2), ('N', 4), ('0', 3), ('1', 3), ('0', 1), ('N', 1)])
 
     def test_get_itrs_from_count_bins_101(self):
         assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
         count_bins_out = count_bins(clusters_positions['0']['NODE_823_length_1805_cov_1014.02'])
-
+        print(count_bins_out)
         actual = get_itrs_from_count_bins(count_bins_out, 500, 3000, 25, 50)
 
         self.assertEqual(actual, [(246, 271, 1242, 1266)])
 
     def test_get_itrs_from_count_bins_10101(self):
-        actual = get_itrs_from_count_bins([(1,40),(0,800),(1,40),(0,800),(1,40)], 500, 3000, 25, 50)
+        actual = get_itrs_from_count_bins([('1',40),('0',800),('1',40),('0',800),('1',40)], 500, 3000, 25, 50)
 
         self.assertEqual(actual, [(1, 40, 841, 880), (841, 880, 1681, 1720)])
 
     def test_get_itrs_from_count_bins_1010101(self):
-        actual = get_itrs_from_count_bins([(1,40),(0,800),(1,40),(0,800),('N',40),('N',800),('N',40),(0,800),(1,40),(0,800),(1,40)], 500, 3000, 25, 50)
+        actual = get_itrs_from_count_bins([('1',40),('0',800),('1',40),('0',800),('N',40),('N',800),('N',40),('0',800),('1',40),('0',800),('1',40)], 500, 3000, 25, 50)
 
         self.assertEqual(actual, [(1, 40, 841, 880), (841, 880, 3361, 3400), (3361, 3400, 4201, 4240)])
 
 
     def test_remove_clusters_positions(self):
-        clusters_positions = {'0': {'contig1': [1,1,1,0,0,1,1,1,0,1,1], 'contig2': [1,1,1,0,0,1,1,1,0,1,1]}, '1': {'contig1': [1,1,1,0,0,1,1,1,0,1,1]}}
+        clusters_positions = {'0': {'contig1': '11100111011', 'contig2': '11100111011'}, '1': {'contig1': '11100111011'}}
 
         actual = remove_clusters_positions(clusters_positions, 'contig1', [[2,4,6,7]])
 
-        self.assertEqual(actual, {'0': {'contig1': [1, 'N', 'N', 'N', 'N', 'N', 'N', 1, 0, 1, 1]}, '1': {'contig1': [1, 'N', 'N', 'N', 'N', 'N', 'N', 1, 0, 1, 1]}})
+        self.assertEqual(actual, {'0': {'contig1': '1NNNNNN1011'}, '1': {'contig1': '1NNNNNN1011'}})
 
 
     def test_get_itr_sequences(self):
@@ -111,7 +103,7 @@ class TestAssignITRs(unittest.TestCase):
         tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
-        #os.remove(tab_name)
+        os.remove(tab_name)
         self.maxDiff = None
         self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t0\n""")
 
