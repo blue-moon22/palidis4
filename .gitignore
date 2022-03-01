@@ -11,3 +11,5 @@ work
 one_sample
 one_sample_manifest.txt
 tests/data/*
+blastn_*
+itr*_tmp.fasta

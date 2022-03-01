@@ -28,7 +28,7 @@ class TestAssignITRs(unittest.TestCase):
         assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         actual = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
-        self.assertEqual(actual['0']['NODE_823_length_1805_cov_1014.02'][0][0], '0')
+        self.assertEqual(actual['NODE_823_length_1805_cov_1014.02']['0'][0][0], '0')
 
     def test_count_bins(self):
         actual = count_bins('0111110011110001')
@@ -44,7 +44,7 @@ class TestAssignITRs(unittest.TestCase):
         assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
-        count_bins_out = count_bins(clusters_positions['0']['NODE_823_length_1805_cov_1014.02'])
+        count_bins_out = count_bins(clusters_positions['NODE_823_length_1805_cov_1014.02']['0'])
         print(count_bins_out)
         actual = get_itrs_from_count_bins(count_bins_out, 500, 3000, 25, 50)
 
@@ -62,19 +62,23 @@ class TestAssignITRs(unittest.TestCase):
 
 
     def test_remove_clusters_positions(self):
-        clusters_positions = {'0': {'contig1': '11100111011', 'contig2': '11100111011'}, '1': {'contig1': '11100111011'}}
+        clusters_positions = {
+            '0': '11100111011',
+            '1': '11100111011'
+            }
 
-        actual = remove_clusters_positions(clusters_positions, 'contig1', [[2,4,6,7]])
+        actual = remove_clusters_positions(clusters_positions, [[2,4,6,7]])
 
-        self.assertEqual(actual, {'0': {'contig1': '1NNNNNN1011'}, '1': {'contig1': '1NNNNNN1011'}})
+        self.assertEqual(actual, {'0': '1NNNNNN1011', '1': '1NNNNNN1011'})
 
 
     def test_get_itr_sequences(self):
         assemblies_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
 
-        actual = get_itr_sequences(assemblies_dict, "NODE_823_length_1805_cov_1014.02", (246, 271, 1242, 1266))
+        actual = get_itr_sequences(assemblies_dict["NODE_823_length_1805_cov_1014.02"], (246, 271, 1242, 1266))
 
-        self.assertEqual(actual, ['TATATAATTATAGATAACATAATACA', 'TATGTCGCATTTTATATATACAATT'])
+        self.assertEqual(actual, ['AATATTGTTTTACATCCTGCATCTTA', 'TAAGATGCAGGATGTAAAACAATAT'])
+
 
     @patch('bin.assign_ITRs.are_reverse_cmp')
     def test_write_itr_annotations(self, mock_are_reverse_cmp):
@@ -105,7 +109,7 @@ class TestAssignITRs(unittest.TestCase):
         actual = "".join(tab.readlines())
         os.remove(tab_name)
         self.maxDiff = None
-        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t0\n""")
+        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t0\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\n""")
 
     def test_arguments(self):
         actual = get_arguments().parse_args(
