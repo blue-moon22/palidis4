@@ -239,7 +239,6 @@ def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX
         itr_positions = get_itrs_from_count_bins(count_bins_out, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)
         for pos in itr_positions:
             itr_sequences = get_itr_sequences(contig_seq, pos)
-            print(itr_sequences)
             if are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
                 if pos in itr_clusters:
                     itr_pos = itr_clusters[cluster]
