@@ -61,15 +61,11 @@ class TestAssignITRs(unittest.TestCase):
         self.assertEqual(actual, [(1, 40, 841, 880), (841, 880, 3361, 3400), (3361, 3400, 4201, 4240)])
 
 
-    def test_remove_clusters_positions(self):
-        clusters_positions = {
-            '0': '11100111011',
-            '1': '11100111011'
-            }
+    def test_remove_positions(self):
 
-        actual = remove_clusters_positions(clusters_positions, [[2,4,6,7]])
+        actual = remove_positions('11100111011', [[2,4,6,7]])
 
-        self.assertEqual(actual, {'0': '1NNNNNN1011', '1': '1NNNNNN1011'})
+        self.assertEqual(actual, '1NNNNNN1011')
 
 
     def test_get_itr_sequences(self):
@@ -87,7 +83,7 @@ class TestAssignITRs(unittest.TestCase):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
 
-        write_itr_annotations(clusters_positions, assembly_bins_dict, 500, 3000, 25, 50, self.TEST_OUTPUT_PREFIX)
+        write_itr_annotations(clusters_positions, assembly_bins_dict, 500, 3000, 25, 50, self.TEST_OUTPUT_PREFIX, 8)
 
         tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
         tab = open(tab_name, "r")
@@ -102,21 +98,21 @@ class TestAssignITRs(unittest.TestCase):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR2)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB2, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
 
-        write_itr_annotations(clusters_positions, assembly_bins_dict, 500, 1000, 25, 50, self.TEST_OUTPUT_PREFIX)
+        write_itr_annotations(clusters_positions, assembly_bins_dict, 580, 1000, 25, 50, self.TEST_OUTPUT_PREFIX, 8)
 
         tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
         os.remove(tab_name)
         self.maxDiff = None
-        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t0\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\n""")
+        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t8601\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\n""")
 
     def test_arguments(self):
         actual = get_arguments().parse_args(
             ['--cdhit_cluster_file', 'clstr_file', '--info_tab_file', 'tab_file',
             '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500',
-            '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--output_prefix', 'output_prefix'])
-        self.assertEqual(actual, argparse.Namespace(cluster_file='clstr_file', tab_file='tab_file', assemblies_file='assembly_file', min_is_len = 500, max_is_len = 3000, min_itr_len = 25, max_itr_len = 50, output_prefix='output_prefix'))
+            '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--cpus', '8', '--output_prefix', 'output_prefix'])
+        self.assertEqual(actual, argparse.Namespace(cluster_file='clstr_file', tab_file='tab_file', assemblies_file='assembly_file', min_is_len = 500, max_is_len = 3000, min_itr_len = 25, max_itr_len = 50, cpus = 8, output_prefix='output_prefix'))
 
     @patch('bin.assign_ITRs.create_assembly_bins')
     @patch('bin.assign_ITRs.create_cluster_dictionary')
@@ -125,7 +121,7 @@ class TestAssignITRs(unittest.TestCase):
     def test_main(self, mock_write_itr_annotations, mock_bin_positions, mock_create_cluster_dictionary, mock_create_assembly_bins):
         args = get_arguments().parse_args(
             ['--cdhit_cluster_file', 'clstr_file', '--info_tab_file', 'tab_file',
-            '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500', '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--output_prefix', 'output_prefix'])
+            '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500', '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--cpus', '8', '--output_prefix', 'output_prefix'])
         mock_create_assembly_bins.return_value = 'assembly_bins_dict'
         mock_create_cluster_dictionary.return_value = 'cl_dict'
         mock_bin_positions.return_value = 'clusters_positions'
@@ -135,4 +131,4 @@ class TestAssignITRs(unittest.TestCase):
         self.assertEqual(mock_create_assembly_bins.call_args_list, [call('assembly_file')])
         self.assertEqual(mock_create_cluster_dictionary.call_args_list, [call('clstr_file')])
         self.assertEqual(mock_bin_positions.call_args_list, [call('cl_dict', 'tab_file', 'assembly_bins_dict', 'output_prefix')])
-        self.assertEqual(mock_write_itr_annotations.call_args_list, [call('clusters_positions', 'assembly_bins_dict', 500, 3000, 25, 50, 'output_prefix')])
+        self.assertEqual(mock_write_itr_annotations.call_args_list, [call('clusters_positions', 'assembly_bins_dict', 500, 3000, 25, 50, 'output_prefix', 8)])
