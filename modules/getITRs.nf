@@ -23,6 +23,7 @@ process getITRs {
         --max_is_len ${max_is_len} \
         --min_itr_len ${min_itr_len} \
         --max_itr_len ${max_itr_len} \
+        --cpus ${task.cpus} \
         --output_prefix ${sample_id}
     """
 }
