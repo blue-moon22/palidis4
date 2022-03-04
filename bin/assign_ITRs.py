@@ -220,38 +220,37 @@ def are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
     return check_blast_out(out_blast_file, MIN_ITR_LEN)
 
 
-def remove_clusters_positions(clusters, itr_positions):
-    clusters_new = {}
-    for cluster, bin in clusters.items():
-        for pos in itr_positions:
-            bin = list(bin)
-            bin[pos[0]-1:pos[3]] = ['N']*(pos[3] - (pos[0]-1))
-            bin = ''.join(bin)
-        clusters_new[cluster] = bin
+def remove_positions(bin, itr_positions):
+    for pos in itr_positions:
+        bin = list(bin)
+        bin[pos[0]-1:pos[3]] = ['N']*(pos[3] - (pos[0]-1))
+        bin = ''.join(bin)
 
-    return clusters_new
+    return bin
 
 
-def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, output_info):
+def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN):
     itr_clusters = {}
+    flag = 0
+    output_info = []
     for cluster, bin in clusters.items():
-        count_bins_out = count_bins(bin)
-        itr_positions = get_itrs_from_count_bins(count_bins_out, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)
-        for pos in itr_positions:
-            itr_sequences = get_itr_sequences(contig_seq, pos)
-            if are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
-                if pos in itr_clusters:
-                    itr_pos = itr_clusters[cluster]
-                    itr_pos.append(pos)
-                    itr_clusters[cluster] = itr_pos
-                else:
-                    itr_clusters[cluster] = [pos]
-                output_info.append(str(pos[0]) + '\t' + str(pos[1]) + '\t' + str(pos[2]) + '\t' + str(pos[3]) + '\t' + cluster + '\n')
-
-    # Rerun function with updated clusters_positions to find nested ITRs
-    for cluster, positions in itr_clusters.items():
-        clusters_new = remove_clusters_positions(clusters, positions)
-        annotate_itrs(clusters_new, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, output_info)
+        itr_positions = 1
+        while itr_positions:
+            if flag:
+                bin = remove_positions(bin, itr_positions)
+            count_bins_out = count_bins(bin)
+            itr_positions = get_itrs_from_count_bins(count_bins_out, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)
+            for pos in itr_positions:
+                flag = 1
+                itr_sequences = get_itr_sequences(contig_seq, pos)
+                if are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
+                    if pos in itr_clusters:
+                        itr_pos = itr_clusters[cluster]
+                        itr_pos.append(pos)
+                        itr_clusters[cluster] = itr_pos
+                    else:
+                        itr_clusters[cluster] = [pos]
+                    output_info.append(str(pos[0]) + '\t' + str(pos[1]) + '\t' + str(pos[2]) + '\t' + str(pos[3]) + '\t' + cluster + '\n')
 
     return output_info
 
@@ -262,7 +261,7 @@ def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_I
     sample_id = output_prefix.split('/')[len(output_prefix.split('/'))-1]
 
     pool = mp.Pool(mp.cpu_count())
-    output = [pool.apply(annotate_itrs, args=(clusters, assemblies_dict[contig], MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, [])) for contig, clusters in clusters_positions.items()]
+    output = [pool.apply(annotate_itrs, args=(clusters, assemblies_dict[contig], MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)) for contig, clusters in clusters_positions.items()]
     pool.close()
 
     with open(output_prefix + '_insertion_sequence_annotations.tab', 'w') as out:
