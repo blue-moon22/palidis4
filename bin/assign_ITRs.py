@@ -231,10 +231,10 @@ def remove_positions(bin, itr_positions):
 
 def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN):
     itr_clusters = {}
-    flag = 0
     output_info = []
     for cluster, bin in clusters.items():
         itr_positions = 1
+        flag = 0
         while itr_positions:
             if flag:
                 bin = remove_positions(bin, itr_positions)
