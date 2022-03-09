@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse, sys, os
-import subprocess
 import multiprocessing as mp
 
 from collections import defaultdict
