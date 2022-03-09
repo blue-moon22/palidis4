@@ -18,6 +18,7 @@ process clusterReads {
     output_prefix="${sample_id}_nonred_G${G}_aL${aL}_aS${aS}_A${A}"
 
     """
+    touch hello.txt
     clip_reads.py --read_fasta ${read_file} --output_prefix ${sample_id}
     cd-hit-est -i ${sample_id}_irs.fasta -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
     """

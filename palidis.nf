@@ -152,7 +152,6 @@ workflow {
 
         // Publish batch of candidate ITRs
         get_IS_annotations.out.itr_fasta_ch
-        .flatten()
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
