@@ -8,7 +8,7 @@ process clusterReads {
 
     output:
     tuple val(sample_id), path("${output_prefix}.fasta.clstr"), emit: cluster_ch
-    path("${sample_id}_irs.fasta"), emit: clipped_read_ch
+    tuple val(sample_id), path("${sample_id}_irs.fasta"), emit: clipped_read_ch
 
     script:
     G=params.cd_hit_G

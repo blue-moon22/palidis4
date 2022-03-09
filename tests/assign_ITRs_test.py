@@ -83,7 +83,7 @@ class TestAssignITRs(unittest.TestCase):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
 
-        write_itr_annotations(clusters_positions, assembly_bins_dict, 500, 3000, 25, 50, self.TEST_OUTPUT_PREFIX)
+        write_itr_annotations(clusters_positions, assembly_bins_dict, 500, 3000, 25, 50, self.TEST_OUTPUT_PREFIX, 8)
 
         tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
         tab = open(tab_name, "r")
@@ -98,7 +98,7 @@ class TestAssignITRs(unittest.TestCase):
         cl_dict = create_cluster_dictionary(self.TEST_CLSTR2)
         clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB2, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
 
-        write_itr_annotations(clusters_positions, assembly_bins_dict, 580, 1000, 25, 50, self.TEST_OUTPUT_PREFIX)
+        write_itr_annotations(clusters_positions, assembly_bins_dict, 580, 1000, 25, 50, self.TEST_OUTPUT_PREFIX, 8)
 
         tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
         tab = open(tab_name, "r")
@@ -111,8 +111,8 @@ class TestAssignITRs(unittest.TestCase):
         actual = get_arguments().parse_args(
             ['--cdhit_cluster_file', 'clstr_file', '--info_tab_file', 'tab_file',
             '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500',
-            '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--output_prefix', 'output_prefix'])
-        self.assertEqual(actual, argparse.Namespace(cluster_file='clstr_file', tab_file='tab_file', assemblies_file='assembly_file', min_is_len = 500, max_is_len = 3000, min_itr_len = 25, max_itr_len = 50, output_prefix='output_prefix'))
+            '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--cpus', '8', '--output_prefix', 'output_prefix'])
+        self.assertEqual(actual, argparse.Namespace(cluster_file='clstr_file', tab_file='tab_file', assemblies_file='assembly_file', min_is_len = 500, max_is_len = 3000, min_itr_len = 25, max_itr_len = 50, cpus = 8, output_prefix='output_prefix'))
 
     @patch('bin.assign_ITRs.create_assembly_bins')
     @patch('bin.assign_ITRs.create_cluster_dictionary')
@@ -121,7 +121,7 @@ class TestAssignITRs(unittest.TestCase):
     def test_main(self, mock_write_itr_annotations, mock_bin_positions, mock_create_cluster_dictionary, mock_create_assembly_bins):
         args = get_arguments().parse_args(
             ['--cdhit_cluster_file', 'clstr_file', '--info_tab_file', 'tab_file',
-            '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500', '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--output_prefix', 'output_prefix'])
+            '--assemblies_fasta_file', 'assembly_file', '--min_is_len', '500', '--max_is_len', '3000', '--min_itr_len', '25', '--max_itr_len', '50', '--cpus', '8', '--output_prefix', 'output_prefix'])
         mock_create_assembly_bins.return_value = 'assembly_bins_dict'
         mock_create_cluster_dictionary.return_value = 'cl_dict'
         mock_bin_positions.return_value = 'clusters_positions'
@@ -131,4 +131,4 @@ class TestAssignITRs(unittest.TestCase):
         self.assertEqual(mock_create_assembly_bins.call_args_list, [call('assembly_file')])
         self.assertEqual(mock_create_cluster_dictionary.call_args_list, [call('clstr_file')])
         self.assertEqual(mock_bin_positions.call_args_list, [call('cl_dict', 'tab_file', 'assembly_bins_dict', 'output_prefix')])
-        self.assertEqual(mock_write_itr_annotations.call_args_list, [call('clusters_positions', 'assembly_bins_dict', 500, 3000, 25, 50, 'output_prefix')])
+        self.assertEqual(mock_write_itr_annotations.call_args_list, [call('clusters_positions', 'assembly_bins_dict', 500, 3000, 25, 50, 'output_prefix', 8)])
