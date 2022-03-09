@@ -255,12 +255,12 @@ def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX
     return output_info
 
 
-def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, output_prefix):
+def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, output_prefix, cpus):
 
     clusters_itrs = {}
     sample_id = output_prefix.split('/')[len(output_prefix.split('/'))-1]
 
-    pool = mp.Pool(mp.cpu_count())
+    pool = mp.Pool(cpus)
     output = [pool.apply(annotate_itrs, args=(clusters, assemblies_dict[contig], MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)) for contig, clusters in clusters_positions.items()]
     pool.close()
 
@@ -287,6 +287,8 @@ def get_arguments():
                         help='Minimum length of insertion sequence', type = int, default = 25)
     parser.add_argument('--max_itr_len', '-max_itr', dest='max_itr_len', required=True,
                         help='Maximum length of insertion sequence', type = int, default = 50)
+    parser.add_argument('--cpus', '-cpus', dest='cpus', required=True,
+                        help='Number of CPUs.', type = int, default = 1)
     parser.add_argument('--output_prefix', '-o', dest='output_prefix', required=True,
                     help='Prefix of output files.', type = str)
     return parser
@@ -310,7 +312,7 @@ def main(args):
     clusters_positions = bin_positions(cl_dict, args.tab_file, assembly_bins_dict, args.output_prefix)
 
     # Write putative insertion sequences
-    write_itr_annotations(clusters_positions, assembly_bins_dict, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, args.output_prefix)
+    write_itr_annotations(clusters_positions, assembly_bins_dict, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, args.output_prefix, args.cpus)
 
 
 if __name__ == "__main__":

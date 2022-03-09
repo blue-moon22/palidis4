@@ -7,7 +7,7 @@ process getITRs {
 
     output:
     path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
-    path("${sample_id}_reads_itr_clusters.txt"), emit: itr_clusters_ch
+    tuple val(sample_id), path("${sample_id}_insertion_sequence_annotations.tab"), path("${sample_id}_reads_itr_clusters.txt"), emit: is_info_ch
 
     script:
     min_is_len = params.min_is_len
@@ -23,6 +23,7 @@ process getITRs {
         --max_is_len ${max_is_len} \
         --min_itr_len ${min_itr_len} \
         --max_itr_len ${max_itr_len} \
+        --cpus ${task.cpus} \
         --output_prefix ${sample_id}
     """
 }
