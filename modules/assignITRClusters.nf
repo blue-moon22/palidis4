@@ -1,9 +1,9 @@
 /*
  * Run CD-HIT on IRs
  */
-process assignIRClusters {
+process assignITRClusters {
     input:
-	path all_irs
+	path all_itrs
 
 	output:
     path "all.fasta.clstr"
@@ -16,6 +16,6 @@ process assignIRClusters {
     output_prefix="all"
 
     """
-    cd-hit-est -i ${all_irs} -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
+    cd-hit-est -i ${all_itrs} -o ${output_prefix}.fasta -c 1.0 -G ${G} -aL ${aL} -aS ${aS} -A ${A} -M 64000 -T ${task.cpus} -d 0
     """
 }

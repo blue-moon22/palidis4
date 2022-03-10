@@ -19,8 +19,8 @@ include { getCandidateITRs } from './modules/getCandidateITRs.nf'
 include { clusterReads } from './modules/clusterReads.nf'
 include { getITRs } from './modules/getITRs.nf'
 include { getReadAndFastaInfo } from './modules/getReadAndFastaInfo.nf'
-include { createIRCatalog } from './modules/createIRCatalog.nf'
-include { assignIRClusters } from './modules/assignIRClusters.nf'
+include { createITRCatalog } from './modules/createITRCatalog.nf'
+include { assignITRClusters } from './modules/assignITRClusters.nf'
 include { createISCatalog } from './modules/createISCatalog.nf'
 
 workflow get_IS_annotations {
@@ -108,18 +108,18 @@ workflow get_IS_annotations {
 
 workflow create_IS_catalog {
     take:
-    irs_fasta_ch
+    itrs_fasta_ch
     is_annot_ch
     itr_clusters_ch
 
     main:
-    createITRCatalog(irs_fasta_ch)
-    all_irs_ch = createITRCatalog.out
+    createITRCatalog(itrs_fasta_ch)
+    all_itrs_ch = createITRCatalog.out
 
-    assignIRClusters(all_irs_ch)
-    all_irs_clstr_ch = assignITRClusters.out
+    assignITRClusters(all_itrs_ch)
+    all_itrs_clstr_ch = assignITRClusters.out
 
-    createISCatalog(all_irs_clstr_ch, itr_clusters_ch, is_annot_ch)
+    createISCatalog(all_itrs_clstr_ch, itr_clusters_ch, is_annot_ch)
     is_catalog_ch = createISCatalog.out
 
     emit:
@@ -172,9 +172,9 @@ workflow {
     if (params.create_catalog) {
 
         Channel
-        .fromPath("${batch_path}/*_irs.fasta", checkIfExists:true)
+        .fromPath("${batch_path}/*_ITRs.fasta", checkIfExists:true)
         .collect()
-        .set { irs_fasta_ch }
+        .set { itrs_fasta_ch }
 
         Channel
         .fromPath("${batch_path}/*_insertion_sequence_annotations.tab", checkIfExists:true)
@@ -182,11 +182,11 @@ workflow {
         .set { is_annot_ch }
 
         Channel
-        .fromPath("${batch_path}/*_reads_itr_clusters.txt", checkIfExists:true)
+        .fromPath("${batch_path}/*_itr_read_positions_clusters.txt", checkIfExists:true)
         .collect()
         .set { itr_clusters_ch }
 
-        create_IS_catalog(irs_fasta_ch, is_annot_ch, itr_clusters_ch)
+        create_IS_catalog(itrs_fasta_ch, is_annot_ch, itr_clusters_ch)
 
         // Publish catalog
         create_IS_catalog.out.is_catalog_ch
