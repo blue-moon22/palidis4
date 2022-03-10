@@ -2,7 +2,6 @@
 import argparse, sys, os
 import multiprocessing as mp
 
-from collections import defaultdict
 
 def create_assembly_bins(assembly_file):
 
