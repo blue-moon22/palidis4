@@ -7,7 +7,7 @@ tests/*.log*
 tests/data/output/test_*
 .nextflow.log*
 .coverage
-work
+work*
 one_sample
 one_sample_manifest.txt
 tests/data/*
@@ -15,3 +15,4 @@ blastn_*
 itr*_tmp.fasta
 *.img
 hmp_batch
+*.ipynb_checkpoints*
