@@ -1,0 +1,2 @@
+Seq1_nstart_ERR589535_nend_ERR589535.33_f1_LCoord_29_RCoord_56
+Seq1_nstart_ERR589535_nend_ERR589535.38_f1_LCoord_31_RCoord_63

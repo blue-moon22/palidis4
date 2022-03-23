@@ -1,6 +1,6 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS v2.6** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.7.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
@@ -67,7 +67,7 @@ lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 |
 lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
 
-If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `LSF` (using `-profile lsf`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`. It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
+**Note:** If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `farm` (using `-profile farm`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`. It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
 
 <a name="output1"></a>
 ### Output
@@ -80,23 +80,23 @@ The annotation file is in a tab-delimited format consisting of the sample_id, co
 
 sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
 :---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 29 | 43 | NA | NA | 1217817
-sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 656079
+sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 1217817
+sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 656079
 
-Although two flanking ITRs may be found, it is possible that positions could not be predicted (represented by `NA`). (This happens when a read maps to a contig, but its paired read containing the ITR does not.)
-
-**3. ITR clusters and their reads of origin:** `<sample>_reads_itr_clusters.txt`
-This file is in a tab-delimited format containing the names of the ITR clusters and the reads that the ITRs of those ITR clusters originate from.
+**3. ITR clusters and their reads of origin:** `<sample>_itr_read_positions_clusters.txt`
+This file is in a tab-delimited format containing the reads of the ITRs, the ITRs' positions on the contigs and the names of the ITR clusters.
 
 <a name="options1"></a>
 ### Options
 ```
-  min_itr_length      Minimum length of ITR. (Default: 14)
-  kmer_length         k-mer length for maximal exact matching. (Default: 10)
-  split               Split reference in pal-MEM by this number. (Default: 20)
-  cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
-  cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
-  cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
+  min_itr_length    Minimum length of ITR. (Default: 25)
+  max_itr_length    Maximum length of ITR. (Default: 50)
+  kmer_length       k-mer length for maximal exact matching. (Default: 15)
+  min_is_len        Minimum length of insertion sequence. (Default: 500)
+  max_is_len        Maximum length of insertion sequence. (Default: 3000)
+  cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
+  cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
+  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 1.0)
 ```
 
 <a name="workflow2"></a>
@@ -115,15 +115,14 @@ One tab-delimited catalog is created called `<batch_name>_insertion_sequence_ann
 
 sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster_catalog
 :---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 29 | 43 | NA | NA | 101
-sample_id1 | contig_name2 | 23 | 43 | 2769 | 2822 | 102
-sample_id2 | contig_name3 | 25 | 55 | 5738 | 5768 | 101
+sample_id1 | contig_name1 | 23 | 43 | 2769 | 2822 | 102
+sample_id2 | contig_name2 | 25 | 55 | 5738 | 5768 | 101
 
 <a name="options2"></a>
 ### Options
 ```
-  min_itr_length      Minimum length of ITR. (Default: 14)
-  cd_hit_G            -G option for CD-HIT-EST. (Default: 0)
-  cd_hit_aL           -aL option for CD-HIT-EST. (Default: 0.0)
-  cd_hit_aS           -aS option for CD-HIT-EST. (Default: 1.0)
+  min_itr_length    Minimum length of ITR. (Default: 25)
+  cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
+  cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
+  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 1.0)
 ```

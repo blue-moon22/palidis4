@@ -2,7 +2,7 @@
 # Dependencies docker image for the GBS Typer pipeline.
 #######################################################
 
-FROM ubuntu:20.10
+FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /opt
@@ -33,7 +33,7 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
       && rm -rf /var/lib/apt/lists/*
 
 # Install pal-MEM
-ARG PALMEM_VERSION=2.3.0
+ARG PALMEM_VERSION=2.3.4
 RUN git clone --branch v${PALMEM_VERSION} https://github.com/blue-moon22/pal-MEM.git \
   && cd pal-MEM \
   && rm -rf .git \
@@ -70,11 +70,12 @@ RUN wget -q https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VE
 # Install R packages
 RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr', 'igraph', 'stringr', 'tidyr'))"
 
-# Install seqtk
-ARG SEQTK_VERSION=1.3
-RUN git clone --branch v${SEQTK_VERSION} https://github.com/lh3/seqtk.git \
-  && cd seqtk \
-  && make
+# Install BLAST
+ARG BLAST_VERSION=2.12.0+
+RUN wget -q https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz \
+ && tar -xf ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz \
+ && mv ncbi-blast-${BLAST_VERSION} blast \
+ && rm ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz
 
 # Add paths
-ENV PATH="/opt/seqtk:/opt/pal-MEM/build:/opt/cd-hit-v${CDHIT_VERSION}-2019-0228:/opt/bowtie2-${BOWTIE2_VERSION}-linux-x86_64:/opt/samtools-${SAMTOOLS_VERSION}:/opt/prodigal-${PRODIGAL_VERSION}:/opt/hmmer-${HMMER_VERSION}/bin:${PATH}"
+ENV PATH="/opt/blast/bin:/opt/pal-MEM/build:/opt/cd-hit-v${CDHIT_VERSION}-2019-0228:/opt/bowtie2-${BOWTIE2_VERSION}-linux-x86_64:/opt/samtools-${SAMTOOLS_VERSION}:/opt/prodigal-${PRODIGAL_VERSION}:/opt/hmmer-${HMMER_VERSION}/bin:${PATH}"
