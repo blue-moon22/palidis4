@@ -1,6 +1,6 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS v2.7.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.7.1** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
