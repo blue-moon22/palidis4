@@ -17,3 +17,4 @@ hmp_batch
 *.ipynb_checkpoints*
 tests/data/input/reference_1.fasta
 tests/data/input/reference_2.fasta
+tests
