@@ -7,7 +7,7 @@ process getITRs {
 
     output:
     path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
-    tuple val(sample_id), path("${sample_id}_insertion_sequence_annotations.tab"), path("${sample_id}_reads_itr_clusters.txt"), emit: itr_clusters_ch
+    path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_ch
 
     script:
     min_is_len = params.min_is_len
