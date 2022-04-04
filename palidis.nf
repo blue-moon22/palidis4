@@ -18,7 +18,6 @@ include { mapReads as mapReads2 } from './modules/mapreads.nf'
 include { getCandidateITRs } from './modules/getCandidateITRs.nf'
 include { clusterReads } from './modules/clusterReads.nf'
 include { getITRs } from './modules/getITRs.nf'
-include { getReadAndFastaInfo } from './modules/getReadAndFastaInfo.nf'
 include { createITRCatalog } from './modules/createITRCatalog.nf'
 include { assignITRClusters } from './modules/assignITRClusters.nf'
 include { createISCatalog } from './modules/createISCatalog.nf'
@@ -81,7 +80,6 @@ workflow get_IS_annotations {
 
     clusterReads(reads_itrs_ch)
     cluster_ch = clusterReads.out.cluster_ch
-    ir_fasta_ch = clusterReads.out.clipped_read_ch
 
     cluster_ch
     .join(tab_ch)
@@ -89,21 +87,12 @@ workflow get_IS_annotations {
     .set { into_get_itr_ch }
 
     getITRs(into_get_itr_ch)
-    ir_clusters_ch = getITRs.out.itr_clusters_ch
     is_tab_ch = getITRs.out.is_tab_ch
-
-    ir_clusters_ch
-    .join(ir_fasta_ch)
-    .set { ir_info_ch }
-
-    getReadAndFastaInfo(ir_info_ch)
-    itr_fasta_ch = getReadAndFastaInfo.out.itr_fasta_ch
-    itr_clusters_ch = getReadAndFastaInfo.out.itr_clusters_ch
+    is_fasta_ch = getITRs.out.is_fasta_ch
 
     emit:
-    itr_fasta_ch
-    itr_clusters_ch
     is_tab_ch
+    is_fasta_ch
 }
 
 workflow create_IS_catalog {
@@ -150,19 +139,13 @@ workflow {
 
         get_IS_annotations(read_pair_ch, contig_file_ch)
 
-        // Publish batch of candidate ITRs
-        get_IS_annotations.out.itr_fasta_ch
+        // Publish IS fasta sequences
+        get_IS_annotations.out.is_fasta_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
         }
 
-        // Publish itr clusters file for batch
-        get_IS_annotations.out.itr_clusters_ch
-        .subscribe { it ->
-            it.copyTo("${batch_path}")
-        }
-
-        // Publish tab file for batch
+        // Publish annotations
         get_IS_annotations.out.is_tab_ch
         .subscribe { it ->
             it.copyTo("${batch_path}")
