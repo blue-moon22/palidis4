@@ -28,6 +28,56 @@ def get_read_headers_of_clusters(contigs_itr_clusters, ir_cluster_tab, output_pr
     return read_headers
 
 
+def get_position_info(is_annot_file):
+
+    annot_info = {}
+    with open(is_annot_file, 'r') as file:
+        next(file)
+        for line in file:
+            contig = line.split('\t')[1]
+            positions = [(int(line.split('\t')[2]), int(line.split('\t')[3]), int(line.split('\t')[4]), int(line.split('\t')[5]))]
+            if contig in annot_info:
+                item = contig[annot_info]
+                item.extend(positions)
+                contig[annot_info] = item
+            else:
+                annot_info[contig] = positions
+
+    return annot_info
+
+
+def create_assembly_bins(assembly_file, annot_info):
+
+    assembly_bins_dict = {}
+    flag = 0
+    with open(assembly_file, "r") as fa:
+        for line in fa:
+            if line[0] == '>':
+                header = line[1:].replace('\n', '')
+                if header in annot_info:
+                    positions = annot_info[header]
+                    flag = 1
+                else:
+                    flag = 0
+            else:
+                if flag:
+                    sequence = ''
+                    contig = line.replace('\n', '')
+                    bins = [0]*len(sequence)
+                    for pos in positions:
+                        bins[pos[0]-1:pos[1]] = [1]*(pos[1]-pos[0])
+                        bins[pos[2]-1:pos[3]] = [1]*(pos[3]-pos[2])
+                    contig = line.replace('\n', '')
+                    for ind, b in enumerate(bins):
+                        if b:
+                            sequence += contig[ind]
+
+
+                    assembly_bins_dict[header] = line.replace('\n', '')
+
+    return assembly_bins_dict
+
+
 def write_itr_reads(read_headers, fasta_file, output_prefix):
 
     flag = 0
