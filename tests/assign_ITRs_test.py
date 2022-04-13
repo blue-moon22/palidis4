@@ -1,6 +1,7 @@
 import argparse, os
 import unittest
 from unittest.mock import patch, call, ANY
+from pathlib import Path
 
 from bin.assign_ITRs import *
 
@@ -60,13 +61,19 @@ class TestAssignITRs(unittest.TestCase):
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
         os.remove(tab_name)
-        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1242\t1266\t0\n""")
+        self.assertEqual(actual, """IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\nIS_cluster_0_length_1021\ttest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1242\t1266\t0\n""")
 
         fasta_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequences.fasta'
         fasta = open(fasta_name, "r")
         actual = "".join(fasta.readlines())
         os.remove(fasta_name)
         self.assertEqual(actual, """>IS_cluster_0_length_1021\nAATATTGTTTTACATCCTGCATCTTACATTTATATGTATTATGATATATAACAAAGGTACTATATCATATATGATATATAATATATATATTTGTAGTACATATTATAATTTTTATATATTATAATTTATATAATGATAAAATTTTTTATAGAATATAAATAATTATATATGATTATATAATTCTACATATTATAAATGAAAATATGTAGAATTACATGTTTATCTAGTTATATGTATAAAAATATAATTATATATATAGTTATATATATCACATAATAGACAACATACATATTATATAATGTGTAATATATATTATAGAATATATGATACATGATATATATGATATTTAATATAACATAATATAATCTATATTATAATATTATGTATGTTACTTATATTGGGTGATATGTAATATATATTATGTAATATGAAATAATATAATATATATTATATTATGATATTTTATGTAAATTATGTTATAAAAGTATATATAACATAATATATAGTTATATATAATATATTATATAGTTATATATATTATTATATTATAATTTATGACATATATAACAGTTATATATAATTTCAAATAGTTATATATAACAGAATATAAAACATATAGAATACATATCATAAAATATATATTGTATACCATATATATTAGGTATCATATATTGTATGTTATATATCATATACTGTATATCATATATCATATATTATATGTTATATATATCACATTCCACATATGGTATATTATAAATTATACATAATATATTGCATTCTTTATTTTACATGTAATAAATTATACATTATAGGTAACATAGTATATATTGTATGTAACCGGTATATTCTATGTAAAATATATAATATATAACACATGTGACATGTAATTAATAACATAGTCATATAATATATATTTAATATAGGTATTATACATACAACGTATTATATATAATATATAATATATATTACATATGTTATAAAATATAATATATATTATAAGATGCAGGATGTAAAACAATAT\n""")
+
+        for blast_file in Path('./').glob('blastn_*'):
+            os.remove(blast_file)
+
+        for itr_fasta in Path('./').glob('itr*_tmp.fasta'):
+            os.remove(itr_fasta)
 
     def test_arguments(self):
         actual = get_arguments().parse_args(

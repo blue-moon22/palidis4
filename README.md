@@ -1,6 +1,6 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS v2.7.1** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.8.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 PaliDIS is a Nextflow pipeline that predicts insertion sequence annotations of paired-end, short-read metagenomic data.
 
@@ -11,19 +11,14 @@ The tool is based upon identifying inverted terminal repeats (ITRs) (figure belo
 ## Contents
 - [ Installation ](#installation)
 - [ Pipeline summary ](#summary)
-- [ Workflow 1: Get IS annotations ](#workflow1)
-    - [ Usage ](#usage1)
-    - [ Output ](#output1)
-    - [ Options ](#options1)
-- [ Workflow 2: Create catalog ](#workflow2)
-    - [ Usage ](#usage2)
-    - [ Output ](#output2)
-    - [ Options ](#options2)
+- [ Usage ](#usage)
+- [ Output ](#output)
+- [ Options ](#options)
 
 <a name="installation"></a>
 ## Installation
 - Install [Nextflow](https://www.nextflow.io/)
-- Install [Docker](https://www.docker.com/) ([Singularity](https://sylabs.io/singularity/) if using a HPC)
+- Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Git clone this repo
 ```bash
 git clone https://github.com/blue-moon22/Palidis.git
@@ -32,30 +27,24 @@ cd Palidis
 
 <a name="summary"></a>
 ## Pipeline summary
-There are two workflows: **1) Get IS annotations** that gets the positional information of ITRs on metagenomic assemblies and **2) Create catalog** that creates a catalog of IS annotations from multiple samples and clusters ITRs into distinct ITR clusters.
+**Steps:**
+1. Pre-process FASTQ.GZ reads [`convertToFasta`]
+2. Efficient maximal exact matching to get repeat sequences using [pal-MEM](https://github.com/blue-moon22/pal-MEM) [`palmem`]
+3. Map reads against assemblies using Bowtie2 [`filterContigs` `buildDB` `mapreads`]
+4. Get candidate ITRs by distance filters [`getCandidateITRs`]
+5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
+6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
 
-**Get IS annotations steps:**
-1. Index and label FASTQ.GZ reads
-2. Efficient maximal exact matching to get inverted repeats using [pal-MEM](https://github.com/blue-moon22/pal-MEM)
-3. Map reads against contigs using Bowtie2
-4. Get candidate ITRs by paired read concordance
-5. Cluster candidate ITRs using CD-HIT-EST
-6. Get putative ITRs by cluster concordance and pairs are found between 700 and 3000 bp (typical IS length) of each other
-7. Collect Insertion Sequence annotations on contigs
+<a name="usage"></a>
+## Usage
+**Note:** If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `farm` (using `-profile farm`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`.
 
-**Create catalog:**
-1. Clusters all ITRs from samples using CD-HIT-EST
-2. Creates a catalog of Insertion Sequence annotations for all samples with assigned ITR Clusters
+It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use. You may be able to find a basic config for your HPC [here](https://github.com/nf-core/configs/tree/master/conf).
 
-<a name="workflow1"></a>
-## Workflow 1: Get IS annotations
-<a name="usage1"></a>
-### Usage
-
-Workflow `get_IS_annotations` generates Insertion Sequence annotations for each sample.
 ```bash
-nextflow palidis.nf --get_IS_annotations --manifest <manifest_file> --batch_name <batch_name> --min_itr_length <min_itr_length> --kmer_length <kmer_length> --resume -profile <executor>
+nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> --min_itr_length <min_itr_length> --kmer_length <kmer_length> --resume -profile <executor>
 ```
+
 The output is stored in a directory in the current run directory specified with `--batch_name`.
 
 A tab-delimited manifest must be specified for `--manifest` containing the absolute paths with headers `lane_id`, `read1`, `read2`, `sample_id` and `contigs_path`, e.g. this manifest contains three samples (the first having two lanes and the other two having one lane):
@@ -67,26 +56,20 @@ lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 |
 lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
 
-**Note:** If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `farm` (using `-profile farm`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`. It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use.
+<a name="output"></a>
+## Output
+There are two output files stored in a directory specified with `--batch_name`:
 
-<a name="output1"></a>
-### Output
-Three files for each sample are generated in a directory specified by `batch_name`:
+**1. FASTA file of insertion sequences**
 
-**1. A non-redundant catalogue of ITRs**: `<sample_id>_ITRs.fasta`
+**2. Information for each insertions sequence** e.g.
 
-**2. Insertion sequence annotations**: `<sample_id>_insertion_sequence_annotations.tab`
-The annotation file is in a tab-delimited format consisting of the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the cluster(s) they belong to (`itr_clusters`), e.g.:
+IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
+:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12
+IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
 
-sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
-:---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 1217817
-sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 656079
-
-**3. ITR clusters and their reads of origin:** `<sample>_itr_read_positions_clusters.txt`
-This file is in a tab-delimited format containing the reads of the ITRs, the ITRs' positions on the contigs and the names of the ITR clusters.
-
-<a name="options1"></a>
+<a name="options"></a>
 ### Options
 ```
   min_itr_length    Minimum length of ITR. (Default: 25)
@@ -96,33 +79,6 @@ This file is in a tab-delimited format containing the reads of the ITRs, the ITR
   max_is_len        Maximum length of insertion sequence. (Default: 3000)
   cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
   cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
-  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 1.0)
-```
-
-<a name="workflow2"></a>
-## Workflow 2: Create catalog
-<a name="usage2"></a>
-### Usage
-Workflow `create_catalog` generates a catalog of Insertion Sequence annotations for all samples.
-```bash
-nextflow run palidis.nf --create_catalog --batch_name <batch_name> --min_itr_length <min_itr_length> -profile <executor>
-```
-The `batch_name` is the directory that contains outputs from the previous workflow for all samples.
-
-<a name="output2"></a>
-### Output
-One tab-delimited catalog is created called `<batch_name>_insertion_sequence_annotations_catalog.tab` that contains the sample_id, contig name, start and end positions of the first ITR, start and end positions of the second ITR and the newly assigned cluster(s) they belong to in the catalog (`itr_cluster_catalog`), e.g.:
-
-sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster_catalog
-:---: | :---: | :---: | :---: | :---: | :---: | :---:
-sample_id1 | contig_name1 | 23 | 43 | 2769 | 2822 | 102
-sample_id2 | contig_name2 | 25 | 55 | 5738 | 5768 | 101
-
-<a name="options2"></a>
-### Options
-```
-  min_itr_length    Minimum length of ITR. (Default: 25)
-  cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
-  cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
-  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 1.0)
+  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
+  cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
 ```
