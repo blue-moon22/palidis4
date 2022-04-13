@@ -202,17 +202,17 @@ def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_I
     pool.close()
     # ITR annotations
     with open(output_prefix + '_insertion_sequence_annotations.tab', 'w') as out:
-        out.write('sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\n')
+        out.write('IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\n')
         for elem in output:
             for positions in elem:
-                out.write(sample_id + '\t' + positions)
+                items = positions.replace('\n', '').split('\t')
+                out.write('IS_cluster_' + items[5] + '_length_' + str((int(items[4])+1) - int(items[1])) + '\t' + sample_id + '\t' + positions)
 
     # IS sequences
     with open(output_prefix + '_insertion_sequences.fasta', 'w') as fasta:
         for elem in output:
             for positions in elem:
                 items = positions.replace('\n', '').split('\t')
-                print(items)
                 fasta.write('>IS_cluster_' + items[5] + '_length_' + str((int(items[4])+1) - int(items[1])) + '\n' + assemblies_dict[items[0]][(int(items[1])-1):int(items[4])] + '\n')
 
 
