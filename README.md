@@ -37,15 +37,14 @@ cd Palidis
 
 <a name="usage"></a>
 ## Usage
-**Note:** If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `farm` (using `-profile farm`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`.
-
-It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use. You may be able to find a basic config for your HPC [here](https://github.com/nf-core/configs/tree/master/conf).
-
 ```bash
-nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> --min_itr_length <min_itr_length> --kmer_length <kmer_length> --resume -profile <executor>
+nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -profile <executor>
 ```
+#### `<batch_name>`
 
-The output is stored in a directory in the current run directory specified with `--batch_name`.
+`<batch_name>` must be the directory that the output is stored in.
+
+#### `<manifest_file>`
 
 A tab-delimited manifest must be specified for `--manifest` containing the absolute paths with headers `lane_id`, `read1`, `read2`, `sample_id` and `contigs_path`, e.g. this manifest contains three samples (the first having two lanes and the other two having one lane):
 
@@ -55,6 +54,16 @@ lane1 | /path/to/file/lane1_1.fq.gz | /path/to/file/lane1_2.fq.gz | my_sample | 
 lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 | /path/to/file/my_sample1_contigs.fasta
 lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
+
+#### `<executor>`
+
+If you are running this on your own machine, then you should specify `-profile standard`.
+
+If you are running this on an HPC, you will need to specify `-profile <executor>` in the command. Currently, the pipeline only supports `farm` (using `-profile farm`) and `rosalind` (using `-profile rosalind`). If you use `rosalind`, the default partition is `brc`. If you want to use a different partition, include option `--partition <name>`.
+
+It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use. You may be able to find a basic config for your HPC [here](https://github.com/nf-core/configs/tree/master/conf).
+
+
 
 <a name="output"></a>
 ## Output
@@ -72,13 +81,14 @@ IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
 <a name="options"></a>
 ### Options
 ```
-  min_itr_length    Minimum length of ITR. (Default: 25)
-  max_itr_length    Maximum length of ITR. (Default: 50)
-  kmer_length       k-mer length for maximal exact matching. (Default: 15)
-  min_is_len        Minimum length of insertion sequence. (Default: 500)
-  max_is_len        Maximum length of insertion sequence. (Default: 3000)
-  cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
-  cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
-  cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
-  cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
+  --min_itr_length    Minimum length of ITR. (Default: 25)
+  --max_itr_length    Maximum length of ITR. (Default: 50)
+  --kmer_length       k-mer length for maximal exact matching. (Default: 15)
+  --min_is_len        Minimum length of insertion sequence. (Default: 500)
+  --max_is_len        Maximum length of insertion sequence. (Default: 3000)
+  --cd_hit_G          -G option for CD-HIT-EST. (Default: 0)
+  --cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
+  --cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
+  --cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
+  -resume             Resume the pipeline
 ```
