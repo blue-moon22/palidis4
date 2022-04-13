@@ -101,76 +101,21 @@ def bin_positions(cl_dict, tab_info_file, assembly_bins_dict, output_prefix):
 def count_bins(sbin):
     count = 1
     bin = list(sbin)
-    bin.append('NA')
-    val = bin[0]
     count_bin_out = []
-    for new_val in bin[1:]:
-        if new_val == val:
-            count += 1
-        else:
-            count_bin_out.append((val, count))
-            val = new_val
-            count = 1
+    flag = 0
+    start = 0
+    for val in bin:
+        if val == '1' and not flag:
+            flag = 1
+            start = count
+        if flag and val == '0':
+            flag = 0
+            count_bin_out.append((start, count))
+        count += 1
+    if val == '1':
+        count_bin_out.append((start, count))
 
     return count_bin_out
-
-
-def get_itrs_from_count_bins(count_bins, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN):
-    is_gaps = []
-
-    # Remove Ns from count bin and add 0s. Record position and Ns
-    count_bins_mod = []
-    sum_0s = 0
-    sum_Ns = 0
-    N_bin = ()
-    N_pos = 0
-    for ind, count_bin in enumerate(count_bins):
-        if count_bin[0] != 'N':
-            if ind > 0 and ind < len(count_bins)-1:
-                if count_bins[ind+1][0] == 'N':
-                    N_pos = ind
-                    sum_0s += count_bin[1]
-                elif count_bins[ind-1][0] == 'N':
-                    sum_0s += count_bin[1]
-                    N_bin = (N_pos, sum_Ns)
-                    count_bins_mod.append(('0',sum_0s))
-
-                else:
-                    count_bins_mod.append(count_bin)
-
-            else:
-                count_bins_mod.append(count_bin)
-
-        else:
-            sum_Ns += count_bin[1]
-
-    count_bins = count_bins_mod
-
-    for ind, count_bin in enumerate(count_bins):
-        if count_bin[0] == '0':
-            if count_bin[1] >= MIN_IS_LEN and count_bin[1] <= MAX_IS_LEN:
-                if ind != 0 and ind != len(count_bins) - 1:
-                    is_gaps.append(ind)
-
-    itr_positions = []
-    for ind in is_gaps:
-        if count_bins[ind-1][1] >= MIN_ITR_LEN and count_bins[ind-1][1] <= MAX_ITR_LEN and count_bins[ind+1][1] >= MIN_ITR_LEN and count_bins[ind+1][1] <= MAX_ITR_LEN:
-            itr1_start = sum(e[1] for e in count_bins[:ind-1]) + 1
-            itr1_end = sum(e[1] for e in count_bins[:ind-1]) + count_bins[ind-1][1]
-            itr2_start = sum(e[1] for e in count_bins[:ind+1]) + 1
-            itr2_end = sum(e[1] for e in count_bins[:ind+1]) + count_bins[ind+1][1]
-
-            if N_bin:
-                if ind >= N_bin[0]:
-                    itr2_start += N_bin[1]
-                    itr2_end += N_bin[1]
-                    if ind > N_bin[0]:
-                        itr1_start += N_bin[1]
-                        itr1_end += N_bin[1]
-
-            itr_positions.append((itr1_start, itr1_end, itr2_start, itr2_end))
-
-    return itr_positions
 
 
 def get_itr_sequences(contig_seq, positions):
@@ -218,37 +163,31 @@ def are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
     return check_blast_out(out_blast_file, MIN_ITR_LEN)
 
 
-def remove_positions(bin, itr_positions):
-    for pos in itr_positions:
-        bin = list(bin)
-        bin[pos[0]-1:pos[3]] = ['N']*(pos[3] - (pos[0]-1))
-        bin = ''.join(bin)
+def get_positions_from_count_bins(clusters, contig, contig_seq, MIN_ITR_LEN, MAX_ITR_LEN, MIN_IS_LEN, MAX_IS_LEN):
 
-    return bin
-
-
-def annotate_itrs(clusters, contig_seq, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN):
-    itr_clusters = {}
     output_info = []
+
+    # Get counts
     for cluster, bin in clusters.items():
-        itr_positions = 1
-        flag = 0
-        while itr_positions:
-            if flag:
-                bin = remove_positions(bin, itr_positions)
-            count_bins_out = count_bins(bin)
-            itr_positions = get_itrs_from_count_bins(count_bins_out, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)
-            for pos in itr_positions:
-                flag = 1
-                itr_sequences = get_itr_sequences(contig_seq, pos)
+        clusters[cluster] = count_bins(bin)
+
+    # Remove IRs not within ITR range
+    for cluster, bin in clusters.items():
+        for pos in bin:
+            if pos[1]-pos[0] > MAX_ITR_LEN or pos[1]-pos[0] < MIN_ITR_LEN:
+                bin.remove(pos)
+        clusters[cluster] = bin
+
+    # Get positions of insertion sequences
+    for cluster, bin in clusters.items():
+        for ind, pos in enumerate(bin[:-1]):
+            length = bin[ind+1][1] - bin[ind][0]
+
+            if length >= MIN_IS_LEN and length <= MAX_IS_LEN:
+                itr_sequences = get_itr_sequences(contig_seq, [bin[ind][0], bin[ind][1]-1, bin[ind+1][0], bin[ind+1][1]-1])
+
                 if are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
-                    if pos in itr_clusters:
-                        itr_pos = itr_clusters[cluster]
-                        itr_pos.append(pos)
-                        itr_clusters[cluster] = itr_pos
-                    else:
-                        itr_clusters[cluster] = [pos]
-                    output_info.append(str(pos[0]) + '\t' + str(pos[1]) + '\t' + str(pos[2]) + '\t' + str(pos[3]) + '\t' + cluster + '\n')
+                    output_info.append(contig + '\t' + str(bin[ind][0]) + '\t' + str(bin[ind][1]-1) + '\t' + str(bin[ind+1][0]) + '\t' + str(bin[ind+1][1]-1) + '\t' + cluster + '\n')
 
     return output_info
 
@@ -259,14 +198,22 @@ def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_I
     sample_id = output_prefix.split('/')[len(output_prefix.split('/'))-1]
 
     pool = mp.Pool(cpus)
-    output = [pool.apply(annotate_itrs, args=(clusters, assemblies_dict[contig], MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN)) for contig, clusters in clusters_positions.items()]
+    output = [pool.apply(get_positions_from_count_bins, args=(clusters, contig, assemblies_dict[contig], MIN_ITR_LEN, MAX_ITR_LEN, MIN_IS_LEN, MAX_IS_LEN)) for contig, clusters in clusters_positions.items()]
     pool.close()
-
+    # ITR annotations
     with open(output_prefix + '_insertion_sequence_annotations.tab', 'w') as out:
-        out.write('sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\n')
-        for ind, positions_cluster in enumerate(output):
-            for pos in positions_cluster:
-                out.write(sample_id + '\t' + list(clusters_positions)[ind] + '\t' + pos)
+        out.write('IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\n')
+        for elem in output:
+            for positions in elem:
+                items = positions.replace('\n', '').split('\t')
+                out.write('IS_cluster_' + items[5] + '_length_' + str((int(items[4])+1) - int(items[1])) + '\t' + sample_id + '\t' + positions)
+
+    # IS sequences
+    with open(output_prefix + '_insertion_sequences.fasta', 'w') as fasta:
+        for elem in output:
+            for positions in elem:
+                items = positions.replace('\n', '').split('\t')
+                fasta.write('>IS_cluster_' + items[5] + '_length_' + str((int(items[4])+1) - int(items[1])) + '\n' + assemblies_dict[items[0]][(int(items[1])-1):int(items[4])] + '\n')
 
 
 def get_arguments():

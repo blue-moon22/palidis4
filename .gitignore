@@ -7,13 +7,8 @@ tests/*.log*
 tests/data/output/test_*
 .nextflow.log*
 .coverage
-work*
-one_sample
-one_sample_manifest.txt
-blastn_*
-itr*_tmp.fasta
+work
 *.img
-hmp_batch
 *.ipynb_checkpoints*
-tests/data/input/reference_1.fasta
-tests/data/input/reference_2.fasta
+nf_tests
+.pytest_cache

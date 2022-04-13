@@ -1,6 +1,7 @@
 import argparse, os
 import unittest
 from unittest.mock import patch, call, ANY
+from pathlib import Path
 
 from bin.assign_ITRs import *
 
@@ -33,40 +34,12 @@ class TestAssignITRs(unittest.TestCase):
     def test_count_bins(self):
         actual = count_bins('0111110011110001')
 
-        self.assertEqual(actual, [('0', 1), ('1', 5), ('0', 2), ('1', 4), ('0', 3), ('1', 1)])
+        self.assertEqual(actual, [(2, 7), (9, 13), (16, 17)])
 
     def test_count_bins_with_Ns(self):
-        actual = count_bins('N0111100NNNN0001110N')
+        actual = count_bins('100000000000011100')
 
-        self.assertEqual(actual, [('N', 1), ('0', 1), ('1', 4), ('0', 2), ('N', 4), ('0', 3), ('1', 3), ('0', 1), ('N', 1)])
-
-    def test_get_itrs_from_count_bins_101(self):
-        assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
-        cl_dict = create_cluster_dictionary(self.TEST_CLSTR1)
-        clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB1, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
-        count_bins_out = count_bins(clusters_positions['NODE_823_length_1805_cov_1014.02']['0'])
-        print(count_bins_out)
-        actual = get_itrs_from_count_bins(count_bins_out, 500, 3000, 25, 50)
-
-        self.assertEqual(actual, [(246, 271, 1242, 1266)])
-
-    def test_get_itrs_from_count_bins_10101(self):
-        actual = get_itrs_from_count_bins([('1',40),('0',800),('1',40),('0',800),('1',40)], 500, 3000, 25, 50)
-
-        self.assertEqual(actual, [(1, 40, 841, 880), (841, 880, 1681, 1720)])
-
-    def test_get_itrs_from_count_bins_1010101(self):
-        actual = get_itrs_from_count_bins([('1',40),('0',800),('1',40),('0',800),('N',40),('N',800),('N',40),('0',800),('1',40),('0',800),('1',40)], 500, 3000, 25, 50)
-
-        self.assertEqual(actual, [(1, 40, 841, 880), (841, 880, 3361, 3400), (3361, 3400, 4201, 4240)])
-
-
-    def test_remove_positions(self):
-
-        actual = remove_positions('11100111011', [[2,4,6,7]])
-
-        self.assertEqual(actual, '1NNNNNN1011')
-
+        self.assertEqual(actual, [(1, 2), (14, 17)])
 
     def test_get_itr_sequences(self):
         assemblies_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
@@ -74,7 +47,6 @@ class TestAssignITRs(unittest.TestCase):
         actual = get_itr_sequences(assemblies_dict["NODE_823_length_1805_cov_1014.02"], (246, 271, 1242, 1266))
 
         self.assertEqual(actual, ['AATATTGTTTTACATCCTGCATCTTA', 'TAAGATGCAGGATGTAAAACAATAT'])
-
 
     @patch('bin.assign_ITRs.are_reverse_cmp')
     def test_write_itr_annotations(self, mock_are_reverse_cmp):
@@ -89,23 +61,19 @@ class TestAssignITRs(unittest.TestCase):
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
         os.remove(tab_name)
-        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1242\t1266\t0\n""")
+        self.assertEqual(actual, """IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\nIS_cluster_0_length_1021\ttest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1242\t1266\t0\n""")
 
-    @patch('bin.assign_ITRs.are_reverse_cmp')
-    def test_write_itr_annotations_1010101(self, mock_are_reverse_cmp):
-        mock_are_reverse_cmp.return_value = True
-        assembly_bins_dict = create_assembly_bins(self.TEST_CONTIG_FASTA)
-        cl_dict = create_cluster_dictionary(self.TEST_CLSTR2)
-        clusters_positions = bin_positions(cl_dict, self.TEST_INFO_TAB2, assembly_bins_dict, self.TEST_OUTPUT_PREFIX)
+        fasta_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequences.fasta'
+        fasta = open(fasta_name, "r")
+        actual = "".join(fasta.readlines())
+        os.remove(fasta_name)
+        self.assertEqual(actual, """>IS_cluster_0_length_1021\nAATATTGTTTTACATCCTGCATCTTACATTTATATGTATTATGATATATAACAAAGGTACTATATCATATATGATATATAATATATATATTTGTAGTACATATTATAATTTTTATATATTATAATTTATATAATGATAAAATTTTTTATAGAATATAAATAATTATATATGATTATATAATTCTACATATTATAAATGAAAATATGTAGAATTACATGTTTATCTAGTTATATGTATAAAAATATAATTATATATATAGTTATATATATCACATAATAGACAACATACATATTATATAATGTGTAATATATATTATAGAATATATGATACATGATATATATGATATTTAATATAACATAATATAATCTATATTATAATATTATGTATGTTACTTATATTGGGTGATATGTAATATATATTATGTAATATGAAATAATATAATATATATTATATTATGATATTTTATGTAAATTATGTTATAAAAGTATATATAACATAATATATAGTTATATATAATATATTATATAGTTATATATATTATTATATTATAATTTATGACATATATAACAGTTATATATAATTTCAAATAGTTATATATAACAGAATATAAAACATATAGAATACATATCATAAAATATATATTGTATACCATATATATTAGGTATCATATATTGTATGTTATATATCATATACTGTATATCATATATCATATATTATATGTTATATATATCACATTCCACATATGGTATATTATAAATTATACATAATATATTGCATTCTTTATTTTACATGTAATAAATTATACATTATAGGTAACATAGTATATATTGTATGTAACCGGTATATTCTATGTAAAATATATAATATATAACACATGTGACATGTAATTAATAACATAGTCATATAATATATATTTAATATAGGTATTATACATACAACGTATTATATATAATATATAATATATATTACATATGTTATAAAATATAATATATATTATAAGATGCAGGATGTAAAACAATAT\n""")
 
-        write_itr_annotations(clusters_positions, assembly_bins_dict, 580, 1000, 25, 50, self.TEST_OUTPUT_PREFIX, 8)
+        for blast_file in Path('./').glob('blastn_*'):
+            os.remove(blast_file)
 
-        tab_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequence_annotations.tab'
-        tab = open(tab_name, "r")
-        actual = "".join(tab.readlines())
-        os.remove(tab_name)
-        self.maxDiff = None
-        self.assertEqual(actual, """sample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\ntest\tNODE_823_length_1805_cov_1014.02\t787\t815\t1442\t1466\t8601\ntest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1542\t1566\t8601\ntest\tNODE_2532_length_936_cov_4.40522\t95\t120\t906\t936\t8486\n""")
+        for itr_fasta in Path('./').glob('itr*_tmp.fasta'):
+            os.remove(itr_fasta)
 
     def test_arguments(self):
         actual = get_arguments().parse_args(
