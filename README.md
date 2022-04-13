@@ -8,14 +8,6 @@ The tool is based upon identifying inverted terminal repeats (ITRs) (figure belo
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
-## Contents
-- [ Installation ](#installation)
-- [ Pipeline summary ](#summary)
-- [ Usage ](#usage)
-- [ Output ](#output)
-- [ Options ](#options)
-
-<a name="installation"></a>
 ## Installation
 - Install [Nextflow](https://www.nextflow.io/)
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
@@ -25,7 +17,6 @@ git clone https://github.com/blue-moon22/Palidis.git
 cd Palidis
 ```
 
-<a name="summary"></a>
 ## Pipeline summary
 **Steps:**
 1. Pre-process FASTQ.GZ reads [`convertToFasta`]
@@ -35,7 +26,6 @@ cd Palidis
 5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
 6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
 
-<a name="usage"></a>
 ## Usage
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -profile <executor>
@@ -63,23 +53,7 @@ If you are running this on an HPC, you will need to specify `-profile <executor>
 
 It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use. You may be able to find a basic config for your HPC [here](https://github.com/nf-core/configs/tree/master/conf).
 
-
-
-<a name="output"></a>
-## Output
-There are two output files stored in a directory specified with `--batch_name`:
-
-**1. FASTA file of insertion sequences**
-
-**2. Information for each insertions sequence** e.g.
-
-IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
-:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12
-IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
-
-<a name="options"></a>
-### Options
+### More Options
 ```
   --min_itr_length    Minimum length of ITR. (Default: 25)
   --max_itr_length    Maximum length of ITR. (Default: 50)
@@ -92,3 +66,15 @@ IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
   --cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
   -resume             Resume the pipeline
 ```
+
+## Output
+There are two output files stored in a directory specified with `--batch_name`:
+
+**1. FASTA file of insertion sequences**
+
+**2. Information for each insertions sequence** e.g.
+
+IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
+:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12
+IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
