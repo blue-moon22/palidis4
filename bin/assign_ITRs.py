@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse, sys, os
 import multiprocessing as mp
+import uuid
 
 
 def create_assembly_bins(assembly_file):
@@ -156,7 +157,7 @@ def are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
         out.write('>itr2\n' + itr_sequences[1] + '\n')
 
     # Run blastn
-    out_blast_file = "blastn_{}_{}.out".format(itr_sequences[0], itr_sequences[1])
+    out_blast_file = "blastn_{}.out".format(uuid.uuid1())
     run_blastn_cmd = "blastn -query {} -subject {} -task blastn -word_size 4 > {}".format(itr1_fasta, itr2_fasta, out_blast_file)
     os.system(run_blastn_cmd)
 
