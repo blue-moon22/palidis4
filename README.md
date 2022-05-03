@@ -1,6 +1,8 @@
+![pytest](https://github.com/blue-moon22/palidis/workflows/test/badge.svg)
+
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS v2.8.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.8.1** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
 
