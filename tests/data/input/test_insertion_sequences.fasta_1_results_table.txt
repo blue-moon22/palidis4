@@ -1,0 +1,9 @@
+query	sample_id	kmer_similarity
+IS_cluster_115105_length_655	SAMEA709093	1.0
+IS_cluster_115105_length_655	SAMN09011143	1.0
+IS_cluster_2614_length_1455	SAMN09914449	1.0
+IS_cluster_2614_length_1455	SAMN03956209	1.0
+IS_cluster_2614_length_1455	SAMEA104055241	1.0
+IS_cluster_2614_length_1455	SAMEA4555960	1.0
+IS_cluster_2614_length_1455	SAMEA3319306	1.0
+IS_cluster_2614_length_1455	SAMN07658190	1.0

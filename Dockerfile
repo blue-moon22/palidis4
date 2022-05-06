@@ -1,6 +1,6 @@
-#######################################################
-# Dependencies docker image for the GBS Typer pipeline.
-#######################################################
+#######################################
+# Dependencies docker image for PaliDIS
+#######################################
 
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
