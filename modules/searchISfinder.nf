@@ -1,8 +1,7 @@
 process searchISfinder {
 
     input:
-    tuple val(sample_id), file(fasta)
-    file(blast_db)
+    tuple val(sample_id), file(fasta), file(blast_db)
 
     output:
     tuple val(sample_id), path("${output}")

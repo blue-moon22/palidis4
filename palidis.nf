@@ -97,7 +97,12 @@ workflow get_IS_annotations {
     .fromPath(params.isfinder_seq, checkIfExists: true)
     .set { fasta_db_ch }
     buildBLASTDB(fasta_db_ch)
-    searchISfinder(is_fasta_ch1, buildBLASTDB.out)
+    blast_db_ch = buildBLASTDB.out
+
+    is_fasta_ch1
+    .join(blast_db_ch)
+    .set{ is_seq_ch }
+    searchISfinder(is_seq_ch)
     blast_out_ch = searchISfinder.out
 
     Channel
