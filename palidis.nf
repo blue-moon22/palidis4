@@ -100,7 +100,7 @@ workflow get_IS_annotations {
     blast_db_ch = buildBLASTDB.out
 
     is_fasta_ch1
-    .join(blast_db_ch)
+    .combine(blast_db_ch)
     .set{ is_seq_ch }
     searchISfinder(is_seq_ch)
     blast_out_ch = searchISfinder.out
