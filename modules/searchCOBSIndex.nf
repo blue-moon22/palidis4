@@ -10,8 +10,8 @@ process searchCOBSIndex {
     tuple val(sample_id), path("${output}")
 
     script:
-    cobs_threshold = params.cobs_threshold
-    output = ${query}_${cobs_threshold}_results_table.txt
+    cobs_threshold=params.cobs_threshold
+    output=${query}_${cobs_threshold}_results_table.txt
 
     """
     # query COBS index
