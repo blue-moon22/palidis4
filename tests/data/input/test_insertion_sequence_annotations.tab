@@ -1,0 +1,4 @@
+IS_name	sample_id	contig	itr1_start_position	itr1_end_position	itr2_start_position	itr2_end_position	itr_cluster
+IS_cluster_115105_length_655	SRS013170	NODE_18_length_76504_cov_9.77495	74408	74436	75032	75062	115105
+IS_cluster_2614_length_1455	SRS013170	NODE_31_length_64375_cov_7.58579	10034	10063	11459	11488	2614
+IS_cluster_19090_length_1430	SRS013170	NODE_51_length_53875_cov_10.3394	16273	16301	17674	17702	19090
