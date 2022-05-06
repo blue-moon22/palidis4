@@ -11,7 +11,7 @@ process searchCOBSIndex {
 
     script:
     cobs_threshold=params.cobs_threshold
-    output=${query}_${cobs_threshold}_results_table.txt
+    output="${query}_${cobs_threshold}_results_table.txt"
 
     """
     # query COBS index
