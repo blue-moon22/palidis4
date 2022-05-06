@@ -15,7 +15,7 @@ process searchCOBSIndex {
 
     """
     # query COBS index
-    cobs query -i ${cobs_index} -f ${query} -t ${cobs_threshold} > ${query}_${threshold}_results.txt
+    cobs query -i ${cobs_index} -f ${query} -t ${cobs_threshold} > ${query}_${cobs_threshold}_results.txt
 
     # run samtools faidx to get length of each query sequence
     samtools faidx ${query}
