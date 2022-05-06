@@ -11,7 +11,7 @@ process getISInfoWithCOBS {
     path("${output}")
 
     script:
-    output = "${sample_id}_insertion_sequences_info.txt"
+    output="${sample_id}_insertion_sequences_info.txt"
     """
     get_IS_info.py --blast_out ${isfinder_blast_out} \
         --tab_file ${is_tab_file} \
