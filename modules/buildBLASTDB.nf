@@ -4,10 +4,10 @@ process buildBLASTDB {
     file(fasta)
 
     output:
-    path("${fasta}.*")
+    path("blast_db")
 
     script:
     """
-    makeblastdb -in ${fasta} -out ${fasta} -parse_seqids -dbtype nucl
+    makeblastdb -in ${fasta} -out blast_db/${fasta} -parse_seqids -dbtype nucl
     """
 }

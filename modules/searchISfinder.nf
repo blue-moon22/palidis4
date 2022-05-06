@@ -11,6 +11,6 @@ process searchISfinder {
     output="${sample_id}_blast.out"
 
     """
-    blastn -query ${fasta} -subject ${blast_db} -outfmt 6 -evalue ${e_value} > ${output}
+    blastn -query ${fasta} -subject ${blast_db}/* -outfmt 6 -evalue ${e_value} > ${output}
     """
 }
