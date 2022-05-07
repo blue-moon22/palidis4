@@ -8,6 +8,9 @@ process searchCOBSIndex {
     output:
     tuple val(sample_id), path("${output}")
 
+    when:
+    query.size() > 0
+
     script:
     cobs_threshold=params.cobs_threshold
     output="${query}_${cobs_threshold}_results_table.txt"

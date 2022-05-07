@@ -43,7 +43,7 @@ RUN git clone --branch v${PALMEM_VERSION} https://github.com/blue-moon22/pal-MEM
   && make
 
 # Install Python3 packages
-RUN pip3 install Bio
+RUN pip3 install Bio bs4
 
 # Install CD-HIT
 ARG CDHIT_VERSION=4.8.1
@@ -67,15 +67,12 @@ RUN wget -q https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VE
   && make \
   && make install
 
-# Install R packages
-RUN Rscript -e "install.packages(pkgs = c('optparse', 'dplyr', 'igraph', 'stringr', 'tidyr'))"
-
 # Install BLAST
-ARG BLAST_VERSION=2.12.0+
-RUN wget -q https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz \
- && tar -xf ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz \
- && mv ncbi-blast-${BLAST_VERSION} blast \
- && rm ncbi-blast-${BLAST_VERSION}-x64-linux.tar.gz
+ARG BLAST_VERSION=2.12.0
+RUN wget -q https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST_VERSION}/ncbi-blast-${BLAST_VERSION}+-x64-linux.tar.gz \
+ && tar -xf ncbi-blast-${BLAST_VERSION}+-x64-linux.tar.gz \
+ && mv ncbi-blast-${BLAST_VERSION}+ blast \
+ && rm ncbi-blast-${BLAST_VERSION}+-x64-linux.tar.gz
 
 # Add paths
 ENV PATH="/opt/blast/bin:/opt/pal-MEM/build:/opt/cd-hit-v${CDHIT_VERSION}-2019-0228:/opt/bowtie2-${BOWTIE2_VERSION}-linux-x86_64:/opt/samtools-${SAMTOOLS_VERSION}:/opt/prodigal-${PRODIGAL_VERSION}:/opt/hmmer-${HMMER_VERSION}/bin:${PATH}"

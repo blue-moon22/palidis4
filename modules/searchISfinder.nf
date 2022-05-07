@@ -6,6 +6,9 @@ process searchISfinder {
     output:
     tuple val(sample_id), path("${output}")
 
+    when:
+    fasta.size() > 0
+
     script:
     e_value=params.e_value
     isfinder_seq_fna=params.isfinder_seq_fna
