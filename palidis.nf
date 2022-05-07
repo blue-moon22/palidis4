@@ -114,7 +114,11 @@ workflow get_IS_annotations {
         .fromPath(params.cobs_index, checkIfExists: true)
         .set { cobs_index_ch }
 
-        searchCOBSIndex(is_fasta_ch2, cobs_index_ch)
+        is_fasta_ch2
+        .combine(cobs_index_ch)
+        .set{ cobs_seq_ch }
+
+        searchCOBSIndex(cobs_seq_ch)
         cobs_out_ch = searchCOBSIndex.out
 
         is_tab_ch
