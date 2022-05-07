@@ -3,9 +3,10 @@
  */
 process getISInfoWithCOBS {
 
+    container 'bluemoon222/palidis_dependencies:0.0.16'
+
     input:
-    tuple val(sample_id), path(is_tab_file), path(isfinder_blast_out), path(cobs_out)
-    file(isfinder_info_csv)
+    tuple val(sample_id), path(is_tab_file), path(isfinder_blast_out), path(cobs_out), file(isfinder_info_csv)
 
     output:
     path("${output}")
@@ -23,9 +24,10 @@ process getISInfoWithCOBS {
 
 process getISInfoWithoutCOBS {
 
+    container 'bluemoon222/palidis_dependencies:0.0.16'
+
     input:
-    tuple val(sample_id), path(is_tab_file), path(isfinder_blast_out)
-    file(isfinder_info_csv)
+    tuple val(sample_id), path(is_tab_file), path(isfinder_blast_out), file(isfinder_info_csv)
 
     output:
     path("${output}")
