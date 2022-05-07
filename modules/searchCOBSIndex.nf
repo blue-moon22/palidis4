@@ -3,8 +3,7 @@ process searchCOBSIndex {
     container 'leandroishilima/661k_query_indexes:0.0.1'
 
     input:
-    tuple val(sample_id), file(query)
-    file(cobs_index)
+    tuple val(sample_id), file(query), file(cobs_index)
 
     output:
     tuple val(sample_id), path("${output}")
