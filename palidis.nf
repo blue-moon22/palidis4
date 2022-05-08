@@ -124,7 +124,7 @@ workflow get_IS_annotations {
         is_tab_ch
         .join(blast_out_ch)
         .join(cobs_out_ch)
-        .combine(is_finder_info_ch)
+        .combine(isfinder_info_ch)
         .set { is_annot_ch }
 
         getISInfoWithCOBS(is_annot_ch)
@@ -132,7 +132,7 @@ workflow get_IS_annotations {
     } else {
         is_tab_ch
         .join(blast_out_ch)
-        .combine(is_finder_info_ch)
+        .combine(isfinder_info_ch)
         .set { is_annot_ch }
 
         getISInfoWithoutCOBS(is_annot_ch)
