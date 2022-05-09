@@ -23,7 +23,7 @@ include { searchISfinder } from './modules/searchISfinder.nf'
 include { searchCOBSIndex } from './modules/searchCOBSIndex.nf'
 include { getISInfoWithCOBS; getISInfoWithoutCOBS } from './modules/getISInfo.nf'
 
-workflow get_IS_annotations {
+workflow palidis {
     take:
     read_pair_ch
     contig_file_ch
@@ -165,16 +165,16 @@ workflow {
     .map { row -> tuple(row.sample_id, file(row.contigs_path)) }
     .set { contig_file_ch }
 
-    get_IS_annotations(read_pair_ch, contig_file_ch)
+    palidis(read_pair_ch, contig_file_ch)
 
     // Publish IS fasta sequences
-    get_IS_annotations.out.is_fasta_ch
+    palidis.out.is_fasta_ch
     .subscribe { it ->
         it.copyTo("${batch_path}")
     }
 
     // Publish annotations
-    get_IS_annotations.out.is_info_ch
+    palidis.out.is_info_ch
     .subscribe { it ->
         it.copyTo("${batch_path}")
     }
