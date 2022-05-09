@@ -9,7 +9,7 @@ class TestGetISInfo(unittest.TestCase):
     TEST_BLAST_OUT = 'tests/data/input/test_blast.out'
     TEST_ISFINDER_INFO = 'tests/data/input/IS_test.csv'
     TEST_COBS_TABLE = 'tests/data/input/test_insertion_sequences.fasta_1_results_table.txt'
-    TEST_FFQ_JSON = 'tests/data/input/test_ffq.json'
+    TEST_FFQ_JSON_LOC = 'tests/data/input'
     TEST_TAB_FILE = 'tests/data/input/test_insertion_sequence_annotations.tab'
     TEST_OUTPUT_PREFIX = 'tests/data/output/test'
 
@@ -27,7 +27,7 @@ class TestGetISInfo(unittest.TestCase):
         self.assertEqual(actual['IS1249'], 'Corynebacterium xerosis')
 
     def test_get_cobs_info(self):
-        actual = get_cobs_info(self.TEST_COBS_TABLE, self.TEST_FFQ_JSON)
+        actual = get_cobs_info(self.TEST_COBS_TABLE, self.TEST_FFQ_JSON_LOC)
 
         self.maxDiff = None
         self.assertEqual(actual,
@@ -37,7 +37,7 @@ class TestGetISInfo(unittest.TestCase):
     def test_write_info(self):
         is_finder_annot = create_annotations_dict(self.TEST_BLAST_OUT)
         is_finder_info = get_isfinder_info(self.TEST_ISFINDER_INFO)
-        cobs_info = get_cobs_info(self.TEST_COBS_TABLE, self.TEST_FFQ_JSON)
+        cobs_info = get_cobs_info(self.TEST_COBS_TABLE, self.TEST_FFQ_JSON_LOC)
 
         actual = write_info(self.TEST_TAB_FILE, is_finder_annot, is_finder_info, cobs_info, self.TEST_OUTPUT_PREFIX)
 

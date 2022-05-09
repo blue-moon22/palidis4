@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, sys
+import argparse, sys, os
 import json
 
 ALIGN_THRESHOLD = 0.99
@@ -55,11 +55,15 @@ def get_isfinder_info(is_info_csv):
     return is_info_dict
 
 
-def get_cobs_info(cobs_table, ffq_json):
+def get_cobs_info(cobs_table, json_loc):
 
-    f = open(ffq_json)
-    ffq_info = json.load(f)
-    f.close()
+    ffq_info = {}
+
+    for file in os.listdir(json_loc):
+        if file.endswith('json'):
+            f = open(f'{json_loc}/{file}')
+            ffq_info.update(json.load(f))
+            f.close()
 
     cobs_info_dict = {}
 
@@ -68,7 +72,6 @@ def get_cobs_info(cobs_table, ffq_json):
         for line in file:
             query = line.split('\t')[0]
             biosample_id = line.split('\t')[1]
-            print(biosample_id)
             if biosample_id[:4] == 'SAMN':
                 organism = ffq_info[biosample_id]['samples']['organism']
             else:
@@ -128,7 +131,7 @@ def get_arguments():
     parser.add_argument('--cobs_search_out', '-c', dest='cobs_table', required=False,
                         help='Input "_results_table.txt" file.', type = str)
     parser.add_argument('--ffq_json', '-j', dest='ffq_json', required=False,
-                        help='Input json file from ffq.', type = str)
+                        help='Location of JSON files.', type = str)
     parser.add_argument('--output_prefix', '-o', dest='output_prefix', required=True,
                     help='Prefix of output files.', type = str)
     return parser
