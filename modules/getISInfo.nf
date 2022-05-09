@@ -14,7 +14,7 @@ process getISInfoWithCOBS {
     script:
     output="${sample_id}_insertion_sequences_info.txt"
     """
-    set -e
+    set +e
 
     grep SAMN ${cobs_out} | sort | uniq > SAMN_ids.txt
     num_ids=\$(cat SAMN_ids.txt | wc -l)
@@ -22,9 +22,7 @@ process getISInfoWithCOBS {
     for ((i=1;i<=\${num_ids};i++))
     do
         biosample_id=\$(sed -n "\${i}p" SAMN_ids.txt)
-        EXIT_CODE=0
-        ffq \$biosample_id > \${biosample_id}.json || EXIT_CODE=\$?
-        echo \$EXIT_CODE
+        ffq \$biosample_id > \${biosample_id}.json
     done
 
     get_IS_info.py --blast_out ${isfinder_blast_out} \
