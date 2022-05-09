@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import argparse, sys
-import requests
-from bs4 import BeautifulSoup
+import json
 
 ALIGN_THRESHOLD = 0.99
 IDENTITY_THRESHOLD = 99
@@ -56,7 +55,11 @@ def get_isfinder_info(is_info_csv):
     return is_info_dict
 
 
-def get_cobs_info(cobs_table):
+def get_cobs_info(cobs_table, ffq_json):
+
+    f = open(ffq_json)
+    ffq_info = json.load(f)
+    f.close()
 
     cobs_info_dict = {}
 
@@ -65,11 +68,7 @@ def get_cobs_info(cobs_table):
         for line in file:
             query = line.split('\t')[0]
             biosample_id = line.split('\t')[1]
-
-            response = requests.get(f'https://www.ncbi.nlm.nih.gov/biosample/{biosample_id}')
-            html_doc = response.text
-            soup = BeautifulSoup(response.text, 'html.parser')
-            organism = str(soup.find_all('dd')[1]).split('>')[2].replace('</a', '')
+            organism = ffq_info[biosample_id]['samples']['organism']
 
             if query not in cobs_info_dict:
                 cobs_info_dict[query] = []
@@ -124,6 +123,8 @@ def get_arguments():
                         help='Input ".csv" file.', type = str)
     parser.add_argument('--cobs_search_out', '-c', dest='cobs_table', required=False,
                         help='Input "_results_table.txt" file.', type = str)
+    parser.add_argument('--ffq_json', '-j', dest='ffq_json', required=False,
+                        help='Input json file from ffq.', type = str)
     parser.add_argument('--output_prefix', '-o', dest='output_prefix', required=True,
                     help='Prefix of output files.', type = str)
     return parser
@@ -134,8 +135,8 @@ def main(args):
     isfinder_annot_dict = create_annotations_dict(args.blast_out)
     isfinder_info_dict = get_isfinder_info(args.is_info_csv)
 
-    if args.cobs_table:
-        cobs_info_dict = get_cobs_info(args.cobs_table)
+    if args.cobs_table and args.ffq_json:
+        cobs_info_dict = get_cobs_info(args.cobs_table, args.ffq_json)
     else:
         cobs_info_dict = {}
 

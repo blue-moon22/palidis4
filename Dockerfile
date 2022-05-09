@@ -43,7 +43,7 @@ RUN git clone --branch v${PALMEM_VERSION} https://github.com/blue-moon22/pal-MEM
   && make
 
 # Install Python3 packages
-RUN pip3 install Bio bs4
+RUN pip3 install Bio bs4 ffq
 
 # Install CD-HIT
 ARG CDHIT_VERSION=4.8.1
