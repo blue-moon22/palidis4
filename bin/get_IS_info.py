@@ -76,9 +76,8 @@ def get_cobs_info(cobs_table, json_loc):
         for line in file:
             query = line.split('\t')[0]
             biosample_id = line.split('\t')[1]
-            if biosample_id[:4] == 'SAMN':
-                if biosample_id in ffq_info:
-                    organism = ffq_info[biosample_id]['samples']['organism']
+            if biosample_id[:4] == 'SAMN' and biosample_id in ffq_info:
+                organism = ffq_info[biosample_id]['samples']['organism']
             else:
                 organism = "unknown"
 
