@@ -14,9 +14,9 @@ process getISInfoWithCOBS {
     script:
     output="${sample_id}_insertion_sequences_info.txt"
     """
-    num_lines=\$(cat ${cobs_out} | wc -l)
+    num_lines=\$(grep SAMN ${cobs_out} | wc -l)
 
-    if [ \$num_lines -gt 1 ]
+    if [ \$num_lines -gt 0 ]
     then
         # Get organism from COBS bio sample ids
         ids=\$(grep SAMN ${cobs_out} | cut -f2 | tr "\n" " ")
