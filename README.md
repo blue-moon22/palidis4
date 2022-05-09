@@ -13,15 +13,6 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
-## Installation
-- Install [Nextflow](https://www.nextflow.io/)
-- Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
-- Git clone this repo
-```bash
-git clone https://github.com/blue-moon22/Palidis.git
-cd Palidis
-```
-
 ## Pipeline summary
 **Steps:**
 1. Pre-process FASTQ.GZ reads [`convertToFasta`]
@@ -33,6 +24,15 @@ cd Palidis
 7. Search against ISfinder [`buildBLASTDB` `buildBLASTDB` `searchISfinder`]
 8. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
 7. Combine ISfinder and optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
+
+## Installation
+- Install [Nextflow](https://www.nextflow.io/)
+- Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
+- Git clone this repo
+```bash
+git clone https://github.com/blue-moon22/Palidis.git
+cd Palidis
+```
 
 ## Usage
 
