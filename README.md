@@ -3,10 +3,13 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
 # **PaliDIS v2.8.1** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+## Introduction
 
 PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
 
 The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) using paired-end, short-read mixed microbial genomic data (e.g. metagenomes).
+
+For each sample, the pipeline produces two output files: **1. FASTA file of insertion sequences** and **2. Information for each insertions sequence**
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
@@ -27,11 +30,29 @@ cd Palidis
 4. Get candidate ITRs by distance filters [`getCandidateITRs`]
 5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
 6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
+7. Search against ISfinder [`buildBLASTDB` `buildBLASTDB` `searchISfinder`]
+8. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
+7. Combine ISfinder and optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
 
 ## Usage
+
+### Without COBS Index Search
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -profile <executor>
 ```
+
+### With COBS Index Search
+Download a COBS index database of all genomes. This is a very large file of just under 1 Terabyte so you will need a good internet connection and storage.
+```
+wget http://ftp.ebi.ac.uk/pub/databases/ENA2018-bacteria-661k/661k.cobs_compact
+```
+
+Run command with `--cobs_index` option
+```bash
+nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> --cobs_index 661k.cobs_compact -profile <executor>
+```
+
+### Mandatory arguments
 #### `<batch_name>`
 
 `<batch_name>` must be the directory that the output is stored in.
@@ -55,7 +76,7 @@ If you are running this on an HPC, you will need to specify `-profile <executor>
 
 It is possible to add another profile to the [nextflow config](https://www.nextflow.io/docs/latest/config.html) to make this pipeline compatible with other HPC executors. If you do so, you are welcome to fork this repo and make a pull request to include your new profile for others to use. You may be able to find a basic config for your HPC [here](https://github.com/nf-core/configs/tree/master/conf).
 
-### More Options
+### Optional arguments
 ```
   --min_itr_length    Minimum length of ITR. (Default: 25)
   --max_itr_length    Maximum length of ITR. (Default: 50)
@@ -66,6 +87,9 @@ It is possible to add another profile to the [nextflow config](https://www.nextf
   --cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
   --cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
   --cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
+  --e_value           -evalue option for BLASTn against ISfinder database. (Default: 1e-50)
+  --cobs_index        Location of COB index file for optional COB index search of predicted IS origin. (Default: "")
+  --cobs_threshold    K-mer threshold for identifying sequences in COB index. (Default: 1)
   -resume             Resume the pipeline
 ```
 
@@ -74,9 +98,11 @@ There are two output files stored in a directory specified with `--batch_name`:
 
 **1. FASTA file of insertion sequences**
 
-**2. Information for each insertions sequence** e.g.
+**2. Information for each insertions sequence**
 
-IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster
-:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12
-IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65
+e.g. (includes information from optional COB index search)
+
+IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster | ISfinder_name | ISfinder_origin | predicted_IS_family | COB_index_biosample_id | COB_index_origin
+:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12 | ISBvu4 | Bacteroides vulgatus | | SAMN00627906 | Bacteroides vulgatus CL09T03C04 |
+IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65 | | | ISLre2 | | | |
