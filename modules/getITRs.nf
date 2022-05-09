@@ -6,7 +6,9 @@ process getITRs {
     tuple val(sample_id), path(read_clstr_file), path(info_tab_file), path(assemblies_file)
 
     output:
-    path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
+    tuple val(sample_id), path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
+    tuple val(sample_id), path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_ch1
+    tuple val(sample_id), path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_ch2
     path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_ch
 
     script:
