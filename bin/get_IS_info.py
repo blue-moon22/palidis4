@@ -102,9 +102,14 @@ def write_info(tab_file, is_finder_annot, is_finder_info, cobs_info, output_pref
                 if is_name in is_finder_annot:
                     is_finder_names = []
                     is_finder_origins = []
-                    for item in is_finder_annot[is_name]:
-                        is_finder_names.append(item[1])
-                        is_finder_origins.append(is_finder_info[item[1]])
+                    if is_finder_annot[is_name][0][0] == 'IS':
+                        for item in is_finder_annot[is_name]:
+                            is_finder_names.append(item[1])
+                            is_finder_origins.append(is_finder_info[item[1]])
+                    else:
+                        for item in is_finder_annot[is_name]:
+                            is_finder_names.append(item[1])
+
                     if is_finder_annot[is_name][0][0] == 'IS':
                         out.write(line.replace('\n', '') + '\t' + ';'.join(is_finder_names) + '\t' + ';'.join(is_finder_origins) + '\t')
                     else:
