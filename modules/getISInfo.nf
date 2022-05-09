@@ -16,7 +16,7 @@ process getISInfoWithCOBS {
     """
     set +e
 
-    grep SAMN ${cobs_out} | sort | uniq > SAMN_ids.txt
+    grep SAMN ${cobs_out} | cut -f2 | sort | uniq > SAMN_ids.txt
     num_ids=\$(cat SAMN_ids.txt | wc -l)
 
     for ((i=1;i<=\${num_ids};i++))
