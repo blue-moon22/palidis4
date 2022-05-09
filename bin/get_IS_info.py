@@ -62,7 +62,11 @@ def get_cobs_info(cobs_table, json_loc):
     for file in os.listdir(json_loc):
         if file.endswith('json'):
             f = open(f'{json_loc}/{file}')
-            ffq_info.update(json.load(f))
+            try:
+                json_content = json.load(f)
+            except:
+                json_content = {}
+            ffq_info.update(json_content)
             f.close()
 
     cobs_info_dict = {}
@@ -73,7 +77,8 @@ def get_cobs_info(cobs_table, json_loc):
             query = line.split('\t')[0]
             biosample_id = line.split('\t')[1]
             if biosample_id[:4] == 'SAMN':
-                organism = ffq_info[biosample_id]['samples']['organism']
+                if biosample_id in ffq_info:
+                    organism = ffq_info[biosample_id]['samples']['organism']
             else:
                 organism = "unknown"
 
