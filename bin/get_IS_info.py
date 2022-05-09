@@ -68,7 +68,11 @@ def get_cobs_info(cobs_table, ffq_json):
         for line in file:
             query = line.split('\t')[0]
             biosample_id = line.split('\t')[1]
-            organism = ffq_info[biosample_id]['samples']['organism']
+            print(biosample_id)
+            if biosample_id[:4] == 'SAMN':
+                organism = ffq_info[biosample_id]['samples']['organism']
+            else:
+                organism = "unknown"
 
             if query not in cobs_info_dict:
                 cobs_info_dict[query] = []
