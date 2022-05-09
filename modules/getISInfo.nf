@@ -14,26 +14,25 @@ process getISInfoWithCOBS {
     script:
     output="${sample_id}_insertion_sequences_info.txt"
     """
-    num_lines=\$(grep SAMN ${cobs_out} | wc -l)
+    set -e
 
-    if [ \$num_lines -gt 0 ]
-    then
-        # Get organism from COBS bio sample ids
-        ids=\$(grep SAMN ${cobs_out} | cut -f2 | tr "\n" " ")
-        ffq \$ids > ${sample_id}_ffq.json
+    grep SAMN ${cobs_out} | sort | uniq > SAMN_ids.txt
+    num_ids=\$(cat SAMN_ids.txt | wc -l)
 
-        get_IS_info.py --blast_out ${isfinder_blast_out} \
-            --tab_file ${is_tab_file} \
-            --is_finder_info ${isfinder_info_csv} \
-            --cobs_search_out ${cobs_out} \
-            --ffq_json ${sample_id}_ffq.json \
-            --output_prefix ${sample_id}
-    else
-        get_IS_info.py --blast_out ${isfinder_blast_out} \
-            --tab_file ${is_tab_file} \
-            --is_finder_info ${isfinder_info_csv} \
-            --output_prefix ${sample_id}
-    fi
+    for ((i=1;i<=\${num_ids};i++))
+    do
+        biosample_id=\$(sed -n "\${i}p" SAMN_ids.txt)
+        EXIT_CODE=0
+        ffq \$biosample_id > \${biosample_id}.json || EXIT_CODE=\$?
+        echo $EXIT_CODE
+    done
+
+    get_IS_info.py --blast_out ${isfinder_blast_out} \
+        --tab_file ${is_tab_file} \
+        --is_finder_info ${isfinder_info_csv} \
+        --cobs_search_out ${cobs_out} \
+        --ffq_json \$(pwd) \
+        --output_prefix ${sample_id}
     """
 }
 
