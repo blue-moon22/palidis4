@@ -4,12 +4,12 @@ name: test
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master, main, dev ]
   pull_request:
-    branches: [ master, dev ]
+    branches: [ master, main, dev ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-18.04
 
@@ -26,3 +26,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest tests
+    - name: Install Nextflow
+      run: |
+        # Install latest version of Nextflow
+        curl -s https://get.nextflow.io | bash
+        sudo mv nextflow /usr/bin
+    - name: Regression tests
+      run: sh tests/regression_tests.sh -s
+      shell: bash

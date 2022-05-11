@@ -1,0 +1,2 @@
+lane_id	read1	read2	sample_id	contigs_path
+test	tests/regression_test_data/input/test_1.fastq.gz	tests/regression_test_data/input/test_2.fastq.gz	test	tests/regression_test_data/input/test.fa

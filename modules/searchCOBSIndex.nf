@@ -23,6 +23,6 @@ process searchCOBSIndex {
     samtools faidx ${query}
 
     # calculate percentage of kmers present rather than number of kmers present
-    cobs_to_table.py --cobs_outfile ${query}_${cobs_threshold}_results.txt --fai_file ${query}.fai --outname ${output}
+    cobs_search_result_to_table.py --cobs_outfile ${query}_${cobs_threshold}_results.txt --fai_file ${query}.fai --outname ${output}
     """
 }
