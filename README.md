@@ -1,4 +1,5 @@
-![pytest](https://github.com/blue-moon22/palidis/workflows/test/badge.svg)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis/releases)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis/test)
 
 <img src="img/logo.png" alt="logo" width="400"/>
 
@@ -88,8 +89,8 @@ It is possible to add another profile to the [nextflow config](https://www.nextf
   --cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
   --cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
   --e_value           -evalue option for BLASTn against ISfinder database. (Default: 1e-50)
-  --cobs_index        Location of COB index file for optional COB index search of predicted IS origin. (Default: "")
-  --cobs_threshold    K-mer threshold for identifying sequences in COB index. (Default: 1)
+  --cobs_index        Location of COBS index file for optional COBS index search of predicted IS origin. (Default: "")
+  --cobs_threshold    K-mer threshold for identifying sequences in COBS index. (Default: 1)
   -resume             Resume the pipeline
 ```
 
