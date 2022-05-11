@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-import argparse
+import argparse, sys
 
 def get_query_size(fai_file, kmer_length):
     sizes = {}
@@ -15,6 +14,7 @@ def get_query_size(fai_file, kmer_length):
                 sizes[query]['max_kmers'] = kmers
                 sizes[query]['hits'] = {}
     return sizes
+
 
 def get_results(queries, results):
     with open(results, "r") as f:
@@ -31,44 +31,37 @@ def get_results(queries, results):
                    queries[q]['hits'][sample] = kmers/queries[q]['max_kmers']
     return queries
 
+
 def write_table(results, outfile):
     with open(outfile, "w") as f:
         f.write("query\tsample_id\tkmer_similarity\n")
         for query, info in results.items():
             for sample, hit in info['hits'].items():
                 f.write(query + "\t" + sample + "\t" + str(hit) + "\n")
-    return
 
 
-
-def init():
-    ''' get all the input from the user'''
-    parser = argparse.ArgumentParser(
-        description='producing a tabular results for the cobs hits',
-           )
-   # input options
-    parser.add_argument('--cobs_outfile',
-                        required=True,
-                        type=str,
+def get_arguments():
+    parser = argparse.ArgumentParser(description='Producing a tabular results for the cobs hits.')
+    parser.add_argument('--cobs_outfile', required=True, type=str,
                         help='cobs out file')
-    parser.add_argument('--fai_file',
-                        required=True,
-                        help='samtools index of query file for cobs',
-                        type=str)
-    parser.add_argument('--outname',
-                        required=True,
-                        help ='name of table output',
-                        type=str)
-    parser.add_argument('--kmer_length',  # length of query kmer
-                        required=False,
-                        type=int, default=31,
+    parser.add_argument('--fai_file', required=True,
+                        help='samtools index of query file for cobs', type=str)
+    parser.add_argument('--outname', required=True, type=str,
+                        help ='name of table output')
+    parser.add_argument('--kmer_length', required=False, type=int, default=31,
                         help='Length of query kmer [%(default)s]')
-    options = parser.parse_args()
-    return options
+    return parser
+
+
+def main(args):
+
+    query_info = get_query_size(args.fai_file, args.kmer_length)
+
+    results = get_results(query_info, args.cobs_outfile)
+
+    write_table(results, args.outname)
 
 
 if __name__ == "__main__":
-    options = init()
-    query_info = get_query_size(options.fai_file, options.kmer_length)
-    results = get_results(query_info, options.cobs_outfile)
-    write_table(results, options.outname)
+    args = get_arguments().parse_args()
+    sys.exit(main(args))
