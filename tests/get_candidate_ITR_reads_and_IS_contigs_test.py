@@ -105,7 +105,7 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
         file = open(tab_file, "r")
         actual_tab = "".join(file.readlines())
         #os.remove(tab_file)
-        self.assertEqual(actual_tab, """sample_id\tcontig\tread\tIR\tstart_position\tend_position\ntest\tNODE_10183_length_410_cov_29.9493\tSeq4_nstart_SRS011144_nend_SRR062032.2555.1_f1_LCoord_48_RCoord_74\tTrue\t100\t126\ntest\tNODE_10183_length_410_cov_29.9493\tSeq1476536_nstart_SRS011144_nend_SRR062031.31005955.1_f1\tFalse\t643\t731\ntest\tNODE_823_length_1805_cov_1014.02\tSeq134_nstart_SRS011144_nend_SRR062032.12043.1_f1_LCoord_26_RCoord_51\tTrue\t246\t271\ntest\tNODE_823_length_1805_cov_1014.02\tSeq1519667_nstart_SRS011144_nend_SRR062031.33018371.2_f2_LCoord_30_RCoord_56\tTrue\t1242\t1266\n""")
+        self.assertEqual(actual_tab, """sample_id\tcontig\tread\tIR\tstart_position\tend_position\ntest\tNODE_10183_length_410_cov_29.9493\tSeq4_nstart_SRS011144_nend_SRR062032.2555.1_f1_LCoord_48_RCoord_74\tTrue\t100\t126\ntest\tNODE_823_length_1805_cov_1014.02\tSeq134_nstart_SRS011144_nend_SRR062032.12043.1_f1_LCoord_26_RCoord_51\tTrue\t246\t271\ntest\tNODE_823_length_1805_cov_1014.02\tSeq1519667_nstart_SRS011144_nend_SRR062031.33018371.2_f2_LCoord_30_RCoord_56\tTrue\t1242\t1266\n""")
 
     def test_write_fasta_files(self):
         """
