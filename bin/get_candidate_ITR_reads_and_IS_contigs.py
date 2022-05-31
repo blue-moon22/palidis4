@@ -212,13 +212,13 @@ def get_contigs_with_itrs(ir_positions_dict, position_arrays, size, MIN_IS_LEN, 
                         elif '_f2' in reads[ind]:
                             alloc2[index-1] = 1
                             read_coord = '_LCoord_' + str(position_arrays[1][index-1][0]) + '_RCoord_' + str(position_arrays[1][index-1][1])
+                        out_tab.write(sample_id + '\t' + contig + '\t' + reads[ind] + read_coord + '\t' + str(ir[ind]) + '\t' + str(start_positions[ind]) + '\t' + str(end_positions[ind]) + '\n')
                     else:
                         read_coord = ''
                         if '_f1' in reads[ind]:
                             alloc2[index-1] = 1
                         elif '_f2' in reads[ind]:
                             alloc1[index-1] = 1
-                    out_tab.write(sample_id + '\t' + contig + '\t' + reads[ind] + read_coord + '\t' + str(ir[ind]) + '\t' + str(start_positions[ind]) + '\t' + str(end_positions[ind]) + '\n')
 
                     if contig not in contigs_w_ir:
                         contigs_w_ir.append(contig)
