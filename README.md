@@ -3,7 +3,7 @@
 
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS v2.9.0** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **PaliDIS v2.9.1** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 ## Introduction
 
 PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
