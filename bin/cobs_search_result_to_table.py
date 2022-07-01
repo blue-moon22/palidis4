@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr and Grace Blackwell
+email: victoria.carr@sanger.ac.uk
+
+Functions for tabulating the output of COBS query.
+"""
+
 import argparse, sys
 
 def get_query_size(fai_file, kmer_length):
+    """
+    This function returns a dictionary the maximum number of kmers for each query
+    """
+
     sizes = {}
     with open(fai_file, "r") as f:
         for line in f:
@@ -17,6 +29,11 @@ def get_query_size(fai_file, kmer_length):
 
 
 def get_results(queries, results):
+    """
+    This function returns a dictionary with the alignment identity for each
+    query and hit
+    """
+
     with open(results, "r") as f:
         for line in f:
             if line.startswith("*"):
@@ -33,6 +50,10 @@ def get_results(queries, results):
 
 
 def write_table(results, outfile):
+    """
+    This function writes the dictionary of information as tab-delimited file
+    """
+
     with open(outfile, "w") as f:
         f.write("query\tsample_id\tkmer_similarity\n")
         for query, info in results.items():

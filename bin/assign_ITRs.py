@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Functions for assigning ITRs.
+"""
+
 import argparse, sys, os
 import multiprocessing as mp
 import uuid
 
 
 def create_assembly_bins(assembly_file):
+    """
+    This function creates a dictionary of header keys and sequence values
+    """
 
     assembly_bins_dict = {}
     with open(assembly_file, "r") as fa:
@@ -18,6 +29,10 @@ def create_assembly_bins(assembly_file):
 
 
 def create_cluster_dictionary(itr_clusters):
+    """
+    This function creates a dictionary of sequence number keys and ITR cluster
+    values
+    """
 
     seq_num = 0
     with open(itr_clusters, "r") as fa:
@@ -43,6 +58,12 @@ def create_cluster_dictionary(itr_clusters):
 
 
 def bin_positions(cl_dict, tab_info_file, assembly_bins_dict, output_prefix):
+    """
+    This function writes the start and end position of each candidate ITR and its
+    corresponding ITR cluster. Returns a dictionary with contig keys containing
+    values of dictionaries with ITR cluster keys with bit representations of ITR
+    sequences (1s) in contig sequences (0s)
+    """
 
     clusters_positions = {}
 
@@ -100,6 +121,12 @@ def bin_positions(cl_dict, tab_info_file, assembly_bins_dict, output_prefix):
 
 
 def count_bins(sbin):
+    """
+    This function counts the number of 0s and 1s across a bit-represented
+    sequence and returns a list of tuples with '0' or '1' and number of
+    occurrences
+    """
+
     count = 1
     bin = list(sbin)
     count_bin_out = []
@@ -120,6 +147,9 @@ def count_bins(sbin):
 
 
 def get_itr_sequences(contig_seq, positions):
+    """
+    This function gets the ITR sequence from positions in the config.
+    """
 
     itr1 = contig_seq[positions[0]-1:positions[1]]
     itr2 = contig_seq[positions[2]-1:positions[3]]
@@ -128,6 +158,11 @@ def get_itr_sequences(contig_seq, positions):
 
 
 def check_blast_out(out_blast_file, MIN_ITR_LEN):
+    """
+    This function determines whether or not a blastn alignment has a higher
+    identity than the minimum ITR length and is a reverse complement
+    """
+
     flag = 0
     with open(out_blast_file) as tmp:
         for line in tmp: # Check orientation (most complete) match
@@ -146,6 +181,11 @@ def check_blast_out(out_blast_file, MIN_ITR_LEN):
 
 
 def are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
+    """
+    This is a function that wraps getting the ITR sequences and determinining
+    whether they are aligned reverse complements
+    """
+
     result = 0
     # Write temporary FASTAs
     itr1_fasta = 'itr1_tmp.fasta'
@@ -165,6 +205,10 @@ def are_reverse_cmp(itr_sequences, MIN_ITR_LEN):
 
 
 def get_positions_from_count_bins(clusters, contig, contig_seq, MIN_ITR_LEN, MAX_ITR_LEN, MIN_IS_LEN, MAX_IS_LEN):
+    """
+    This function determines whether ITRs are aligned and reverse complements of
+    each other for every candidate ITR.
+    """
 
     output_info = []
 
@@ -194,6 +238,10 @@ def get_positions_from_count_bins(clusters, contig, contig_seq, MIN_ITR_LEN, MAX
 
 
 def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_IS_LEN, MIN_ITR_LEN, MAX_ITR_LEN, output_prefix, cpus):
+    """
+    This function writes the output of insertion sequences and corresponding
+    information where putative ITRs have been identified
+    """
 
     clusters_itrs = {}
     sample_id = output_prefix.split('/')[len(output_prefix.split('/'))-1]
@@ -218,6 +266,7 @@ def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_I
 
 
 def get_arguments():
+
     parser = argparse.ArgumentParser(description='Get the ITR clusters and information on contigs and reads with ITRs.')
     parser.add_argument('--cdhit_cluster_file', '-c', dest='cluster_file', required=True,
                         help='Input .clstr file from CD-HIT.', type = str)
