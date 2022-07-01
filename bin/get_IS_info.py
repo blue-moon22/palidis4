@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Functions to get the information for insertion sequences.
+"""
+
 import argparse, sys, os
 import json
 
@@ -6,6 +14,9 @@ ALIGN_THRESHOLD = 0.99
 IDENTITY_THRESHOLD = 99
 
 def create_annotations_dict(blast_out):
+    """
+    Function to return a dictionary containing annotation information
+    """
 
     annot_dict = {}
     with open(blast_out, "r") as file:
@@ -43,6 +54,10 @@ def create_annotations_dict(blast_out):
 
 
 def get_isfinder_info(is_info_csv):
+    """
+    Function to return a dictionary with the origin species for insertion
+    sequences from ISfinder
+    """
 
     is_info_dict = {}
     with open(is_info_csv, "r") as file:
@@ -56,6 +71,10 @@ def get_isfinder_info(is_info_csv):
 
 
 def get_cobs_info(cobs_table, json_loc):
+    """
+    Function to return a dictionary containing the taxonomy of the origin for
+    every IS found in the COBS query
+    """
 
     ffq_info = {}
 
@@ -91,6 +110,9 @@ def get_cobs_info(cobs_table, json_loc):
 
 
 def write_info(tab_file, is_finder_annot, is_finder_info, cobs_info, output_prefix):
+    """
+    Function to write the annotation information of the insertion sequences
+    """
 
     with open(f'{output_prefix}_insertion_sequences_info.txt', "w") as out:
         out.write("IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tISfinder_name\tISfinder_origin\tpredicted_IS_family\tCOB_index_biosample_id\tCOB_index_origin\n")
@@ -130,6 +152,7 @@ def write_info(tab_file, is_finder_annot, is_finder_info, cobs_info, output_pref
 
 
 def get_arguments():
+
     parser = argparse.ArgumentParser(description='Get tab file of ISfinder annotations.')
     parser.add_argument('--blast_out', '-b', dest='blast_out', required=True,
                         help='BLAST output file.', type = str)
