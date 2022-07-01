@@ -69,7 +69,7 @@ A tab-delimited manifest must be specified for `--manifest` containing the absol
 
 lane_id | read1 | read2 | sample_id | contigs_path
 :---: | :---: | :---: | :---: | :---:
-lane1 | /path/to/file/lane1_1.fq.gz | /path/to/file/lane1_2.fq.gz | my_sample | /path/to/file/contigs.fasta
+lane1 | /path/to/file/lane1_1.fq.gz | /path/to/file/lane1_2.fq.gz | my_sample1 | /path/to/file/contigs.fasta
 lane2 | /path/to/file/lane2_1.fq.gz | /path/to/file/lane2_2.fq.gz | my_sample1 | /path/to/file/my_sample1_contigs.fasta
 lane3 | /path/to/file/lane3_1.fq.gz | /path/to/file/lane3_2.fq.gz | my_sample2 | /path/to/file/my_sample2_contigs.fasta
 lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 | /path/to/file/my_sample3_contigs.fasta
@@ -104,7 +104,24 @@ There are two output files stored in a directory specified with `--batch_name`:
 
 e.g. (includes information from optional COB index search)
 
-IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster | ISfinder_name | ISfinder_origin | predicted_IS_family | COB_index_biosample_id | COB_index_origin
+IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster | ISfinder_name | ISfinder_origin | predicted_IS_family | COBS_index_biosample_id | COBS_index_origin
 :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
 IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12 | ISBvu4 | Bacteroides vulgatus | | SAMN00627906 | Bacteroides vulgatus CL09T03C04 |
 IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65 | | | ISLre2 | | | |
+
+### Interpretation
+Header | Description
+:--- | :---
+**IS_name** | Name assigned by PaliDIS which contains the ITR cluster (see below) and length e.g. `IS_cluster_0_length_1072`
+**sample_id** | Sample ID that was given in manifest
+**contig** | Name of the contig that was given by the header in the contig file provided by the manifest
+**itr1_start_position** | The position of the first nucleotide of the left-hand Inverted Terminal Repeat (ITR) sequence
+**itr1_end_position** | The position of the last nucleotide of the left-hand ITR sequence
+**itr2_start_position** | The position of the first nucleotide of the right-hand ITR sequence
+**itr2_end_position** | The position of the last nucleotide of the right-hand ITR sequence
+**itr_cluster** | The ITR cluster that was assigned to both ITRs (in Step 5)
+**ISfinder_name** | The name given in the ISfinder database if found in this database (by the specified e-value threshold - see Optional arguments) and at least 99% identity and alignment threshold
+**ISfinder_origin** | The species origin of the IS if found and species listed in the ISfinder database
+**predicted_IS_family** | The IS family predicted from the ISfinder database if the IS is found in this database (by the specified e-value threshold - see Optional arguments) but under a 99% identity and alignment threshold
+**COBS_index_biosample_id** | The NCBI Biosample ID of a sequenced sample in the COBS index
+**COBS_index_origin** | The taxonomy of the sequenced sample in the COBS index

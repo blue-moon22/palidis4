@@ -115,7 +115,7 @@ def write_info(tab_file, is_finder_annot, is_finder_info, cobs_info, output_pref
     """
 
     with open(f'{output_prefix}_insertion_sequences_info.txt', "w") as out:
-        out.write("IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tISfinder_name\tISfinder_origin\tpredicted_IS_family\tCOB_index_biosample_id\tCOB_index_origin\n")
+        out.write("IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tISfinder_name\tISfinder_origin\tpredicted_IS_family\tCOBS_index_biosample_id\tCOBS_index_origin\n")
         with open(tab_file, "r") as file:
             next(file)
             for line in file:
