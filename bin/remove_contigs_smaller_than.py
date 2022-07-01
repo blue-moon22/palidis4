@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Function to filter contigs by their length.
+"""
+
 import argparse, sys
 
 def select_contigs(fasta_file, min_length, output_file):
+    """
+    Function to write a config FASTA file for contigs with length greater than
+    or equal to a minimum length
+    """
     seq = ''
     with open(output_file, 'w') as out:
         with open(fasta_file, 'r') as f:
@@ -16,6 +28,7 @@ def select_contigs(fasta_file, min_length, output_file):
 
 
 def get_arguments():
+
     parser = argparse.ArgumentParser(description='Remove contigs less than specified.')
     parser.add_argument('--fasta_file', '-i', dest='fasta_file', required=True,
                         help='Input assembly/contig FASTA file.', type = str)
@@ -27,6 +40,7 @@ def get_arguments():
 
 
 def main(args):
+    
     select_contigs(args.fasta_file, args.min_length, args.output_file)
 
 

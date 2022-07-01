@@ -1,7 +1,20 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Function for clipping reads.
+"""
+
 import argparse, sys
 
 def clip_reads(fasta_file, output_prefix):
+    """
+    This function clips reads based on the left-hand and right-hand coordinates
+    in the headers
+    """
+
     with open(output_prefix + '_irs.fasta', "w") as out:
         with open(fasta_file, 'r') as f:
             for line in f:
