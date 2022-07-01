@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Function to convert a FASTQ file into a FASTA file with additional information.
+"""
+
 import argparse, sys, os
 from Bio import SeqIO
 
-
 def write_fasta(fastq_file, read):
+    """
+    This function writes a FASTA file from a FASTQ file and adds information to
+    the headers
+    """
+
     base_name = os.path.basename(fastq_file).split(".")[0]
     reversed = base_name[::-1]
     find = "_" + str(read)
