@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
+
+"""
+author: Victoria Carr
+email: victoria.carr@sanger.ac.uk
+
+Functions to get candidate ITRs and contigs with candidate insertion sequences.
+"""
+
 import argparse, sys
 from collections import defaultdict
 
 def get_largest_index(fasta_file):
     """
-    Get the largest sequence ID
+    Function to get the largest sequence ID
     """
+
     with open(fasta_file, "r") as f:
         for line in f:
             if line[0] == '>':
@@ -14,10 +23,19 @@ def get_largest_index(fasta_file):
 
 
 def get_array_size(fasta_file1, fasta_file2):
+    """
+    Function to get the largest number of sequences.
+    """
+
     size = max(get_largest_index(fasta_file1), get_largest_index(fasta_file2))
     return(size)
 
+
 def set_positions(positions, left, right):
+    """
+    Function to return positions in ascending order
+    """
+
     if positions:
         if left < positions[0]:
             positions[0] = left
@@ -30,8 +48,10 @@ def set_positions(positions, left, right):
 
 def get_ir_offset(tab_file, size):
     """
-    Get the offset length of the IRs and assign to sequence ID
+    Functiont to get the offset length of the inverted repeats (IRs) and assign
+    to sequence ID
     """
+
     alloc1 = [0]*size
     alloc2 = [0]*size
     with open(tab_file, "r") as tab:
@@ -57,6 +77,10 @@ def get_ir_offset(tab_file, size):
 
 
 def write_contig_file(contigs, contigs_fasta_file, out_prefix):
+    """
+    Function to write contigs that contain candidate insertion sequences
+    """
+
     # Write fasta file
     with open(out_prefix + '_contigs_with_candidate_itrs.fa', "w") as out_fasta:
         flag = 0
@@ -75,6 +99,10 @@ def write_contig_file(contigs, contigs_fasta_file, out_prefix):
 
 
 def write_fasta_files(read_fasta1, read_fasta2, ir_arrays, position_arrays, out_prefix):
+    """
+    Function to write FASTA files that contain candidate ITRs.
+    """
+
     # Get read names of IRs from first and second paired files
     # Write fasta file
     read_pairs_dict = {}
@@ -116,6 +144,11 @@ def write_fasta_files(read_fasta1, read_fasta2, ir_arrays, position_arrays, out_
 
 
 def split_match_flag(match_flag):
+    """
+    Function to find the exact positions of alignments from 'M' flags in sam
+    files
+    """
+
     split_matches = [0,0,0]
     for ind, m_split in enumerate(match_flag.split("M")):
         s_split = m_split.split("S")
@@ -133,6 +166,10 @@ def split_match_flag(match_flag):
 
 
 def process_sam_file(ir_positions_dict, sam_file, read_order, alloc_array):
+    """
+    Function to read information from the sam file and assign positions of IRs
+    """
+
     with open(sam_file, "r") as sam:
         first_contig = ''
 
@@ -173,6 +210,9 @@ def process_sam_file(ir_positions_dict, sam_file, read_order, alloc_array):
 
 
 def get_ir_positions(sam_files, alloc_arrays):
+    """
+    Function to get positions of IRs for both same files
+    """
 
     # Get contigs and ITR cluster positions
     ir_positions_dict = {}
@@ -183,6 +223,9 @@ def get_ir_positions(sam_files, alloc_arrays):
 
 
 def get_contigs_with_itrs(ir_positions_dict, position_arrays, size, MIN_IS_LEN, MAX_IS_LEN, out_prefix):
+    """
+    Function to write information on contigs that have IRs
+    """
 
     alloc1 = [0]*size
     alloc2 = [0]*size
@@ -227,6 +270,7 @@ def get_contigs_with_itrs(ir_positions_dict, position_arrays, size, MIN_IS_LEN, 
 
 
 def get_arguments():
+
     parser = argparse.ArgumentParser(description='Get reads that contain candidate ITRs and contigs that associate with these.')
     parser.add_argument('--contig_fasta', '-c', dest='contig_fasta', required=True,
                         help='Input contig FASTA file.', type = str)
