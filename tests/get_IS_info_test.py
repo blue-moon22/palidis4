@@ -45,7 +45,7 @@ class TestGetISInfo(unittest.TestCase):
         tab = open(tab_name, "r")
         actual = "".join(tab.readlines())
         os.remove(tab_name)
-        self.assertEqual(actual, """IS_name\tsample_id\tcontig\titr1_start_position	itr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tISfinder_name\tISfinder_origin\tpredicted_IS_family\tCOB_index_biosample_id\tCOB_index_origin\nIS_cluster_115105_length_655\tSRS013170\tNODE_18_length_76504_cov_9.77495\t74408\t74436\t75032\t75062\t115105\t\t\tIS256\tSAMN07658209\tMycobacterium tuberculosis\nIS_cluster_2614_length_1455\tSRS013170\tNODE_31_length_64375_cov_7.58579\t10034\t10063\t11459\t11488\t2614\tIS1249\tCorynebacterium xerosis\t\tSAMN07658618\tMycobacterium tuberculosis\nIS_cluster_19090_length_1430\tSRS013170\tNODE_51_length_53875_cov_10.3394\t16273\t16301\t17674\t17702\t19090\t\t\t\t\t\n""")
+        self.assertEqual(actual, """IS_name\tsample_id\tcontig\titr1_start_position	itr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tISfinder_name\tISfinder_origin\tpredicted_IS_family\tCOBS_index_biosample_id\tCOBS_index_origin\nIS_cluster_115105_length_655\tSRS013170\tNODE_18_length_76504_cov_9.77495\t74408\t74436\t75032\t75062\t115105\t\t\tIS256\tSAMN07658209\tMycobacterium tuberculosis\nIS_cluster_2614_length_1455\tSRS013170\tNODE_31_length_64375_cov_7.58579\t10034\t10063\t11459\t11488\t2614\tIS1249\tCorynebacterium xerosis\t\tSAMN07658618\tMycobacterium tuberculosis\nIS_cluster_19090_length_1430\tSRS013170\tNODE_51_length_53875_cov_10.3394\t16273\t16301\t17674\t17702\t19090\t\t\t\t\t\n""")
 
     def test_arguments(self):
         actual = get_arguments().parse_args(
