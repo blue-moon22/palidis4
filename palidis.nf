@@ -18,8 +18,6 @@ include { mapReads as mapReads2 } from './modules/mapreads.nf'
 include { getCandidateITRs } from './modules/getCandidateITRs.nf'
 include { clusterReads } from './modules/clusterReads.nf'
 include { getITRs } from './modules/getITRs.nf'
-include { buildBLASTDB } from './modules/buildBLASTDB.nf'
-include { searchISfinder } from './modules/searchISfinder.nf'
 include { searchCOBSIndex } from './modules/searchCOBSIndex.nf'
 include { getISInfoWithCOBS; getISInfoWithoutCOBS } from './modules/getISInfo.nf'
 
@@ -89,53 +87,29 @@ workflow palidis {
 
     getITRs(into_get_itr_ch)
     is_tab_ch = getITRs.out.is_tab_ch
-    is_fasta_ch1 = getITRs.out.is_fasta_ch1
-    is_fasta_ch2 = getITRs.out.is_fasta_ch2
     is_fasta_ch = getITRs.out.is_fasta_ch
-
-    Channel
-    .fromPath(params.isfinder_seq, checkIfExists: true)
-    .set { fasta_db_ch }
-    buildBLASTDB(fasta_db_ch)
-    blast_db_ch = buildBLASTDB.out
-
-    is_fasta_ch1
-    .combine(blast_db_ch)
-    .set{ is_seq_ch }
-    searchISfinder(is_seq_ch)
-    blast_out_ch = searchISfinder.out
-
-    Channel
-    .fromPath(params.isfinder_info_csv, checkIfExists: true)
-    .set { isfinder_info_ch }
+    sample_is_fasta_ch = getITRs.out.sample_is_fasta_ch
 
     if (params.cobs_index) {
         Channel
         .fromPath(params.cobs_index, checkIfExists: true)
         .set { cobs_index_ch }
 
-        is_fasta_ch2
+        sample_is_fasta_ch
         .combine(cobs_index_ch)
         .set{ cobs_seq_ch }
 
         searchCOBSIndex(cobs_seq_ch)
         cobs_out_ch = searchCOBSIndex.out
 
-        is_tab_ch
-        .join(blast_out_ch)
+        is_tab_ch1
         .join(cobs_out_ch)
-        .combine(isfinder_info_ch)
         .set { is_annot_ch }
 
         getISInfoWithCOBS(is_annot_ch)
         is_info_ch = getISInfoWithCOBS.out
     } else {
-        is_tab_ch
-        .join(blast_out_ch)
-        .combine(isfinder_info_ch)
-        .set { is_annot_ch }
-
-        getISInfoWithoutCOBS(is_annot_ch)
+        getISInfoWithoutCOBS(is_tab_ch)
         is_info_ch = getISInfoWithoutCOBS.out
     }
 
