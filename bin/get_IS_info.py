@@ -10,9 +10,6 @@ Functions to get the information for insertion sequences.
 import argparse, sys, os
 import json
 
-ALIGN_THRESHOLD = 0.99
-IDENTITY_THRESHOLD = 99
-
 def get_cobs_info(cobs_table, json_loc):
     """
     Function to return a dictionary containing the taxonomy of the origin for
