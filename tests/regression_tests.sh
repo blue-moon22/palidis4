@@ -17,7 +17,8 @@ echo "Starting regression tests..."
 echo ""
 
 # Run pipeline on test input data
-${SUDO_OPT}nextflow -log nextflow_test.log run palidis.nf --manifest ${work_dir}/test_manifest.txt --batch_name ${work_dir}/regression_test_data/output -profile github_ci
+rm ${work_dir}/regression_test_data/output/test*
+${SUDO_OPT}nextflow -log nextflow_test.log run palidis.nf --manifest ${work_dir}/test_manifest.txt --batch_name ${work_dir}/regression_test_data/output -profile github_ci -resume
 
 cat nextflow_test.log
 echo ""

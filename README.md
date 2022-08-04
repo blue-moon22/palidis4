@@ -24,9 +24,8 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 4. Get candidate ITRs by distance filters [`getCandidateITRs`]
 5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
 6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
-7. Search against ISfinder [`buildBLASTDB` `buildBLASTDB` `searchISfinder`]
-8. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
-7. Combine ISfinder and optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
+7. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
+8. Combine optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
 
 ## Installation on HPC
 - Install [Nextflow](https://www.nextflow.io/)
@@ -91,7 +90,6 @@ This represents the institution or HPC name. You can find your institutional HPC
   --cd_hit_aL         -aL option for CD-HIT-EST. (Default: 0.0)
   --cd_hit_aS         -aS option for CD-HIT-EST. (Default: 0.9)
   --cd_hit_c          -c option for CD-HIT-EST. (Default: 0.9)
-  --e_value           -evalue option for BLASTn against ISfinder database. (Default: 1e-50)
   --cobs_index        Location of COBS index file for optional COBS index search of predicted IS origin. (Default: "")
   --cobs_threshold    K-mer threshold for identifying sequences in COBS index. (Default: 1)
   -resume             Resume the pipeline
@@ -106,10 +104,10 @@ There are two output files stored in a directory specified with `--batch_name`:
 
 e.g. (includes information from optional COB index search)
 
-IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster | ISfinder_name | ISfinder_origin | predicted_IS_family | COBS_index_biosample_id | COBS_index_origin
+IS_name | sample_id | contig | itr1_start_position | itr1_end_position | itr2_start_position | itr2_end_position | itr_cluster | COBS_index_biosample_id | COBS_index_origin
 :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12 | ISBvu4 | Bacteroides vulgatus | | SAMN00627906 | Bacteroides vulgatus CL09T03C04 |
-IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65 | | | ISLre2 | | | |
+IS_name1 | sample_id1 | contig_name1 | 29 | 53 | 1004 | 1028 | 12 | SAMN00627906 | Bacteroides vulgatus CL09T03C04 |
+IS_name2 | sample_id1 | contig_name2 | 23 | 53 | 2769 | 2832 | 65 | | |
 
 ### Interpretation
 Header | Description
@@ -122,8 +120,5 @@ Header | Description
 **itr2_start_position** | The position of the first nucleotide of the right-hand ITR sequence
 **itr2_end_position** | The position of the last nucleotide of the right-hand ITR sequence
 **itr_cluster** | The ITR cluster that was assigned to both ITRs (in Step 5)
-**ISfinder_name** | The name given in the ISfinder database if found in this database (by the specified e-value threshold - see Optional arguments) and at least 99% identity and alignment threshold
-**ISfinder_origin** | The species origin of the IS if found and species listed in the ISfinder database
-**predicted_IS_family** | The IS family predicted from the ISfinder database if the IS is found in this database (by the specified e-value threshold - see Optional arguments) but under a 99% identity and alignment threshold
 **COBS_index_biosample_id** | The NCBI Biosample ID of a sequenced sample in the COBS index
 **COBS_index_origin** | The taxonomy of the sequenced sample in the COBS index
