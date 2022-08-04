@@ -1,4 +1,4 @@
-IS_name	sample_id	contig	itr1_start_position	itr1_end_position	itr2_start_position	itr2_end_position	itr_cluster	ISfinder_name	ISfinder_origin	predicted_IS_family	COBS_index_biosample_id	COBS_index_origin
-IS_cluster_5_length_599	test	NODE_8989_length_2621_cov_163.784	186	222	747	784	5			IS5;IS110		
-IS_cluster_6_length_578	test	NODE_8989_length_2621_cov_163.784	200	228	741	777	6			IS5;IS110		
-IS_cluster_2_length_890	test	NODE_8989_length_2621_cov_163.784	628	667	1485	1517	2			IS5;IS110		
+IS_name	sample_id	contig	itr1_start_position	itr1_end_position	itr2_start_position	itr2_end_position	itr_cluster	COBS_index_biosample_id	COBS_index_origin
+IS_cluster_5_length_599	test	NODE_8989_length_2621_cov_163.784	186	222	747	784	5		
+IS_cluster_6_length_578	test	NODE_8989_length_2621_cov_163.784	200	228	741	777	6		
+IS_cluster_2_length_890	test	NODE_8989_length_2621_cov_163.784	628	667	1485	1517	2		
