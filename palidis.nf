@@ -20,6 +20,7 @@ include { clusterReads } from './modules/clusterReads.nf'
 include { getITRs } from './modules/getITRs.nf'
 include { searchCOBSIndex } from './modules/searchCOBSIndex.nf'
 include { getISInfoWithCOBS; getISInfoWithoutCOBS } from './modules/getISInfo.nf'
+include {installInterproscan} from './modules/installInterproscan.nf'
 
 workflow palidis {
     take:
@@ -140,6 +141,7 @@ workflow {
     .set { contig_file_ch }
 
     palidis(read_pair_ch, contig_file_ch)
+    installInterproscan()
 
     // Publish IS fasta sequences
     palidis.out.is_fasta_ch
