@@ -28,6 +28,7 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
         r-base \
         openjdk-11-jre \
       && ln -s /usr/bin/python3 /usr/bin/python \
+      && pip3 install Bio bs4 ffq \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
