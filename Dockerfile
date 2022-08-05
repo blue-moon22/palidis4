@@ -26,9 +26,12 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
         libssl-dev \
         libncurses5-dev \
         r-base \
+        openjdk-11-jre \
       && ln -s /usr/bin/python3 /usr/bin/python \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV CLASSPATH=/usr/lib/jvm/java-11-openjdk-amd64/bin
 
 # Install pal-MEM
 FROM builder AS build1
