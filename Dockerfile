@@ -25,8 +25,11 @@ RUN apt-get update -y -qq && apt-get install -y -qq \
         libcurl4-gnutls-dev \
         libssl-dev \
         libncurses5-dev \
+        libpcre3 \
+        libpcre3-dev \
         r-base \
         openjdk-11-jre \
+        gfortran \
       && ln -s /usr/bin/python3 /usr/bin/python \
       && pip3 install Bio bs4 ffq \
       && apt-get clean \
@@ -88,8 +91,11 @@ RUN wget -q https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST_VERSIO
  && rm ncbi-blast-${BLAST_VERSION}+-x64-linux.tar.gz
 
 FROM builder
-COPY --from=build1 /opt/pal-mem /bin
-COPY --from=build2 /opt/cd-hit-est /bin
-COPY --from=build3 /opt/bowtie* /bin
-COPY --from=build4 /opt/samtools /bin
-COPY --from=build5 /opt/blastn /bin
+COPY --from=build1 /opt/pal-mem /usr/local/bin
+COPY --from=build2 /opt/cd-hit-est /usr/local/bin
+COPY --from=build3 /opt/bowtie* /usr/local/bin
+COPY --from=build4 /opt/samtools /usr/local/bin
+COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/bin/pf* /usr/local/bin
+COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/bin/pf* /usr/local/bin
+COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/lib/* /usr/local/lib
+COPY --from=quay.io/biocontainers/prodigal:2.6.3--h516909a_2 /usr/local/bin/prodigal /usr/local/bin
