@@ -63,7 +63,7 @@ class TestAssignITRs(unittest.TestCase):
         os.remove(tab_name)
         self.assertEqual(actual, """IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\nIS_cluster_0_length_1021\ttest\tNODE_823_length_1805_cov_1014.02\t246\t271\t1242\t1266\t0\n""")
 
-        fasta_name = self.TEST_OUTPUT_PREFIX + '_insertion_sequences.fasta'
+        fasta_name = self.TEST_OUTPUT_PREFIX + '_candidate_insertion_sequences.fasta'
         fasta = open(fasta_name, "r")
         actual = "".join(fasta.readlines())
         os.remove(fasta_name)

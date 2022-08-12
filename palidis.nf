@@ -84,7 +84,6 @@ workflow palidis {
     .set { into_get_itr_ch }
 
     getITRs(into_get_itr_ch)
-    is_fasta_ch = getITRs.out.is_fasta_ch
 
     runProdigal(getITRs.out.is_fasta_for_prodigal_ch)
     installInterproscan()
@@ -110,18 +109,22 @@ workflow palidis {
         getITRs.out.is_tab_ch
         .join(cobs_out_ch)
         .join(runInterproscan.out)
+        .join(getITRs.out.is_candidate_fasta_ch)
         .set { is_annot_ch }
 
         getISInfoWithCOBS(is_annot_ch)
-        is_info_ch = getISInfoWithCOBS.out
+        is_info_ch = getISInfoWithCOBS.out.txt
+        is_fasta_ch = getISInfoWithCOBS.out.fasta
 
     } else {
         getITRs.out.is_tab_ch
         .join(runInterproscan.out)
+        .join(getITRs.out.is_candidate_fasta_ch)
         .set { is_annot_ch }
 
         getISInfoWithoutCOBS(is_annot_ch)
-        is_info_ch = getISInfoWithoutCOBS.out
+        is_info_ch = getISInfoWithoutCOBS.out.txt
+        is_fasta_ch = getISInfoWithoutCOBS.out.fasta
     }
 
     emit:
