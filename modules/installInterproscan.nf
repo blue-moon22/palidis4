@@ -20,6 +20,7 @@ process installInterproscan {
     wget ${interproscan_link}.md5
     md5sum -c ${tarball}.md5
     tar -pxvzf ${tarball}
+    rm ${tarball}
     cd ${interproscan_db}
 
     # Edit interproscan.properties file
