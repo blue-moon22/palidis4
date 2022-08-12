@@ -258,7 +258,7 @@ def write_itr_annotations(clusters_positions, assemblies_dict, MIN_IS_LEN, MAX_I
                 out.write('IS_cluster_' + items[5] + '_length_' + str((int(items[4])+1) - int(items[1])) + '\t' + sample_id + '\t' + positions)
 
     # IS sequences
-    with open(output_prefix + '_insertion_sequences.fasta', 'w') as fasta:
+    with open(output_prefix + '_candidate_insertion_sequences.fasta', 'w') as fasta:
         for elem in output:
             for positions in elem:
                 items = positions.replace('\n', '').split('\t')

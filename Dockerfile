@@ -95,6 +95,7 @@ COPY --from=build1 /opt/pal-mem /usr/local/bin
 COPY --from=build2 /opt/cd-hit-est /usr/local/bin
 COPY --from=build3 /opt/bowtie* /usr/local/bin
 COPY --from=build4 /opt/samtools /usr/local/bin
+COPY --from=build5 /opt/blastn /usr/local/bin
 COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/bin/pf* /usr/local/bin
 COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/bin/pf* /usr/local/bin
 COPY --from=quay.io/biocontainers/pftools:3.2.11--pl5321r41h4b1256a_2 /usr/local/lib/* /usr/local/lib

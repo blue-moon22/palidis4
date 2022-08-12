@@ -1,0 +1,941 @@
+IS_cluster_413948_length_2628_2	3338790532785585fc495485b7e6eb4a	191	Coils	Coil	Coil	22	42	-	T	10-08-2022	-	-
+IS_cluster_413948_length_2628_2	3338790532785585fc495485b7e6eb4a	191	Pfam	PF16259	Domain of unknown function (DUF4913)	94	160	1.1E-6	T	10-08-2022	IPR032584	Protein of unknown function DUF4913
+IS_cluster_396776_length_2865_2	3338790532785585fc495485b7e6eb4a	191	Coils	Coil	Coil	22	42	-	T	10-08-2022	-	-
+IS_cluster_396776_length_2865_2	3338790532785585fc495485b7e6eb4a	191	Pfam	PF16259	Domain of unknown function (DUF4913)	94	160	1.1E-6	T	10-08-2022	IPR032584	Protein of unknown function DUF4913
+IS_cluster_211566_length_2394_2	3338790532785585fc495485b7e6eb4a	191	Coils	Coil	Coil	22	42	-	T	10-08-2022	-	-
+IS_cluster_211566_length_2394_2	3338790532785585fc495485b7e6eb4a	191	Pfam	PF16259	Domain of unknown function (DUF4913)	94	160	1.1E-6	T	10-08-2022	IPR032584	Protein of unknown function DUF4913
+IS_cluster_134155_length_1288_2	ef2edc99e4e7c80ff57ed84f1d5a1257	79	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	77	3.2E-11	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_134155_length_1288_2	ef2edc99e4e7c80ff57ed84f1d5a1257	79	Pfam	PF01420	Type I restriction modification DNA specificity domain	6	60	6.0E-8	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_134155_length_1288_2	ef2edc99e4e7c80ff57ed84f1d5a1257	79	SUPERFAMILY	SSF116734	DNA methylase specificity domain	2	62	9.65E-10	T	10-08-2022	-	-
+IS_cluster_140312_length_2184_1	c9c7417e4d719a060b8ecf74c73790b4	658	Gene3D	G3DSA:1.25.40.10	Tetratricopeptide repeat domain	8	260	7.1E-7	T	10-08-2022	IPR011990	Tetratricopeptide-like helical domain superfamily
+IS_cluster_140312_length_2184_1	c9c7417e4d719a060b8ecf74c73790b4	658	SUPERFAMILY	SSF48452	TPR-like	6	136	3.3E-5	T	10-08-2022	IPR011990	Tetratricopeptide-like helical domain superfamily
+IS_cluster_19605_length_2175_1	c9c7417e4d719a060b8ecf74c73790b4	658	Gene3D	G3DSA:1.25.40.10	Tetratricopeptide repeat domain	8	260	7.1E-7	T	10-08-2022	IPR011990	Tetratricopeptide-like helical domain superfamily
+IS_cluster_19605_length_2175_1	c9c7417e4d719a060b8ecf74c73790b4	658	SUPERFAMILY	SSF48452	TPR-like	6	136	3.3E-5	T	10-08-2022	IPR011990	Tetratricopeptide-like helical domain superfamily
+IS_cluster_32477_length_2531_1	74cfca50dc0fc12ce2246330392f08cd	261	PANTHER	PTHR43027	DOXORUBICIN RESISTANCE ABC TRANSPORTER PERMEASE PROTEIN DRRC-RELATED	56	217	5.3E-14	T	10-08-2022	-	-
+IS_cluster_32477_length_2531_1	74cfca50dc0fc12ce2246330392f08cd	261	Pfam	PF01061	ABC-2 type transporter	9	209	5.0E-17	T	10-08-2022	IPR013525	ABC-2 type transporter
+IS_cluster_32477_length_2531_1	74cfca50dc0fc12ce2246330392f08cd	261	PANTHER	PTHR43027:SF2	TRANSPORT PERMEASE PROTEIN	56	217	5.3E-14	T	10-08-2022	-	-
+IS_cluster_17448_length_1504_1	fbc0ee391ec28ec8c9eac9a7a980c9aa	297	Pfam	PF01610	Transposase	166	232	1.6E-6	T	10-08-2022	IPR002560	Transposase IS204/IS1001/IS1096/IS1165, DDE domain
+IS_cluster_17448_length_1504_1	fbc0ee391ec28ec8c9eac9a7a980c9aa	297	MobiDBLite	mobidb-lite	consensus disorder prediction	261	286	-	T	10-08-2022	-	-
+IS_cluster_17448_length_1504_1	fbc0ee391ec28ec8c9eac9a7a980c9aa	297	MobiDBLite	mobidb-lite	consensus disorder prediction	241	297	-	T	10-08-2022	-	-
+IS_cluster_2614_length_1455_3	4e260ba04a867c450d7aefb4c1e279d8	198	PANTHER	PTHR30408	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	18	196	1.3E-22	T	10-08-2022	-	-
+IS_cluster_2614_length_1455_3	4e260ba04a867c450d7aefb4c1e279d8	198	SUPERFAMILY	SSF116734	DNA methylase specificity domain	18	196	5.72E-26	T	10-08-2022	-	-
+IS_cluster_2614_length_1455_3	4e260ba04a867c450d7aefb4c1e279d8	198	Pfam	PF01420	Type I restriction modification DNA specificity domain	18	196	7.6E-9	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_2614_length_1455_3	4e260ba04a867c450d7aefb4c1e279d8	198	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	10	198	1.8E-28	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_2614_length_1455_3	4e260ba04a867c450d7aefb4c1e279d8	198	PANTHER	PTHR30408:SF12	TYPE-1 RESTRICTION ENZYME HINDVIIP SPECIFICITY PROTEIN-RELATED	18	196	1.3E-22	T	10-08-2022	-	-
+IS_cluster_317965_length_1699_2	cd95eff349f4d4bb56cd6b79b36420ab	268	Pfam	PF12950	TaqI-like C-terminal specificity domain	77	232	2.2E-13	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	Hamap	MF_00388	UDP-3-O-acyl-N-acetylglucosamine deacetylase [lpxC].	1	281	47.17749	T	10-08-2022	IPR004463	UDP-3-O-acyl N-acetylglucosamine deacetylase
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	TIGRFAM	TIGR00325	lpxC: UDP-3-O-[3-hydroxymyristoyl] N-acetylglucosamine deacetylase	1	299	4.4E-111	T	10-08-2022	IPR004463	UDP-3-O-acyl N-acetylglucosamine deacetylase
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	SUPERFAMILY	SSF54211	Ribosomal protein S5 domain 2-like	1	126	6.68E-39	T	10-08-2022	IPR020568	Ribosomal protein S5 domain 2-type fold
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	Gene3D	G3DSA:3.30.1700.10	lpxc deacetylase, domain 2	130	304	1.6E-68	T	10-08-2022	IPR011334	UDP-3-O-acyl N-acetylglucosamine deacetylase, C-terminal
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	Gene3D	G3DSA:3.30.230.20	lpxc deacetylase, domain 1	1	129	5.8E-45	T	10-08-2022	IPR015870	UDP-3-O-acyl N-acetylglucosamine deacetylase, N-terminal
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	PANTHER	PTHR33694	UDP-3-O-ACYL-N-ACETYLGLUCOSAMINE DEACETYLASE 1, MITOCHONDRIAL-RELATED	2	287	1.2E-80	T	10-08-2022	IPR004463	UDP-3-O-acyl N-acetylglucosamine deacetylase
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	Pfam	PF03331	UDP-3-O-acyl N-acetylglycosamine deacetylase	3	277	8.8E-104	T	10-08-2022	IPR004463	UDP-3-O-acyl N-acetylglucosamine deacetylase
+IS_cluster_24203_length_2612_1	06c7b87940c865af09693fbe5fa806ee	305	SUPERFAMILY	SSF54211	Ribosomal protein S5 domain 2-like	135	279	6.52E-52	T	10-08-2022	IPR020568	Ribosomal protein S5 domain 2-type fold
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	Pfam	PF00665	Integrase core domain	117	220	8.2E-14	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	MobiDBLite	mobidb-lite	consensus disorder prediction	286	314	-	T	10-08-2022	-	-
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	MobiDBLite	mobidb-lite	consensus disorder prediction	384	405	-	T	10-08-2022	-	-
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	Gene3D	G3DSA:3.30.420.10	-	116	277	2.2E-26	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	115	283	25.642591	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	PANTHER	PTHR35004	TRANSPOSASE RV3428C-RELATED	7	371	3.6E-16	T	10-08-2022	-	-
+IS_cluster_134947_length_1460_1	20fcdf2667bf44a5cb4d712020f635e5	405	SUPERFAMILY	SSF53098	Ribonuclease H-like	112	277	3.41E-26	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	CDD	cd00430	PLPDE_III_AR	6	367	5.66019E-146	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	66	84	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	205	232	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	29	45	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	298	315	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	127	139	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	259	274	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PRINTS	PR00992	Alanine racemase signature	349	362	3.9E-43	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	SUPERFAMILY	SSF51419	PLP-binding barrel	10	242	1.74E-54	T	10-08-2022	IPR029066	PLP-binding barrel
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	Gene3D	G3DSA:2.40.37.10	Lyase, Ornithine Decarboxylase; Chain A, domain 1	8	366	4.4E-106	T	10-08-2022	IPR009006	Alanine racemase/group IV decarboxylase, C-terminal
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PANTHER	PTHR30511	ALANINE RACEMASE	1	367	2.6E-100	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	SMART	SM01005	Ala_racemase_C_2	243	367	3.1E-53	T	10-08-2022	IPR011079	Alanine racemase, C-terminal
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	PANTHER	PTHR30511:SF0	ALANINE RACEMASE, CATABOLIC-RELATED	1	367	2.6E-100	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	Pfam	PF00842	Alanine racemase, C-terminal domain	244	365	4.8E-38	T	10-08-2022	IPR011079	Alanine racemase, C-terminal
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	Gene3D	G3DSA:3.20.20.10	Alanine racemase	12	227	4.4E-106	T	10-08-2022	IPR029066	PLP-binding barrel
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	Pfam	PF01168	Alanine racemase, N-terminal domain	10	230	9.8E-56	T	10-08-2022	IPR001608	Alanine racemase, N-terminal
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	TIGRFAM	TIGR00492	alr: alanine racemase	5	367	5.1E-90	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	SUPERFAMILY	SSF50621	Alanine racemase C-terminal domain-like	237	367	7.32E-42	T	10-08-2022	IPR009006	Alanine racemase/group IV decarboxylase, C-terminal
+IS_cluster_7999_length_2079_3	934e673d5b545ba6bdbe49883b520957	368	Hamap	MF_01201	Alanine racemase.	5	366	43.489475	T	10-08-2022	IPR000821	Alanine racemase
+IS_cluster_211566_length_2394_4	c0333ed8c09b7dee515e44324c8e8dd5	58	MobiDBLite	mobidb-lite	consensus disorder prediction	1	20	-	T	10-08-2022	-	-
+IS_cluster_6205_length_1065_2	8666cbebc4978bfe61be5bb97aee519e	166	SUPERFAMILY	SSF116734	DNA methylase specificity domain	9	165	1.16E-24	T	10-08-2022	-	-
+IS_cluster_6205_length_1065_2	8666cbebc4978bfe61be5bb97aee519e	166	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	9	165	1.4E-21	T	10-08-2022	-	-
+IS_cluster_6205_length_1065_2	8666cbebc4978bfe61be5bb97aee519e	166	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	2	166	5.7E-22	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_6205_length_1065_2	8666cbebc4978bfe61be5bb97aee519e	166	Pfam	PF01420	Type I restriction modification DNA specificity domain	27	165	1.1E-12	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	Pfam	PF07690	Major Facilitator Superfamily	40	374	3.4E-38	T	10-08-2022	IPR011701	Major facilitator superfamily
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	SUPERFAMILY	SSF103473	MFS general substrate transporter	33	408	1.24E-54	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	PANTHER	PTHR23535	SUGAR EFFLUX TRANSPORTER A-RELATED	32	410	4.8E-134	T	10-08-2022	-	-
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	CDD	cd17471	MFS_Set	39	406	3.97636E-129	T	10-08-2022	-	-
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	ProSiteProfiles	PS50850	Major facilitator superfamily (MFS) profile.	35	411	16.86466	T	10-08-2022	IPR020846	Major facilitator superfamily domain
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	Gene3D	G3DSA:1.20.1250.20	MFS general substrate transporter like domains	33	220	1.2E-22	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	Gene3D	G3DSA:1.20.1250.20	MFS general substrate transporter like domains	232	410	6.6E-20	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_10977_length_1277_1	ac5e628bfaeb5b9957912563883da875	411	PANTHER	PTHR23535:SF2	SUGAR EFFLUX TRANSPORTER A-RELATED	32	410	4.8E-134	T	10-08-2022	IPR004750	Sugar efflux
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	ProSitePatterns	PS00092	N-6 Adenine-specific DNA methylases signature.	158	164	-	T	10-08-2022	IPR002052	DNA methylase, N-6 adenine-specific, conserved site
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	SUPERFAMILY	SSF53335	S-adenosyl-L-methionine-dependent methyltransferases	68	233	9.92E-18	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	Gene3D	G3DSA:3.40.50.150	Vaccinia Virus protein VP39	83	238	1.3E-16	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	CDD	cd02440	AdoMet_MTases	105	172	0.00140045	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	Pfam	PF05175	Methyltransferase small domain	121	174	1.1E-6	T	10-08-2022	IPR007848	Methyltransferase small domain
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	PRINTS	PR00507	N12 class N6 adenine-specific DNA methyltransferase signature	80	96	8.8E-5	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	PRINTS	PR00507	N12 class N6 adenine-specific DNA methyltransferase signature	104	118	8.8E-5	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_1	f9b9cc0120a457f2143def00aa2c21d2	238	PRINTS	PR00507	N12 class N6 adenine-specific DNA methyltransferase signature	155	167	8.8E-5	T	10-08-2022	-	-
+IS_cluster_129461_length_2009_1	7a355bac975276b9eaa5b9503481fd56	297	Pfam	PF00665	Integrase core domain	153	232	6.0E-8	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_129461_length_2009_1	7a355bac975276b9eaa5b9503481fd56	297	PANTHER	PTHR10948	TRANSPOSASE	2	291	1.3E-67	T	10-08-2022	-	-
+IS_cluster_129461_length_2009_1	7a355bac975276b9eaa5b9503481fd56	297	SUPERFAMILY	SSF53098	Ribonuclease H-like	145	289	8.35E-27	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_129461_length_2009_1	7a355bac975276b9eaa5b9503481fd56	297	Gene3D	G3DSA:3.30.420.10	-	139	295	5.3E-21	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_129461_length_2009_1	7a355bac975276b9eaa5b9503481fd56	297	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	132	292	17.089647	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_24203_length_2737_5	71ae4927a9473dcea0a30f11a4869538	81	Coils	Coil	Coil	50	70	-	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_1	19d8bc801d95f7005190c3e0f831c6da	175	CDD	cd17252	RMtype1_S_EcoKI-TRD1-CR1_like	2	175	7.46889E-63	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_1	19d8bc801d95f7005190c3e0f831c6da	175	SUPERFAMILY	SSF116734	DNA methylase specificity domain	2	174	1.5E-29	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_1	19d8bc801d95f7005190c3e0f831c6da	175	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	1	170	9.0E-25	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_1	19d8bc801d95f7005190c3e0f831c6da	175	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	175	1.1E-31	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_391294_length_2132_1	19d8bc801d95f7005190c3e0f831c6da	175	Pfam	PF01420	Type I restriction modification DNA specificity domain	4	175	2.4E-14	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF53098	Ribonuclease H-like	360	519	1.78E-27	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF13333	Integrase core domain	468	522	6.5E-9	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	PANTHER	PTHR46889	TRANSPOSASE INSF FOR INSERTION SEQUENCE IS3B-RELATED	241	522	5.7E-38	T	10-08-2022	-	-
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	Coils	Coil	Coil	185	205	-	T	10-08-2022	-	-
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF13276	HTH-like domain	276	333	4.5E-12	T	10-08-2022	IPR025948	HTH-like domain
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	Gene3D	G3DSA:3.30.420.10	-	361	521	5.3E-12	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF48295	TrpR-like	112	160	2.51E-6	T	10-08-2022	IPR010921	Trp repressor/replication initiator
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF48295	TrpR-like	35	106	2.88E-9	T	10-08-2022	IPR010921	Trp repressor/replication initiator
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF00665	Integrase core domain	363	460	5.4E-16	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2010_1	f143003b374fa611eaf892c709c1b4ea	528	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	361	525	14.153082	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF53098	Ribonuclease H-like	360	519	1.78E-27	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF13333	Integrase core domain	468	522	6.5E-9	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	PANTHER	PTHR46889	TRANSPOSASE INSF FOR INSERTION SEQUENCE IS3B-RELATED	241	522	5.7E-38	T	10-08-2022	-	-
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	Coils	Coil	Coil	185	205	-	T	10-08-2022	-	-
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF13276	HTH-like domain	276	333	4.5E-12	T	10-08-2022	IPR025948	HTH-like domain
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	Gene3D	G3DSA:3.30.420.10	-	361	521	5.3E-12	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF48295	TrpR-like	112	160	2.51E-6	T	10-08-2022	IPR010921	Trp repressor/replication initiator
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	SUPERFAMILY	SSF48295	TrpR-like	35	106	2.88E-9	T	10-08-2022	IPR010921	Trp repressor/replication initiator
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	Pfam	PF00665	Integrase core domain	363	460	5.4E-16	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2012_2	f143003b374fa611eaf892c709c1b4ea	528	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	361	525	14.153082	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_519963_length_1376_2	4f0a85bbcaf566c538d8f17904914c46	202	Pfam	PF12950	TaqI-like C-terminal specificity domain	41	146	6.5E-10	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	142	302	17.089647	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	PANTHER	PTHR10948	TRANSPOSASE	1	301	5.1E-70	T	10-08-2022	-	-
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	SUPERFAMILY	SSF53098	Ribonuclease H-like	155	299	9.1E-27	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	Pfam	PF00665	Integrase core domain	163	242	6.4E-8	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	Gene3D	G3DSA:3.30.420.10	-	149	305	5.8E-21	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	Pfam	PF13936	Helix-turn-helix domain	1	32	5.2E-8	T	10-08-2022	IPR025246	Transposase IS30-like HTH domain
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	Gene3D	G3DSA:1.10.260.40	-	3	53	2.7E-5	T	10-08-2022	IPR010982	Lambda repressor-like, DNA-binding domain superfamily
+IS_cluster_478932_length_2067_1	a1c03c8f3a1bec31ed5da3f045bbc4e6	307	ProSiteProfiles	PS50943	Cro/C1-type HTH domain profile.	1	27	9.661171	T	10-08-2022	IPR001387	Cro/C1-type helix-turn-helix domain
+IS_cluster_562609_length_2857_2	2255f3363e697e6a23b3634d9bc422fd	195	PANTHER	PTHR36449	ACETYLTRANSFERASE-RELATED	4	167	1.1E-21	T	10-08-2022	-	-
+IS_cluster_562609_length_2857_2	2255f3363e697e6a23b3634d9bc422fd	195	Gene3D	G3DSA:3.40.630.30	-	2	171	8.8E-27	T	10-08-2022	-	-
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	PANTHER	PTHR11360	MONOCARBOXYLATE TRANSPORTER	18	444	2.0E-104	T	10-08-2022	-	-
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	PANTHER	PTHR11360:SF3	OXALATE/FORMATE ANTIPORTER	18	444	2.0E-104	T	10-08-2022	-	-
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	ProSiteProfiles	PS50850	Major facilitator superfamily (MFS) profile.	1	447	12.483432	T	10-08-2022	IPR020846	Major facilitator superfamily domain
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	CDD	cd17353	MFS_OFA_like	16	442	3.46839E-112	T	10-08-2022	-	-
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	Pfam	PF07690	Major Facilitator Superfamily	44	400	6.3E-30	T	10-08-2022	IPR011701	Major facilitator superfamily
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	SUPERFAMILY	SSF103473	MFS general substrate transporter	13	451	5.23E-49	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	Gene3D	G3DSA:1.20.1250.20	MFS general substrate transporter like domains	15	216	3.6E-14	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_24203_length_1795_1	d4608514d510675f960a6cc1a344280c	513	Gene3D	G3DSA:1.20.1250.20	MFS general substrate transporter like domains	241	455	4.3E-13	T	10-08-2022	IPR036259	MFS transporter superfamily
+IS_cluster_441082_length_1363_1	e89a6e54a7a4229396c1d0eb66bf7e46	185	Pfam	PF19843	Family of unknown function (DUF6318)	11	171	1.4E-31	T	10-08-2022	IPR046281	Domain of unknown function DUF6318
+IS_cluster_441082_length_1363_1	e89a6e54a7a4229396c1d0eb66bf7e46	185	MobiDBLite	mobidb-lite	consensus disorder prediction	1	36	-	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	CDD	cd01678	PFL1	11	757	0.0	T	10-08-2022	IPR005949	Formate acetyltransferase
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	TIGRFAM	TIGR01255	pyr_form_ly_1: formate acetyltransferase	11	761	0.0	T	10-08-2022	IPR005949	Formate acetyltransferase
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	Pfam	PF01228	Glycine radical	630	742	4.9E-42	T	10-08-2022	IPR001150	Glycine radical domain
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	Coils	Coil	Coil	761	761	-	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	Pfam	PF02901	Pyruvate formate lyase-like	26	614	1.8E-212	T	10-08-2022	IPR004184	Pyruvate formate lyase domain
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	SUPERFAMILY	SSF51998	PFL-like glycyl radical enzymes	10	760	1.59E-292	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	ProSitePatterns	PS00850	Glycine radical domain signature.	731	739	-	T	10-08-2022	IPR019777	Formate C-acetyltransferase glycine radical, conserved site
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	PANTHER	PTHR30191	FORMATE ACETYLTRANSFERASE	10	761	0.0	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	PIRSF	PIRSF000379	For_Ac_trans_1	8	761	0.0	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	ProSiteProfiles	PS51149	Glycine radical domain profile.	632	761	37.748997	T	10-08-2022	IPR001150	Glycine radical domain
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	ProSiteProfiles	PS51554	Pyruvate formate-lyase domain profile.	1	625	142.948471	T	10-08-2022	IPR004184	Pyruvate formate lyase domain
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	Gene3D	G3DSA:3.20.70.20	-	3	761	0.0	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	PANTHER	PTHR30191:SF7	PFL-LIKE ENZYME TDCE	10	761	0.0	T	10-08-2022	-	-
+IS_cluster_24203_length_2665_1	fb2cff01d9e09cf785717b6594388390	761	Coils	Coil	Coil	214	234	-	T	10-08-2022	-	-
+IS_cluster_495900_length_2572_3	6ec416eeafb4dc5516555799eac42dba	134	Pfam	PF02368	Bacterial Ig-like domain (group 2)	28	105	4.7E-19	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_495900_length_2572_3	6ec416eeafb4dc5516555799eac42dba	134	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	22	6.0	T	10-08-2022	-	-
+IS_cluster_495900_length_2572_3	6ec416eeafb4dc5516555799eac42dba	134	SMART	SM00635	bid_2	27	104	1.6E-17	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_495900_length_2572_3	6ec416eeafb4dc5516555799eac42dba	134	Gene3D	G3DSA:2.60.40.1080	-	26	108	5.4E-25	T	10-08-2022	-	-
+IS_cluster_495900_length_2572_3	6ec416eeafb4dc5516555799eac42dba	134	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	26	107	2.86E-19	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_497871_length_2041_2	6ec416eeafb4dc5516555799eac42dba	134	Pfam	PF02368	Bacterial Ig-like domain (group 2)	28	105	4.7E-19	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_497871_length_2041_2	6ec416eeafb4dc5516555799eac42dba	134	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	22	6.0	T	10-08-2022	-	-
+IS_cluster_497871_length_2041_2	6ec416eeafb4dc5516555799eac42dba	134	SMART	SM00635	bid_2	27	104	1.6E-17	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_497871_length_2041_2	6ec416eeafb4dc5516555799eac42dba	134	Gene3D	G3DSA:2.60.40.1080	-	26	108	5.4E-25	T	10-08-2022	-	-
+IS_cluster_497871_length_2041_2	6ec416eeafb4dc5516555799eac42dba	134	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	26	107	2.86E-19	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_25682_length_1976_1	28c6018ed0bfaf4b8a885395123894dc	528	Pfam	PF02554	Carbon starvation protein CstA	4	144	4.3E-31	T	10-08-2022	IPR003706	CstA, N-terminal domain
+IS_cluster_25682_length_1976_1	28c6018ed0bfaf4b8a885395123894dc	528	Pfam	PF02554	Carbon starvation protein CstA	190	333	6.5E-16	T	10-08-2022	IPR003706	CstA, N-terminal domain
+IS_cluster_25682_length_1976_1	28c6018ed0bfaf4b8a885395123894dc	528	PANTHER	PTHR30252:SF4	CARBON STARVATION-RELATED	1	516	1.9E-225	T	10-08-2022	-	-
+IS_cluster_25682_length_1976_1	28c6018ed0bfaf4b8a885395123894dc	528	Pfam	PF13722	5TM C-terminal transporter carbon starvation CstA	374	479	5.1E-18	T	10-08-2022	IPR025299	CstA, C-terminal domain
+IS_cluster_25682_length_1976_1	28c6018ed0bfaf4b8a885395123894dc	528	PANTHER	PTHR30252	INNER MEMBRANE PEPTIDE TRANSPORTER	1	516	1.9E-225	T	10-08-2022	-	-
+IS_cluster_486729_length_1777_1	57e07c482e82e2e120a854973372d524	258	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	93	253	17.089647	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_486729_length_1777_1	57e07c482e82e2e120a854973372d524	258	Pfam	PF00665	Integrase core domain	114	193	4.5E-8	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_486729_length_1777_1	57e07c482e82e2e120a854973372d524	258	Gene3D	G3DSA:3.30.420.10	-	100	256	3.6E-21	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_486729_length_1777_1	57e07c482e82e2e120a854973372d524	258	PANTHER	PTHR10948	TRANSPOSASE	3	252	2.4E-59	T	10-08-2022	-	-
+IS_cluster_486729_length_1777_1	57e07c482e82e2e120a854973372d524	258	SUPERFAMILY	SSF53098	Ribonuclease H-like	106	250	4.81E-27	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	Pfam	PF00665	Integrase core domain	139	263	2.9E-19	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	SUPERFAMILY	SSF53098	Ribonuclease H-like	138	321	1.39E-31	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	PANTHER	PTHR42648	TRANSPOSASE, PUTATIVE-RELATED	29	324	2.0E-15	T	10-08-2022	-	-
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	SUPERFAMILY	SSF46689	Homeodomain-like	4	110	1.24E-11	T	10-08-2022	IPR009057	Homeobox-like domain superfamily
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	Gene3D	G3DSA:3.30.420.10	-	167	323	3.1E-29	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	Pfam	PF13011	leucine-zipper of insertion element IS481	2	81	3.6E-25	T	10-08-2022	IPR024967	DNA-binding domain, IS481-type
+IS_cluster_73940_length_1924_1	0530de8c2c4c4202efd4a99a77adcec8	325	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	151	325	20.860645	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_279267_length_805_2	296d248332d5601804c6c8613defd15f	173	Pfam	PF03400	IS1 transposase	44	164	8.8E-26	T	10-08-2022	IPR005063	Transposase, IS1
+IS_cluster_5027_length_2826_2	8fc924d7d1125e10af6aff0f13c97c67	254	SUPERFAMILY	SSF116734	DNA methylase specificity domain	31	193	1.44E-13	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_2	8fc924d7d1125e10af6aff0f13c97c67	254	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	24	190	3.8E-14	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_132520_length_1382_1	aedb454a2af5970bddb39a02edc1da45	384	MobiDBLite	mobidb-lite	consensus disorder prediction	363	384	-	T	10-08-2022	-	-
+IS_cluster_24203_length_810_1	8ae0d39e99695fcf9ce49cacc21045fa	226	Pfam	PF13386	Cytochrome C biogenesis protein transmembrane region	10	210	2.3E-51	T	10-08-2022	IPR039447	Urease accessory protein UreH-like, transmembrane domain
+IS_cluster_24203_length_810_1	8ae0d39e99695fcf9ce49cacc21045fa	226	PANTHER	PTHR42208	HEAVY METAL TRANSPORTER-RELATED	2	218	6.0E-67	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_1	1fb9fc9c0bb9b9f823cafdd4d4905c69	179	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	179	1.8E-35	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_9311_length_2154_1	1fb9fc9c0bb9b9f823cafdd4d4905c69	179	CDD	cd17252	RMtype1_S_EcoKI-TRD1-CR1_like	4	179	4.25013E-65	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_1	1fb9fc9c0bb9b9f823cafdd4d4905c69	179	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	1	174	2.1E-28	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_1	1fb9fc9c0bb9b9f823cafdd4d4905c69	179	Pfam	PF01420	Type I restriction modification DNA specificity domain	1	179	1.7E-16	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_9311_length_2154_1	1fb9fc9c0bb9b9f823cafdd4d4905c69	179	SUPERFAMILY	SSF116734	DNA methylase specificity domain	1	178	4.58E-33	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	PANTHER	PTHR42813:SF4	DEHYDROGENASE 1, PUTATIVE-RELATED	1	345	2.7E-143	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	Pfam	PF08240	Alcohol dehydrogenase GroES-like domain	26	131	2.0E-29	T	10-08-2022	IPR013154	Alcohol dehydrogenase, N-terminal
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	Pfam	PF13823	Alcohol dehydrogenase GroES-associated	1	23	1.5E-6	T	10-08-2022	IPR027399	Alcohol dehydrogenase GroES-associated
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	ProSitePatterns	PS00059	Zinc-containing alcohol dehydrogenases signature.	59	73	-	T	10-08-2022	IPR002328	Alcohol dehydrogenase, zinc-type, conserved site
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	SUPERFAMILY	SSF50129	GroES-like	1	155	5.82E-53	T	10-08-2022	IPR011032	GroES-like superfamily
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	SMART	SM00829	PKS_ER_names_mod	8	343	0.0023	T	10-08-2022	IPR020843	Polyketide synthase, enoylreductase domain
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	CDD	cd08286	FDH_like_ADH2	1	345	0.0	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	Gene3D	G3DSA:3.40.50.720	-	162	288	2.5E-92	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	SUPERFAMILY	SSF51735	NAD(P)-binding Rossmann-fold domains	138	306	1.69E-37	T	10-08-2022	IPR036291	NAD(P)-binding domain superfamily
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	Pfam	PF00107	Zinc-binding dehydrogenase	192	292	3.2E-22	T	10-08-2022	IPR013149	Alcohol dehydrogenase-like, C-terminal
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	PANTHER	PTHR42813	ZINC-TYPE ALCOHOL DEHYDROGENASE-LIKE	1	345	2.7E-143	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_1	f1fc923cadca975815973ba3f13d4731	346	Gene3D	G3DSA:3.90.180.10	-	23	329	2.5E-92	T	10-08-2022	-	-
+IS_cluster_74699_length_2246_2	7f58141faeecdb90921077c0cb982a78	246	SUPERFAMILY	SSF69593	Glycerol-3-phosphate (1)-acyltransferase	11	244	4.71E-35	T	10-08-2022	-	-
+IS_cluster_74699_length_2246_2	7f58141faeecdb90921077c0cb982a78	246	Pfam	PF01553	Acyltransferase	65	191	5.2E-21	T	10-08-2022	IPR002123	Phospholipid/glycerol acyltransferase
+IS_cluster_74699_length_2246_2	7f58141faeecdb90921077c0cb982a78	246	SMART	SM00563	plsc_2	79	194	4.9E-21	T	10-08-2022	IPR002123	Phospholipid/glycerol acyltransferase
+IS_cluster_74699_length_2246_2	7f58141faeecdb90921077c0cb982a78	246	PANTHER	PTHR10434	1-ACYL-SN-GLYCEROL-3-PHOSPHATE ACYLTRANSFERASE	14	244	1.8E-36	T	10-08-2022	-	-
+IS_cluster_74699_length_2246_2	7f58141faeecdb90921077c0cb982a78	246	CDD	cd07989	LPLAT_AGPAT-like	79	236	1.62586E-43	T	10-08-2022	-	-
+IS_cluster_518_length_808_1	6ed91633da489608a9e93aa8e1495aa3	150	Gene3D	G3DSA:2.60.40.1120	-	62	150	9.5E-8	T	10-08-2022	-	-
+IS_cluster_518_length_808_1	6ed91633da489608a9e93aa8e1495aa3	150	SUPERFAMILY	SSF49464	Carboxypeptidase regulatory domain-like	62	126	3.53E-7	T	10-08-2022	IPR008969	Carboxypeptidase-like, regulatory domain superfamily
+IS_cluster_518_length_808_1	6ed91633da489608a9e93aa8e1495aa3	150	Pfam	PF13620	Carboxypeptidase regulatory-like domain	62	137	2.0E-8	T	10-08-2022	-	-
+IS_cluster_331591_length_2577_2	513d6dc434b1dd9a7b965f0d43a83fea	141	Pfam	PF06114	IrrE N-terminal-like domain	27	111	2.3E-14	T	10-08-2022	IPR010359	IrrE N-terminal-like domain
+IS_cluster_331591_length_2577_2	513d6dc434b1dd9a7b965f0d43a83fea	141	Coils	Coil	Coil	96	116	-	T	10-08-2022	-	-
+IS_cluster_331591_length_2577_2	513d6dc434b1dd9a7b965f0d43a83fea	141	Gene3D	G3DSA:1.10.10.2910	-	2	111	3.8E-17	T	10-08-2022	-	-
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	Pfam	PF02600	Disulfide bond formation protein DsbB	5	156	9.7E-31	T	10-08-2022	IPR003752	Disulphide bond formation protein DsbB/BdbC
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	Gene3D	G3DSA:1.20.1550.10	-	2	163	5.0E-33	T	10-08-2022	IPR023380	DsbB-like superfamily
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	20	6.0	T	10-08-2022	-	-
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	PANTHER	PTHR36570	DISULFIDE BOND FORMATION PROTEIN B	5	160	1.6E-48	T	10-08-2022	-	-
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	PANTHER	PTHR36570:SF3	DISULFIDE BOND FORMATION PROTEIN B	5	160	1.6E-48	T	10-08-2022	-	-
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	Hamap	MF_00286	Disulfide bond formation protein B [dsbB].	2	163	17.925011	T	10-08-2022	IPR022920	Disulphide bond formation protein DsbB
+IS_cluster_24203_length_726_1	c69dbda14531755f3909d2969e7f4271	163	SUPERFAMILY	SSF158442	DsbB-like	8	157	2.75E-32	T	10-08-2022	IPR023380	DsbB-like superfamily
+IS_cluster_313892_length_2791_3	52efa1de0c05c99f7b3678e9f3039625	489	PANTHER	PTHR35004	TRANSPOSASE RV3428C-RELATED	12	414	8.1E-38	T	10-08-2022	-	-
+IS_cluster_313892_length_2791_3	52efa1de0c05c99f7b3678e9f3039625	489	Gene3D	G3DSA:3.30.420.10	-	152	296	1.6E-5	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_313892_length_2791_3	52efa1de0c05c99f7b3678e9f3039625	489	SUPERFAMILY	SSF53098	Ribonuclease H-like	132	280	9.1E-5	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_313892_length_2791_3	52efa1de0c05c99f7b3678e9f3039625	489	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	115	302	11.954671	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_313892_length_2791_3	52efa1de0c05c99f7b3678e9f3039625	489	SUPERFAMILY	SSF46689	Homeodomain-like	4	110	2.06E-7	T	10-08-2022	IPR009057	Homeobox-like domain superfamily
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	Gene3D	G3DSA:3.40.630.30	-	3	129	7.0E-23	T	10-08-2022	-	-
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	ProSiteProfiles	PS51186	Gcn5-related N-acetyltransferase (GNAT) domain profile.	5	131	13.551524	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	SUPERFAMILY	SSF55729	Acyl-CoA N-acyltransferases (Nat)	11	119	2.09E-16	T	10-08-2022	IPR016181	Acyl-CoA N-acyltransferase
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	Pfam	PF13673	Acetyltransferase (GNAT) domain	32	123	1.7E-12	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	PANTHER	PTHR43233	FAMILY N-ACETYLTRANSFERASE, PUTATIVE (AFU_ORTHOLOGUE AFUA_6G03350)-RELATED	32	124	4.5E-17	T	10-08-2022	-	-
+IS_cluster_445687_length_629_1	3fad29e28542b771b0c612a245dc69a3	131	CDD	cd04301	NAT_SF	44	95	5.4265E-7	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_1	bb5875ff3922f773e8a609f0d8b684fd	576	MobiDBLite	mobidb-lite	consensus disorder prediction	352	552	-	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_1	bb5875ff3922f773e8a609f0d8b684fd	576	MobiDBLite	mobidb-lite	consensus disorder prediction	348	576	-	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_1	bb5875ff3922f773e8a609f0d8b684fd	576	Pfam	PF04610	TrbL/VirB6 plasmid conjugal transfer protein	40	244	1.2E-9	T	10-08-2022	IPR007688	Plasmid  conjugal transfer TrbL/VirB6
+IS_cluster_5552_length_1558_2	9dd3e06eb1ea74f208057b5797d8d2e8	139	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	19	5.0	T	10-08-2022	-	-
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	1	78	5.0E-18	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	2	70	3.83E-17	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	1	68	15.896421	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	4	73	2.9E-12	T	10-08-2022	-	-
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	Pfam	PF00589	Phage integrase family	2	60	3.3E-14	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_562609_length_2857_1	07d48f5ca044d8d7e567d832c9b04744	79	CDD	cd00397	DNA_BRE_C	1	56	7.54176E-13	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Pfam	PF02880	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain III	260	369	4.5E-30	T	10-08-2022	IPR005846	Alpha-D-phosphohexomutase, alpha/beta/alpha domain III
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	PANTHER	PTHR42946	PHOSPHOHEXOSE MUTASE	2	445	5.7E-84	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Pfam	PF00408	Phosphoglucomutase/phosphomannomutase, C-terminal domain	376	443	1.6E-10	T	10-08-2022	IPR005843	Alpha-D-phosphohexomutase, C-terminal
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Gene3D	G3DSA:3.40.120.10	-	259	342	8.4E-63	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	SUPERFAMILY	SSF55957	Phosphoglucomutase, C-terminal domain	361	446	7.19E-21	T	10-08-2022	IPR036900	Alpha-D-phosphohexomutase, C-terminal domain superfamily
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Gene3D	G3DSA:3.40.120.10	-	1	153	5.7E-42	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	TIGRFAM	TIGR01455	glmM: phosphoglucosamine mutase	5	445	2.7E-175	T	10-08-2022	IPR006352	Phosphoglucosamine mutase, bacterial type
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	PRINTS	PR00509	Phosphoglucomutase/phosphomannomutase family signature	97	111	4.1E-13	T	10-08-2022	IPR005841	Alpha-D-phosphohexomutase superfamily
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	PRINTS	PR00509	Phosphoglucomutase/phosphomannomutase family signature	236	251	4.1E-13	T	10-08-2022	IPR005841	Alpha-D-phosphohexomutase superfamily
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	PRINTS	PR00509	Phosphoglucomutase/phosphomannomutase family signature	176	195	4.1E-13	T	10-08-2022	IPR005841	Alpha-D-phosphohexomutase superfamily
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	4	183	1.14E-46	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	160	258	3.26E-26	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Gene3D	G3DSA:3.40.120.10	-	177	365	8.4E-63	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Pfam	PF02879	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain II	161	256	2.1E-17	T	10-08-2022	IPR005845	Alpha-D-phosphohexomutase, alpha/beta/alpha domain II
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	CDD	cd05802	GlmM	4	441	0.0	T	10-08-2022	IPR006352	Phosphoglucosamine mutase, bacterial type
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	PANTHER	PTHR42946:SF1	PHOSPHOGLUCOSAMINE MUTASE FAMILY PROTEIN	2	445	5.7E-84	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Hamap	MF_01554_B	Phosphoglucosamine mutase [glmM].	1	447	43.752029	T	10-08-2022	IPR006352	Phosphoglucosamine mutase, bacterial type
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	ProSitePatterns	PS00710	Phosphoglucomutase and phosphomannomutase phosphoserine signature.	98	107	-	T	10-08-2022	IPR016066	Alpha-D-phosphohexomutase, conserved site
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Gene3D	G3DSA:3.30.310.50	-	373	447	1.8E-21	T	10-08-2022	-	-
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	260	366	2.9E-27	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_3688_length_2147_2	6756dee226af877c75846ed53fbb5359	447	Pfam	PF02878	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain I	3	137	1.2E-40	T	10-08-2022	IPR005844	Alpha-D-phosphohexomutase, alpha/beta/alpha domain I
+IS_cluster_185761_length_927_1	a7d99d583170352776a5c09a0bf2da78	187	Gene3D	G3DSA:3.30.70.1290	-	17	183	7.1E-31	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_185761_length_927_1	a7d99d583170352776a5c09a0bf2da78	187	SUPERFAMILY	SSF143422	Transposase IS200-like	18	178	6.67E-20	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_185761_length_927_1	a7d99d583170352776a5c09a0bf2da78	187	PANTHER	PTHR36966	REP-ASSOCIATED TYROSINE TRANSPOSASE	1	176	5.3E-30	T	10-08-2022	-	-
+IS_cluster_185761_length_927_1	a7d99d583170352776a5c09a0bf2da78	187	SMART	SM01321	Y1_Tnp_2	23	174	1.3E-18	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_185761_length_927_1	a7d99d583170352776a5c09a0bf2da78	187	Pfam	PF01797	Transposase IS200 like	28	171	2.1E-13	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_24203_length_2737_2	23e4548b681a4d74d85bbe8c47d1adc6	222	Pfam	PF02498	BRO family, N-terminal domain	15	102	6.5E-7	T	10-08-2022	IPR003497	BRO N-terminal domain
+IS_cluster_24203_length_2737_2	23e4548b681a4d74d85bbe8c47d1adc6	222	SMART	SM01040	Bro_N_2	12	104	4.1E-6	T	10-08-2022	IPR003497	BRO N-terminal domain
+IS_cluster_24203_length_2737_2	23e4548b681a4d74d85bbe8c47d1adc6	222	ProSiteProfiles	PS51750	Bro-N domain profile.	2	115	10.618058	T	10-08-2022	IPR003497	BRO N-terminal domain
+IS_cluster_97145_length_2542_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055:SF10	PUTATIVE TRANSPOSASE FOR IS117-RELATED	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_97145_length_2542_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF01548	Transposase	10	164	2.2E-37	T	10-08-2022	IPR002525	Transposase, IS111A/IS1328/IS1533, N-terminal
+IS_cluster_97145_length_2542_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF02371	Transposase IS116/IS110/IS902 family	272	355	2.5E-20	T	10-08-2022	IPR003346	Transposase, IS116/IS110/IS902
+IS_cluster_97145_length_2542_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055	TRANSPOSASE FOR INSERTION SEQUENCE ELEMENT IS1111A	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_62835_length_2625_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055:SF10	PUTATIVE TRANSPOSASE FOR IS117-RELATED	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_62835_length_2625_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF01548	Transposase	10	164	2.2E-37	T	10-08-2022	IPR002525	Transposase, IS111A/IS1328/IS1533, N-terminal
+IS_cluster_62835_length_2625_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF02371	Transposase IS116/IS110/IS902 family	272	355	2.5E-20	T	10-08-2022	IPR003346	Transposase, IS116/IS110/IS902
+IS_cluster_62835_length_2625_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055	TRANSPOSASE FOR INSERTION SEQUENCE ELEMENT IS1111A	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_53342_length_2785_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055:SF10	PUTATIVE TRANSPOSASE FOR IS117-RELATED	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_53342_length_2785_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF01548	Transposase	10	164	2.2E-37	T	10-08-2022	IPR002525	Transposase, IS111A/IS1328/IS1533, N-terminal
+IS_cluster_53342_length_2785_1	df59942934d24c4ce67afa063d149caa	401	Pfam	PF02371	Transposase IS116/IS110/IS902 family	272	355	2.5E-20	T	10-08-2022	IPR003346	Transposase, IS116/IS110/IS902
+IS_cluster_53342_length_2785_1	df59942934d24c4ce67afa063d149caa	401	PANTHER	PTHR33055	TRANSPOSASE FOR INSERTION SEQUENCE ELEMENT IS1111A	1	393	2.8E-72	T	10-08-2022	-	-
+IS_cluster_416380_length_1290_1	c21c9783d3d1d3c8110314be0667fd82	303	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	22	6.0	T	10-08-2022	-	-
+IS_cluster_416380_length_1290_1	c21c9783d3d1d3c8110314be0667fd82	303	Gene3D	G3DSA:2.180.10.10	-	45	301	5.3E-6	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_3	ad748e30e012898d2a962a75ea106755	183	SUPERFAMILY	SSF116734	DNA methylase specificity domain	4	182	3.92E-32	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_3	ad748e30e012898d2a962a75ea106755	183	Pfam	PF01420	Type I restriction modification DNA specificity domain	7	181	2.3E-17	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_74458_length_2192_3	ad748e30e012898d2a962a75ea106755	183	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	4	182	1.7E-27	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_3	ad748e30e012898d2a962a75ea106755	183	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	181	6.0E-33	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_341433_length_2860_4	54e4c056bf8010327e4dc0ef0f97658c	33	Coils	Coil	Coil	3	23	-	T	10-08-2022	-	-
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	MobiDBLite	mobidb-lite	consensus disorder prediction	373	410	-	T	10-08-2022	-	-
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	PANTHER	PTHR35004	TRANSPOSASE RV3428C-RELATED	1	288	1.3E-12	T	10-08-2022	-	-
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	SUPERFAMILY	SSF53098	Ribonuclease H-like	116	279	2.02E-22	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Pfam	PF00665	Integrase core domain	121	223	6.8E-11	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Pfam	PF13551	Winged helix-turn helix	2	42	7.2E-8	T	10-08-2022	-	-
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	106	285	19.416433	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Gene3D	G3DSA:3.30.420.10	-	116	279	2.8E-24	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_67131_length_1477_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	MobiDBLite	mobidb-lite	consensus disorder prediction	373	388	-	T	10-08-2022	-	-
+IS_cluster_317965_length_1699_1	79872b0168a266d513bd9489d4e8dae5	282	PANTHER	PTHR33841	DNA METHYLTRANSFERASE YEEA-RELATED	8	269	1.3E-13	T	10-08-2022	-	-
+IS_cluster_317965_length_1699_1	79872b0168a266d513bd9489d4e8dae5	282	Pfam	PF12950	TaqI-like C-terminal specificity domain	83	238	8.7E-14	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_317965_length_1699_1	79872b0168a266d513bd9489d4e8dae5	282	SUPERFAMILY	SSF116734	DNA methylase specificity domain	158	273	1.6E-5	T	10-08-2022	-	-
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	Gene3D	G3DSA:3.40.50.300	-	63	245	9.8E-38	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	CDD	cd00009	AAA	88	206	2.0602E-8	T	10-08-2022	-	-
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	PIRSF	PIRSF003073	DNAC_TnpB_IstB	22	248	2.2E-54	T	10-08-2022	IPR028350	DNA replication protein DnaC/insertion sequence putative ATP-binding protein
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	Pfam	PF01695	IstB-like ATP binding protein	39	243	5.1E-55	T	10-08-2022	IPR002611	IstB-like ATP-binding protein
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	SMART	SM00382	AAA_5	99	231	1.7E-6	T	10-08-2022	IPR003593	AAA+ ATPase domain
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	PANTHER	PTHR30050	CHROMOSOMAL REPLICATION INITIATOR PROTEIN DNAA	32	242	1.0E-42	T	10-08-2022	-	-
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	96	236	2.52E-17	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_313892_length_2791_2	c80848a1c03b9a8a91a1aa7588513519	253	PANTHER	PTHR30050:SF4	ATP-BINDING PROTEIN RV3427C IN INSERTION SEQUENCE-RELATED	32	242	1.0E-42	T	10-08-2022	-	-
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	PANTHER	PTHR38471	-	16	129	3.2E-28	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	Gene3D	G3DSA:1.20.1440.60	-	13	134	2.3E-38	T	10-08-2022	IPR036583	23S rRNA-intervening sequence superfamily
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	SUPERFAMILY	SSF158446	IVS-encoded protein-like	21	131	2.35E-37	T	10-08-2022	IPR036583	23S rRNA-intervening sequence superfamily
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	CDD	cd16377	23S_rRNA_IVP_like	25	132	9.61258E-51	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	Pfam	PF05635	23S rRNA-intervening sequence protein	22	127	5.8E-37	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_93788_length_714_1	1ab4d12274424a787c20bfcd4e9dd30a	141	TIGRFAM	TIGR02436	TIGR02436: four helix bundle protein	27	130	7.4E-35	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_301948_length_2539_2	4c5c756d85ff0ae1fe4fc161fa50d39c	518	Gene3D	G3DSA:3.40.50.410	von Willebrand factor, type A domain	343	505	2.6E-12	T	10-08-2022	IPR036465	von Willebrand factor A-like domain superfamily
+IS_cluster_301948_length_2539_2	4c5c756d85ff0ae1fe4fc161fa50d39c	518	SUPERFAMILY	SSF53300	vWA-like	344	495	6.97E-16	T	10-08-2022	IPR036465	von Willebrand factor A-like domain superfamily
+IS_cluster_301948_length_2539_2	4c5c756d85ff0ae1fe4fc161fa50d39c	518	Coils	Coil	Coil	275	295	-	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_3	f6c04fe0e2d7445124d34bd3ea844eb2	177	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	175	2.0E-31	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_9311_length_2154_3	f6c04fe0e2d7445124d34bd3ea844eb2	177	Pfam	PF01420	Type I restriction modification DNA specificity domain	1	175	2.0E-17	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_9311_length_2154_3	f6c04fe0e2d7445124d34bd3ea844eb2	177	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	1	176	4.8E-26	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_3	f6c04fe0e2d7445124d34bd3ea844eb2	177	SUPERFAMILY	SSF116734	DNA methylase specificity domain	1	176	2.78E-31	T	10-08-2022	-	-
+IS_cluster_445640_length_1665_2	b31ada7f89e9c23d2340a17fd0782e15	237	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	25	5.0	T	10-08-2022	-	-
+IS_cluster_445640_length_1665_2	b31ada7f89e9c23d2340a17fd0782e15	237	MobiDBLite	mobidb-lite	consensus disorder prediction	36	83	-	T	10-08-2022	-	-
+IS_cluster_445640_length_1665_2	b31ada7f89e9c23d2340a17fd0782e15	237	Pfam	PF19843	Family of unknown function (DUF6318)	62	218	1.5E-31	T	10-08-2022	IPR046281	Domain of unknown function DUF6318
+IS_cluster_441082_length_1363_2	7a3ade6608a02d5db5d8077de1e298c0	185	Pfam	PF19843	Family of unknown function (DUF6318)	10	166	6.7E-32	T	10-08-2022	IPR046281	Domain of unknown function DUF6318
+IS_cluster_441082_length_1363_2	7a3ade6608a02d5db5d8077de1e298c0	185	MobiDBLite	mobidb-lite	consensus disorder prediction	1	33	-	T	10-08-2022	-	-
+IS_cluster_449707_length_1032_1	a233eef43ac5f9d3beecbac0bfc7933b	319	Pfam	PF04480	Protein of unknown function (DUF559)	260	310	1.8E-5	T	10-08-2022	IPR007569	Domain of unknown function DUF559
+IS_cluster_449707_length_1032_1	a233eef43ac5f9d3beecbac0bfc7933b	319	Gene3D	G3DSA:3.40.960.10	VSR Endonuclease	222	318	2.8E-8	T	10-08-2022	-	-
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	Gene3D	G3DSA:2.60.40.1080	-	90	173	4.4E-28	T	10-08-2022	-	-
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	Gene3D	G3DSA:2.60.40.1080	-	6	88	3.0E-23	T	10-08-2022	-	-
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	6	86	6.43E-15	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	90	172	3.65E-20	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	Pfam	PF02368	Bacterial Ig-like domain (group 2)	8	84	1.1E-14	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	Pfam	PF02368	Bacterial Ig-like domain (group 2)	92	170	4.1E-21	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	SMART	SM00635	bid_2	92	169	4.4E-20	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_188966_length_2291_1	9eda04f56b32ee157e5e04c6160b0807	485	SMART	SM00635	bid_2	7	83	1.8E-16	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_6205_length_1065_1	db6296d915234a09e2cef6ff18ec9823	188	Pfam	PF01420	Type I restriction modification DNA specificity domain	20	186	1.7E-14	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_6205_length_1065_1	db6296d915234a09e2cef6ff18ec9823	188	CDD	cd17265	RMtype1_S_Eco4255III-TRD2-CR2_like	26	187	1.17286E-80	T	10-08-2022	-	-
+IS_cluster_6205_length_1065_1	db6296d915234a09e2cef6ff18ec9823	188	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	13	186	4.2E-28	T	10-08-2022	-	-
+IS_cluster_6205_length_1065_1	db6296d915234a09e2cef6ff18ec9823	188	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	188	3.0E-35	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_6205_length_1065_1	db6296d915234a09e2cef6ff18ec9823	188	SUPERFAMILY	SSF116734	DNA methylase specificity domain	11	188	6.7E-35	T	10-08-2022	-	-
+IS_cluster_10977_length_1583_1	bb1eee615b17ba9a31fd5e5806433e3b	278	PANTHER	PTHR30168	PUTATIVE MEMBRANE PROTEIN YPFJ	1	277	1.4E-108	T	10-08-2022	IPR007343	Uncharacterised protein family, zinc metallopeptidase putative
+IS_cluster_10977_length_1583_1	bb1eee615b17ba9a31fd5e5806433e3b	278	MobiDBLite	mobidb-lite	consensus disorder prediction	1	21	-	T	10-08-2022	-	-
+IS_cluster_10977_length_1583_1	bb1eee615b17ba9a31fd5e5806433e3b	278	Pfam	PF04228	Putative neutral zinc metallopeptidase	1	276	1.3E-126	T	10-08-2022	IPR007343	Uncharacterised protein family, zinc metallopeptidase putative
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	PANTHER	PTHR35004	TRANSPOSASE RV3428C-RELATED	7	383	9.9E-60	T	10-08-2022	-	-
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	129	311	10.65488	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	SUPERFAMILY	SSF53098	Ribonuclease H-like	161	299	4.05E-6	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	Gene3D	G3DSA:3.30.420.10	-	139	313	3.0E-7	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	Gene3D	G3DSA:1.10.10.10	-	5	43	3.0E-5	T	10-08-2022	IPR036388	Winged helix-like DNA-binding domain superfamily
+IS_cluster_227178_length_2669_1	943c8e72cafff1f8984652df96844aef	526	Pfam	PF00665	Integrase core domain	148	248	4.3E-8	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	Pfam	PF00730	HhH-GPD superfamily base excision DNA repair protein	38	170	2.2E-21	T	10-08-2022	IPR003265	HhH-GPD domain
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	Pfam	PF14815	NUDIX domain	239	309	1.3E-12	T	10-08-2022	IPR029119	MutY, C-terminal
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	ProSitePatterns	PS00764	Endonuclease III iron-sulfur binding region signature.	196	212	-	T	10-08-2022	IPR004035	Endonuclease III, iron-sulphur binding site
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	SMART	SM00525	ccc3	195	215	4.8E-6	T	10-08-2022	IPR003651	Endonuclease III-like, iron-sulphur cluster loop motif
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	CDD	cd00056	ENDO3c	33	192	2.08018E-51	T	10-08-2022	IPR003265	HhH-GPD domain
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	CDD	cd03431	DNA_Glycosylase_C	238	309	4.185E-12	T	10-08-2022	IPR029119	MutY, C-terminal
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	Gene3D	G3DSA:1.10.1670.10	-	12	215	5.0E-85	T	10-08-2022	IPR023170	Helix-hairpin-helix, base-excision DNA repair, C-terminal
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	PANTHER	PTHR42944	ADENINE DNA GLYCOSYLASE	7	271	4.2E-93	T	10-08-2022	IPR044298	Adenine/Thymine-DNA glycosylase
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	Gene3D	G3DSA:1.10.340.30	Hypothetical protein; domain 2	24	134	5.0E-85	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	SUPERFAMILY	SSF48150	DNA-glycosylase	8	227	4.71E-71	T	10-08-2022	IPR011257	DNA glycosylase
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	Gene3D	G3DSA:3.90.79.10	Nucleoside Triphosphate Pyrophosphohydrolase	236	322	3.0E-5	T	10-08-2022	-	-
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	SUPERFAMILY	SSF55811	Nudix	224	314	5.11E-12	T	10-08-2022	IPR015797	NUDIX hydrolase-like domain superfamily
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	TIGRFAM	TIGR01084	mutY: A/G-specific adenine glycosylase	9	280	3.0E-121	T	10-08-2022	IPR005760	A/G-specific adenine glycosylase MutY
+IS_cluster_24203_length_2228_2	52eca425c87b46c292ad23ed64c6db7f	323	SMART	SM00478	endo3end	41	194	5.0E-50	T	10-08-2022	IPR003265	HhH-GPD domain
+IS_cluster_391294_length_2132_3	4ae2da385e902e885750d01517724934	173	SUPERFAMILY	SSF116734	DNA methylase specificity domain	2	172	5.72E-28	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_3	4ae2da385e902e885750d01517724934	173	Pfam	PF01420	Type I restriction modification DNA specificity domain	4	171	1.5E-15	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_391294_length_2132_3	4ae2da385e902e885750d01517724934	173	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	1	172	1.3E-22	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_3	4ae2da385e902e885750d01517724934	173	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	171	9.2E-28	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_21682_length_2110_3	c7d20f54edfbf75605df70cdfd056983	106	Gene3D	G3DSA:2.40.160.10	Porin	1	106	1.4E-14	T	10-08-2022	IPR023614	Porin domain superfamily
+IS_cluster_21682_length_2110_3	c7d20f54edfbf75605df70cdfd056983	106	Pfam	PF07396	Phosphate-selective porin O and P	2	106	4.0E-8	T	10-08-2022	IPR010870	Phosphate-selective porin O/P
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	SUPERFAMILY	SSF55821	YrdC/RibB	86	286	4.35E-87	T	10-08-2022	IPR017945	DHBP synthase RibB-like alpha/beta domain superfamily
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	SUPERFAMILY	SSF142695	RibA-like	289	442	1.96E-38	T	10-08-2022	IPR036144	GTP cyclohydrolase II superfamily
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	Gene3D	G3DSA:3.90.870.10	DHBP synthase	77	292	2.5E-89	T	10-08-2022	-	-
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	Gene3D	G3DSA:3.40.50.10990	GTP cyclohydrolase II	293	444	7.1E-24	T	10-08-2022	IPR036144	GTP cyclohydrolase II superfamily
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	PANTHER	PTHR21327:SF34	3,4-DIHYDROXY-2-BUTANONE 4-PHOSPHATE SYNTHASE	85	445	8.5E-181	T	10-08-2022	-	-
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	PANTHER	PTHR21327	GTP CYCLOHYDROLASE II-RELATED	85	445	8.5E-181	T	10-08-2022	-	-
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	Pfam	PF00925	GTP cyclohydrolase II	296	440	4.6E-28	T	10-08-2022	IPR032677	GTP cyclohydrolase II
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	Pfam	PF00926	3,4-dihydroxy-2-butanone 4-phosphate synthase	92	282	4.1E-83	T	10-08-2022	IPR000422	3,4-dihydroxy-2-butanone 4-phosphate synthase, RibB
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	Hamap	MF_00180	3,4-dihydroxy-2-butanone 4-phosphate synthase [ribB].	85	287	39.462784	T	10-08-2022	IPR000422	3,4-dihydroxy-2-butanone 4-phosphate synthase, RibB
+IS_cluster_24203_length_2263_2	0da2448714365de451a3b0e239b075f9	446	TIGRFAM	TIGR00506	ribB: 3,4-dihydroxy-2-butanone-4-phosphate synthase	88	283	1.3E-77	T	10-08-2022	IPR000422	3,4-dihydroxy-2-butanone 4-phosphate synthase, RibB
+IS_cluster_10977_length_2384_1	cfc237e9871f677740057ca54671f9f1	185	TIGRFAM	TIGR00645	HI0507: TIGR00645 family protein	20	185	1.5E-74	T	10-08-2022	IPR020761	Uncharacterised protein family UPF0114, bacteria
+IS_cluster_10977_length_2384_1	cfc237e9871f677740057ca54671f9f1	185	Hamap	MF_00143	UPF0114 protein YqhA [yqhA].	1	185	79.617821	T	10-08-2022	IPR020761	Uncharacterised protein family UPF0114, bacteria
+IS_cluster_10977_length_2384_1	cfc237e9871f677740057ca54671f9f1	185	PANTHER	PTHR38596	UPF0114 PROTEIN YQHA	19	183	5.5E-67	T	10-08-2022	IPR020761	Uncharacterised protein family UPF0114, bacteria
+IS_cluster_10977_length_2384_1	cfc237e9871f677740057ca54671f9f1	185	Pfam	PF03350	Uncharacterized protein family, UPF0114	26	142	1.1E-38	T	10-08-2022	IPR005134	Uncharacterised protein family UPF0114
+IS_cluster_225703_length_1579_2	47fd0e17d42e590f58062b0c3900abb4	248	Pfam	PF12950	TaqI-like C-terminal specificity domain	57	212	1.8E-13	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	Gene3D	G3DSA:1.10.260.40	-	5	115	8.9E-6	T	10-08-2022	IPR010982	Lambda repressor-like, DNA-binding domain superfamily
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	SUPERFAMILY	SSF47413	lambda repressor-like DNA-binding domains	4	55	1.01E-6	T	10-08-2022	IPR010982	Lambda repressor-like, DNA-binding domain superfamily
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	CDD	cd00093	HTH_XRE	7	56	2.78444E-5	T	10-08-2022	IPR001387	Cro/C1-type helix-turn-helix domain
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	Pfam	PF01381	Helix-turn-helix	11	57	1.4E-6	T	10-08-2022	IPR001387	Cro/C1-type helix-turn-helix domain
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	Coils	Coil	Coil	72	99	-	T	10-08-2022	-	-
+IS_cluster_331591_length_2577_3	20a099eeaa15b84af8e5965a77b4a0b1	152	ProSiteProfiles	PS50943	Cro/C1-type HTH domain profile.	9	66	9.858335	T	10-08-2022	IPR001387	Cro/C1-type helix-turn-helix domain
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	Gene3D	G3DSA:3.30.160.70	-	13	89	8.3E-9	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	CDD	cd06445	ATase	101	183	2.43433E-39	T	10-08-2022	IPR014048	Methylated-DNA-[protein]-cysteine S-methyltransferase, DNA binding
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	PANTHER	PTHR10815:SF5	METHYLATED-DNA--PROTEIN-CYSTEINE METHYLTRANSFERASE	10	185	4.4E-41	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	Pfam	PF01035	6-O-methylguanine DNA methyltransferase, DNA binding domain	100	184	2.3E-32	T	10-08-2022	IPR014048	Methylated-DNA-[protein]-cysteine S-methyltransferase, DNA binding
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	Hamap	MF_00772	Methylated-DNA--protein-cysteine methyltransferase [ogt].	15	183	36.188614	T	10-08-2022	IPR023546	Methylated-DNA--protein-cysteine methyltransferase
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	TIGRFAM	TIGR00589	ogt: methylated-DNA--[protein]-cysteine S-methyltransferase	99	182	2.1E-31	T	10-08-2022	IPR014048	Methylated-DNA-[protein]-cysteine S-methyltransferase, DNA binding
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	PANTHER	PTHR10815	METHYLATED-DNA--PROTEIN-CYSTEINE METHYLTRANSFERASE	10	185	4.4E-41	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	ProSitePatterns	PS00374	Methylated-DNA--protein-cysteine methyltransferase active site.	153	159	-	T	10-08-2022	IPR001497	Methylated-DNA-[protein]-cysteine S-methyltransferase, active site
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	Gene3D	G3DSA:1.10.10.10	-	93	186	3.4E-33	T	10-08-2022	IPR036388	Winged helix-like DNA-binding domain superfamily
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	SUPERFAMILY	SSF46767	Methylated DNA-protein cysteine methyltransferase, C-terminal domain	98	185	2.62E-30	T	10-08-2022	IPR036217	Methylated DNA-protein cysteine methyltransferase, DNA binding domain
+IS_cluster_72463_length_1730_2	76db47cff3e5b377e9e912f17f2264ac	199	SUPERFAMILY	SSF53155	Methylated DNA-protein cysteine methyltransferase domain	13	104	9.81E-12	T	10-08-2022	IPR036631	Methylated DNA-protein cysteine methyltransferase domain superfamily
+IS_cluster_301029_length_1870_1	4cea46a63c1b2fda9ee1b9cf2e5e0ce2	66	Gene3D	G3DSA:2.40.160.10	Porin	1	66	4.3E-7	T	10-08-2022	IPR023614	Porin domain superfamily
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	3	442	1.31E-98	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Hamap	MF_00249	ATP-dependent protease ATPase subunit HslU [hslU].	1	444	43.275959	T	10-08-2022	IPR004491	Heat shock protein HslU
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Gene3D	G3DSA:3.40.50.300	-	194	333	1.8E-28	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Pfam	PF00004	ATPase family associated with various cellular activities (AAA)	53	136	2.2E-7	T	10-08-2022	IPR003959	ATPase, AAA-type, core
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Gene3D	G3DSA:1.10.8.10	-	115	183	3.5E-26	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	SMART	SM01086	ClpB_D2_small_2	336	435	1.3E-24	T	10-08-2022	IPR019489	Clp ATPase, C-terminal
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	CDD	cd00009	AAA	227	334	2.8789E-4	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Pfam	PF10431	C-terminal, D2-small domain, of ClpB protein	336	405	1.7E-7	T	10-08-2022	IPR019489	Clp ATPase, C-terminal
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Gene3D	G3DSA:1.10.8.60	-	336	441	1.8E-35	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	TIGRFAM	TIGR00390	hslU: ATP-dependent protease HslVU, ATPase subunit	4	444	3.0E-235	T	10-08-2022	IPR004491	Heat shock protein HslU
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	PANTHER	PTHR48102	ATP-DEPENDENT CLP PROTEASE ATP-BINDING SUBUNIT CLPX-LIKE, MITOCHONDRIAL-RELATED	2	444	3.0E-162	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Gene3D	G3DSA:3.40.50.300	-	1	114	2.9E-32	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	PANTHER	PTHR48102:SF3	ATP-DEPENDENT PROTEASE ATPASE SUBUNIT HSLU	2	444	3.0E-162	T	10-08-2022	IPR004491	Heat shock protein HslU
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	Pfam	PF07724	AAA domain (Cdc48 subfamily)	188	330	8.4E-42	T	10-08-2022	IPR003959	ATPase, AAA-type, core
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	CDD	cd00009	AAA	18	103	2.57392E-9	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_3	a2ef95bafafa8af6328d584f8c248f44	444	SMART	SM00382	AAA_5	49	333	6.0E-13	T	10-08-2022	IPR003593	AAA+ ATPase domain
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Gene3D	G3DSA:3.40.120.10	-	326	455	1.4E-35	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Gene3D	G3DSA:3.40.120.10	-	21	212	3.7E-52	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Gene3D	G3DSA:3.30.310.50	-	495	577	2.4E-7	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	207	316	4.32E-21	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	CDD	cd05799	PGM2	42	572	0.0	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	ProSitePatterns	PS00710	Phosphoglucomutase and phosphomannomutase phosphoserine signature.	139	148	-	T	10-08-2022	IPR016066	Alpha-D-phosphohexomutase, conserved site
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	PRINTS	PR00509	Phosphoglucomutase/phosphomannomutase family signature	138	152	2.3E-5	T	10-08-2022	IPR005841	Alpha-D-phosphohexomutase superfamily
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	PRINTS	PR00509	Phosphoglucomutase/phosphomannomutase family signature	297	312	2.3E-5	T	10-08-2022	IPR005841	Alpha-D-phosphohexomutase superfamily
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	PANTHER	PTHR45745	PHOSPHOMANNOMUTASE 45A	8	575	6.6E-177	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Pfam	PF00408	Phosphoglucomutase/phosphomannomutase, C-terminal domain	514	552	2.0E-7	T	10-08-2022	IPR005843	Alpha-D-phosphohexomutase, C-terminal
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	32	216	1.14E-48	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Pfam	PF02878	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain I	44	180	7.1E-42	T	10-08-2022	IPR005844	Alpha-D-phosphohexomutase, alpha/beta/alpha domain I
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	SUPERFAMILY	SSF53738	Phosphoglucomutase, first 3 domains	305	456	2.44E-29	T	10-08-2022	IPR016055	Alpha-D-phosphohexomutase, alpha/beta/alpha I/II/III
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	PANTHER	PTHR45745:SF1	PHOSPHOMANNOMUTASE 45A	8	575	6.6E-177	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	SUPERFAMILY	SSF55957	Phosphoglucomutase, C-terminal domain	448	575	1.01E-13	T	10-08-2022	IPR036900	Alpha-D-phosphohexomutase, C-terminal domain superfamily
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Coils	Coil	Coil	18	38	-	T	10-08-2022	-	-
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Pfam	PF02879	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain II	209	313	3.2E-25	T	10-08-2022	IPR005845	Alpha-D-phosphohexomutase, alpha/beta/alpha domain II
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Pfam	PF02880	Phosphoglucomutase/phosphomannomutase, alpha/beta/alpha domain III	327	453	3.3E-21	T	10-08-2022	IPR005846	Alpha-D-phosphohexomutase, alpha/beta/alpha domain III
+IS_cluster_134033_length_2100_1	f85b1bfaa455113898101da8364fc064	578	Gene3D	G3DSA:3.40.120.10	-	213	325	4.3E-24	T	10-08-2022	-	-
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	PANTHER	PTHR30050:SF4	ATP-BINDING PROTEIN RV3427C IN INSERTION SEQUENCE-RELATED	23	254	7.2E-42	T	10-08-2022	-	-
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	CDD	cd00009	AAA	103	212	3.39626E-10	T	10-08-2022	-	-
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	PIRSF	PIRSF003073	DNAC_TnpB_IstB	13	262	5.6E-71	T	10-08-2022	IPR028350	DNA replication protein DnaC/insertion sequence putative ATP-binding protein
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	Gene3D	G3DSA:3.40.50.300	-	78	260	1.0E-43	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	Pfam	PF01695	IstB-like ATP binding protein	25	256	1.4E-58	T	10-08-2022	IPR002611	IstB-like ATP-binding protein
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	PANTHER	PTHR30050	CHROMOSOMAL REPLICATION INITIATOR PROTEIN DNAA	23	254	7.2E-42	T	10-08-2022	-	-
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	SMART	SM00382	AAA_5	113	246	2.9E-6	T	10-08-2022	IPR003593	AAA+ ATPase domain
+IS_cluster_227178_length_2669_2	06a864e6be047ccf5747407b6f474fde	262	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	108	255	2.92E-24	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_211566_length_2394_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	312	350	-	T	10-08-2022	-	-
+IS_cluster_211566_length_2394_3	3fc6ece598dafd1e061ea891eba8752c	369	Gene3D	G3DSA:3.40.50.300	-	48	365	1.7E-40	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_211566_length_2394_3	3fc6ece598dafd1e061ea891eba8752c	369	Pfam	PF06414	Zeta toxin	75	249	1.4E-15	T	10-08-2022	IPR010488	Zeta toxin domain
+IS_cluster_211566_length_2394_3	3fc6ece598dafd1e061ea891eba8752c	369	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	72	223	2.51E-10	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_211566_length_2394_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	296	369	-	T	10-08-2022	-	-
+IS_cluster_396776_length_2865_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	312	350	-	T	10-08-2022	-	-
+IS_cluster_396776_length_2865_3	3fc6ece598dafd1e061ea891eba8752c	369	Gene3D	G3DSA:3.40.50.300	-	48	365	1.7E-40	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_396776_length_2865_3	3fc6ece598dafd1e061ea891eba8752c	369	Pfam	PF06414	Zeta toxin	75	249	1.4E-15	T	10-08-2022	IPR010488	Zeta toxin domain
+IS_cluster_396776_length_2865_3	3fc6ece598dafd1e061ea891eba8752c	369	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	72	223	2.51E-10	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_396776_length_2865_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	296	369	-	T	10-08-2022	-	-
+IS_cluster_413948_length_2628_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	312	350	-	T	10-08-2022	-	-
+IS_cluster_413948_length_2628_3	3fc6ece598dafd1e061ea891eba8752c	369	Gene3D	G3DSA:3.40.50.300	-	48	365	1.7E-40	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_413948_length_2628_3	3fc6ece598dafd1e061ea891eba8752c	369	Pfam	PF06414	Zeta toxin	75	249	1.4E-15	T	10-08-2022	IPR010488	Zeta toxin domain
+IS_cluster_413948_length_2628_3	3fc6ece598dafd1e061ea891eba8752c	369	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	72	223	2.51E-10	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_413948_length_2628_3	3fc6ece598dafd1e061ea891eba8752c	369	MobiDBLite	mobidb-lite	consensus disorder prediction	296	369	-	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_4	9bacdd524be1ab945df2301db15f85db	127	MobiDBLite	mobidb-lite	consensus disorder prediction	1	20	-	T	10-08-2022	-	-
+IS_cluster_478932_length_2067_3	6d996fef43496dfd89527285775d6e46	64	SUPERFAMILY	SSF47413	lambda repressor-like DNA-binding domains	10	53	2.62E-6	T	10-08-2022	IPR010982	Lambda repressor-like, DNA-binding domain superfamily
+IS_cluster_478932_length_2067_3	6d996fef43496dfd89527285775d6e46	64	Pfam	PF13936	Helix-turn-helix domain	1	32	4.0E-8	T	10-08-2022	IPR025246	Transposase IS30-like HTH domain
+IS_cluster_478932_length_2067_3	6d996fef43496dfd89527285775d6e46	64	Gene3D	G3DSA:1.10.260.40	-	2	53	1.1E-5	T	10-08-2022	IPR010982	Lambda repressor-like, DNA-binding domain superfamily
+IS_cluster_256282_length_794_1	59c543f59331e13324645b389847d65d	116	MobiDBLite	mobidb-lite	consensus disorder prediction	65	116	-	T	10-08-2022	-	-
+IS_cluster_256282_length_794_1	59c543f59331e13324645b389847d65d	116	MobiDBLite	mobidb-lite	consensus disorder prediction	65	97	-	T	10-08-2022	-	-
+IS_cluster_3673_length_754_1	214064f797f1c9a0a92c47db11796e1b	236	Pfam	PF00583	Acetyltransferase (GNAT) family	118	221	2.1E-9	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_3673_length_754_1	214064f797f1c9a0a92c47db11796e1b	236	Gene3D	G3DSA:3.40.630.30	-	85	229	2.3E-29	T	10-08-2022	-	-
+IS_cluster_3673_length_754_1	214064f797f1c9a0a92c47db11796e1b	236	SUPERFAMILY	SSF55729	Acyl-CoA N-acyltransferases (Nat)	77	223	1.89E-20	T	10-08-2022	IPR016181	Acyl-CoA N-acyltransferase
+IS_cluster_3673_length_754_1	214064f797f1c9a0a92c47db11796e1b	236	CDD	cd04301	NAT_SF	136	206	1.61424E-5	T	10-08-2022	-	-
+IS_cluster_3673_length_754_1	214064f797f1c9a0a92c47db11796e1b	236	ProSiteProfiles	PS51186	Gcn5-related N-acetyltransferase (GNAT) domain profile.	84	236	14.732197	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_562609_length_2857_3	01bd5a5f8d91589159c0c5f8b680b54e	201	Pfam	PF13274	Protein of unknown function (DUF4065)	27	125	7.3E-18	T	10-08-2022	IPR025272	Antitoxin SocA-like, Panacea domain
+IS_cluster_562609_length_2857_5	a4d807869cac8cb7d88fb790c312d8f0	23	MobiDBLite	mobidb-lite	consensus disorder prediction	1	23	-	T	10-08-2022	-	-
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	Coils	Coil	Coil	155	175	-	T	10-08-2022	-	-
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	Hamap	MF_01929	N5-carboxyaminoimidazole ribonucleotide mutase [purE].	25	177	30.553864	T	10-08-2022	IPR033747	Class I PurE
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	TIGRFAM	TIGR01162	purE: phosphoribosylaminoimidazole carboxylase, catalytic subunit	25	174	8.0E-57	T	10-08-2022	IPR000031	PurE domain
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	PIRSF	PIRSF001338	AIR_carboxylase	20	178	2.2E-63	T	10-08-2022	IPR024694	PurE, prokaryotic type
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	Pfam	PF00731	AIR carboxylase	24	171	1.6E-60	T	10-08-2022	IPR000031	PurE domain
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	PANTHER	PTHR23046	PHOSPHORIBOSYLAMINOIMIDAZOLE CARBOXYLASE CATALYTIC SUBUNIT	23	174	6.8E-58	T	10-08-2022	-	-
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	SUPERFAMILY	SSF52255	N5-CAIR mutase (phosphoribosylaminoimidazole carboxylase, PurE)	23	175	9.81E-58	T	10-08-2022	-	-
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	Gene3D	G3DSA:3.40.50.1970	-	18	179	8.9E-64	T	10-08-2022	-	-
+IS_cluster_4852_length_546_1	3feec8da91897370e9893f19399dc59b	179	SMART	SM01001	AIRC_2	23	173	2.7E-83	T	10-08-2022	IPR000031	PurE domain
+IS_cluster_10305_length_2914_3	ecac2ace7997b5fe2679203eb7e23aa5	264	Coils	Coil	Coil	171	191	-	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_3	ecac2ace7997b5fe2679203eb7e23aa5	264	Coils	Coil	Coil	217	241	-	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_3	ecac2ace7997b5fe2679203eb7e23aa5	264	Coils	Coil	Coil	56	83	-	T	10-08-2022	-	-
+IS_cluster_10305_length_2914_3	ecac2ace7997b5fe2679203eb7e23aa5	264	SUPERFAMILY	SSF101082	Typo IV secretion system protein TraC	59	235	8.76E-6	T	10-08-2022	-	-
+IS_cluster_115105_length_655_1	f58aa99653b91f57e3498c1af4ec6d65	204	Pfam	PF01797	Transposase IS200 like	32	120	3.1E-9	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_115105_length_655_1	f58aa99653b91f57e3498c1af4ec6d65	204	Gene3D	G3DSA:3.30.70.1290	-	22	203	7.6E-31	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_115105_length_655_1	f58aa99653b91f57e3498c1af4ec6d65	204	SMART	SM01321	Y1_Tnp_2	30	169	9.5E-7	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_115105_length_655_1	f58aa99653b91f57e3498c1af4ec6d65	204	SUPERFAMILY	SSF143422	Transposase IS200-like	22	174	4.05E-26	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_115105_length_655_1	f58aa99653b91f57e3498c1af4ec6d65	204	PANTHER	PTHR36966	REP-ASSOCIATED TYROSINE TRANSPOSASE	25	189	9.8E-16	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_2	da9960f7b2b4ccf613c1e9e898118bc7	492	Pfam	PF03577	Peptidase family C69	25	413	3.2E-91	T	10-08-2022	IPR005322	Peptidase C69, dipeptidase A
+IS_cluster_341433_length_2860_2	da9960f7b2b4ccf613c1e9e898118bc7	492	Gene3D	G3DSA:3.60.60.10	Penicillin V Acylase; Chain A	25	229	6.0E-17	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_2	da9960f7b2b4ccf613c1e9e898118bc7	492	PANTHER	PTHR12994	SECERNIN	11	473	4.7E-71	T	10-08-2022	IPR005322	Peptidase C69, dipeptidase A
+IS_cluster_341433_length_2860_2	da9960f7b2b4ccf613c1e9e898118bc7	492	PANTHER	PTHR12994:SF17	LD30995P	11	473	4.7E-71	T	10-08-2022	-	-
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	ProSiteProfiles	PS51900	Core-binding (CB) domain profile.	47	129	13.765985	T	10-08-2022	IPR044068	Core-binding (CB) domain
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	Gene3D	G3DSA:1.10.150.130	-	41	148	1.8E-11	T	10-08-2022	IPR010998	Integrase/recombinase, N-terminal
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	149	323	32.83326	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	150	325	5.6E-40	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	Pfam	PF00589	Phage integrase family	158	314	9.1E-30	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	Pfam	PF13495	Phage integrase, N-terminal SAM-like domain	53	133	6.9E-16	T	10-08-2022	IPR004107	Integrase, SAM-like, N-terminal
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	37	315	8.4E-37	T	10-08-2022	-	-
+IS_cluster_2614_length_1455_2	43b689cf7718393627c54d38f3cf3850	327	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	51	316	4.71E-49	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
+IS_cluster_251325_length_610_1	69c7b7efa86dcabe526937dc1164243c	203	Gene3D	G3DSA:3.40.50.150	Vaccinia Virus protein VP39	160	177	1.8E-8	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_251325_length_610_1	69c7b7efa86dcabe526937dc1164243c	203	ProSitePatterns	PS01204	NF-kappa-B/Rel/dorsal domain signature.	151	157	-	T	10-08-2022	IPR030492	Rel homology domain, conserved site
+IS_cluster_251325_length_610_1	69c7b7efa86dcabe526937dc1164243c	203	Gene3D	G3DSA:2.40.50.1070	-	32	159	1.8E-8	T	10-08-2022	-	-
+IS_cluster_32477_length_2531_3	33744e8f23e42da67b222224436aceef	58	Pfam	PF14867	Lantibiotic alpha	27	58	8.6E-8	T	10-08-2022	IPR029243	Lantibiotic alpha component
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	SUPERFAMILY	SSF52096	ClpP/crotonase	2	243	6.88E-46	T	10-08-2022	IPR029045	ClpP/crotonase-like domain superfamily
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	Gene3D	G3DSA:3.90.226.10	-	4	219	5.0E-45	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	Pfam	PF00378	Enoyl-CoA hydratase/isomerase	8	215	2.9E-29	T	10-08-2022	IPR001753	Enoyl-CoA hydratase/isomerase
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	CDD	cd06558	crotonase-like	4	199	4.86025E-43	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	Coils	Coil	Coil	23	43	-	T	10-08-2022	-	-
+IS_cluster_7999_length_2079_1	05203c0d8b5dc59ae78a164ace1042fc	249	PANTHER	PTHR42964	ENOYL-COA HYDRATASE	2	214	1.3E-29	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	Pfam	PF04072	Leucine carboxyl methyltransferase	30	183	3.5E-19	T	10-08-2022	IPR007213	Methyltransferase Ppm1/Ppm2/Tcmp
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	PANTHER	PTHR43619	S-ADENOSYL-L-METHIONINE-DEPENDENT METHYLTRANSFERASE YKTD-RELATED	11	200	4.7E-49	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	PANTHER	PTHR43619:SF2	S-ADENOSYL-L-METHIONINE-DEPENDENT METHYLTRANSFERASE YKTD-RELATED	11	200	4.7E-49	T	10-08-2022	-	-
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	SUPERFAMILY	SSF53335	S-adenosyl-L-methionine-dependent methyltransferases	20	265	1.08E-52	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	Gene3D	G3DSA:3.40.50.150	Vaccinia Virus protein VP39	15	260	3.9E-41	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_72463_length_1730_1	f7979669b26f6145fe902316b0fbc93e	277	PIRSF	PIRSF028177	TcmP	9	275	2.6E-68	T	10-08-2022	IPR016874	Methyltransferase TcmP-like
+IS_cluster_73940_length_1050_1	01143a7bffad595ec4e48cc6fd8c827e	252	Pfam	PF02517	Type II CAAX prenyl endopeptidase Rce1-like	108	205	8.0E-10	T	10-08-2022	IPR003675	Type II CAAX prenyl endopeptidase Rce1-like
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	Gene3D	G3DSA:3.60.20.10	Glutamine Phosphoribosylpyrophosphate, subunit 1, domain 1	1	174	1.1E-75	T	10-08-2022	IPR029055	Nucleophile aminohydrolases, N-terminal
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	CDD	cd01913	protease_HslV	2	173	9.09018E-118	T	10-08-2022	IPR022281	ATP-dependent protease, HslV subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	PIRSF	PIRSF039093	HslV	1	176	5.4E-90	T	10-08-2022	IPR022281	ATP-dependent protease, HslV subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	Pfam	PF00227	Proteasome subunit	2	171	1.3E-23	T	10-08-2022	IPR001353	Proteasome, subunit alpha/beta
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	ProSiteProfiles	PS51476	Proteasome beta-type subunit profile.	1	173	65.109634	T	10-08-2022	IPR023333	Proteasome B-type subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	PANTHER	PTHR32194	METALLOPROTEASE TLDD	1	174	2.2E-91	T	10-08-2022	IPR022281	ATP-dependent protease, HslV subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	TIGRFAM	TIGR03692	ATP_dep_HslV: ATP-dependent protease HslVU, peptidase subunit	2	173	3.7E-87	T	10-08-2022	IPR022281	ATP-dependent protease, HslV subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	Hamap	MF_00248	ATP-dependent protease subunit HslV [hslV].	1	173	43.465618	T	10-08-2022	IPR022281	ATP-dependent protease, HslV subunit
+IS_cluster_10977_length_2890_2	3d7a743716666d63d7e794df7450dd66	176	SUPERFAMILY	SSF56235	N-terminal nucleophile aminohydrolases (Ntn hydrolases)	1	173	6.72E-58	T	10-08-2022	IPR029055	Nucleophile aminohydrolases, N-terminal
+IS_cluster_167858_length_1716_2	9bbb3823c07f8f872b0df87b52a2476b	61	Pfam	PF02368	Bacterial Ig-like domain (group 2)	1	32	6.0E-7	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_167858_length_1716_2	9bbb3823c07f8f872b0df87b52a2476b	61	Gene3D	G3DSA:2.60.40.1080	-	1	35	9.1E-9	T	10-08-2022	-	-
+IS_cluster_167858_length_1716_2	9bbb3823c07f8f872b0df87b52a2476b	61	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	1	34	9.42E-7	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_156972_length_2511_1	7b4272fd566e9b51f761966630a7e06e	123	Gene3D	G3DSA:4.10.520.10	-	28	119	1.2E-7	T	10-08-2022	IPR010992	Integration host factor (IHF)-like DNA-binding domain superfamily
+IS_cluster_156972_length_2511_1	7b4272fd566e9b51f761966630a7e06e	123	Pfam	PF18291	HU domain fused to wHTH, Ig, or Glycine-rich motif	2	117	5.5E-27	T	10-08-2022	IPR041607	HU domain fused to wHTH, Ig, or Glycine-rich motif
+IS_cluster_156972_length_2511_1	7b4272fd566e9b51f761966630a7e06e	123	SUPERFAMILY	SSF47729	IHF-like DNA-binding proteins	32	117	6.33E-13	T	10-08-2022	IPR010992	Integration host factor (IHF)-like DNA-binding domain superfamily
+IS_cluster_156972_length_2511_1	7b4272fd566e9b51f761966630a7e06e	123	TIGRFAM	TIGR01201	HU_rel: putative DNA-binding protein	11	120	1.4E-23	T	10-08-2022	IPR005902	Putative DNA-binding protein, HU-related
+IS_cluster_445640_length_1665_1	c88640903862a0fb40c3a42725121f86	234	MobiDBLite	mobidb-lite	consensus disorder prediction	55	82	-	T	10-08-2022	-	-
+IS_cluster_445640_length_1665_1	c88640903862a0fb40c3a42725121f86	234	Pfam	PF19843	Family of unknown function (DUF6318)	60	220	3.2E-31	T	10-08-2022	IPR046281	Domain of unknown function DUF6318
+IS_cluster_445640_length_1665_1	c88640903862a0fb40c3a42725121f86	234	ProSiteProfiles	PS51318	Twin arginine translocation (Tat) signal profile.	1	41	7.679487	T	10-08-2022	IPR006311	Twin-arginine translocation pathway, signal sequence
+IS_cluster_445640_length_1665_1	c88640903862a0fb40c3a42725121f86	234	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	25	5.0	T	10-08-2022	-	-
+IS_cluster_24203_length_1528_2	3fcb7d61b2eeb8a36ad925cdf4686eb2	135	Pfam	PF07332	Putative Actinobacterial Holin-X, holin superfamily III	12	121	2.4E-10	T	10-08-2022	IPR009937	Putative Actinobacterial Holin-X, holin superfamily III
+IS_cluster_24203_length_1528_2	3fcb7d61b2eeb8a36ad925cdf4686eb2	135	SUPERFAMILY	SSF90123	ABC transporter transmembrane region	35	117	9.16E-5	T	10-08-2022	IPR036640	ABC transporter type 1, transmembrane domain superfamily
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	CDD	cd04301	NAT_SF	47	104	8.92992E-11	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	Gene3D	G3DSA:3.40.630.30	-	1	136	5.3E-34	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	PANTHER	PTHR43617	L-AMINO ACID N-ACETYLTRANSFERASE	1	126	7.4E-13	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	PANTHER	PTHR43617:SF22	L-AMINO ACID N-ACETYLTRANSFERASE AAAT	1	126	7.4E-13	T	10-08-2022	-	-
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	SUPERFAMILY	SSF55729	Acyl-CoA N-acyltransferases (Nat)	1	130	1.65E-25	T	10-08-2022	IPR016181	Acyl-CoA N-acyltransferase
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	Pfam	PF00583	Acetyltransferase (GNAT) family	36	125	1.6E-13	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	ProSiteProfiles	PS51186	Gcn5-related N-acetyltransferase (GNAT) domain profile.	1	145	21.304382	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_341433_length_2860_3	96d1041db16329480a3af213a8aaae2f	146	PIRSF	PIRSF037663	Acetyltransf_GNAT	1	139	1.4E-14	T	10-08-2022	IPR017255	Acetyltransferase, GNAT, predicted
+IS_cluster_225703_length_1579_1	d996b72f81856a538b097f01b2ef6a23	262	Pfam	PF12950	TaqI-like C-terminal specificity domain	63	218	7.2E-14	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_225703_length_1579_1	d996b72f81856a538b097f01b2ef6a23	262	SUPERFAMILY	SSF116734	DNA methylase specificity domain	138	253	1.24E-5	T	10-08-2022	-	-
+IS_cluster_21681_length_957_1	9032b385f6d529bc5e707b754a589bfc	63	MobiDBLite	mobidb-lite	consensus disorder prediction	38	54	-	T	10-08-2022	-	-
+IS_cluster_21681_length_957_1	9032b385f6d529bc5e707b754a589bfc	63	MobiDBLite	mobidb-lite	consensus disorder prediction	38	63	-	T	10-08-2022	-	-
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	Pfam	PF19029	DUF883 C-terminal glycine zipper region	115	144	1.2E-8	T	10-08-2022	IPR043605	DUF883, C-terminal domain
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	PANTHER	PTHR35893	INNER MEMBRANE PROTEIN-RELATED	55	144	1.3E-12	T	10-08-2022	IPR010279	Inner membrane protein YqjD/ElaB
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	Coils	Coil	Coil	65	103	-	T	10-08-2022	-	-
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	Coils	Coil	Coil	36	63	-	T	10-08-2022	-	-
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	Pfam	PF05957	DUF883 N-terminal domain	11	62	5.8E-8	T	10-08-2022	IPR043604	DUF883, N-terminal domain
+IS_cluster_24203_length_1528_1	1331f5eda2dfce87fde0c2dbf8d05dda	144	Coils	Coil	Coil	10	30	-	T	10-08-2022	-	-
+IS_cluster_211566_length_2394_1	7805daa08563a1ee2d30de89058fc6f4	57	MobiDBLite	mobidb-lite	consensus disorder prediction	1	21	-	T	10-08-2022	-	-
+IS_cluster_4852_length_2134_2	d29ffdee13f86713732c1225cecb139e	106	Pfam	PF20449	Family of unknown function (DUF6706)	1	106	2.6E-24	T	10-08-2022	IPR046552	Protein of unknown function DUF6706
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	Pfam	PF00881	Nitroreductase family	43	228	2.3E-28	T	10-08-2022	IPR029479	Nitroreductase
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	SUPERFAMILY	SSF55469	FMN-dependent nitroreductase-like	38	247	3.01E-57	T	10-08-2022	IPR000415	Nitroreductase-like
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	PANTHER	PTHR23026	NADPH NITROREDUCTASE	34	247	2.3E-71	T	10-08-2022	-	-
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	Gene3D	G3DSA:3.40.109.10	NADH Oxidase	30	249	9.3E-62	T	10-08-2022	IPR000415	Nitroreductase-like
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	PANTHER	PTHR23026:SF101	OXYGEN-INSENSITIVE NAD(P)H NITROREDUCTASE	34	247	2.3E-71	T	10-08-2022	-	-
+IS_cluster_114964_length_1365_1	eda3584d1041fad367d0b47fb9667a0e	249	CDD	cd02149	NfsB-like	37	244	2.2237E-77	T	10-08-2022	IPR033878	Oxygen-insensitive NAD(P)H nitroreductase NfsB-like
+IS_cluster_301029_length_1870_3	8f165bb3937f80bdd29a948f2adc8a52	66	Gene3D	G3DSA:2.40.160.10	Porin	1	66	4.2E-7	T	10-08-2022	IPR023614	Porin domain superfamily
+IS_cluster_260361_length_1159_1	45d737b4f7d33a86ee2435bf195b73cf	151	Gene3D	G3DSA:3.40.50.360	-	1	147	1.5E-40	T	10-08-2022	IPR029039	Flavoprotein-like superfamily
+IS_cluster_260361_length_1159_1	45d737b4f7d33a86ee2435bf195b73cf	151	Pfam	PF02525	Flavodoxin-like fold	9	137	3.2E-31	T	10-08-2022	IPR003680	Flavodoxin-like fold
+IS_cluster_260361_length_1159_1	45d737b4f7d33a86ee2435bf195b73cf	151	PANTHER	PTHR47307	GLUTATHIONE-REGULATED POTASSIUM-EFFLUX SYSTEM ANCILLARY PROTEIN KEFG	1	141	2.1E-44	T	10-08-2022	-	-
+IS_cluster_260361_length_1159_1	45d737b4f7d33a86ee2435bf195b73cf	151	SUPERFAMILY	SSF52218	Flavoproteins	1	142	6.29E-36	T	10-08-2022	IPR029039	Flavoprotein-like superfamily
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	PANTHER	PTHR24220	IMPORT ATP-BINDING PROTEIN	1	300	8.6E-86	T	10-08-2022	-	-
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	PANTHER	PTHR24220:SF364	DRUG RESISTANCE ABC TRANSPORTER,ATP-BINDING PROTEIN-RELATED	1	300	8.6E-86	T	10-08-2022	-	-
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	Pfam	PF00005	ABC transporter	21	158	8.5E-27	T	10-08-2022	IPR003439	ABC transporter-like, ATP-binding domain
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	3	223	5.94E-60	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	ProSiteProfiles	PS50893	ATP-binding cassette, ABC transporter-type domain profile.	5	230	22.24234	T	10-08-2022	IPR003439	ABC transporter-like, ATP-binding domain
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	ProSitePatterns	PS00211	ABC transporters family signature.	131	145	-	T	10-08-2022	IPR017871	ABC transporter-like, conserved site
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	Gene3D	G3DSA:3.40.50.300	-	1	240	3.1E-61	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_32477_length_2531_2	acd4839c87b02f7f511f450d43e36056	302	SMART	SM00382	AAA_5	29	207	2.4E-10	T	10-08-2022	IPR003593	AAA+ ATPase domain
+IS_cluster_5658_length_1732_1	3a188e991849e70ef6e3b4c9c02e1654	178	SUPERFAMILY	SSF143422	Transposase IS200-like	1	139	1.83E-31	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_5658_length_1732_1	3a188e991849e70ef6e3b4c9c02e1654	178	SMART	SM01321	Y1_Tnp_2	9	133	2.0E-32	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_5658_length_1732_1	3a188e991849e70ef6e3b4c9c02e1654	178	Gene3D	G3DSA:3.30.70.1290	-	1	174	4.9E-43	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+IS_cluster_5658_length_1732_1	3a188e991849e70ef6e3b4c9c02e1654	178	PANTHER	PTHR36966	REP-ASSOCIATED TYROSINE TRANSPOSASE	3	154	4.1E-38	T	10-08-2022	-	-
+IS_cluster_5658_length_1732_1	3a188e991849e70ef6e3b4c9c02e1654	178	Pfam	PF01797	Transposase IS200 like	13	131	3.3E-11	T	10-08-2022	IPR002686	Transposase IS200-like
+IS_cluster_99484_length_1028_1	b460fbb90c00ba526cb064b7c8165f82	119	Gene3D	G3DSA:3.30.110.70	Hypothetical protein apc22750. Chain B	20	119	2.5E-33	T	10-08-2022	-	-
+IS_cluster_99484_length_1028_1	b460fbb90c00ba526cb064b7c8165f82	119	PANTHER	PTHR34068	UPF0145 PROTEIN YBJQ	25	117	2.9E-30	T	10-08-2022	IPR002765	Uncharacterised protein family UPF0145, YbjQ-like
+IS_cluster_99484_length_1028_1	b460fbb90c00ba526cb064b7c8165f82	119	Hamap	MF_00338	UPF0145 protein YbjQ [ybjQ].	13	118	21.985039	T	10-08-2022	IPR002765	Uncharacterised protein family UPF0145, YbjQ-like
+IS_cluster_99484_length_1028_1	b460fbb90c00ba526cb064b7c8165f82	119	Pfam	PF01906	Putative heavy-metal-binding	25	118	8.9E-33	T	10-08-2022	IPR002765	Uncharacterised protein family UPF0145, YbjQ-like
+IS_cluster_99484_length_1028_1	b460fbb90c00ba526cb064b7c8165f82	119	SUPERFAMILY	SSF117782	YbjQ-like	20	118	6.41E-31	T	10-08-2022	IPR035439	UPF0145 domain superfamily
+IS_cluster_4852_length_1500_1	1fcea61a6971e28ffbdd81a456959b99	162	Gene3D	G3DSA:3.40.50.2020	-	1	159	1.8E-34	T	10-08-2022	IPR029057	Phosphoribosyltransferase-like
+IS_cluster_4852_length_1500_1	1fcea61a6971e28ffbdd81a456959b99	162	PANTHER	PTHR11608	BIFUNCTIONAL PROTEIN PYRR	2	154	2.9E-20	T	10-08-2022	-	-
+IS_cluster_4852_length_1500_1	1fcea61a6971e28ffbdd81a456959b99	162	Pfam	PF00156	Phosphoribosyl transferase domain	3	142	1.0E-22	T	10-08-2022	IPR000836	Phosphoribosyltransferase domain
+IS_cluster_4852_length_1500_1	1fcea61a6971e28ffbdd81a456959b99	162	CDD	cd06223	PRTases_typeI	14	135	3.96673E-10	T	10-08-2022	IPR000836	Phosphoribosyltransferase domain
+IS_cluster_4852_length_1500_1	1fcea61a6971e28ffbdd81a456959b99	162	SUPERFAMILY	SSF53271	PRTase-like	3	151	1.44E-24	T	10-08-2022	IPR029057	Phosphoribosyltransferase-like
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	Pfam	PF01476	LysM domain	95	143	5.3E-12	T	10-08-2022	IPR018392	LysM domain
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	ProSiteProfiles	PS51782	LysM domain profile.	93	142	14.030738	T	10-08-2022	IPR018392	LysM domain
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	ProSiteProfiles	PS50914	BON domain profile.	16	84	10.26902	T	10-08-2022	IPR007055	BON domain
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	Gene3D	G3DSA:3.10.350.10	LysM domain	90	145	5.2E-16	T	10-08-2022	IPR036779	LysM domain superfamily
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	CDD	cd00118	LysM	93	142	3.83996E-11	T	10-08-2022	IPR018392	LysM domain
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	SUPERFAMILY	SSF54106	LysM domain	93	143	4.84E-8	T	10-08-2022	IPR036779	LysM domain superfamily
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	SMART	SM00257	LysM_2	94	143	4.4E-12	T	10-08-2022	IPR018392	LysM domain
+IS_cluster_10977_length_1583_2	2410897cd2741a1424accfa40cfdbac8	146	Pfam	PF04972	BON domain	20	81	1.2E-8	T	10-08-2022	IPR007055	BON domain
+IS_cluster_24203_length_2263_1	d78b04d15f314e47c509ea465cb4c050	203	Coils	Coil	Coil	167	187	-	T	10-08-2022	-	-
+IS_cluster_24203_length_2263_1	d78b04d15f314e47c509ea465cb4c050	203	Pfam	PF14014	Protein of unknown function (DUF4230)	46	189	3.5E-26	T	10-08-2022	IPR025324	Protein of unknown function DUF4230
+IS_cluster_4335_length_2391_2	546e7079855d6c139b699b1456648ae6	131	SMART	SM00635	bid_2	24	101	1.6E-17	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_4335_length_2391_2	546e7079855d6c139b699b1456648ae6	131	Gene3D	G3DSA:2.60.40.1080	-	23	105	5.0E-25	T	10-08-2022	-	-
+IS_cluster_4335_length_2391_2	546e7079855d6c139b699b1456648ae6	131	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	23	104	2.67E-19	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_4335_length_2391_2	546e7079855d6c139b699b1456648ae6	131	Pfam	PF02368	Bacterial Ig-like domain (group 2)	25	102	4.4E-19	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	Gene3D	G3DSA:1.10.601.10	RNA Polymerase Primary Sigma Factor	190	232	9.0E-9	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	MobiDBLite	mobidb-lite	consensus disorder prediction	54	95	-	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	ProSitePatterns	PS00715	Sigma-70 factors family signature 1.	282	295	-	T	10-08-2022	IPR000943	RNA polymerase sigma-70
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	MobiDBLite	mobidb-lite	consensus disorder prediction	1	122	-	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	PANTHER	PTHR30603:SF45	RNA POLYMERASE SIGMA FACTOR SIGF, CHLOROPLASTIC	66	304	2.7E-35	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	MobiDBLite	mobidb-lite	consensus disorder prediction	162	182	-	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	Gene3D	G3DSA:1.10.601.10	RNA Polymerase Primary Sigma Factor	239	304	5.0E-28	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	MobiDBLite	mobidb-lite	consensus disorder prediction	21	53	-	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	PANTHER	PTHR30603	RNA POLYMERASE SIGMA FACTOR RPO	66	304	2.7E-35	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	SUPERFAMILY	SSF88946	Sigma2 domain of RNA polymerase sigma factors	189	304	7.51E-36	T	10-08-2022	IPR013325	RNA polymerase sigma factor, region 2
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	Pfam	PF00140	Sigma-70 factor, region 1.2	192	225	5.4E-14	T	10-08-2022	IPR009042	RNA polymerase sigma-70 region 1.2
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	Pfam	PF04542	Sigma-70 region 2	258	303	3.9E-12	T	10-08-2022	IPR007627	RNA polymerase sigma-70 region 2
+IS_cluster_182040_length_1560_1	7b4ef12303e1989d82e753307df54fbb	304	MobiDBLite	mobidb-lite	consensus disorder prediction	1	20	-	T	10-08-2022	-	-
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	Pfam	PF04303	PrpF protein	3	385	6.0E-182	T	10-08-2022	IPR007400	PrpF protein
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	Gene3D	G3DSA:3.10.310.10	Diaminopimelate Epimerase; Chain A, domain 1	5	380	1.1E-164	T	10-08-2022	-	-
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	SUPERFAMILY	SSF54506	Diaminopimelate epimerase-like	1	179	3.14E-69	T	10-08-2022	-	-
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	Gene3D	G3DSA:3.10.310.10	Diaminopimelate Epimerase; Chain A, domain 1	179	368	1.1E-164	T	10-08-2022	-	-
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	PANTHER	PTHR43709	ACONITATE ISOMERASE-RELATED	2	385	9.5E-161	T	10-08-2022	IPR007400	PrpF protein
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	PANTHER	PTHR43709:SF2	DUF453 DOMAIN PROTEIN (AFU_ORTHOLOGUE AFUA_6G00360)	2	385	9.5E-161	T	10-08-2022	-	-
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	TIGRFAM	TIGR02334	prpF: probable AcnD-accessory protein PrpF	1	389	4.7E-232	T	10-08-2022	IPR012709	2-methyl-aconitate isomerase PrpF
+IS_cluster_115395_length_1680_1	4d3812641b54df03698e1fd1bc80e4f7	389	SUPERFAMILY	SSF54506	Diaminopimelate epimerase-like	183	388	1.15E-75	T	10-08-2022	-	-
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	Gene3D	G3DSA:3.30.420.10	-	128	292	7.6E-33	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	Pfam	PF13683	Integrase core domain	223	288	6.6E-21	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	SUPERFAMILY	SSF53098	Ribonuclease H-like	124	294	4.68E-37	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	128	296	25.963528	T	10-08-2022	IPR001584	Integrase, catalytic core
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	SUPERFAMILY	SSF46689	Homeodomain-like	11	110	1.34E-11	T	10-08-2022	IPR009057	Homeobox-like domain superfamily
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	PANTHER	PTHR42648	TRANSPOSASE, PUTATIVE-RELATED	27	293	1.8E-29	T	10-08-2022	-	-
+IS_cluster_193473_length_1261_1	e34a4f9d975e423bb65f16668690a70c	373	Pfam	PF13565	Homeodomain-like domain	39	107	7.8E-9	T	10-08-2022	-	-
+IS_cluster_10305_length_1607_3	519fc96d845cd19a2fb1203d6db42eb9	179	Gene3D	G3DSA:2.10.109.10	Umud Fragment, subunit A	27	178	5.6E-6	T	10-08-2022	-	-
+IS_cluster_10305_length_1607_3	519fc96d845cd19a2fb1203d6db42eb9	179	SUPERFAMILY	SSF51306	LexA/Signal peptidase	34	176	3.35E-7	T	10-08-2022	IPR036286	LexA/Signal peptidase-like superfamily
+IS_cluster_10305_length_1607_3	519fc96d845cd19a2fb1203d6db42eb9	179	Pfam	PF10502	Signal peptidase, peptidase S26	15	175	1.4E-8	T	10-08-2022	IPR019533	Peptidase S26
+IS_cluster_73940_length_1924_2	9f12172001fe88e546de249a78c60038	47	MobiDBLite	mobidb-lite	consensus disorder prediction	1	23	-	T	10-08-2022	-	-
+IS_cluster_73940_length_1924_2	9f12172001fe88e546de249a78c60038	47	MobiDBLite	mobidb-lite	consensus disorder prediction	1	47	-	T	10-08-2022	-	-
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	Gene3D	G3DSA:3.90.1580.10	-	122	360	2.8E-79	T	10-08-2022	IPR042095	Sulfatase-modifying factor enzyme superfamily
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	PANTHER	PTHR23150:SF31	INACTIVE C-ALPHA-FORMYLGLYCINE-GENERATING ENZYME 2	108	360	3.8E-53	T	10-08-2022	-	-
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	SMART	SM00635	bid_2	38	115	5.9E-16	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	22	6.0	T	10-08-2022	-	-
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	PANTHER	PTHR23150	SULFATASE MODIFYING FACTOR 1, 2	108	360	3.8E-53	T	10-08-2022	-	-
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	Gene3D	G3DSA:2.60.40.1080	-	35	120	9.9E-24	T	10-08-2022	-	-
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	Pfam	PF02368	Bacterial Ig-like domain (group 2)	40	116	7.2E-17	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	37	113	2.04E-17	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	SUPERFAMILY	SSF56436	C-type lectin-like	132	360	6.83E-73	T	10-08-2022	IPR016187	C-type lectin fold
+IS_cluster_156972_length_2511_2	72735f28aa52fc4d8d56378f0b99226c	362	Pfam	PF03781	Sulfatase-modifying factor enzyme 1	137	358	1.2E-54	T	10-08-2022	IPR005532	Sulfatase-modifying factor enzyme
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	SUPERFAMILY	SSF56281	Metallo-hydrolase/oxidoreductase	1	299	1.14E-65	T	10-08-2022	IPR036866	Ribonuclease Z/Hydroxyacylglutathione hydrolase-like
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	PANTHER	PTHR46018:SF2	ZINC PHOSPHODIESTERASE ELAC PROTEIN 1	1	298	8.2E-60	T	10-08-2022	-	-
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	Hamap	MF_01818	Ribonuclease BN [rbn].	1	302	29.285578	T	10-08-2022	IPR013471	Ribonuclease Z/BN
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	PANTHER	PTHR46018	ZINC PHOSPHODIESTERASE ELAC PROTEIN 1	1	298	8.2E-60	T	10-08-2022	-	-
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	CDD	cd07717	RNaseZ_ZiPD-like_MBL-fold	3	300	2.0052E-105	T	10-08-2022	IPR013471	Ribonuclease Z/BN
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	Pfam	PF00753	Metallo-beta-lactamase superfamily	24	84	7.5E-8	T	10-08-2022	IPR001279	Metallo-beta-lactamase
+IS_cluster_140_length_1872_1	79c9a67b0aa5ee2a2bfdf481577ceefe	304	Gene3D	G3DSA:3.60.15.10	-	1	301	2.1E-76	T	10-08-2022	IPR036866	Ribonuclease Z/Hydroxyacylglutathione hydrolase-like
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	Coils	Coil	Coil	263	351	-	T	10-08-2022	-	-
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	Pfam	PF10544	T5orf172 domain	358	450	1.8E-13	T	10-08-2022	IPR018306	Bacteriophage T5, Orf172 DNA-binding
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	Pfam	PF13250	Domain of unknown function (DUF4041)	198	253	1.0E-20	T	10-08-2022	IPR025280	Domain of unknown function DUF4041
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	SMART	SM00974	T5orf172_2	368	451	2.6E-26	T	10-08-2022	IPR018306	Bacteriophage T5, Orf172 DNA-binding
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	Coils	Coil	Coil	91	111	-	T	10-08-2022	-	-
+IS_cluster_331591_length_2577_1	556f904da463b22dbac5b027d32acc50	476	Coils	Coil	Coil	48	82	-	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349:SF57	INTEGRASE/RECOMBINASE	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	80	265	1.0E-31	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	2	260	2.88E-38	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.150.130	-	1	79	2.8E-11	T	10-08-2022	IPR010998	Integrase/recombinase, N-terminal
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	88	262	27.898397	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	Pfam	PF00589	Phage integrase family	115	253	8.7E-21	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	Coils	Coil	Coil	264	267	-	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51900	Core-binding (CB) domain profile.	1	72	9.900415	T	10-08-2022	IPR044068	Core-binding (CB) domain
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349:SF57	INTEGRASE/RECOMBINASE	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	80	265	1.0E-31	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	2	260	2.88E-38	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.150.130	-	1	79	2.8E-11	T	10-08-2022	IPR010998	Integrase/recombinase, N-terminal
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	88	262	27.898397	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	Pfam	PF00589	Phage integrase family	115	253	8.7E-21	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	Coils	Coil	Coil	264	267	-	T	10-08-2022	-	-
+IS_cluster_391294_length_2132_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51900	Core-binding (CB) domain profile.	1	72	9.900415	T	10-08-2022	IPR044068	Core-binding (CB) domain
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349:SF57	INTEGRASE/RECOMBINASE	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	80	265	1.0E-31	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	2	260	2.88E-38	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	Gene3D	G3DSA:1.10.150.130	-	1	79	2.8E-11	T	10-08-2022	IPR010998	Integrase/recombinase, N-terminal
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	1	267	6.5E-137	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	88	262	27.898397	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	Pfam	PF00589	Phage integrase family	115	253	8.7E-21	T	10-08-2022	IPR002104	Integrase, catalytic domain
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	Coils	Coil	Coil	264	267	-	T	10-08-2022	-	-
+IS_cluster_9311_length_2154_2	5d2171f9ec0aee465ef6e650b813364b	267	ProSiteProfiles	PS51900	Core-binding (CB) domain profile.	1	72	9.900415	T	10-08-2022	IPR044068	Core-binding (CB) domain
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	Gene3D	G3DSA:3.10.450.30	Microbial ribonucleases	75	186	2.2E-34	T	10-08-2022	-	-
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PRINTS	PR00117	Barnase signature	168	186	2.6E-17	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PRINTS	PR00117	Barnase signature	87	104	2.6E-17	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PRINTS	PR00117	Barnase signature	127	145	2.6E-17	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PRINTS	PR00117	Barnase signature	107	124	2.6E-17	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	SUPERFAMILY	SSF53933	Microbial ribonucleases	85	185	3.68E-29	T	10-08-2022	IPR016191	Ribonuclease/ribotoxin
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PIRSF	PIRSF001013	RNAse_Ba	2	77	13.0	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	PIRSF	PIRSF001013	RNAse_Ba	37	187	9.1E-46	T	10-08-2022	IPR001887	Barnase
+IS_cluster_254287_length_1038_1	03d5f159a401a9c1a264a45d41068fda	187	Pfam	PF00545	ribonuclease	100	185	2.6E-21	T	10-08-2022	IPR000026	Guanine-specific ribonuclease N1/T1/U2
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Hamap	MF_02092	Quinone-dependent D-lactate dehydrogenase [dld].	4	562	59.01091	T	10-08-2022	IPR012256	D-lactate dehydrogenase
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	PANTHER	PTHR43716	D-2-HYDROXYGLUTARATE DEHYDROGENASE, MITOCHONDRIAL	5	551	8.9E-73	T	10-08-2022	-	-
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	SUPERFAMILY	SSF56176	FAD-binding/transporter-associated domain-like	5	265	1.59E-72	T	10-08-2022	IPR036318	FAD-binding, type PCMH-like superfamily
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Gene3D	G3DSA:3.30.70.610	-	263	345	2.6E-19	T	10-08-2022	IPR016172	D-lactate dehydrogenase, cap domain, subdomain 1
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Gene3D	G3DSA:3.30.70.610	-	346	428	5.8E-24	T	10-08-2022	IPR016172	D-lactate dehydrogenase, cap domain, subdomain 1
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	ProSiteProfiles	PS51387	PCMH-type FAD-binding domain profile.	36	207	12.244577	T	10-08-2022	IPR016166	FAD-binding domain, PCMH-type
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Pfam	PF01565	FAD binding domain	41	160	9.4E-9	T	10-08-2022	IPR006094	FAD linked oxidase, N-terminal
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	PIRSF	PIRSF000101	D-lactate_dh	1	563	0.0	T	10-08-2022	IPR012256	D-lactate dehydrogenase
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Gene3D	G3DSA:3.30.43.10	-	1	97	1.9E-21	T	10-08-2022	IPR016167	FAD-binding, type PCMH, subdomain 1
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	SUPERFAMILY	SSF55103	FAD-linked oxidases, C-terminal domain	269	561	2.62E-117	T	10-08-2022	IPR016164	FAD-linked oxidase-like, C-terminal
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Gene3D	G3DSA:3.30.465.10	-	100	262	1.2E-74	T	10-08-2022	IPR016169	FAD-binding, type PCMH, subdomain 2
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Gene3D	G3DSA:3.30.1370.20	-	429	513	1.2E-42	T	10-08-2022	IPR016173	D-lactate dehydrogenase, cap domain, subdomain 2
+IS_cluster_24203_length_1878_1	89ad04f76f8a360ab2b9bd968c0806ad	563	Pfam	PF09330	D-lactate dehydrogenase, membrane binding	272	561	3.9E-149	T	10-08-2022	IPR015409	D-lactate dehydrogenase, membrane binding, C-terminal
+IS_cluster_201533_length_596_1	e27cc2c8fe1d04c4dd88b0549dea29bb	198	ProSitePatterns	PS01204	NF-kappa-B/Rel/dorsal domain signature.	148	154	-	T	10-08-2022	IPR030492	Rel homology domain, conserved site
+IS_cluster_5027_length_2826_3	b7077a8c8fe7dbed561e2d9e2e7c6869	243	MobiDBLite	mobidb-lite	consensus disorder prediction	39	63	-	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_3	b7077a8c8fe7dbed561e2d9e2e7c6869	243	Coils	Coil	Coil	211	238	-	T	10-08-2022	-	-
+IS_cluster_5027_length_2826_3	b7077a8c8fe7dbed561e2d9e2e7c6869	243	MobiDBLite	mobidb-lite	consensus disorder prediction	39	72	-	T	10-08-2022	-	-
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PANTHER	PTHR43148	GLYCERALDEHYDE-3-PHOSPHATE DEHYDROGENASE 2	1	331	4.3E-200	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	Gene3D	G3DSA:3.40.50.720	-	3	326	2.7E-145	T	10-08-2022	-	-
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	TIGRFAM	TIGR01534	GAPDH-I: glyceraldehyde-3-phosphate dehydrogenase, type I	4	325	6.7E-134	T	10-08-2022	IPR006424	Glyceraldehyde-3-phosphate dehydrogenase, type I
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	SMART	SM00846	gp_dh_n_7	3	151	6.1E-92	T	10-08-2022	IPR020828	Glyceraldehyde 3-phosphate dehydrogenase, NAD(P) binding domain
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	SUPERFAMILY	SSF55347	Glyceraldehyde-3-phosphate dehydrogenase-like, C-terminal domain	150	313	5.06E-64	T	10-08-2022	-	-
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PANTHER	PTHR43148:SF6	GLYCERALDEHYDE-3-PHOSPHATE DEHYDROGENASE	1	331	4.3E-200	T	10-08-2022	-	-
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	ProSitePatterns	PS00071	Glyceraldehyde 3-phosphate dehydrogenase active site.	149	156	-	T	10-08-2022	IPR020830	Glyceraldehyde 3-phosphate dehydrogenase, active site
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	Pfam	PF02800	Glyceraldehyde 3-phosphate dehydrogenase, C-terminal domain	156	313	2.3E-60	T	10-08-2022	IPR020829	Glyceraldehyde 3-phosphate dehydrogenase, catalytic domain
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	SUPERFAMILY	SSF51735	NAD(P)-binding Rossmann-fold domains	3	167	1.76E-61	T	10-08-2022	IPR036291	NAD(P)-binding domain superfamily
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PIRSF	PIRSF000149	GAPDH	1	334	1.0E-122	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	Gene3D	G3DSA:3.30.360.10	Dihydrodipicolinate Reductase; domain 2	150	315	2.7E-145	T	10-08-2022	-	-
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	Pfam	PF00044	Glyceraldehyde 3-phosphate dehydrogenase, NAD binding domain	3	103	8.4E-39	T	10-08-2022	IPR020828	Glyceraldehyde 3-phosphate dehydrogenase, NAD(P) binding domain
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PRINTS	PR00078	Glyceraldehyde-3-phosphate dehydrogenase signature	172	188	1.5E-33	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PRINTS	PR00078	Glyceraldehyde-3-phosphate dehydrogenase signature	145	163	1.5E-33	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PRINTS	PR00078	Glyceraldehyde-3-phosphate dehydrogenase signature	109	122	1.5E-33	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PRINTS	PR00078	Glyceraldehyde-3-phosphate dehydrogenase signature	230	247	1.5E-33	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_24203_length_2612_2	b7de4dfa82eede0e80d7fc4e3b4cacc3	334	PRINTS	PR00078	Glyceraldehyde-3-phosphate dehydrogenase signature	266	281	1.5E-33	T	10-08-2022	IPR020831	Glyceraldehyde/Erythrose phosphate dehydrogenase family
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	SUPERFAMILY	SSF56784	HAD-like	28	234	5.06E-62	T	10-08-2022	IPR036412	HAD-like superfamily
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	Gene3D	G3DSA:3.40.50.1000	-	24	235	3.4E-84	T	10-08-2022	IPR023214	HAD superfamily
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	TIGRFAM	TIGR01672	AphA: HAD phosphatase, family IIIB	1	235	2.2E-119	T	10-08-2022	IPR010025	HAD-superfamily phosphatase, subfamily IIIB, AphA
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	SFLD	SFLDG01127	C1.3: Acid Phosphatase Like	3	235	0.0	T	10-08-2022	IPR010025	HAD-superfamily phosphatase, subfamily IIIB, AphA
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	CDD	cd07499	HAD_CBAP	49	235	1.59134E-120	T	10-08-2022	IPR010025	HAD-superfamily phosphatase, subfamily IIIB, AphA
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	PIRSF	PIRSF017818	Acid_Ptase_B	1	235	6.8E-114	T	10-08-2022	IPR010025	HAD-superfamily phosphatase, subfamily IIIB, AphA
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	SFLD	SFLDS00003	Haloacid Dehalogenase	3	235	0.0	T	10-08-2022	-	-
+IS_cluster_10977_length_2890_1	904ba23ec8ef5a82f883fbb3ec29187f	235	Pfam	PF03767	HAD superfamily, subfamily IIIB (Acid phosphatase)	24	218	4.2E-27	T	10-08-2022	IPR005519	Acid phosphatase, class B-like
+IS_cluster_4852_length_2134_1	a634dd7120c858147e94914015507962	365	Pfam	PF03864	Phage major capsid protein E	22	337	1.4E-10	T	10-08-2022	IPR005564	Major capsid protein GpE
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	PANTHER	PTHR30408	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	50	185	1.3E-12	T	10-08-2022	-	-
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	Pfam	PF01420	Type I restriction modification DNA specificity domain	36	182	4.8E-19	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	Coils	Coil	Coil	164	184	-	T	10-08-2022	-	-
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	PANTHER	PTHR30408:SF12	TYPE-1 RESTRICTION ENZYME HINDVIIP SPECIFICITY PROTEIN-RELATED	50	185	1.3E-12	T	10-08-2022	-	-
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	SUPERFAMILY	SSF116734	DNA methylase specificity domain	30	183	6.87E-29	T	10-08-2022	-	-
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	19	158	8.3E-27	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_134155_length_1288_3	dce71919b4dd20bd39241b10bd2fd2bf	203	CDD	cd17291	RMtype1_S_MgeORF438P-TRD-CR_like	36	188	6.4864E-55	T	10-08-2022	-	-
+IS_cluster_254287_length_1038_2	504e3879677887f66501db6f755af4b4	93	SUPERFAMILY	SSF52038	Barstar-related	1	86	1.57E-25	T	10-08-2022	IPR035905	Barstar-like superfamily
+IS_cluster_254287_length_1038_2	504e3879677887f66501db6f755af4b4	93	Pfam	PF01337	Barstar (barnase inhibitor)	5	79	8.1E-15	T	10-08-2022	IPR000468	Barstar (barnase inhibitor)
+IS_cluster_254287_length_1038_2	504e3879677887f66501db6f755af4b4	93	Gene3D	G3DSA:3.30.370.10	-	1	86	1.2E-28	T	10-08-2022	IPR035905	Barstar-like superfamily
+IS_cluster_109946_length_719_2	c075946d07eb8a4bd72de28d8c1f04fa	186	SUPERFAMILY	SSF158446	IVS-encoded protein-like	13	105	2.62E-18	T	10-08-2022	IPR036583	23S rRNA-intervening sequence superfamily
+IS_cluster_109946_length_719_2	c075946d07eb8a4bd72de28d8c1f04fa	186	TIGRFAM	TIGR02436	TIGR02436: four helix bundle protein	25	88	2.4E-7	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_109946_length_719_2	c075946d07eb8a4bd72de28d8c1f04fa	186	TIGRFAM	TIGR04258	4helix_suffix: four helix bundle suffix domain	135	182	1.4E-20	T	10-08-2022	IPR026354	Four helix bundle suffix domain
+IS_cluster_109946_length_719_2	c075946d07eb8a4bd72de28d8c1f04fa	186	Pfam	PF05635	23S rRNA-intervening sequence protein	23	87	4.4E-6	T	10-08-2022	IPR012657	23S rRNA-intervening sequence protein
+IS_cluster_109946_length_719_2	c075946d07eb8a4bd72de28d8c1f04fa	186	Gene3D	G3DSA:1.20.1440.60	-	10	117	8.3E-12	T	10-08-2022	IPR036583	23S rRNA-intervening sequence superfamily
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	ProSiteProfiles	PS50305	Sirtuin catalytic domain profile.	8	282	39.338749	T	10-08-2022	IPR026590	Sirtuin family, catalytic core domain
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	PANTHER	PTHR43688	NAD-DEPENDENT PROTEIN LIPOAMIDASE SIRTUIN-4	17	277	2.0E-68	T	10-08-2022	-	-
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	Gene3D	G3DSA:3.30.1600.10	SIR2/SIRT2 'Small Domain'	41	203	3.2E-63	T	10-08-2022	IPR026591	Sirtuin, catalytic core small domain superfamily
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	Pfam	PF02146	Sir2 family	31	231	2.6E-38	T	10-08-2022	IPR003000	Sirtuin family
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	SUPERFAMILY	SSF52467	DHS-like NAD/FAD-binding domain	16	281	7.16E-66	T	10-08-2022	IPR029035	DHS-like NAD/FAD-binding domain superfamily
+IS_cluster_580863_length_1012_1	d5a2329a58f5dc619003fa32e7b4f7d2	282	Gene3D	G3DSA:3.40.50.1220	-	24	271	3.2E-63	T	10-08-2022	-	-
+IS_cluster_10977_length_2384_2	2b68b86826b98ae6fc3e416fc94fc615	536	Pfam	PF02646	RmuC family	214	509	7.7E-92	T	10-08-2022	IPR003798	DNA recombination RmuC
+IS_cluster_10977_length_2384_2	2b68b86826b98ae6fc3e416fc94fc615	536	PANTHER	PTHR30563	DNA RECOMBINATION PROTEIN RMUC	106	519	1.4E-134	T	10-08-2022	IPR003798	DNA recombination RmuC
+IS_cluster_10977_length_2384_2	2b68b86826b98ae6fc3e416fc94fc615	536	Coils	Coil	Coil	27	103	-	T	10-08-2022	-	-
+IS_cluster_10977_length_2384_2	2b68b86826b98ae6fc3e416fc94fc615	536	Coils	Coil	Coil	118	187	-	T	10-08-2022	-	-
+IS_cluster_10977_length_2384_2	2b68b86826b98ae6fc3e416fc94fc615	536	Gene3D	G3DSA:1.10.287.1490	-	27	209	7.8E-6	T	10-08-2022	-	-
+IS_cluster_17448_length_1504_2	9e1dd6305778e31ef96badce1b7be714	64	MobiDBLite	mobidb-lite	consensus disorder prediction	1	64	-	T	10-08-2022	-	-
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	Pfam	PF00328	Histidine phosphatase superfamily (branch 2)	65	362	8.2E-11	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	SUPERFAMILY	SSF53254	Phosphoglycerate mutase-like	30	405	4.71E-43	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	32	410	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	ProSitePatterns	PS00778	Histidine acid phosphatases active site signature.	312	328	-	T	10-08-2022	IPR033379	Histidine acid phosphatase active site
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567	ACID PHOSPHATASE-RELATED	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	47	284	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	CDD	cd07061	HP_HAP_like	33	364	9.09688E-18	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_301029_length_1870_2	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567:SF135	GLUCOSE-1-PHOSPHATASE	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	Pfam	PF00328	Histidine phosphatase superfamily (branch 2)	65	362	8.2E-11	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	SUPERFAMILY	SSF53254	Phosphoglycerate mutase-like	30	405	4.71E-43	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	32	410	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	ProSitePatterns	PS00778	Histidine acid phosphatases active site signature.	312	328	-	T	10-08-2022	IPR033379	Histidine acid phosphatase active site
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567	ACID PHOSPHATASE-RELATED	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	47	284	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	CDD	cd07061	HP_HAP_like	33	364	9.09688E-18	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_21682_length_2110_2	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567:SF135	GLUCOSE-1-PHOSPHATASE	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	Pfam	PF00328	Histidine phosphatase superfamily (branch 2)	65	362	8.2E-11	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	SUPERFAMILY	SSF53254	Phosphoglycerate mutase-like	30	405	4.71E-43	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	32	410	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	ProSitePatterns	PS00778	Histidine acid phosphatases active site signature.	312	328	-	T	10-08-2022	IPR033379	Histidine acid phosphatase active site
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567	ACID PHOSPHATASE-RELATED	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	Gene3D	G3DSA:3.40.50.1240	-	47	284	3.9E-119	T	10-08-2022	IPR029033	Histidine phosphatase superfamily
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	CDD	cd07061	HP_HAP_like	33	364	9.09688E-18	T	10-08-2022	IPR000560	Histidine phosphatase superfamily, clade-2
+IS_cluster_253181_length_1766_1	e91a168957f1c1a109c59fb670956965	426	PANTHER	PTHR11567:SF135	GLUCOSE-1-PHOSPHATASE	26	418	3.1E-88	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	ProSitePatterns	PS00092	N-6 Adenine-specific DNA methylases signature.	7	13	-	T	10-08-2022	IPR002052	DNA methylase, N-6 adenine-specific, conserved site
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	PRINTS	PR00507	N12 class N6 adenine-specific DNA methyltransferase signature	4	16	1.1E-7	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	PRINTS	PR00507	N12 class N6 adenine-specific DNA methyltransferase signature	43	67	1.1E-7	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	SUPERFAMILY	SSF53335	S-adenosyl-L-methionine-dependent methyltransferases	2	120	4.01E-20	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	PANTHER	PTHR33841:SF1	DNA METHYLTRANSFERASE YEEA-RELATED	2	185	5.5E-21	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	Pfam	PF07669	Eco57I restriction-modification methylase	4	118	3.1E-11	T	10-08-2022	IPR011639	Type II restriction enzyme and methyltransferase RM.Eco57I-like
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	PANTHER	PTHR33841	DNA METHYLTRANSFERASE YEEA-RELATED	2	185	5.5E-21	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_2	cba20cf744b6190d737e53e852e6458b	349	Gene3D	G3DSA:3.40.50.150	Vaccinia Virus protein VP39	1	148	2.1E-23	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Pfam	PF01565	FAD binding domain	37	178	3.2E-22	T	10-08-2022	IPR006094	FAD linked oxidase, N-terminal
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	SUPERFAMILY	SSF56176	FAD-binding/transporter-associated domain-like	3	263	1.07E-29	T	10-08-2022	IPR036318	FAD-binding, type PCMH-like superfamily
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	PANTHER	PTHR11748:SF111	D-LACTATE DEHYDROGENASE, MITOCHONDRIAL-RELATED	8	516	9.9E-46	T	10-08-2022	-	-
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Pfam	PF02913	FAD linked oxidases, C-terminal domain	268	516	1.2E-9	T	10-08-2022	IPR004113	FAD-linked oxidase, C-terminal
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	SUPERFAMILY	SSF55103	FAD-linked oxidases, C-terminal domain	272	517	1.64E-14	T	10-08-2022	IPR016164	FAD-linked oxidase-like, C-terminal
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Gene3D	G3DSA:3.30.465.10	-	10	201	1.1E-25	T	10-08-2022	IPR016169	FAD-binding, type PCMH, subdomain 2
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	PANTHER	PTHR11748	D-LACTATE DEHYDROGENASE	8	516	9.9E-46	T	10-08-2022	-	-
+IS_cluster_7342_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	ProSiteProfiles	PS51387	PCMH-type FAD-binding domain profile.	33	266	13.327766	T	10-08-2022	IPR016166	FAD-binding domain, PCMH-type
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Pfam	PF01565	FAD binding domain	37	178	3.2E-22	T	10-08-2022	IPR006094	FAD linked oxidase, N-terminal
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	SUPERFAMILY	SSF56176	FAD-binding/transporter-associated domain-like	3	263	1.07E-29	T	10-08-2022	IPR036318	FAD-binding, type PCMH-like superfamily
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	PANTHER	PTHR11748:SF111	D-LACTATE DEHYDROGENASE, MITOCHONDRIAL-RELATED	8	516	9.9E-46	T	10-08-2022	-	-
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Pfam	PF02913	FAD linked oxidases, C-terminal domain	268	516	1.2E-9	T	10-08-2022	IPR004113	FAD-linked oxidase, C-terminal
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	SUPERFAMILY	SSF55103	FAD-linked oxidases, C-terminal domain	272	517	1.64E-14	T	10-08-2022	IPR016164	FAD-linked oxidase-like, C-terminal
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	Gene3D	G3DSA:3.30.465.10	-	10	201	1.1E-25	T	10-08-2022	IPR016169	FAD-binding, type PCMH, subdomain 2
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	PANTHER	PTHR11748	D-LACTATE DEHYDROGENASE	8	516	9.9E-46	T	10-08-2022	-	-
+IS_cluster_21476_length_1873_1	364c41c77fcb7c929d5717e6fb2673cd	538	ProSiteProfiles	PS51387	PCMH-type FAD-binding domain profile.	33	266	13.327766	T	10-08-2022	IPR016166	FAD-binding domain, PCMH-type
+IS_cluster_10305_length_2914_2	d63f4509c7a1ded3346ceb1a25a5bd68	101	ProSiteProfiles	PS51257	Prokaryotic membrane lipoprotein lipid attachment site profile.	1	17	6.0	T	10-08-2022	-	-
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	Gene3D	G3DSA:3.90.580.10	-	44	121	9.7E-6	T	10-08-2022	IPR036977	DNA Primase, CHC2-type zinc finger
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	SMART	SM00778	prim_zn_ribbon	59	95	1.7E-12	T	10-08-2022	IPR013237	Bacteriophage T7, Gp4, DNA primase/helicase, N-terminal
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	Pfam	PF08273	Zinc-binding domain of primase-helicase	60	93	1.6E-12	T	10-08-2022	IPR013237	Bacteriophage T7, Gp4, DNA primase/helicase, N-terminal
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	SUPERFAMILY	SSF57783	Zinc beta-ribbon	40	119	4.68E-11	T	10-08-2022	-	-
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	CDD	cd01029	TOPRIM_primases	287	363	6.59774E-4	T	10-08-2022	IPR034154	Archaeal primase DnaG/twinkle-like, TOPRIM domain
+IS_cluster_344780_length_1205_1	53906765222c36f3004b65ee06a05e81	379	Pfam	PF13362	Toprim domain	285	373	5.3E-11	T	10-08-2022	IPR006171	TOPRIM  domain
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	Pfam	PF02368	Bacterial Ig-like domain (group 2)	25	101	1.2E-14	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	Pfam	PF02368	Bacterial Ig-like domain (group 2)	109	187	4.3E-21	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	23	103	6.83E-15	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	107	189	3.85E-20	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	SMART	SM00635	bid_2	109	186	4.4E-20	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	SMART	SM00635	bid_2	24	100	1.8E-16	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	Gene3D	G3DSA:2.60.40.1080	-	23	105	3.1E-23	T	10-08-2022	-	-
+IS_cluster_4335_length_2391_1	251c17515fe117bcaaa328005c515b8f	502	Gene3D	G3DSA:2.60.40.1080	-	107	190	4.6E-28	T	10-08-2022	-	-
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	ProSiteProfiles	PS51880	TGS domain profile.	278	361	13.884489	T	10-08-2022	IPR004095	TGS
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Pfam	PF01926	50S ribosome-binding GTPase	3	114	2.2E-22	T	10-08-2022	IPR006073	GTP binding domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	ProSiteProfiles	PS51710	OBG-type guanine nucleotide-binding (G) domain profile.	1	255	52.471413	T	10-08-2022	IPR031167	OBG-type guanine nucleotide-binding (G) domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Gene3D	G3DSA:3.40.50.300	-	2	278	1.1E-157	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	1	301	8.83E-80	T	10-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Coils	Coil	Coil	128	148	-	T	10-08-2022	-	-
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Gene3D	G3DSA:3.10.20.30	-	46	363	1.1E-157	T	10-08-2022	IPR012675	Beta-grasp domain superfamily
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	CDD	cd01900	YchF	3	277	3.49814E-154	T	10-08-2022	IPR041706	YchF, N-terminal
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PRINTS	PR00326	GTP1/OBG GTP-binding protein family signature	68	83	5.9E-35	T	10-08-2022	IPR006073	GTP binding domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PRINTS	PR00326	GTP1/OBG GTP-binding protein family signature	3	23	5.9E-35	T	10-08-2022	IPR006073	GTP binding domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PRINTS	PR00326	GTP1/OBG GTP-binding protein family signature	24	42	5.9E-35	T	10-08-2022	IPR006073	GTP binding domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PRINTS	PR00326	GTP1/OBG GTP-binding protein family signature	85	103	5.9E-35	T	10-08-2022	IPR006073	GTP binding domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Hamap	MF_00944	Ribosome-binding ATPase YchF [ychF].	1	363	42.881695	T	10-08-2022	IPR004396	Ribosome-binding ATPase YchF/Obg-like ATPase 1
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Pfam	PF06071	Protein of unknown function (DUF933)	279	362	3.4E-41	T	10-08-2022	IPR013029	YchF, C-terminal domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PANTHER	PTHR23305	OBG GTPASE FAMILY	1	363	1.7E-155	T	10-08-2022	-	-
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PIRSF	PIRSF006641	EngD	1	363	2.2E-157	T	10-08-2022	IPR004396	Ribosome-binding ATPase YchF/Obg-like ATPase 1
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	CDD	cd04867	TGS_YchF_OLA1	277	361	5.20142E-58	T	10-08-2022	IPR013029	YchF, C-terminal domain
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Gene3D	G3DSA:1.10.150.300	-	118	198	1.1E-157	T	10-08-2022	IPR023192	TGS-like domain superfamily
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	SUPERFAMILY	SSF81271	TGS-like	279	360	4.36E-38	T	10-08-2022	IPR012676	TGS-like
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	PANTHER	PTHR23305:SF18	OBG-LIKE ATPASE 1	1	363	1.7E-155	T	10-08-2022	-	-
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	TIGRFAM	TIGR00092	TIGR00092: GTP-binding protein YchF	1	363	7.5E-148	T	10-08-2022	IPR004396	Ribosome-binding ATPase YchF/Obg-like ATPase 1
+IS_cluster_4852_length_1215_1	b05aa5a435a08d95dd5c6e2cff29f726	363	Coils	Coil	Coil	178	198	-	T	10-08-2022	-	-
+IS_cluster_9844_length_966_2	a6e551d482ddc2c598d76a2b0eb7912e	169	PANTHER	PTHR33308	PEPTIDOGLYCAN HYDROLASE FLGJ	99	168	1.7E-24	T	10-08-2022	-	-
+IS_cluster_9844_length_966_2	a6e551d482ddc2c598d76a2b0eb7912e	169	PANTHER	PTHR33308	PEPTIDOGLYCAN HYDROLASE FLGJ	8	55	1.7E-24	T	10-08-2022	-	-
+IS_cluster_9844_length_966_2	a6e551d482ddc2c598d76a2b0eb7912e	169	Gene3D	G3DSA:1.10.530.10	-	7	166	9.2E-32	T	10-08-2022	-	-
+IS_cluster_9844_length_966_2	a6e551d482ddc2c598d76a2b0eb7912e	169	SMART	SM00047	Lysozyme_4	3	167	1.8E-4	T	10-08-2022	IPR002901	Mannosyl-glycoprotein endo-beta-N-acetylglucosamidase-like domain
+IS_cluster_9844_length_966_2	a6e551d482ddc2c598d76a2b0eb7912e	169	Pfam	PF01832	Mannosyl-glycoprotein endo-beta-N-acetylglucosaminidase	15	167	2.4E-17	T	10-08-2022	IPR002901	Mannosyl-glycoprotein endo-beta-N-acetylglucosamidase-like domain
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	Gene3D	G3DSA:1.10.45.10	-	475	513	5.4E-6	T	10-08-2022	IPR016171	Vanillyl-alcohol oxidase, C-terminal subdomain 2
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	SUPERFAMILY	SSF56176	FAD-binding/transporter-associated domain-like	3	264	5.32E-29	T	10-08-2022	IPR036318	FAD-binding, type PCMH-like superfamily
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	Gene3D	G3DSA:3.30.465.10	-	95	265	6.5E-18	T	10-08-2022	IPR016169	FAD-binding, type PCMH, subdomain 2
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	SUPERFAMILY	SSF55103	FAD-linked oxidases, C-terminal domain	273	512	2.78E-20	T	10-08-2022	IPR016164	FAD-linked oxidase-like, C-terminal
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	Pfam	PF02913	FAD linked oxidases, C-terminal domain	272	512	6.5E-19	T	10-08-2022	IPR004113	FAD-linked oxidase, C-terminal
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	Pfam	PF01565	FAD binding domain	37	180	2.9E-24	T	10-08-2022	IPR006094	FAD linked oxidase, N-terminal
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	PANTHER	PTHR11748	D-LACTATE DEHYDROGENASE	14	512	4.8E-48	T	10-08-2022	-	-
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	ProSiteProfiles	PS51387	PCMH-type FAD-binding domain profile.	32	268	14.222341	T	10-08-2022	IPR016166	FAD-binding domain, PCMH-type
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	PANTHER	PTHR11748:SF111	D-LACTATE DEHYDROGENASE, MITOCHONDRIAL-RELATED	14	512	4.8E-48	T	10-08-2022	-	-
+IS_cluster_78179_length_1980_1	06800cb8efa0ac01dfe35ebc2ae1f9e7	534	Gene3D	G3DSA:3.30.43.10	-	14	93	9.4E-7	T	10-08-2022	IPR016167	FAD-binding, type PCMH, subdomain 1
+IS_cluster_519963_length_1376_1	b8cbf4648eda402cc9c328a2739dc59e	193	Pfam	PF12950	TaqI-like C-terminal specificity domain	41	127	2.8E-7	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_75891_length_733_1	201ba84a97fa2e569eaad7786bc07da7	183	Gene3D	G3DSA:3.40.630.30	-	1	183	5.9E-43	T	10-08-2022	-	-
+IS_cluster_75891_length_733_1	201ba84a97fa2e569eaad7786bc07da7	183	PANTHER	PTHR43792	GNAT FAMILY, PUTATIVE (AFU_ORTHOLOGUE AFUA_3G00765)-RELATED-RELATED	6	181	6.9E-31	T	10-08-2022	-	-
+IS_cluster_75891_length_733_1	201ba84a97fa2e569eaad7786bc07da7	183	SUPERFAMILY	SSF55729	Acyl-CoA N-acyltransferases (Nat)	7	180	1.34E-43	T	10-08-2022	IPR016181	Acyl-CoA N-acyltransferase
+IS_cluster_75891_length_733_1	201ba84a97fa2e569eaad7786bc07da7	183	Pfam	PF13302	Acetyltransferase (GNAT) domain	14	155	8.1E-31	T	10-08-2022	IPR000182	GNAT domain
+IS_cluster_167858_length_1716_1	4029f498186814544db697bc72c7bbe1	347	Gene3D	G3DSA:2.60.40.1080	-	1	35	1.6E-8	T	10-08-2022	-	-
+IS_cluster_167858_length_1716_1	4029f498186814544db697bc72c7bbe1	347	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	1	34	1.33E-5	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_167858_length_1716_1	4029f498186814544db697bc72c7bbe1	347	Pfam	PF02368	Bacterial Ig-like domain (group 2)	1	32	2.7E-5	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_21682_length_2110_1	cc666dcc04adaa2bdbe0576e69b6c108	106	Pfam	PF07396	Phosphate-selective porin O and P	2	106	2.4E-9	T	10-08-2022	IPR010870	Phosphate-selective porin O/P
+IS_cluster_21682_length_2110_1	cc666dcc04adaa2bdbe0576e69b6c108	106	Gene3D	G3DSA:2.40.160.10	Porin	1	106	6.3E-15	T	10-08-2022	IPR023614	Porin domain superfamily
+IS_cluster_53342_length_1159_1	743d5e5516fa0c11c03a9a8a27dcb85f	183	MobiDBLite	mobidb-lite	consensus disorder prediction	18	148	-	T	10-08-2022	-	-
+IS_cluster_97145_length_924_1	743d5e5516fa0c11c03a9a8a27dcb85f	183	MobiDBLite	mobidb-lite	consensus disorder prediction	18	148	-	T	10-08-2022	-	-
+IS_cluster_236758_length_1093_1	743d5e5516fa0c11c03a9a8a27dcb85f	183	MobiDBLite	mobidb-lite	consensus disorder prediction	18	148	-	T	10-08-2022	-	-
+IS_cluster_62835_length_997_1	743d5e5516fa0c11c03a9a8a27dcb85f	183	MobiDBLite	mobidb-lite	consensus disorder prediction	18	148	-	T	10-08-2022	-	-
+IS_cluster_33366_length_1131_1	743d5e5516fa0c11c03a9a8a27dcb85f	183	MobiDBLite	mobidb-lite	consensus disorder prediction	18	148	-	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_1	66f68557205b490e0b6c7d3e3ec280a4	185	PANTHER	PTHR43140	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	4	180	7.8E-30	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_1	66f68557205b490e0b6c7d3e3ec280a4	185	SUPERFAMILY	SSF116734	DNA methylase specificity domain	4	184	6.7E-34	T	10-08-2022	-	-
+IS_cluster_74458_length_2192_1	66f68557205b490e0b6c7d3e3ec280a4	185	Pfam	PF01420	Type I restriction modification DNA specificity domain	7	185	2.0E-16	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+IS_cluster_74458_length_2192_1	66f68557205b490e0b6c7d3e3ec280a4	185	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	1	185	2.3E-36	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+IS_cluster_74458_length_2192_1	66f68557205b490e0b6c7d3e3ec280a4	185	CDD	cd17252	RMtype1_S_EcoKI-TRD1-CR1_like	10	185	1.61959E-65	T	10-08-2022	-	-
+IS_cluster_24203_length_1528_3	2313f4d3aaac13555d4417ea0a660975	88	Coils	Coil	Coil	12	44	-	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	ProSitePatterns	PS00092	N-6 Adenine-specific DNA methylases signature.	10	16	-	T	10-08-2022	IPR002052	DNA methylase, N-6 adenine-specific, conserved site
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	Pfam	PF12950	TaqI-like C-terminal specificity domain	242	335	9.2E-8	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	PANTHER	PTHR33841	DNA METHYLTRANSFERASE YEEA-RELATED	5	119	2.4E-16	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	Coils	Coil	Coil	339	359	-	T	10-08-2022	-	-
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	Gene3D	G3DSA:3.40.50.150	Vaccinia Virus protein VP39	1	141	5.6E-23	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	Pfam	PF07669	Eco57I restriction-modification methylase	7	112	3.7E-13	T	10-08-2022	IPR011639	Type II restriction enzyme and methyltransferase RM.Eco57I-like
+IS_cluster_6614_length_2249_1	80fe5aa173df2566b21f9d4748b75e64	393	SUPERFAMILY	SSF53335	S-adenosyl-L-methionine-dependent methyltransferases	5	151	5.78E-16	T	10-08-2022	IPR029063	S-adenosyl-L-methionine-dependent methyltransferase superfamily
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	CDD	cd00402	Riboflavin_synthase_like	1	184	1.11204E-88	T	10-08-2022	IPR001783	Lumazine-binding protein
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	TIGRFAM	TIGR00187	ribE: riboflavin synthase, alpha subunit	1	194	1.2E-57	T	10-08-2022	IPR001783	Lumazine-binding protein
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	ProSiteProfiles	PS51177	Riboflavin synthase alpha chain lumazine-binding repeat profile.	96	192	21.660843	T	10-08-2022	IPR026017	Lumazine-binding domain
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	Gene3D	G3DSA:2.40.30.20	-	100	194	6.0E-31	T	10-08-2022	IPR023366	ATP synthase subunit alpha, N-terminal domain-like superfamily
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	PANTHER	PTHR21098	RIBOFLAVIN SYNTHASE ALPHA CHAIN	1	192	3.8E-59	T	10-08-2022	IPR001783	Lumazine-binding protein
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	Gene3D	G3DSA:2.40.30.20	-	1	86	1.5E-24	T	10-08-2022	IPR023366	ATP synthase subunit alpha, N-terminal domain-like superfamily
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	PIRSF	PIRSF000498	Riboflavin_syn_A	1	194	6.2E-67	T	10-08-2022	IPR001783	Lumazine-binding protein
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	Pfam	PF00677	Lumazine binding domain	3	84	4.9E-20	T	10-08-2022	IPR026017	Lumazine-binding domain
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	Pfam	PF00677	Lumazine binding domain	98	182	2.2E-25	T	10-08-2022	IPR026017	Lumazine-binding domain
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	ProSiteProfiles	PS51177	Riboflavin synthase alpha chain lumazine-binding repeat profile.	1	95	23.632679	T	10-08-2022	IPR026017	Lumazine-binding domain
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	PANTHER	PTHR21098:SF0	RIBOFLAVIN SYNTHASE	1	192	3.8E-59	T	10-08-2022	-	-
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	SUPERFAMILY	SSF63380	Riboflavin synthase domain-like	91	193	4.34E-31	T	10-08-2022	IPR017938	Riboflavin synthase-like beta-barrel
+IS_cluster_74699_length_2246_1	1992640e6cf6f792951380533fead029	194	SUPERFAMILY	SSF63380	Riboflavin synthase domain-like	1	86	6.55E-23	T	10-08-2022	IPR017938	Riboflavin synthase-like beta-barrel
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	TIGRFAM	TIGR00447	pth: aminoacyl-tRNA hydrolase	1	184	1.8E-60	T	10-08-2022	IPR001328	Peptidyl-tRNA hydrolase
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	Hamap	MF_00083	Peptidyl-tRNA hydrolase [pth].	1	176	34.666801	T	10-08-2022	IPR001328	Peptidyl-tRNA hydrolase
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	ProSitePatterns	PS01196	Peptidyl-tRNA hydrolase signature 2.	108	118	-	T	10-08-2022	IPR018171	Peptidyl-tRNA hydrolase, conserved site
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	ProSitePatterns	PS01195	Peptidyl-tRNA hydrolase signature 1.	14	27	-	T	10-08-2022	IPR018171	Peptidyl-tRNA hydrolase, conserved site
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	Gene3D	G3DSA:3.40.50.1470	-	1	191	2.6E-67	T	10-08-2022	IPR036416	Peptidyl-tRNA hydrolase superfamily
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	PANTHER	PTHR17224	PEPTIDYL-TRNA HYDROLASE	2	183	1.4E-56	T	10-08-2022	IPR001328	Peptidyl-tRNA hydrolase
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	PANTHER	PTHR17224:SF1	PEPTIDYL-TRNA HYDROLASE-RELATED	2	183	1.4E-56	T	10-08-2022	-	-
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	CDD	cd00462	PTH	3	171	1.09837E-81	T	10-08-2022	IPR001328	Peptidyl-tRNA hydrolase
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	SUPERFAMILY	SSF53178	Peptidyl-tRNA hydrolase-like	1	184	1.57E-60	T	10-08-2022	IPR036416	Peptidyl-tRNA hydrolase superfamily
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	Pfam	PF01195	Peptidyl-tRNA hydrolase	3	184	2.3E-66	T	10-08-2022	IPR001328	Peptidyl-tRNA hydrolase
+IS_cluster__length_797_1	32c81acbac2149f89472dfe810706823	191	Coils	Coil	Coil	173	191	-	T	10-08-2022	-	-
+IS_cluster_497871_length_2041_1	727a8eef5f801399bb4dfa210e1ea5c4	156	Coils	Coil	Coil	145	156	-	T	10-08-2022	-	-
+IS_cluster_188966_length_2291_2	8d60e55a4a759cfe50cc8866fe25a329	114	Gene3D	G3DSA:2.60.40.1080	-	6	88	3.3E-25	T	10-08-2022	-	-
+IS_cluster_188966_length_2291_2	8d60e55a4a759cfe50cc8866fe25a329	114	SMART	SM00635	bid_2	7	84	1.6E-17	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_188966_length_2291_2	8d60e55a4a759cfe50cc8866fe25a329	114	SUPERFAMILY	SSF49373	Invasin/intimin cell-adhesion fragments	6	87	1.73E-19	T	10-08-2022	IPR008964	Invasin/intimin cell-adhesion fragments
+IS_cluster_188966_length_2291_2	8d60e55a4a759cfe50cc8866fe25a329	114	Pfam	PF02368	Bacterial Ig-like domain (group 2)	8	85	2.9E-19	T	10-08-2022	IPR003343	Bacterial Ig-like domain, group 2
+IS_cluster_99344_length_2152_1	2755f8bbf2e925f9b6e8541bf8b72349	501	Coils	Coil	Coil	431	451	-	T	10-08-2022	-	-
+IS_cluster_99344_length_2152_1	2755f8bbf2e925f9b6e8541bf8b72349	501	PANTHER	PTHR31901	GH3 DOMAIN-CONTAINING PROTEIN	16	495	7.9E-55	T	10-08-2022	IPR004993	GH3 family
+IS_cluster_99344_length_2152_1	2755f8bbf2e925f9b6e8541bf8b72349	501	Pfam	PF03321	GH3 auxin-responsive promoter	18	491	2.6E-109	T	10-08-2022	IPR004993	GH3 family
+IS_cluster_99344_length_2152_1	2755f8bbf2e925f9b6e8541bf8b72349	501	PANTHER	PTHR31901:SF5	GH3 DOMAIN-CONTAINING PROTEIN	16	495	7.9E-55	T	10-08-2022	-	-
+IS_cluster_506081_length_1289_1	29f197c4f8e8003c669a15f7bed03818	393	PANTHER	PTHR33217	TRANSPOSASE FOR INSERTION SEQUENCE ELEMENT IS1081	23	375	3.8E-68	T	10-08-2022	IPR001207	Transposase, mutator type
+IS_cluster_506081_length_1289_1	29f197c4f8e8003c669a15f7bed03818	393	ProSitePatterns	PS01007	Transposases, Mutator family, signature.	221	245	-	T	10-08-2022	IPR001207	Transposase, mutator type
+IS_cluster_506081_length_1289_1	29f197c4f8e8003c669a15f7bed03818	393	Pfam	PF00872	Transposase, Mutator family	12	366	1.5E-72	T	10-08-2022	IPR001207	Transposase, mutator type
+IS_cluster_260361_length_1159_2	5e9d983e2b6e844a4c10f4a8752c1945	153	Gene3D	G3DSA:3.40.50.360	-	1	148	8.0E-47	T	10-08-2022	IPR029039	Flavoprotein-like superfamily
+IS_cluster_260361_length_1159_2	5e9d983e2b6e844a4c10f4a8752c1945	153	SUPERFAMILY	SSF52218	Flavoproteins	1	142	4.63E-41	T	10-08-2022	IPR029039	Flavoprotein-like superfamily
+IS_cluster_260361_length_1159_2	5e9d983e2b6e844a4c10f4a8752c1945	153	Pfam	PF02525	Flavodoxin-like fold	2	140	6.8E-37	T	10-08-2022	IPR003680	Flavodoxin-like fold
+IS_cluster_260361_length_1159_2	5e9d983e2b6e844a4c10f4a8752c1945	153	PANTHER	PTHR47307	GLUTATHIONE-REGULATED POTASSIUM-EFFLUX SYSTEM ANCILLARY PROTEIN KEFG	1	143	2.4E-50	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	Pfam	PF00140	Sigma-70 factor, region 1.2	17	50	9.5E-14	T	10-08-2022	IPR009042	RNA polymerase sigma-70 region 1.2
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	PANTHER	PTHR30603	RNA POLYMERASE SIGMA FACTOR RPO	7	129	3.0E-29	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	Gene3D	G3DSA:1.20.120.1810	-	16	129	9.0E-27	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	PANTHER	PTHR30603:SF45	RNA POLYMERASE SIGMA FACTOR SIGF, CHLOROPLASTIC	7	129	3.0E-29	T	10-08-2022	-	-
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	Pfam	PF04542	Sigma-70 region 2	83	128	7.1E-11	T	10-08-2022	IPR007627	RNA polymerase sigma-70 region 2
+IS_cluster_182040_length_1560_2	854edb70ba31219ec96d0add085ea627	129	SUPERFAMILY	SSF88946	Sigma2 domain of RNA polymerase sigma factors	17	129	1.83E-31	T	10-08-2022	IPR013325	RNA polymerase sigma factor, region 2

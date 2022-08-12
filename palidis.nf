@@ -18,9 +18,11 @@ include { mapReads as mapReads2 } from './modules/mapreads.nf'
 include { getCandidateITRs } from './modules/getCandidateITRs.nf'
 include { clusterReads } from './modules/clusterReads.nf'
 include { getITRs } from './modules/getITRs.nf'
+include { runProdigal } from './modules/runProdigal.nf'
+include { installInterproscan } from './modules/installInterproscan.nf'
+include { runInterproscan } from './modules/runInterproscan.nf'
 include { searchCOBSIndex } from './modules/searchCOBSIndex.nf'
 include { getISInfoWithCOBS; getISInfoWithoutCOBS } from './modules/getISInfo.nf'
-include {installInterproscan} from './modules/installInterproscan.nf'
 
 workflow palidis {
     take:
@@ -49,7 +51,6 @@ workflow palidis {
     .set { contigs_reads1_ch }
 
     mapReads1(contigs_reads1_ch)
-    mapping1_ch = mapReads1.out
 
     Channel
     .of('2')
@@ -61,57 +62,69 @@ workflow palidis {
     .set { contigs_reads2_ch }
 
     mapReads2(contigs_reads2_ch)
-    mapping2_ch = mapReads2.out
 
     /*
      * Get contigs and reads with candidate ITRs
      */
      contig_file_ch
-     .join(mapping1_ch)
-     .join(mapping2_ch)
+     .join(mapReads1.out)
+     .join(mapReads2.out)
      .join(convertToFasta.out)
      .join(palmem.out.tab_ch)
      .set { mapping_contigs_ch }
 
     getCandidateITRs(mapping_contigs_ch)
 
-    reads_itrs_ch = getCandidateITRs.out.reads_itrs_ch
-    tab_ch = getCandidateITRs.out.tab_ch
-
-    clusterReads(reads_itrs_ch)
+    clusterReads(getCandidateITRs.out.reads_itrs_ch)
     cluster_ch = clusterReads.out.cluster_ch
 
     cluster_ch
-    .join(tab_ch)
+    .join(getCandidateITRs.out.tab_ch)
     .join(filterContigs.out)
     .set { into_get_itr_ch }
 
     getITRs(into_get_itr_ch)
-    is_tab_ch = getITRs.out.is_tab_ch
-    is_fasta_ch = getITRs.out.is_fasta_ch
-    sample_is_fasta_ch = getITRs.out.sample_is_fasta_ch
+
+    runProdigal(getITRs.out.is_fasta_for_prodigal_ch)
+    installInterproscan()
+
+    runProdigal.out
+    .combine(installInterproscan.out)
+    .set { proteins_ch }
+
+    runInterproscan(proteins_ch)
 
     if (params.cobs_index) {
         Channel
         .fromPath(params.cobs_index, checkIfExists: true)
         .set { cobs_index_ch }
 
-        sample_is_fasta_ch
+        getITRs.out.is_fasta_for_cobs_ch
         .combine(cobs_index_ch)
         .set{ cobs_seq_ch }
 
         searchCOBSIndex(cobs_seq_ch)
         cobs_out_ch = searchCOBSIndex.out
 
-        is_tab_ch1
+        getITRs.out.is_tab_ch
         .join(cobs_out_ch)
+        .join(runInterproscan.out)
+        .join(getITRs.out.is_candidate_fasta_ch)
         .set { is_annot_ch }
 
         getISInfoWithCOBS(is_annot_ch)
-        is_info_ch = getISInfoWithCOBS.out
+        is_info_ch = getISInfoWithCOBS.out.txt
+        is_fasta_ch = getISInfoWithCOBS.out.fasta
+
     } else {
-        getISInfoWithoutCOBS(is_tab_ch)
-        is_info_ch = getISInfoWithoutCOBS.out
+        getITRs.out.is_tab_ch
+        .join(runInterproscan.out)
+        .join(getITRs.out.is_candidate_fasta_ch)
+        .set { is_annot_ch }
+
+        getISInfoWithoutCOBS(is_annot_ch)
+        is_info_ch = getISInfoWithoutCOBS.out.txt
+        is_fasta_ch = getISInfoWithoutCOBS.out.fasta
     }
 
     emit:
@@ -141,7 +154,6 @@ workflow {
     .set { contig_file_ch }
 
     palidis(read_pair_ch, contig_file_ch)
-    installInterproscan()
 
     // Publish IS fasta sequences
     palidis.out.is_fasta_ch
