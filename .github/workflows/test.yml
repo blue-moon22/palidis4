@@ -30,6 +30,7 @@ jobs:
         pip install pytest
     - name: Test with pytest
       run: |
+        ls
         pytest tests
     - name: Install Nextflow
       run: |
