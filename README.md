@@ -107,6 +107,12 @@ This represents the institution or HPC name. You can find your institutional HPC
   -resume             Resume the pipeline
 ```
 
+### Testing
+If you would like to test whether this pipeline produces the expected output on your system, run this command. If successful, it should print `Test passed. All outputs expected.`.
+```
+./tests/regression_tests.sh
+```
+
 <a name="output"></a>
 ## Output
 There are two output files stored in a directory specified with `--batch_name`:
