@@ -14,12 +14,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
-    - name: Maximize build space
-      uses: easimon/maximize-build-space@master
-      with:
-        root-reserve-mb: 512
-        swap-size-mb: 1024
-        remove-dotnet: 'true'
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -30,7 +24,6 @@ jobs:
         pip install pytest
     - name: Test with pytest
       run: |
-        ls
         pytest tests
     - name: Install Nextflow
       run: |
