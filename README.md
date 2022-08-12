@@ -43,10 +43,10 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Clone this repo:
 ```bash
-git clone --recursive -j8 https://github.com/blue-moon22/Palidis.git
+git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
 cd palidis
 ```
-If you have already cloned this repo with `git clone https://github.com/blue-moon22/Palidis.git`, you also need to get the submodules:
+If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules:
 ```bash
 cd palidis
 git submodule update --init --recursive

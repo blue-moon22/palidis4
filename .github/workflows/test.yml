@@ -38,7 +38,7 @@ jobs:
         sudo mv nextflow /usr/bin
     - name: Clone repo
       run: |
-        git clone --recursive -j8 https://github.com/blue-moon22/Palidis.git
+        git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
         cd palidis
     - name: Pytest
       run: |
