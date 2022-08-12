@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@master
+      with:
+        root-reserve-mb: 512
+        swap-size-mb: 1024
+        remove-dotnet: 'true'
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -22,14 +28,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pytest
-    - name: Test with pytest
+    - name: Install Java
       run: |
-        pytest tests
+        sudo apt install openjdk-11-jdk
     - name: Install Nextflow
       run: |
         # Install latest version of Nextflow
         curl -s https://get.nextflow.io | bash
         sudo mv nextflow /usr/bin
+    - name: Clone repo
+      run: |
+        git clone --recursive -j8 https://github.com/blue-moon22/Palidis.git
+        cd palidis
+    - name: Pytest
+      run: |
+        pytest tests
     - name: Regression tests
-      run: ./tests/regression_tests.sh -s
+      run: |
+        ./tests/regression_tests.sh -s
       shell: bash

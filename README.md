@@ -6,6 +6,15 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
 # **PaliDIS** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+
+## Contents
+- [ Introduction ](#introduction)
+- [ Pipeline description ](#description)
+- [ Installation ](#installation)
+- [ Usage ](#usage)
+- [ Output ](#output)
+
+<a name="introduction"></a>
 ## Introduction
 
 PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
@@ -16,7 +25,8 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
-## Pipeline summary
+<a name="description"></a>
+## Pipeline description
 **Steps:**
 1. Pre-process FASTQ.GZ reads [`convertToFasta`]
 2. Efficient maximal exact matching to get repeat sequences using [pal-MEM](https://github.com/blue-moon22/pal-MEM) [`palmem`]
@@ -27,7 +37,8 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 7. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
 8. Combine optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
 
-## Installation on HPC
+<a name="installation"></a>
+## Installation
 - Install [Nextflow](https://www.nextflow.io/)
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Clone this repo:
@@ -41,6 +52,7 @@ cd palidis
 git submodule update --init --recursive
 ```
 
+<a name="usage"></a>
 ## Usage
 
 ### Without COBS Index Search
@@ -95,6 +107,7 @@ This represents the institution or HPC name. You can find your institutional HPC
   -resume             Resume the pipeline
 ```
 
+<a name="output"></a>
 ## Output
 There are two output files stored in a directory specified with `--batch_name`:
 
