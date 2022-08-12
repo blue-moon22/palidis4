@@ -55,6 +55,7 @@ def write_info(tab_file, prodigal_info, interpro_info, cobs_info, output_prefix)
     Function to write the annotation information of the insertion sequences
     """
 
+    is_name_dict = {}
     with open(f'{output_prefix}_insertion_sequences_info.txt', "w") as out:
         out.write("IS_name\tsample_id\tcontig\titr1_start_position\titr1_end_position\titr2_start_position\titr2_end_position\titr_cluster\tinterpro_or_panther_accession\tCOBS_index_biosample_id\tCOBS_index_origin\n")
         with open(tab_file, "r") as file:
@@ -77,15 +78,15 @@ def write_info(tab_file, prodigal_info, interpro_info, cobs_info, output_prefix)
                                 start = str((protein_start - 1) + items[1][0])
                                 end = str((protein_start - 1) + items[1][1])
                                 if flag:
-                                    out.write(f'_{transposase}_{start}-{end}')
+                                    new_is_name += f'_{transposase}_{start}-{end}'
                                 else:
-                                    out.write(f'IS_length_{length}_{transposase}_{start}-{end}')
+                                    new_is_name = f'IS_length_{length}_{transposase}_{start}-{end}'
                                     flag = 1
                                 accessions.append(acc)
 
-                            out.write('\t')
-
                     if flag:
+                        out.write(f'{new_is_name}\t')
+                        is_name_dict[is_name] = new_is_name
                         out.write('\t'.join(line.replace('\n', '').split('\t')[1:]) + '\t' + ';'.join(accessions))
 
                         # Get COBS index info
@@ -99,6 +100,7 @@ def write_info(tab_file, prodigal_info, interpro_info, cobs_info, output_prefix)
                         else:
                             out.write('\t\t\n')
 
+    return is_name_dict
 
 def get_prodigal_info(aa_fasta):
 
@@ -146,6 +148,25 @@ def get_interproscan_info(interproscan_out):
     return interpro_dict
 
 
+def write_fasta_file(fasta_file, is_name_dict, output_prefix):
+
+    flag = 0
+    with open(f'{output_prefix}_insertion_sequences.fasta', "w") as out:
+        with open(fasta_file, 'r') as file:
+            for line in file:
+                if line[0] == '>':
+                    is_name = line.replace('>', '').replace('\n', '')
+                    if is_name in is_name_dict:
+                        new_name = is_name_dict[is_name]
+                        out.write(f'>{new_name}\n')
+                        flag = 1
+                    else:
+                        flag = 0
+                else:
+                    if flag:
+                        out.write(line)
+
+
 def get_arguments():
 
     parser = argparse.ArgumentParser(description='Get tab file of annotations.')
@@ -159,6 +180,8 @@ def get_arguments():
                         help='Input "_insertion_sequences.faa file."', type = str)
     parser.add_argument('--interproscan_out', '-i', dest='interproscan_out', required=True,
                         help='Input "_insertion_sequences.faa.tsv" file."', type = str)
+    parser.add_argument('--fasta_file', '-f', dest='fasta_file', required=True,
+                        help='FASTA file of candidate insertion sequences.', type = str)
     parser.add_argument('--output_prefix', '-o', dest='output_prefix', required=True,
                     help='Prefix of output files.', type = str)
     return parser
@@ -174,8 +197,8 @@ def main(args):
     else:
         cobs_info_dict = {}
 
-    write_info(args.tab_file, prodigal_info_dict, interpro_info_dict, cobs_info_dict, args.output_prefix)
-
+    is_name_dict = write_info(args.tab_file, prodigal_info_dict, interpro_info_dict, cobs_info_dict, args.output_prefix)
+    write_fasta_file(args.fasta_file, is_name_dict, args.output_prefix)
 
 if __name__ == "__main__":
     args = get_arguments().parse_args()
