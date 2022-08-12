@@ -7,7 +7,8 @@ process getITRs {
 
     output:
     tuple val(sample_id), path("${sample_id}_insertion_sequence_annotations.tab"), emit: is_tab_ch
-    tuple val(sample_id), path("${sample_id}_insertion_sequences.fasta"), emit: sample_is_fasta_ch
+    tuple val(sample_id), path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_for_prodigal_ch
+    tuple val(sample_id), path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_for_cobs_ch
     path("${sample_id}_insertion_sequences.fasta"), emit: is_fasta_ch
 
     script:
