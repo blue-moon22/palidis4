@@ -4,7 +4,7 @@
 process getISInfoWithCOBS {
 
     input:
-    tuple val(sample_id), path(is_tab_file), path(cobs_out)
+    tuple val(sample_id), path(is_tab_file), path(cobs_out), path(faa_file), path(tsv_file)
 
     output:
     path("${output}")
@@ -23,9 +23,12 @@ process getISInfoWithCOBS {
         ffq \$biosample_id > \${biosample_id}.json
     done
 
-    get_IS_info.py --tab_file ${is_tab_file} \
+    get_IS_info.py \
+        --tab_file ${is_tab_file} \
         --cobs_search_out ${cobs_out} \
         --ffq_json \$(pwd) \
+        --aa_fasta ${faa_file} \
+        --interproscan_out ${tsv_file} \
         --output_prefix ${sample_id}
     """
 }
@@ -33,7 +36,7 @@ process getISInfoWithCOBS {
 process getISInfoWithoutCOBS {
 
     input:
-    tuple val(sample_id), path(is_tab_file)
+    tuple val(sample_id), path(is_tab_file), path(faa_file), path(tsv_file)
 
     output:
     path("${output}")
@@ -41,7 +44,10 @@ process getISInfoWithoutCOBS {
     script:
     output = "${sample_id}_insertion_sequences_info.txt"
     """
-    get_IS_info.py --tab_file ${is_tab_file} \
+    get_IS_info.py \
+        --tab_file ${is_tab_file} \
+        --aa_fasta ${faa_file} \
+        --interproscan_out ${tsv_file} \
         --output_prefix ${sample_id}
     """
 }
