@@ -13,7 +13,6 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v2
     - name: Maximize build space
       uses: easimon/maximize-build-space@master
       with:
@@ -36,10 +35,7 @@ jobs:
         # Install latest version of Nextflow
         curl -s https://get.nextflow.io | bash
         sudo mv nextflow /usr/bin
-    - name: Clone repo
-      run: |
-        git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
-        cd palidis
+    - uses: actions/checkout@v2
     - name: Pytest
       run: |
         pytest tests
