@@ -8,6 +8,7 @@ Functions to get candidate ITRs and contigs with candidate insertion sequences.
 """
 
 import argparse, sys
+import re
 from collections import defaultdict
 
 def get_largest_index(fasta_file):
@@ -148,19 +149,30 @@ def split_match_flag(match_flag):
     Function to find the exact positions of alignments from 'M' flags in sam
     files
     """
-
     split_matches = [0,0,0]
-    for ind, m_split in enumerate(match_flag.split("M")):
-        s_split = m_split.split("S")
-        if ind == 0:
-            if len(s_split) == 1:
-                split_matches[1] = int(s_split[0])
-            elif len(s_split) == 2:
-                split_matches[0] = int(s_split[0])
-                split_matches[1] = int(s_split[1])
-        elif ind == 1:
-            if len(s_split) == 2:
-                split_matches[2] = int(s_split[0])
+    cigar_dict = defaultdict(lambda: 0)
+    if not any(cig in ['N', 'H', 'P', '=', 'X'] for cig in match_flag):
+        codes = list(filter(None, re.split('[0-9]*', match_flag)))
+        lengths = list(filter(None, re.split('M|S|I|D', match_flag)))
+        count = 0
+        for ind, c in enumerate(codes):
+            if c == 'M':
+                value = cigar_dict['M']
+                cigar_dict['M'] = value + int(lengths[ind])
+                count = 1
+            elif c == 'S':
+                if count:
+                    split_matches[2] = int(lengths[ind])
+                else:
+                    split_matches[0] = int(lengths[ind])
+                count = 1
+            elif c == 'I':
+                value = cigar_dict['M']
+                cigar_dict['M'] = value - int(lengths[ind])
+            elif c == 'D':
+                value = cigar_dict['M']
+                cigar_dict['M'] = value + int(lengths[ind])
+        split_matches[1] = int(cigar_dict['M'])
 
     return split_matches
 
