@@ -12,13 +12,16 @@ process runInterproscan {
     script:
     lsf=params.lsf
     """
-    # Remove * from protein prediction
-    sed -i 's/*//' ${faa}
-    if ${lsf}
+    if [ -s ${faa} ]
     then
-        ./${db}/interproscan.sh -mode cluster -clusterrunid ${sample_id}_interproscan -i ${faa} -f tsv -dp -cpu ${task.cpus}
-    else
-        ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        # Remove * from protein prediction
+        sed -i 's/*//' ${faa}
+        if ${lsf}
+        then
+            ./${db}/interproscan.sh -mode cluster -clusterrunid ${sample_id}_interproscan -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        else
+            ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        fi
     fi
     """
 }
