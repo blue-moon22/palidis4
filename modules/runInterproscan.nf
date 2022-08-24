@@ -7,18 +7,21 @@ process runInterproscan {
     tuple val(sample_id), path(faa), path(db)
 
     output:
-    tuple val(sample_id), path(faa), path("${faa}.tsv")
+    tuple val(sample_id), path(faa), path("${faa}.tsv"), optional: true
 
     script:
     lsf=params.lsf
     """
-    # Remove * from protein prediction
-    sed -i 's/*//' ${faa}
-    if ${lsf}
+    if [ -s ${faa} ]
     then
-        ./${db}/interproscan.sh -mode cluster -clusterrunid ${sample_id}_interproscan -i ${faa} -f tsv -dp -cpu ${task.cpus}
-    else
-        ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        # Remove * from protein prediction
+        sed -i 's/*//' ${faa}
+        if ${lsf}
+        then
+            ./${db}/interproscan.sh -mode cluster -clusterrunid ${sample_id}_interproscan -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        else
+            ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
+        fi
     fi
     """
 }
