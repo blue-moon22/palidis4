@@ -6,6 +6,15 @@
 <img src="img/logo.png" alt="logo" width="400"/>
 
 # **PaliDIS** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+
+## Contents
+- [ Introduction ](#introduction)
+- [ Pipeline description ](#description)
+- [ Installation ](#installation)
+- [ Usage ](#usage)
+- [ Output ](#output)
+
+<a name="introduction"></a>
 ## Introduction
 
 PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
@@ -16,7 +25,8 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
-## Pipeline summary
+<a name="description"></a>
+## Pipeline description
 **Steps:**
 1. Pre-process FASTQ.GZ reads [`convertToFasta`]
 2. Efficient maximal exact matching to get repeat sequences using [pal-MEM](https://github.com/blue-moon22/pal-MEM) [`palmem`]
@@ -24,29 +34,35 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 4. Get candidate ITRs by distance filters [`getCandidateITRs`]
 5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
 6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
-7. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
-8. Combine optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
+7. Find transposase [`runProdigal`] [`installInterproscan` `runInterproscan`]
+8. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
+9. Combine insertion sequence information [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
 
-## Installation on HPC
+<a name="installation"></a>
+## Installation
 - Install [Nextflow](https://www.nextflow.io/)
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Clone this repo:
 ```bash
-git clone --recursive -j8 https://github.com/blue-moon22/Palidis.git
+git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
 cd palidis
 ```
-If you have already cloned this repo with `git clone https://github.com/blue-moon22/Palidis.git`, you also need to get the submodules:
+_Note: You may be warned to first call `git config --global --add safe.directory`._
+
+    If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules:
 ```bash
 cd palidis
 git submodule update --init --recursive
 ```
 
+<a name="usage"></a>
 ## Usage
 
 ### Without COBS Index Search
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -c configs/conf/<name_of_config>.config
 ```
+**If you are running this on an LSF scheduler, also include `--lsf true`.**
 
 ### With COBS Index Search
 Download a COBS index database of all genomes. This is a very large file of just under 1 Terabyte so you will need a good internet connection and storage.
@@ -58,6 +74,7 @@ Run command with `--cobs_index` option
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> --cobs_index 661k.cobs_compact -c configs/conf/<name_of_config>.config
 ```
+**If you are running this on an LSF schedular, also include `--lsf true`.**
 
 ### Mandatory arguments
 #### `<batch_name>`
@@ -95,6 +112,13 @@ This represents the institution or HPC name. You can find your institutional HPC
   -resume             Resume the pipeline
 ```
 
+### Testing
+If you would like to test whether this pipeline produces the expected output on your system, run this command. If successful, it should print `Test passed. All outputs expected.`.
+```
+./tests/regression_tests.sh
+```
+
+<a name="output"></a>
 ## Output
 There are two output files stored in a directory specified with `--batch_name`:
 
