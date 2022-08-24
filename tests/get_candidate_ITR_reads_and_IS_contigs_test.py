@@ -86,6 +86,17 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
 
         self.assertEqual(actual, [0,80,0])
 
+        match_flag = '1S25M1I2M1D71M'
+        actual = split_match_flag(match_flag)
+        self.assertEqual(actual, [1,98,0])
+
+        match_flag = '9S69M1D20M3S'
+        actual = split_match_flag(match_flag)
+        self.assertEqual(actual, [9,90,3])
+
+        match_flag = '90M1I4M6S'
+        actual = split_match_flag(match_flag)
+        self.assertEqual(actual, [0,93,6])
 
     def test_get_contigs_with_itrs(self):
 
@@ -141,44 +152,44 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
         self.assertEqual(actual, """>NODE_823_length_1805_cov_1014.02\nGTTGCAGTGAGCAAAGATGGCGCCATTGTACCCCACCCTGTGCAACAGGACAAGACTCTG\nTCTAAAAAAAAATTATATATGATATATATTACATGTTATGTGCTATGCCTTATATGTAAC\nATATAACCTCATATATTTTATATGTCATAGTATATAATATTTATCCTGTGTCATCTTATA\nTATACTATATATATTACATAACATATATAATATATGATACATATTATACATCTTATATAT\nGAAATTATATAATTATAGATAACATAATACACATTTATATGTATTATGATATATAACAAA\nGGTACTATATCATATATGATATATAATATATATATTTGTAGTACATATTATAATTTTTAT\nATATTATAATTTATATAATGATAAAATTTTTTATAGAATATAAATAATTATATATGATTA\nTATAATTCTACATATTATAAATGAAAATATGTAGAATTACATGTTTATCTAGTTATATGT\nATAAAAATATAATTATATATATAGTTATATATATCACATAATAGACAACATACATATTAT\nATAATGTGTAATATATATTATAGAATATATGATACATGATATATATGATATTTAATATAA\nCATAATATAATCTATATTATAATATTATGTATGTTACTTATATTGGGTGATATGTAATAT\nATATTATGTAATATGAAATAATATAATATATATTATATTATGATATTTTATGTAAATTAT\nGTTATAAAAGTATATATAACATAATATATAGTTATATATAATATATTATATAGTTATATA\nTATTATATTACATATTTACATAAAATATTATACAGTTATATATAATTTCAAATAGTTATA\nTATAACAGAATATAAAACATATAGAATACATATCATAAAATATATATTGTATACCATATA\nTATTAGGTATCATATATTGTATGTTATATATCATATACTGTATATCATATATCATATATT\nATATGTTATATATATCACATTCCACATATGGTATATTATAAATTATACATAATATATTGC\nATTCTTTATTTTACATGTAATAAATTATACATTATAGGTAACATAGTATATATTGTATGT\nAACCGGTATATTCTATGTAAAATATATAATATATAACACATGTGACATGTAATTAATAAC\nATAGTCATATAATATATATTTAATATAGGTATTATACATACAACGTATTATATATAATAT\nATAATATATATTACATATGTTATAAAATATAATATATATTATATGTCGCATTTTATATAT\nACAATTATATATTATTATATGTTGTTTTATACTATATATAACATAGACATAATATATATA\nTTATGCATAATGGGTATTATATATAACAGATATATTATATATAATATATATAATGTATAA\nTTTATATTTAATACGTATATTAACCGTATAATATATTCTATATATGATATATAACATATA\nTTATATATGTCATAAATTATAATATATACTATATGTCATATTGTATAATTATAAAACTTA\nTATATTATCAATTATTATATTTTATACAATATATATAACATAAGATGCAGGATGTAAAAC\nAATATTATACATAGGTTATATATATTATATATATGATACTGTATATTATTATATACATAA\nTGTATACGTATGTTTGTGGGTGCCCTTTTTCCCATCTCATAACTTGTTTTAAGAAGCGCA\nGCCTAATAACGTGTGGGCTTGGGATTCAGTTCTTGAAACAAAACTCTGAGCCTTCAATGA\nCCTTTCGGTCTATGTAAAAGCACTCCTGTCTTCCTGGCAGCAGTTGGACCTCACAATGTG\nGATAG\n>NODE_10183_length_410_cov_29.9493\nCCAAACATTTATAATAAACTGTACATAAAATATCAAAGTACTCAAACTATATACTGTACA\nTAAAATATCTAAGTACCAAAACTATTTATTTTATACCCGACATAAAATATCAAAGTACCC\nAAACTATATATAGTATACTGTACATCAAATATCGAAGTACCCAAAGTATGTATTATATAC\nTGTACATAAAATATCCAACTACCGAAAGTATGTGTTATATACTGCACATAAAATATCAAA\nGTACCTAAACTATATATTATATACTGTATTTAAAATAACAAAGTATCCAAGGAATGTATT\nATGTACTGTACATAAAATGTCAAAGTACCCTAAGTATGTATTATCTATTGTACATAAAAC\nATCAAAGTACCCAAAGTATGCATTATATACTGTACATAAAATATCAAAGT\n""")
 
 
-        def test_arguments(self):
-            actual = get_arguments().parse_args(
-                ['--contig_fasta', 'contig_path', '--sam_file1', 'sam_path1', '--sam_file2', 'sam_path2', '--fasta1', 'fasta1_path',
-                '--fasta2', 'fasta2_path', '--tab_file', 'tab_file', '--output_prefix', 'output_prefix'])
-            self.assertEqual(actual,
-                             argparse.Namespace(contig_fasta='contig_path', sam_file1='sam_path1', sam_file2='sam_path2',
-                             fasta_file1='fasta1_path', fasta_file2='fasta2_path', tab_file='tab_file', min_is_len=500,
-                             max_is_len=3000, output_prefix='output_prefix'))
+    def test_arguments(self):
+        actual = get_arguments().parse_args(
+            ['--contig_fasta', 'contig_path', '--sam_file1', 'sam_path1', '--sam_file2', 'sam_path2', '--fasta1', 'fasta1_path',
+            '--fasta2', 'fasta2_path', '--tab_file', 'tab_file', '--min_is_len', '500', '--max_is_len', '3000', '--output_prefix', 'output_prefix'])
+        self.assertEqual(actual,
+                         argparse.Namespace(contig_fasta='contig_path', sam_file1='sam_path1', sam_file2='sam_path2',
+                         fasta_file1='fasta1_path', fasta_file2='fasta2_path', tab_file='tab_file', min_is_len=500,
+                         max_is_len=3000, output_prefix='output_prefix'))
 
-        def test_arguments_short_options(self):
-            actual = get_arguments().parse_args(
-                ['-c', 'contig_path', '-s1', 'sam_path1', '-s2', 'sam_path2', '-f1', 'fasta1_path',
-                '-f2', 'fasta2_path', '-t', 'tab_file', '-o', 'output_prefix'])
-            self.assertEqual(actual,
-                             argparse.Namespace(contig_fasta='contig_path', sam_file1='sam_path1', sam_file2='sam_path2',
-                             fasta_file1='fasta1_path', fasta_file2='fasta2_path', tab_file='tab_file', min_is_len=500,
-                             max_is_len=3000, output_prefix='output_prefix'))
+    def test_arguments_short_options(self):
+        actual = get_arguments().parse_args(
+            ['-c', 'contig_path', '-s1', 'sam_path1', '-s2', 'sam_path2', '-f1', 'fasta1_path',
+            '-f2', 'fasta2_path', '-t', 'tab_file', '-min', '500', '-max', '3000', '-o', 'output_prefix'])
+        self.assertEqual(actual,
+                         argparse.Namespace(contig_fasta='contig_path', sam_file1='sam_path1', sam_file2='sam_path2',
+                         fasta_file1='fasta1_path', fasta_file2='fasta2_path', tab_file='tab_file', min_is_len=500,
+                         max_is_len=3000, output_prefix='output_prefix'))
 
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_array_size')
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_ir_offset')
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_ir_positions')
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_contigs_with_itrs')
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.write_contig_file')
-        @patch('bin.get_candidate_ITR_reads_and_IS_contigs.write_fasta_files')
-        def test_main(self, mock_write_fasta_files, mock_write_contig_file, mock_get_contigs_with_itrs, mock_get_ir_positions, mock_get_ir_offset, mock_get_array_size):
-            args = get_arguments().parse_args(
-                ['--contig_fasta', 'contig_path', '--sam_file1', 'sam_path1', '--sam_file2', 'sam_path2', '--fasta1', 'fasta1_path',
-                '--fasta2', 'fasta2_path', '--tab_file', 'tab_file', '--min_is_len', 500, '--max_is_len', 3000, '--output_prefix', 'output_prefix'])
-            mock_get_array_size.return_value = 2000000
-            mock_get_ir_offset.return_value = ['pos_array1', 'pos_array2']
-            mock_get_contigs_with_itrs.return_value = ['read_array1', 'read_array2'], ['contig1', 'contig2']
-            mock_get_ir_positions.return_value = {'contig1': {'read1': ['positions']}}
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_array_size')
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_ir_offset')
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_ir_positions')
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.get_contigs_with_itrs')
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.write_contig_file')
+    @patch('bin.get_candidate_ITR_reads_and_IS_contigs.write_fasta_files')
+    def test_main(self, mock_write_fasta_files, mock_write_contig_file, mock_get_contigs_with_itrs, mock_get_ir_positions, mock_get_ir_offset, mock_get_array_size):
+        args = get_arguments().parse_args(
+            ['--contig_fasta', 'contig_path', '--sam_file1', 'sam_path1', '--sam_file2', 'sam_path2', '--fasta1', 'fasta1_path',
+            '--fasta2', 'fasta2_path', '--tab_file', 'tab_file', '--min_is_len', '500', '--max_is_len', '3000', '--output_prefix', 'output_prefix'])
+        mock_get_array_size.return_value = 2000000
+        mock_get_ir_offset.return_value = ['pos_array1', 'pos_array2']
+        mock_get_contigs_with_itrs.return_value = ['read_array1', 'read_array2'], ['contig1', 'contig2']
+        mock_get_ir_positions.return_value = {'contig1': {'read1': ['positions']}}
 
-            main(args)
+        main(args)
 
-            mock_get_array_size.call_args_list = call('fasta1_path', 'fasta2_path')
-            mock_get_ir_offset.call_args_list = call('tab_file', 2000000)
-            mock_get_ir_positions.call_args_list = call([args.sam_file1, args.sam_file2], ['pos_array1', 'pos_array2'])
-            mock_get_contigs_with_itrs.call_args_list = call({'contig1': {'read1': ['positions']}}, ['pos_array1', 'pos_array2'], 2000000, 500, 3000, args.output_prefix)
-            mock_write_contig_file.call_args_list = call(['contig1', 'contig2'], 'contig_path', 'output_prefix')
-            mock_write_fasta_files.call_args_list = call('fasta1_path', 'fasta2_path', ['read_array1', 'read_array2'], ['pos_array1', 'pos_array2'], 'output_prefix')
+        mock_get_array_size.call_args_list = call('fasta1_path', 'fasta2_path')
+        mock_get_ir_offset.call_args_list = call('tab_file', 2000000)
+        mock_get_ir_positions.call_args_list = call([args.sam_file1, args.sam_file2], ['pos_array1', 'pos_array2'])
+        mock_get_contigs_with_itrs.call_args_list = call({'contig1': {'read1': ['positions']}}, ['pos_array1', 'pos_array2'], 2000000, 500, 3000, args.output_prefix)
+        mock_write_contig_file.call_args_list = call(['contig1', 'contig2'], 'contig_path', 'output_prefix')
+        mock_write_fasta_files.call_args_list = call('fasta1_path', 'fasta2_path', ['read_array1', 'read_array2'], ['pos_array1', 'pos_array2'], 'output_prefix')
