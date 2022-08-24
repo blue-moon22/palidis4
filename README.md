@@ -34,8 +34,9 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 4. Get candidate ITRs by distance filters [`getCandidateITRs`]
 5. Cluster candidate ITRs using CD-HIT-EST [`clusterReads`]
 6. Get putative ITRs by cluster concordance and output Insertion Sequences [`getITRs`]
-7. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
-8. Combine optional COB index search results [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
+7. Find transposase [`runProdigal`] [`installInterproscan` `runInterproscan`]
+8. _Optional:_ Search against a COB index to predict IS origin [`searchCOBSIndex`]
+9. Combine insertion sequence information [`getISInfoWithCOBS` `getISInfoWithoutCOBS`]
 
 <a name="installation"></a>
 ## Installation
@@ -46,7 +47,9 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
 cd palidis
 ```
-If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules:
+_Note: You may be warned to first call `git config --global --add safe.directory`._
+
+    If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules:
 ```bash
 cd palidis
 git submodule update --init --recursive
@@ -59,6 +62,7 @@ git submodule update --init --recursive
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -c configs/conf/<name_of_config>.config
 ```
+**If you are running this on an LSF scheduler, also include `--lsf true`.**
 
 ### With COBS Index Search
 Download a COBS index database of all genomes. This is a very large file of just under 1 Terabyte so you will need a good internet connection and storage.
@@ -70,6 +74,7 @@ Run command with `--cobs_index` option
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> --cobs_index 661k.cobs_compact -c configs/conf/<name_of_config>.config
 ```
+**If you are running this on an LSF schedular, also include `--lsf true`.**
 
 ### Mandatory arguments
 #### `<batch_name>`
