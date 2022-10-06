@@ -5,7 +5,7 @@
 
 <img src="img/logo.png" alt="logo" width="400"/>
 
-# **PaliDIS** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
+# **palidis** - **Pali**ndromic **D**etection of **I**nsertion **S**equences
 
 ## Contents
 - [ Introduction ](#introduction)
