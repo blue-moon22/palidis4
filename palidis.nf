@@ -86,9 +86,7 @@ workflow palidis {
 
     runProdigal(getITRs.out.is_fasta_for_prodigal_ch)
 
-    interproscan_path = file("${params.db_path}/${params.interproscan_db}")
-
-    if (!interproscan_path.exists()) {
+    if (!file("${params.db_path}/${params.interproscan_db}").exists()) {
         installInterproscan()
 
         db_path = file("${params.db_path}")
@@ -98,11 +96,14 @@ workflow palidis {
         .subscribe { it ->
             it.moveTo("${db_path}")
         }
+        Channel
+        .fromPath(file("${params.db_path}/${params.interproscan_db}"))
+        .set { interproscan_ch }
+    } else {
+        Channel
+        .fromPath(file("${params.db_path}/${params.interproscan_db}"))
+        .set { interproscan_ch }
     }
-
-    Channel
-    .fromPath(interproscan_path, checkIfExists: true)
-    .set { interproscan_ch }
 
     runProdigal.out
     .combine(interproscan_ch)
