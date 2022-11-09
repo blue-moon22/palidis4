@@ -17,9 +17,9 @@
 <a name="introduction"></a>
 ## Introduction
 
-PaliDIS is a Nextflow pipeline that quickly discovers novel insertion sequences.
+Palidis is a Nextflow pipeline that quickly discovers novel insertion sequences.
 
-The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) using paired-end, short-read metagenomic data.
+The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) using paired-end, short-read metagenomic data/mixed microbial genomes.
 
 For each sample, the pipeline produces two output files: **1. FASTA file of insertion sequences** and **2. Information for each insertions sequence**
 
