@@ -99,12 +99,6 @@ workflow palidis {
         Channel
         .fromPath(file("${params.db_path}/${params.interproscan_db}"))
         .set { interproscan_ch }
-
-        interproscan_ch
-        .subscribe{ it ->
-            it.copyTo("${db_path}")
-        }
-
     } else {
         Channel
         .fromPath(file("${params.db_path}/${params.interproscan_db}"))
