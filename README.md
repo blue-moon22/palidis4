@@ -1,5 +1,5 @@
 
-
+[![DOI](https://zenodo.org/badge/293755884.svg)](https://zenodo.org/badge/latestdoi/293755884)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis/releases)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis/test)
 
@@ -45,13 +45,8 @@ For each sample, the pipeline produces two output files: **1. FASTA file of inse
 git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
 cd palidis
 ```
-_Note: You may be warned to first call `git config --global --add safe.directory`._
-
-    If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules:
-```bash
-cd palidis
-git submodule update --init --recursive
-```
+Note: You may be warned to first call `git config --global --add safe.directory`.
+</br>If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules `git submodule update --init --recursive`
 
 <a name="usage"></a>
 ## Usage
@@ -59,7 +54,6 @@ git submodule update --init --recursive
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -c configs/conf/<name_of_config>.config
 ```
-**If you are running this on an LSF scheduler, also include `--lsf true`.**
 
 ### Mandatory arguments
 #### `<batch_name>`
@@ -79,7 +73,7 @@ lane4 | /path/to/file/lane4_1.fq.gz | /path/to/file/lane4_2.fq.gz | my_sample3 |
 
 #### `<name_of_config>`
 
-This represents the institution or HPC name. You can find your institutional HPC's config in `configs/conf` (which is linked to the configs directory in [nf-core](https://github.com/nf-core). For example, running on Sanger's HPC: `-c configs/conf/sanger.config`
+This represents the institution or HPC name. You can find your institutional HPC's config in `configs/conf` (which is linked to the configs directory in [nf-core](https://github.com/nf-core)). For example, running on Sanger's HPC: `-c configs/conf/sanger.config`
 
 ### Optional arguments
 ```
