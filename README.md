@@ -21,13 +21,13 @@ Palidis is a tool that quickly discovers novel insertion sequences.
 
 The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) using paired-end, short-read metagenomic data/mixed microbial genomes.
 
-For each sample, the pipeline produces two output files: **1. FASTA file of insertion sequences** and **2. Information for each insertions sequence**
+For each sample, palidis produces two output files: **1. FASTA file of insertion sequences** and **2. Information for each insertions sequence**
 
 <img src="img/insertion_sequence.png" alt="insertion sequence" width="400"/>
 
 <a name="description"></a>
 ## Description
-**Pipeline Steps:**
+**Steps:**
 1. Pre-process FASTQ.GZ reads [`convertToFasta`]
 2. Efficient maximal exact matching to get repeat sequences using [pal-MEM](https://github.com/blue-moon22/pal-MEM) [`palmem`]
 3. Map reads against assemblies using Bowtie2 [`filterContigs` `buildDB` `mapreads`]
