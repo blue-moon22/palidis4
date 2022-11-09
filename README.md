@@ -17,7 +17,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Palidis is a tool that quickly discovers novel insertion sequences.
+Palidis is a tool that discovers novel insertion sequences.
 
 The tool is based upon identifying inverted terminal repeats (ITRs) (figure below) using paired-end, short-read metagenomic data/mixed microbial genomes.
 
