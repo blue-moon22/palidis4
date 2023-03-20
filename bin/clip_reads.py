@@ -2,7 +2,6 @@
 
 """
 author: Victoria Carr
-email: victoria.carr@sanger.ac.uk
 
 Function for clipping reads.
 """
@@ -19,11 +18,11 @@ def clip_reads(fasta_file, output_prefix):
         with open(fasta_file, 'r') as f:
             for line in f:
                 if line[0] == '>':
-                    out.write(line)
+                    out.write(line.split('_LCoord')[0])
                     start = int(line.split('_LCoord_')[1].split('_RCoord')[0]) - 1
                     end = int(line.split('\n')[0].split('_RCoord_')[1])
                 else:
-                    out.write(line[start:end] + '\n')
+                    out.write('\n' + line[start:end] + '\n')
 
 
 def get_arguments():

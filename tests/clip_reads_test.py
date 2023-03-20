@@ -15,7 +15,7 @@ class TestClipReads(unittest.TestCase):
         fasta = open(fasta_name, "r")
         actual = "".join(fasta.readlines())
         os.remove(fasta_name)
-        self.assertEqual(actual, """>test_nstart_test_nend_SRR062032.2555.1_f1_LCoord_29_RCoord_56\nACTATTTATTTTATACCCGACATAAAAT\n""")
+        self.assertEqual(actual, """>test_nstart_test_nend_SRR062032.2555.1_f1\nACTATTTATTTTATACCCGACATAAAAT\n""")
 
     def test_arguments(self):
         actual = get_arguments().parse_args(

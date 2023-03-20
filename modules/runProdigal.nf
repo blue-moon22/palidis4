@@ -7,7 +7,7 @@ process runProdigal {
     tuple val(sample_id), file(fasta)
 
     output:
-    tuple val(sample_id), path("${sample_id}.faa"), optional: true
+    tuple val(sample_id), path(fasta), path("${sample_id}.faa"), optional: true
 
     script:
     """

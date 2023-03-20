@@ -1,0 +1,30 @@
+NODE_6_length_32110_cov_3.8447_3	4e260ba04a867c450d7aefb4c1e279d8	198	PANTHER	PTHR30408	TYPE-1 RESTRICTION ENZYME ECOKI SPECIFICITY PROTEIN	18	196	1.3E-22	T	10-08-2022	-	-
+NODE_6_length_32110_cov_3.8447_3	4e260ba04a867c450d7aefb4c1e279d8	198	SUPERFAMILY	SSF116734	DNA methylase specificity domain	18	196	5.72E-26	T	10-08-2022	-	-
+NODE_6_length_32110_cov_3.8447_3	4e260ba04a867c450d7aefb4c1e279d8	198	Pfam	PF01420	Type I restriction modification DNA specificity domain	18	196	7.6E-9	T	10-08-2022	IPR000055	Type I restriction modification DNA specificity domain
+NODE_6_length_32110_cov_3.8447_3	4e260ba04a867c450d7aefb4c1e279d8	198	Gene3D	G3DSA:3.90.220.20	DNA methylase specificity domains	10	198	1.8E-28	T	10-08-2022	IPR044946	Type I restriction modification DNA specificity domain superfamily
+NODE_6_length_32110_cov_3.8447_3	4e260ba04a867c450d7aefb4c1e279d8	198	PANTHER	PTHR30408:SF12	TYPE-1 RESTRICTION ENZYME HINDVIIP SPECIFICITY PROTEIN-RELATED	18	196	1.3E-22	T	10-08-2022	-	-
+NODE_7_length_31905_cov_5.11912_2	cd95eff349f4d4bb56cd6b79b36420ab	268	Pfam	PF12950	TaqI-like C-terminal specificity domain	77	232	2.2E-13	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+NODE_1_length_49561_cov_5.4235_1	a7d99d583170352776a5c09a0bf2da78	187	Gene3D	G3DSA:3.30.70.1290	-	17	183	7.1E-31	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+NODE_1_length_49561_cov_5.4235_1	a7d99d583170352776a5c09a0bf2da78	187	SUPERFAMILY	SSF143422	Transposase IS200-like	18	178	6.67E-20	T	10-08-2022	IPR036515	Transposase IS200-like superfamily
+NODE_1_length_49561_cov_5.4235_1	a7d99d583170352776a5c09a0bf2da78	187	PANTHER	PTHR36966	REP-ASSOCIATED TYROSINE TRANSPOSASE	1	176	5.3E-30	T	10-08-2022	-	-
+NODE_1_length_49561_cov_5.4235_1	a7d99d583170352776a5c09a0bf2da78	187	SMART	SM01321	Y1_Tnp_2	23	174	1.3E-18	T	10-08-2022	IPR002686	Transposase IS200-like
+NODE_1_length_49561_cov_5.4235_1	a7d99d583170352776a5c09a0bf2da78	187	Pfam	PF01797	Transposase IS200 like	28	171	2.1E-13	T	10-08-2022	IPR002686	Transposase IS200-like
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	MobiDBLite	mobidb-lite	consensus disorder prediction	373	410	-	T	10-08-2022	-	-
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	PANTHER	PTHR35004	TRANSPOSASE RV3428C-RELATED	1	288	1.3E-12	T	10-08-2022	-	-
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	SUPERFAMILY	SSF53098	Ribonuclease H-like	116	279	2.02E-22	T	10-08-2022	IPR012337	Ribonuclease H-like superfamily
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Pfam	PF00665	Integrase core domain	121	223	6.8E-11	T	10-08-2022	IPR001584	Integrase, catalytic core
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Pfam	PF13551	Winged helix-turn helix	2	42	7.2E-8	T	10-08-2022	-	-
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	ProSiteProfiles	PS50994	Integrase catalytic domain profile.	106	285	19.416433	T	10-08-2022	IPR001584	Integrase, catalytic core
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	Gene3D	G3DSA:3.30.420.10	-	116	279	2.8E-24	T	10-08-2022	IPR036397	Ribonuclease H superfamily
+NODE_5_length_32495_cov_4.56202_1	7570ddb57ec1454b3cfe7b3172ffad1c	410	MobiDBLite	mobidb-lite	consensus disorder prediction	373	388	-	T	10-08-2022	-	-
+NODE_7_length_31905_cov_5.11912_1	79872b0168a266d513bd9489d4e8dae5	282	PANTHER	PTHR33841	DNA METHYLTRANSFERASE YEEA-RELATED	8	269	1.3E-13	T	10-08-2022	-	-
+NODE_7_length_31905_cov_5.11912_1	79872b0168a266d513bd9489d4e8dae5	282	Pfam	PF12950	TaqI-like C-terminal specificity domain	83	238	8.7E-14	T	10-08-2022	IPR025931	TaqI-like C-terminal specificity domain
+NODE_7_length_31905_cov_5.11912_1	79872b0168a266d513bd9489d4e8dae5	282	SUPERFAMILY	SSF116734	DNA methylase specificity domain	158	273	1.6E-5	T	10-08-2022	-	-
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	ProSiteProfiles	PS51900	Core-binding (CB) domain profile.	47	129	13.765985	T	10-08-2022	IPR044068	Core-binding (CB) domain
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	Gene3D	G3DSA:1.10.150.130	-	41	148	1.8E-11	T	10-08-2022	IPR010998	Integrase/recombinase, N-terminal
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	ProSiteProfiles	PS51898	Tyrosine recombinase domain profile.	149	323	32.83326	T	10-08-2022	IPR002104	Integrase, catalytic domain
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	Gene3D	G3DSA:1.10.443.10	Intergrase catalytic core	150	325	5.6E-40	T	10-08-2022	IPR013762	Integrase-like, catalytic domain superfamily
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	Pfam	PF00589	Phage integrase family	158	314	9.1E-30	T	10-08-2022	IPR002104	Integrase, catalytic domain
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	Pfam	PF13495	Phage integrase, N-terminal SAM-like domain	53	133	6.9E-16	T	10-08-2022	IPR004107	Integrase, SAM-like, N-terminal
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	PANTHER	PTHR30349	PHAGE INTEGRASE-RELATED	37	315	8.4E-37	T	10-08-2022	-	-
+NODE_6_length_32110_cov_3.8447_2	43b689cf7718393627c54d38f3cf3850	327	SUPERFAMILY	SSF56349	DNA breaking-rejoining enzymes	51	316	4.71E-49	T	10-08-2022	IPR011010	DNA breaking-rejoining enzyme, catalytic core
