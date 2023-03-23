@@ -39,12 +39,12 @@ NODE_6_length_32110_cov_3.8447_2	IPR013762	Integrase-like, catalytic domain supe
     @patch('bin.get_contigs_with_transposase.get_interproscan_info')
     def test_main(self, mock_get_interproscan_info, mock_get_contigs):
         args = get_arguments().parse_args(['--interproscan_tsv', self.TEST_TSV_FILE, '--fasta_file', self.TEST_CONTIG_FILE, '--output_prefix', self.TEST_OUTPUT_PREFIX])
+        mock_get_interproscan_info.return_value = ['a list']
 
         main(args)
 
-        mock_get_interproscan_info.return_value = ['a list']
-        mock_get_interproscan_info.call_args_list = call(self.TEST_TSV_FILE, self.TEST_OUTPUT_PREFIX)
-        mock_get_contigs.call_args_list = call(['a list'], self.TEST_OUTPUT_PREFIX)
+        self.assertEqual(mock_get_interproscan_info.call_args_list, [call(self.TEST_TSV_FILE, self.TEST_OUTPUT_PREFIX)])
+        self.assertEqual(mock_get_contigs.call_args_list, [call(self.TEST_CONTIG_FILE, ['a list'], self.TEST_OUTPUT_PREFIX)])
 
     def test_get_contigs(self):
         get_contigs(self.TEST_CONTIG_FILE, ['NODE_1_length_49561_cov_5.4235', 'NODE_5_length_32495_cov_4.56202', 'NODE_6_length_32110_cov_3.8447'], self.TEST_OUTPUT_PREFIX)

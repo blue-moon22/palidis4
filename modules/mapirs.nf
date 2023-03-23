@@ -1,8 +1,7 @@
 process mapIRs {
 
 	input:
-	tuple val(sample_id), path(fasta)
-	path db_path
+	tuple val(sample_id), path(fasta), path(db_path)
 
 	output:
 	tuple val(sample_id), path("${sample_id}.sam.mapped.sorted")

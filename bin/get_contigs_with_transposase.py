@@ -73,7 +73,7 @@ def get_arguments():
 def main(args):
 
     contigs = get_interproscan_info(args.tsv_file, args.output_prefix)
-    get_contigs(contigs, args.output_prefix)
+    get_contigs(args.fasta_file, contigs, args.output_prefix)
 
 if __name__ == "__main__":
     args = get_arguments().parse_args()

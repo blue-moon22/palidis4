@@ -4,10 +4,7 @@ process palmem {
 	tuple val(sample_id), path(fasta1), path(fasta2)
 
 	output:
-    tuple val(sample_id), path("${sample_id}_IR_1.fasta"), path("${sample_id}_IR_2.fasta"), emit: ir_ch
-    tuple val(sample_id), path("${sample_id}_IR_1.fasta"), path("${sample_id}_paired_to_IR_2.fasta"), emit: ir_1_ch
-    tuple val(sample_id), path("${sample_id}_paired_to_IR_1.fasta"), path("${sample_id}_IR_2.fasta"), emit: ir_2_ch
-    tuple val(sample_id), path("${sample_id}_IR.tab"), emit: tab_ch
+    tuple val(sample_id), path("${sample_id}_IR_1.fasta"), path("${sample_id}_IR_2.fasta"), path("${sample_id}_IR.tab"), emit: ir_ch
 
     script:
     min_itr_length = params.min_itr_length

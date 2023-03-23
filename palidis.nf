@@ -17,7 +17,7 @@ include { installInterproscan } from './modules/installInterproscan.nf'
 include { runInterproscan } from './modules/runInterproscan.nf'
 include { contigCandidates } from './modules/contigCandidates.nf'
 include { palmem } from './modules/palmem.nf'
-include { clusterIRs } from './modules/clusterIRs.nf'
+include { clipIRs } from './modules/clipIRs.nf'
 include { mapIRs } from './modules/mapirs.nf'
 include { getInsertionSequences } from './modules/getInsertionSequences.nf'
 
@@ -35,7 +35,7 @@ workflow palidis {
 
     palmem(convertToFasta.out)
 
-    clusterIRs(palmem.out.ir_ch)
+    clipIRs(palmem.out.ir_ch)
 
     /*
      * Filter contigs
@@ -74,17 +74,20 @@ workflow palidis {
 
     buildDB(contigCandidates.out.ref)
 
+    clipIRs.out
+    .join(buildDB.out.contig_db_ch)
+    .set { irs_contig_ch }
+
     /*
      * Map IRs to contigs
      */
-     mapIRs(clusterIRs.out.clipped_ir_ch, buildDB.out.contig_db_ch)
+     mapIRs(irs_contig_ch)
 
     /*
      * Get insertion sequences and corresponding information
      */
      contigCandidates.out.fasta_info
      .join(mapIRs.out)
-     .join(clusterIRs.out.cluster_ch)
      .set { contig_info_ch }
 
     getInsertionSequences(contig_info_ch)
