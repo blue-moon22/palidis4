@@ -24,8 +24,8 @@ process convertToFasta {
         gunzip -c \$file >> ${fastq2}
     done
 
-    convert_fastq_to_fasta.py -f ${fastq1} -r 1
-    convert_fastq_to_fasta.py -f ${fastq2} -r 2
+    convert_fastq_to_fasta.py -f ${fastq1} -r 1 -o ${sample_id}_1.fasta
+    convert_fastq_to_fasta.py -f ${fastq2} -r 2 -o ${sample_id}_2.fasta
 
     rm ${fastq1} ${fastq2}
     """
