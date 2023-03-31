@@ -14,6 +14,6 @@ process contigCandidates {
     info_out="${sample_id}_filtered_transposase.tsv"
 
     """
-    get_contigs_with_transposase.py -f ${tsv} -t all.tsv -o ${sample_id}
+    get_contigs_with_transposase.py -f ${fasta} -t ${tsv} -o ${sample_id}
     """
 }

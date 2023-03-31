@@ -24,7 +24,7 @@ include { getInsertionSequences } from './modules/getInsertionSequences.nf'
 
 workflow palidis {
     take:
-    read_pair_ch
+    reads_ch
     contig_file_ch
 
     main:
@@ -32,11 +32,11 @@ workflow palidis {
     /*
      * Get maximal exact matches from reads
      */
-    convertToFasta(read_pair_ch)
+    convertToFasta(reads_ch)
 
     palmem(convertToFasta.out)
 
-    clipIRs(palmem.out.ir_ch)
+    clipIRs(palmem.out)
 
     /*
      * Filter contigs
@@ -121,9 +121,9 @@ workflow {
     Channel
     .fromPath(params.manifest, checkIfExists: true)
     .splitCsv(header:true, sep:"\t")
-    .map { row -> tuple(row.sample_id, file(row.read1), file(row.read2)) }
+    .map { row -> tuple(row.sample_id, file(row.read_directory)) }
     .groupTuple()
-    .set { read_pair_ch }
+    .set { reads_ch }
 
     Channel
     .fromPath(params.manifest, checkIfExists: true)
@@ -131,7 +131,7 @@ workflow {
     .map { row -> tuple(row.sample_id, file(row.contigs_path)) }
     .set { contig_file_ch }
 
-    palidis(read_pair_ch, contig_file_ch)
+    palidis(reads_ch, contig_file_ch)
 
     // Publish IS fasta sequences
     palidis.out.is_fasta_ch

@@ -152,10 +152,10 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
         content = "".join(txt.readlines())
         os.remove(f'{self.TEST_OUTPUT_PREFIX}_insertion_sequences_info.txt')
         self.assertEqual(content,"""IS_name	sample_id	contig	is_start	is_end	description
-IS_length_561_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	10	570	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_591_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	10	600	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_570_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	1	570	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	1	600	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
+IS_length_561_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	10	570	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_591_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	10	600	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_570_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	1	570	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test	NODE_1_length_49561_cov_5.4235	1	600	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
 """)
 
     def test_write_insertion_sequence_fasta(self):
@@ -207,10 +207,10 @@ CAGCAGCCAGTACGGTCTAGGAAGCACCTTTACCCTTGTTCTCAATCTCTCTGGTAGTGAAAATAAAGCTTGTAAGTGTC
         content = "".join(txt.readlines())
         os.remove(f'{self.TEST_OUTPUT_PREFIX_MAIN}_insertion_sequences_info.txt')
         self.assertEqual(content,"""IS_name	sample_id	contig	is_start	is_end	description
-IS_length_561_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	10	570	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_591_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	10	600	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_570_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	1	570	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
-IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	1	600	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
+IS_length_561_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	10	570	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_591_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	10	600	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_570_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	1	570	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
+IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test2	NODE_1_length_49561_cov_5.4235	1	600	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
 """)
 
         fasta = open(f'{self.TEST_OUTPUT_PREFIX_MAIN}_insertion_sequences.fasta', "r")
@@ -240,7 +240,7 @@ CAGCAGCCAGTACGGTCTAGGAAGCACCTTTACCCTTGTTCTCAATCTCTCTGGTAGTGAAAATAAAGCTTGTAAGTGTC
         content = "".join(txt.readlines())
         os.remove(f'{self.TEST_OUTPUT_PREFIX_MAIN2}_insertion_sequences_info.txt')
         self.assertEqual(content,"""IS_name	sample_id	contig	is_start	is_end	description
-IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test3	NODE_1_length_49561_cov_5.4235	1	600	Transposase IS200-like;Transposase IS200-like;Transposase IS200-like superfamily;Transposase IS200-like superfamily
+IS_length_600_IPR002686_67_522_IPR002686_82_513_IPR036515_49_549_IPR036515_52_534	tests/data/output/test3	NODE_1_length_49561_cov_5.4235	1	600	IPR002686:Transposase IS200-like;IPR002686:Transposase IS200-like;IPR036515:Transposase IS200-like superfamily;IPR036515:Transposase IS200-like superfamily
 """)
 
         fasta = open(f'{self.TEST_OUTPUT_PREFIX_MAIN2}_insertion_sequences.fasta', "r")

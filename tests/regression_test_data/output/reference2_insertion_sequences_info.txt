@@ -1,3 +1,3 @@
 IS_name	sample_id	contig	is_start	is_end	description
-IS_length_1710_IPR001207_661_735	test	NODE_8989_length_2621_cov_163.784	200	1909	Transposase, mutator type
-IS_length_1580_IPR001207_661_735	test	NODE_8989_length_2621_cov_163.784	240	1819	Transposase, mutator type
+IS_length_1710_IPR001207_661_735	test2	NODE_8989_length_2621_cov_163.784	200	1909	IPR001207:Transposase, mutator type
+IS_length_1580_IPR001207_661_735	test2	NODE_8989_length_2621_cov_163.784	240	1819	IPR001207:Transposase, mutator type

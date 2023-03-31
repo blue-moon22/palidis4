@@ -8,7 +8,7 @@ Function to convert a FASTQ file into a FASTA file.
 
 import argparse, sys, os
 
-def write_fasta(fastq_file, read, fasta_file):
+def write_fasta(fastq_file, fasta_file):
     """
     This function writes a FASTA file from a FASTQ file
     """
@@ -18,7 +18,7 @@ def write_fasta(fastq_file, read, fasta_file):
         with open(fastq_file, "r") as fastq:
             for line in fastq:
                 if count%4 == 1:
-                    new_id = ">Seq" + str(index) + "_f" + str(read)
+                    new_id = ">Seq" + str(index)
                     out.write(new_id + "\n")
                     index += 1
                 elif count%4 == 2:
@@ -32,13 +32,11 @@ def get_arguments():
                         help='Input FASTQ file.', type = str)
     parser.add_argument('--fasta', '-o', dest='fasta', required=True,
                         help='Output FASTA file.', type = str)
-    parser.add_argument('--read', '-r', dest='read', required=True,
-                        help='Read file number (1 or 2).', type = str)
     return parser
 
 
 def main(args):
-    write_fasta(args.fastq, args.read, args.fasta)
+    write_fasta(args.fastq, args.fasta)
 
 
 if __name__ == "__main__":

@@ -10,19 +10,19 @@ class TestConvertFastqToFasta(unittest.TestCase):
 
     def test_write_fasta(self):
 
-        write_fasta(self.TEST_FASTQ, 1, self.TEST_FASTA)
+        write_fasta(self.TEST_FASTQ, self.TEST_FASTA)
 
         fasta_name = self.TEST_FASTA
         fasta = open(fasta_name, "r")
         actual = "".join(fasta.readlines())
         os.remove(fasta_name)
-        self.assertEqual(actual, """>Seq1_f1
+        self.assertEqual(actual, """>Seq1
 GTTCCCAACCAGTTGCCATGATGCCTCCATCATTGAAGCGATAGAGTTTACCATCAATTTTATTTAAACCAGTGAACATTTCTCCAGTTTTAGGATCTAGATAATACCATTTACCTGCATCATTGAGCCAACCACGTTTCATTTCACCTGA
->Seq2_f1
+>Seq2
 ATTGTGGACCTTGTTTTTCTACACGGTTATATTAAGCATCGTGATTTATTCTCTTGTCACAGATTTTTCAAACATCCAAGAATTCATTTACAGTGAATTTTAAATATTTCCTTTAGAAAAACTCCTTGTCTCTAATATTTATTCGAGACA
 """)
 
     def test_arguments(self):
         actual = get_arguments().parse_args(
-            ['--fastq', 'fastq_file', '--read', '1', '--fasta', 'fasta_file'])
-        self.assertEqual(actual, argparse.Namespace(fastq='fastq_file', read='1', fasta='fasta_file'))
+            ['--fastq', 'fastq_file', '--fasta', 'fasta_file'])
+        self.assertEqual(actual, argparse.Namespace(fastq='fastq_file', fasta='fasta_file'))
