@@ -69,7 +69,7 @@ class contigTransposaseInfo:
         return is_info
 
 def reverse_complement(dna_sequence):
-    complement_dict = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+    complement_dict = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
     reverse_complement_seq = ''
     for base in dna_sequence[::-1]:
         reverse_complement_seq += complement_dict[base]
