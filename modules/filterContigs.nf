@@ -6,7 +6,8 @@ process filterContigs {
     tuple val(sample_id), path(contigs_path)
 
     output:
-    tuple val(sample_id), path(contigs_out)
+    tuple val(sample_id), path(contigs_out), emit: prodigal_ch
+    tuple val(sample_id), path(contigs_out), emit: fasta_ch
 
     script:
     min_is_len = params.min_is_len

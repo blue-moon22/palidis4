@@ -15,6 +15,7 @@ include { buildDB } from './modules/buildDB.nf'
 include { runProdigal } from './modules/runProdigal.nf'
 include { installInterproscan } from './modules/installInterproscan.nf'
 include { runInterproscan } from './modules/runInterproscan.nf'
+include { mergeTSV } from './modules/merge.nf'
 include { contigCandidates } from './modules/contigCandidates.nf'
 include { palmem } from './modules/palmem.nf'
 include { clipIRs } from './modules/clipIRs.nf'
@@ -62,33 +63,43 @@ workflow palidis {
         .set { interproscan_ch }
     }
 
-    runProdigal(filterContigs.out)
+    /*
+     * Annotate transposase
+     */
+    runProdigal(filterContigs.out.prodigal_ch)
 
-    runProdigal.out
+    runProdigal.out.prot
+    .splitFasta(by: params.chunk_size, file:true)
     .combine(interproscan_ch)
-    .set { proteins_ch }
+    .set { chunk_ch }
 
-    runInterproscan(proteins_ch)
+    runInterproscan(chunk_ch)
 
-    contigCandidates(runInterproscan.out.fasta)
+    mergeTSV(runInterproscan.out.groupTuple(size: 0))
+
+    filterContigs.out.fasta_ch
+    .join(mergeTSV.out)
+    .set { contig_tsv_ch }
+
+    contigCandidates(contig_tsv_ch)
 
     buildDB(contigCandidates.out.ref)
 
+    /*
+     * Map IRs to candidate contigs
+     */
     clipIRs.out
     .join(buildDB.out.contig_db_ch)
     .set { irs_contig_ch }
 
-    /*
-     * Map IRs to contigs
-     */
-     mapIRs(irs_contig_ch)
+    mapIRs(irs_contig_ch)
 
     /*
      * Get insertion sequences and corresponding information
      */
-     contigCandidates.out.fasta_info
-     .join(mapIRs.out)
-     .set { contig_info_ch }
+    contigCandidates.out.fasta_info
+    .join(mapIRs.out)
+    .set { contig_info_ch }
 
     getInsertionSequences(contig_info_ch)
     is_info_ch = getInsertionSequences.out.txt
