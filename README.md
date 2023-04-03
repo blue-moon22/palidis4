@@ -83,6 +83,7 @@ This represents the institution or HPC name. You can find your institutional HPC
   --min_is_len        Minimum length of insertion sequence. (Default: 500)
   --max_is_len        Maximum length of insertion sequence. (Default: 3000)
   --chunk_size        Number of protein sequences in each chunk for Interproscan. (Default: 80000)
+  --lsf               Run Interproscan in LSF cluster mode. (Default: false)
   -resume             Resume the pipeline
 ```
 

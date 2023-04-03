@@ -146,27 +146,30 @@ def process_sam_file(sam_file, irs):
 def write_insertion_sequences_info(mapping_info, contig_transposase_info, sample_id, MIN_IS_LEN, MAX_IS_LEN):
 
     contig_is_info = {}
+    is_info_list = []
     with open(f'{sample_id}_insertion_sequences_info.txt', "w") as out:
         out.write("IS_name\tsample_id\tcontig\tis_start\tis_end\tdescription\n")
         for contig, ir in mapping_info.items():
             for seq, itr_positions in ir.items():
                 is_info = contig_transposase_info.check_irs_flanking(contig, itr_positions, MIN_IS_LEN, MAX_IS_LEN)
-                for is_position, transposases in is_info.items():
-                    length = (is_position[1]- is_position[0]) + 1
-                    is_name = f'IS_length_{length}'
-                    description = ''
-                    for transposase in transposases:
-                        is_name = (f'{is_name}_{transposase[0]}_{transposase[2]}_{transposase[3]}')
-                        if description:
-                            description = (f'{description};{transposase[0]}:{transposase[1]}')
-                        else:
-                            description = (f'{transposase[0]}:{transposase[1]}')
-                    out.write(f'{is_name}\t{sample_id}\t{contig}\t{is_position[0]}\t{is_position[1]}\t{description}\n')
-                    if contig not in contig_is_info:
-                        contig_is_info[contig] = []
-                    tmp = contig_is_info[contig]
-                    tmp.append([is_name, is_position[0], is_position[1]])
-                    contig_is_info[contig] = tmp
+                if is_info not in is_info_list:
+                    is_info_list.append(is_info)
+                    for is_position, transposases in is_info.items():
+                        length = (is_position[1]- is_position[0]) + 1
+                        is_name = f'IS_length_{length}'
+                        description = ''
+                        for transposase in transposases:
+                            is_name = (f'{is_name}_{transposase[0]}_{transposase[2]}_{transposase[3]}')
+                            if description:
+                                description = (f'{description};{transposase[0]}:{transposase[1]}')
+                            else:
+                                description = (f'{transposase[0]}:{transposase[1]}')
+                        out.write(f'{is_name}\t{sample_id}\t{contig}\t{is_position[0]}\t{is_position[1]}\t{description}\n')
+                        if contig not in contig_is_info:
+                            contig_is_info[contig] = []
+                        tmp = contig_is_info[contig]
+                        tmp.append([is_name, is_position[0], is_position[1]])
+                        contig_is_info[contig] = tmp
 
     return contig_is_info
 
