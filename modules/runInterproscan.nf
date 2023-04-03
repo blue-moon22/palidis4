@@ -15,11 +15,6 @@ process runInterproscan {
     # Remove * from protein prediction
     sed -i 's/*//' ${faa}
 
-    if ${lsf}
-    then
-        ./${db}/interproscan.sh -mode cluster -clusterrunid ${sample_id}_interproscan -i ${faa} -f tsv -dp -cpu ${task.cpus}
-    else
-        ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
-    fi
+    ./${db}/interproscan.sh -i ${faa} -f tsv -dp -cpu ${task.cpus}
     """
 }
