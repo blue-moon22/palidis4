@@ -2,7 +2,6 @@
 
 """
 author: Victoria Carr
-
 Function for clipping reads.
 """
 
@@ -37,35 +36,23 @@ def get_positions(tab_file):
     return positions
 
 
-def unique_seq(fasta_file, positions):
+def clip_reads(fasta_file, positions, output_prefix):
     """
     This function clips reads based on the left-hand and right-hand coordinates
     in the headers
     """
 
-    seq_list = []
-    with open(fasta_file, 'r') as f:
-        for line in f:
-            if line[0] == '>':
-                header = line.replace(">", "").replace("\n", "")
-            else:
-                for pos in positions[header]:
-                    seq = line[pos[0]-1:pos[1]]
-                    if seq not in seq_list:
-                        seq_list.append(seq)
-    return seq_list
-
-
-def write_fasta(seq_list, output_prefix):
-
     count = 1
     with open(output_prefix + '_irs.fasta', "w") as out:
-        for seq in seq_list:
-            out.write(f'>{str(count)}\n{seq}\n')
-            count += 1
-            out.write(f'>{str(count)}\n{seq}\n')
-            count += 1
-            
+        with open(fasta_file, 'r') as f:
+            for line in f:
+                if line[0] == '>':
+                    header = line.replace(">", "").replace("\n", "")
+                else:
+                    for pos in positions[header]:
+                        out.write(f'>{str(count)}\n{line[pos[0]-1:pos[1]]}\n')
+                        count += 1
+
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Get the inverted repeat sequences from reads containing them.')
@@ -82,9 +69,7 @@ def main(args):
 
     positions = get_positions(args.tab_file)
 
-    seq_list = unique_seq(args.read_fasta, positions)
-
-    write_fasta(seq_list, args.output_prefix)
+    clip_reads(args.read_fasta, positions, args.output_prefix)
 
 
 if __name__ == "__main__":
