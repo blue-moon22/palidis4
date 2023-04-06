@@ -9,7 +9,7 @@ Functions to get insertion sequence information.
 import argparse, sys
 import re
 from collections import defaultdict
-
+import logging
 
 class contigTransposaseInfo:
 
@@ -82,20 +82,21 @@ def get_candidate_itrs(sam_file):
         itr_candidates = {}
         for line in sam:
             sequence = line.split("\t")[9]
+            contig = line.split("\t")[2]
             rev_comp = reverse_complement(sequence)
 
-            if sequence not in itr_candidates:
-                itr_candidates[sequence] = False
+            if (contig,sequence) not in itr_candidates:
+                itr_candidates[(contig,sequence)] = False
 
-            if rev_comp in itr_candidates:
-                itr_candidates[rev_comp] = True
+            if (contig,rev_comp) in itr_candidates:
+                itr_candidates[(contig,rev_comp)] = True
 
         irs = []
         for key, item in itr_candidates.items():
             if item:
-                rev_key = reverse_complement(key)
+                rev_comp = reverse_complement(key[1])
                 irs.append(key)
-                irs.append(rev_key)
+                irs.append((key[0], rev_comp))
 
         irs = list(set(irs))
         irs.sort()
@@ -113,14 +114,15 @@ def process_sam_file(sam_file, irs):
         mapping_info = {}
         for line in sam:
             contig = line.split("\t")[2]
-            ir = line.split("\t")[0]
-            index = int(ir.split("_")[0].replace("Seq", ""))
-            pos = int(line.split("\t")[3])
-            len_fragment = len(line.split("\t")[9])
-            ir_positions = (pos, (pos + len_fragment)-1)
             sequence = line.split("\t")[9]
 
-            if sequence in irs:
+            if (contig,sequence) in irs:
+
+                contig = line.split("\t")[2]
+                pos = int(line.split("\t")[3])
+                len_fragment = len(line.split("\t")[9])
+                ir_positions = (pos, (pos + len_fragment)-1)
+
                 ir_pairs = [sequence, reverse_complement(sequence)]
                 ir_pairs.sort()
                 ir = ir_pairs[0]
@@ -133,11 +135,11 @@ def process_sam_file(sam_file, irs):
 
                 tmp = mapping_info[contig][ir]
                 if sequence == ir:
-                    tmp[0].append(ir_positions)
-                    tmp[0] = list(set(tmp[0]))
+                    if ir_positions not in tmp[0]:
+                        tmp[0].append(ir_positions)
                 else:
-                    tmp[1].append(ir_positions)
-                    tmp[1] = list(set(tmp[1]))
+                    if ir_positions not in tmp[1]:
+                        tmp[1].append(ir_positions)
                 mapping_info[contig][ir] = tmp
 
     return mapping_info
@@ -208,18 +210,28 @@ def get_arguments():
 
 def main(args):
 
+    logging.basicConfig(
+            format='%(asctime)s %(levelname)-8s %(message)s',
+            level=logging.INFO,
+            datefmt='%Y-%m-%d %H:%M:%S')
+
     # Get IR mapping info
+    logging.info('Get candidate ITRs')
     irs = get_candidate_itrs(args.sam_file)
+    logging.info('Process SAM file')
     mapping_info = process_sam_file(args.sam_file, irs)
 
     # Get transposase info
+    logging.info('Get transpoase info')
     contig_transposase_info = contigTransposaseInfo()
     contig_transposase_info.load_contig_info(args.contig_info)
 
     # Write insertion sequence info
+    logging.info('Write insertion sequence info')
     contig_is_info = write_insertion_sequences_info(mapping_info, contig_transposase_info, args.output_prefix, args.min_is_len, args.max_is_len)
 
     # Write insertion sequence fasta
+    logging.info('Write FASTA file')
     write_insertion_sequences_fasta(contig_is_info, args.contig_fasta, args.output_prefix)
 
 

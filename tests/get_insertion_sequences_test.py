@@ -85,15 +85,14 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
 
         actual = get_candidate_itrs(self.TEST_SAM_FILE)
 
-        self.assertEqual(actual,
-['AACGCCGTACTGGTTTAAAGTTAATCCACTATA',
- 'AAGGCGAGGCAACGCCGTACTGGTTTAAA',
- 'ACAAGGCGACGAAGCCGCAGACAGTACA',
- 'AGGCAACGCCGTACTGGTTTAAAGTTAATCCACTATA',
- 'TATAGTGGATTAACTTTAAACCAGTACGGCGTT',
- 'TATAGTGGATTAACTTTAAACCAGTACGGCGTTGCCT',
- 'TGTACTGTCTGCGGCTTCGTCGCCTTGT',
- 'TTTAAACCAGTACGGCGTTGCCTCGCCTT']
+        self.assertEqual(actual, [('NODE_8989_length_2621_cov_163.784', 'AACGCCGTACTGGTTTAAAGTTAATCCACTATA'),
+('NODE_8989_length_2621_cov_163.784', 'AAGGCGAGGCAACGCCGTACTGGTTTAAA'),
+('NODE_8989_length_2621_cov_163.784', 'ACAAGGCGACGAAGCCGCAGACAGTACA'),
+('NODE_8989_length_2621_cov_163.784', 'AGGCAACGCCGTACTGGTTTAAAGTTAATCCACTATA'),
+('NODE_8989_length_2621_cov_163.784', 'TATAGTGGATTAACTTTAAACCAGTACGGCGTT'),
+('NODE_8989_length_2621_cov_163.784', 'TATAGTGGATTAACTTTAAACCAGTACGGCGTTGCCT'),
+('NODE_8989_length_2621_cov_163.784', 'TGTACTGTCTGCGGCTTCGTCGCCTTGT'),
+('NODE_8989_length_2621_cov_163.784', 'TTTAAACCAGTACGGCGTTGCCTCGCCTT')]
         )
 
     def test_process_sam_file(self):
@@ -102,17 +101,16 @@ class TestCandidateITRReadsAndISContigs(unittest.TestCase):
         actual = process_sam_file(self.TEST_SAM_FILE, irs)
 
         self.maxDiff = None
-        self.assertEqual(actual,
-{'NODE_8989_length_2621_cov_163.784': {'AACGCCGTACTGGTTTAAAGTTAATCCACTATA': [[(1891,
+        self.assertEqual(actual, {'NODE_8989_length_2621_cov_163.784': {'AACGCCGTACTGGTTTAAAGTTAATCCACTATA': [[(1891,
                                                                                1923)],
                                                                              [(2589,
                                                                                2621)]],
                                        'AAGGCGAGGCAACGCCGTACTGGTTTAAA': [[(1881,
                                                                            1909)],
-                                                                         [(2603,
-                                                                           2631),
-                                                                          (200,
-                                                                           228)]],
+                                                                         [(200,
+                                                                           228),
+                                                                          (2603,
+                                                                           2631)]],
                                        'ACAAGGCGACGAAGCCGCAGACAGTACA': [[(1792,
                                                                           1819)],
                                                                         [(240,
