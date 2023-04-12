@@ -2,7 +2,6 @@
 
 """
 author: Victoria Carr
-email: victoria.carr@sanger.ac.uk
 
 Functions for assigning ITRs.
 """

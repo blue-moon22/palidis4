@@ -56,6 +56,14 @@ file_diff "${work_dir}/regression_test_data/output/test_insertion_sequences.fast
 out=$?
 error_status=$(($error_status | $out))
 
+file_diff "${work_dir}/regression_test_data/output/test2_insertion_sequences_info.txt" "${work_dir}/regression_test_data/output/reference2_insertion_sequences_info.txt"
+out=$?
+error_status=$(($error_status | $out))
+
+file_diff "${work_dir}/regression_test_data/output/test2_insertion_sequences.fasta" "${work_dir}/regression_test_data/output/reference2_insertion_sequences.fasta"
+out=$?
+error_status=$(($error_status | $out))
+
 # Error if any output files missing or not expected
 if [[ ${error_status} -eq 1 ]]; then
     echo ""
