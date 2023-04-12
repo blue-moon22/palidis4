@@ -12,79 +12,36 @@ nextflow.enable.dsl=2
 include { convertToFasta } from './modules/convertToFasta.nf'
 include { filterContigs } from './modules/filterContigs.nf'
 include { buildDB } from './modules/buildDB.nf'
-include { palmem } from './modules/palmem.nf'
-include { mapReads as mapReads1 } from './modules/mapreads.nf'
-include { mapReads as mapReads2 } from './modules/mapreads.nf'
-include { getCandidateITRs } from './modules/getCandidateITRs.nf'
-include { clusterReads } from './modules/clusterReads.nf'
-include { getITRs } from './modules/getITRs.nf'
 include { runProdigal } from './modules/runProdigal.nf'
 include { installInterproscan } from './modules/installInterproscan.nf'
 include { runInterproscan } from './modules/runInterproscan.nf'
-include { getISInfo } from './modules/getISInfo.nf'
+include { mergeTSV } from './modules/merge.nf'
+include { contigCandidates } from './modules/contigCandidates.nf'
+include { palmem } from './modules/palmem.nf'
+include { clipIRs } from './modules/clipIRs.nf'
+include { mapIRs } from './modules/mapirs.nf'
+include { getInsertionSequences } from './modules/getInsertionSequences.nf'
 
 workflow palidis {
     take:
-    read_pair_ch
+    reads_ch
     contig_file_ch
 
     main:
-    convertToFasta(read_pair_ch)
+
+    /*
+     * Get maximal exact matches from reads
+     */
+    convertToFasta(reads_ch)
 
     palmem(convertToFasta.out)
 
+    clipIRs(palmem.out)
+
+    /*
+     * Filter contigs
+     */
     filterContigs(contig_file_ch)
-
-    buildDB(filterContigs.out)
-
-    /*
-     * Map reads to contigs
-     */
-    Channel
-    .of('1')
-    .set { pair1_ch }
-
-    palmem.out.ir_1_ch
-    .join(buildDB.out.contig_db1_ch)
-    .combine(pair1_ch)
-    .set { contigs_reads1_ch }
-
-    mapReads1(contigs_reads1_ch)
-
-    Channel
-    .of('2')
-    .set { pair2_ch }
-
-    palmem.out.ir_2_ch
-    .join(buildDB.out.contig_db2_ch)
-    .combine(pair2_ch)
-    .set { contigs_reads2_ch }
-
-    mapReads2(contigs_reads2_ch)
-
-    /*
-     * Get contigs and reads with candidate ITRs
-     */
-     contig_file_ch
-     .join(mapReads1.out)
-     .join(mapReads2.out)
-     .join(convertToFasta.out)
-     .join(palmem.out.tab_ch)
-     .set { mapping_contigs_ch }
-
-    getCandidateITRs(mapping_contigs_ch)
-
-    clusterReads(getCandidateITRs.out.reads_itrs_ch)
-    cluster_ch = clusterReads.out.cluster_ch
-
-    cluster_ch
-    .join(getCandidateITRs.out.tab_ch)
-    .join(filterContigs.out)
-    .set { into_get_itr_ch }
-
-    getITRs(into_get_itr_ch)
-
-    runProdigal(getITRs.out.is_fasta_for_prodigal_ch)
 
     if (!file("${params.db_path}/${params.interproscan_db}").exists()) {
         installInterproscan()
@@ -106,20 +63,47 @@ workflow palidis {
         .set { interproscan_ch }
     }
 
-    runProdigal.out
+    /*
+     * Annotate transposase
+     */
+    runProdigal(filterContigs.out.prodigal_ch)
+
+    runProdigal.out.prot
+    .splitFasta(by: params.chunk_size, file:true)
     .combine(interproscan_ch)
-    .set { proteins_ch }
+    .set { chunk_ch }
 
-    runInterproscan(proteins_ch)
+    runInterproscan(chunk_ch)
 
-    getITRs.out.is_tab_ch
-    .join(runInterproscan.out)
-    .join(getITRs.out.is_candidate_fasta_ch)
-    .set { is_annot_ch }
+    mergeTSV(runInterproscan.out.groupTuple(size: 0))
 
-    getISInfo(is_annot_ch)
-    is_info_ch = getISInfo.out.txt
-    is_fasta_ch = getISInfo.out.fasta
+    filterContigs.out.fasta_ch
+    .join(mergeTSV.out)
+    .set { contig_tsv_ch }
+
+    contigCandidates(contig_tsv_ch)
+
+    buildDB(contigCandidates.out.ref)
+
+    /*
+     * Map IRs to candidate contigs
+     */
+    clipIRs.out
+    .join(buildDB.out.contig_db_ch)
+    .set { irs_contig_ch }
+
+    mapIRs(irs_contig_ch)
+
+    /*
+     * Get insertion sequences and corresponding information
+     */
+    contigCandidates.out.fasta_info
+    .join(mapIRs.out)
+    .set { contig_info_ch }
+
+    getInsertionSequences(contig_info_ch)
+    is_info_ch = getInsertionSequences.out.txt
+    is_fasta_ch = getInsertionSequences.out.fasta
 
     emit:
     is_fasta_ch
@@ -137,9 +121,9 @@ workflow {
     Channel
     .fromPath(params.manifest, checkIfExists: true)
     .splitCsv(header:true, sep:"\t")
-    .map { row -> tuple(row.sample_id, file(row.read1), file(row.read2)) }
+    .map { row -> tuple(row.sample_id, file(row.read_directory)) }
     .groupTuple()
-    .set { read_pair_ch }
+    .set { reads_ch }
 
     Channel
     .fromPath(params.manifest, checkIfExists: true)
@@ -147,7 +131,7 @@ workflow {
     .map { row -> tuple(row.sample_id, file(row.contigs_path)) }
     .set { contig_file_ch }
 
-    palidis(read_pair_ch, contig_file_ch)
+    palidis(reads_ch, contig_file_ch)
 
     // Publish IS fasta sequences
     palidis.out.is_fasta_ch

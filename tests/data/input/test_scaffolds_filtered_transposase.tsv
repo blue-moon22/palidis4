@@ -1,0 +1,10 @@
+protein_name	accession	annotation	nucl_start	nucl_end
+NODE_1_length_49561_cov_5.4235_1	IPR036515	Transposase IS200-like superfamily	49	549
+NODE_1_length_49561_cov_5.4235_1	IPR036515	Transposase IS200-like superfamily	52	534
+NODE_1_length_49561_cov_5.4235_1	PTHR36966	REP-ASSOCIATED TYROSINE TRANSPOSASE	1	528
+NODE_1_length_49561_cov_5.4235_1	IPR002686	Transposase IS200-like	67	522
+NODE_1_length_49561_cov_5.4235_1	IPR002686	Transposase IS200-like	82	513
+NODE_5_length_32495_cov_4.56202_1	PTHR35004	TRANSPOSASE RV3428C-RELATED	1	864
+NODE_5_length_32495_cov_4.56202_1	IPR012337	Ribonuclease H-like superfamily	346	837
+NODE_5_length_32495_cov_4.56202_1	IPR036397	Ribonuclease H superfamily	346	837
+NODE_6_length_32110_cov_3.8447_2	IPR013762	Integrase-like, catalytic domain superfamily	448	975

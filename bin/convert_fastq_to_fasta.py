@@ -2,44 +2,41 @@
 
 """
 author: Victoria Carr
-email: victoria.carr@sanger.ac.uk
 
-Function to convert a FASTQ file into a FASTA file with additional information.
+Function to convert a FASTQ file into a FASTA file.
 """
 
 import argparse, sys, os
-from Bio import SeqIO
 
-def write_fasta(fastq_file, read):
+def write_fasta(fastq_file, fasta_file):
     """
-    This function writes a FASTA file from a FASTQ file and adds information to
-    the headers
+    This function writes a FASTA file from a FASTQ file
     """
-
-    base_name = os.path.basename(fastq_file).split(".")[0]
-    reversed = base_name[::-1]
-    find = "_" + str(read)
-    sample_name = reversed.replace(find[::-1], "", 1)[::-1]
-    fasta_file = sample_name + "_" + str(read) + ".fasta"
     index = 1
+    count = 1
     with open(fasta_file, "w") as out:
-        for record in SeqIO.parse(fastq_file, "fastq"):
-            new_id = ">Seq" + str(index) + "_nstart_" + sample_name + "_nend_" + record.id.replace(" ", "_") + "_f" + str(read)
-            out.write(new_id + "\n" + str(record.seq) + "\n")
-            index += 1
+        with open(fastq_file, "r") as fastq:
+            for line in fastq:
+                if count%4 == 1:
+                    new_id = ">Seq" + str(index)
+                    out.write(new_id + "\n")
+                    index += 1
+                elif count%4 == 2:
+                    out.write(line)
+                count += 1
 
 
 def get_arguments():
     parser = argparse.ArgumentParser(description='Convert FASTQ to FASTA with appropriate headers.')
     parser.add_argument('--fastq', '-f', dest='fastq', required=True,
                         help='Input FASTQ file.', type = str)
-    parser.add_argument('--read', '-r', dest='read', required=True,
-                        help='Read file number (1 or 2).', type = str)
+    parser.add_argument('--fasta', '-o', dest='fasta', required=True,
+                        help='Output FASTA file.', type = str)
     return parser
 
 
 def main(args):
-    write_fasta(args.fastq, args.read)
+    write_fasta(args.fastq, args.fasta)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,6 @@
 
 """
 author: Victoria Carr
-email: victoria.carr@sanger.ac.uk
 
 Functions to get the information for insertion sequences.
 """

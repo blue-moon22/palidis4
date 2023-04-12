@@ -4,29 +4,22 @@
 process convertToFasta {
 
 	input:
-    tuple val(sample_id), path(read1), path(read2)
+    tuple val(sample_id), path(reads_folder)
 
 	output:
-	tuple val(sample_id), path("${sample_id}_1.fasta"), path("${sample_id}_2.fasta")
+	tuple val(sample_id), path("${sample_id}.fasta")
 
     script:
-    fastq1 = "${sample_id}_1.fastq"
-    fastq2 = "${sample_id}_2.fastq"
+    fastq = "${sample_id}.fastq"
 
 	"""
-    for file in ${read1}
+    for file in ${reads_folder}/*fastq.gz
     do
-        gunzip -c \$file >> ${fastq1}
+        gunzip -c \$file >> ${fastq}
     done
 
-    for file in ${read2}
-    do
-        gunzip -c \$file >> ${fastq2}
-    done
+    convert_fastq_to_fasta.py -f ${fastq} -o ${sample_id}.fasta
 
-    convert_fastq_to_fasta.py -f ${fastq1} -r 1
-    convert_fastq_to_fasta.py -f ${fastq2} -r 2
-
-    rm ${fastq1} ${fastq2}
+    rm ${fastq}
     """
 }
