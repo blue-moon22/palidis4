@@ -1,7 +1,6 @@
 
-[![DOI](https://zenodo.org/badge/293755884.svg)](https://zenodo.org/badge/latestdoi/293755884)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis/releases)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis/test)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis4/releases)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis4/test)
 
 <img src="img/logo.png" alt="logo" width="400"/>
 
@@ -42,7 +41,7 @@ For each sample, palidis produces two output files: **1. FASTA file of insertion
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Clone this repo:
 ```bash
-git clone --recursive -j8 https://github.com/blue-moon22/palidis4.git
+git clone --recursive -j8 git@github.com:blue-moon22/palidis4.git
 cd palidis4
 ```
 Note: You may be warned to first call `git config --global --add safe.directory`.
