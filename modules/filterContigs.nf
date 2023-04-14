@@ -6,7 +6,7 @@ process filterContigs {
     tuple val(sample_id), path(contigs_path)
 
     output:
-    tuple val(sample_id), path(contigs_out), emit: prodigal_ch
+    tuple val(sample_id), path(contigs_out), emit: db_ch
     tuple val(sample_id), path(contigs_out), emit: fasta_ch
 
     script:

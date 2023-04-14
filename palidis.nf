@@ -16,11 +16,11 @@ include { runProdigal } from './modules/runProdigal.nf'
 include { installInterproscan } from './modules/installInterproscan.nf'
 include { runInterproscan } from './modules/runInterproscan.nf'
 include { mergeTSV } from './modules/merge.nf'
-include { contigCandidates } from './modules/contigCandidates.nf'
 include { palmem } from './modules/palmem.nf'
 include { clipIRs } from './modules/clipIRs.nf'
 include { mapIRs } from './modules/mapirs.nf'
 include { getInsertionSequences } from './modules/getInsertionSequences.nf'
+include { getCandidateInsertionSequences } from './modules/getCandidateInsertionSequences.nf'
 
 workflow palidis {
     take:
@@ -43,6 +43,29 @@ workflow palidis {
      */
     filterContigs(contig_file_ch)
 
+    buildDB(filterContigs.out.db_ch)
+
+    /*
+     * Map IRs to candidate contigs
+     */
+    clipIRs.out
+    .join(buildDB.out)
+    .set { irs_contig_ch }
+
+    mapIRs(irs_contig_ch)
+
+    /*
+     * Get candidate Insertion Sequences
+     */
+    filterContigs.out.fasta_ch
+    .join(mapIRs.out)
+    .set { candidate_contigs_ch }
+
+    getCandidateInsertionSequences(candidate_contigs_ch)
+
+    /*
+     * Download Interproscan
+     */
     if (!file("${params.db_path}/${params.interproscan_db}").exists()) {
         installInterproscan()
 
@@ -66,7 +89,7 @@ workflow palidis {
     /*
      * Annotate transposase
      */
-    runProdigal(filterContigs.out.prodigal_ch)
+    runProdigal(getCandidateInsertionSequences.out.fasta_ch)
 
     runProdigal.out.prot
     .splitFasta(by: params.chunk_size, file:true)
@@ -77,31 +100,14 @@ workflow palidis {
 
     mergeTSV(runInterproscan.out.groupTuple(size: 0))
 
-    filterContigs.out.fasta_ch
+    getCandidateInsertionSequences.out.fasta_txt_ch
     .join(mergeTSV.out)
     .set { contig_tsv_ch }
-
-    contigCandidates(contig_tsv_ch)
-
-    buildDB(contigCandidates.out.ref)
-
-    /*
-     * Map IRs to candidate contigs
-     */
-    clipIRs.out
-    .join(buildDB.out.contig_db_ch)
-    .set { irs_contig_ch }
-
-    mapIRs(irs_contig_ch)
 
     /*
      * Get insertion sequences and corresponding information
      */
-    contigCandidates.out.fasta_info
-    .join(mapIRs.out)
-    .set { contig_info_ch }
-
-    getInsertionSequences(contig_info_ch)
+    getInsertionSequences(contig_tsv_ch)
     is_info_ch = getInsertionSequences.out.txt
     is_fasta_ch = getInsertionSequences.out.fasta
 

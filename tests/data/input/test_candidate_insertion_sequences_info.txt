@@ -1,0 +1,5 @@
+sample_id	contig	itr1_start	itr2_end
+tests/data/output/test	NODE_1_length_49561_cov_5.4235_1	10	570
+tests/data/output/test	NODE_1_length_49561_cov_5.4235_2	10	600
+tests/data/output/test	NODE_1_length_49561_cov_5.4235_3	1	570
+tests/data/output/test	NODE_1_length_49561_cov_5.4235_4	1	600
