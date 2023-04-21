@@ -71,7 +71,7 @@ def write_insertion_sequences_fasta(contig_is_info, contig_fasta, output_prefix)
             for line in fasta:
                 if line[0] == ">":
                     contig = line.replace(">", "").replace("\n", "")
-                else:
+                elif line[0] == "A" or line[0] == "C" or line[0] == "G" or line[0] == "T":
                     if contig in contig_is_info:
                         out.write(f'>{contig_is_info[contig]}\n{line}')
 
