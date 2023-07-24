@@ -1,7 +1,6 @@
 
-[![DOI](https://zenodo.org/badge/293755884.svg)](https://zenodo.org/badge/latestdoi/293755884)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis/releases)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis/test)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/blue-moon22/palidis)](https://github.com/blue-moon22/palidis4/releases)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/blue-moon22/palidis4/test)
 
 <img src="img/logo.png" alt="logo" width="400"/>
 
@@ -42,11 +41,11 @@ For each sample, palidis produces two output files: **1. FASTA file of insertion
 - Install [Docker](https://www.docker.com/) if using own machine or install [Singularity](https://sylabs.io/singularity/)/load a singularity module if using a shared HPC
 - Clone this repo:
 ```bash
-git clone --recursive -j8 https://github.com/blue-moon22/palidis.git
-cd palidis
+git clone --recursive -j8 git@github.com:blue-moon22/palidis4.git
+cd palidis4
 ```
 Note: You may be warned to first call `git config --global --add safe.directory`.
-</br>If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis.git`, you also need to get the submodules `git submodule update --init --recursive`
+</br>If you have already cloned this repo with `git clone https://github.com/blue-moon22/palidis4.git`, you also need to get the submodules `git submodule update --init --recursive`
 
 <a name="usage"></a>
 ## Usage
@@ -54,6 +53,8 @@ Note: You may be warned to first call `git config --global --add safe.directory`
 ```bash
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -c configs/conf/<name_of_config>.config
 ```
+
+If you are using a cluster and it uses singularity instead of docker, please add `-profile standard,singularity`
 
 ### Mandatory arguments
 #### `<batch_name>`
