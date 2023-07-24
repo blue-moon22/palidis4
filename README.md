@@ -54,6 +54,8 @@ Note: You may be warned to first call `git config --global --add safe.directory`
 nextflow palidis.nf --manifest <manifest_file> --batch_name <batch_name> -c configs/conf/<name_of_config>.config
 ```
 
+If you are using a cluster and it uses singularity instead of docker, please add `-profile standard,singularity`
+
 ### Mandatory arguments
 #### `<batch_name>`
 
